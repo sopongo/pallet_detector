@@ -78,11 +78,12 @@
             </div>
           </div>
 
-        </div> <div class="col-md-3">
-          
+        </div> 
+        
+        <div class="col-md-3">
           <div class="card card-gray-dark card-outline shadow-sm">
             <div class="card-header bg-white">
-              <h3 class="card-title text-bold">Detect Summary (24/12/2025)</h3>
+              <h3 class="card-title text-bold">Detect Summary (<?PHP echo date("d/m/Y");?>)</h3>
             </div>
             <div class="card-body p-0">
               <ul class="list-group list-group-flush">
@@ -117,6 +118,7 @@
                   <tr><td><b>Alert Threshold:</b></td><td class="text-right text-danger">15m</td></tr>
                   <tr><td><b>Mode:</b></td><td class="text-right text-success"><i class="fas fa-microchip mr-1"></i> CPU Mode (Used: 75%)</td></tr>
                   <tr><td><b>Ram:</b></td><td class="text-right text-success"><i class="fas fa-memory mr-1"></i> 16 GB (Used: 68%)</td></tr>
+                  <tr><td><b>Temp box enclosure:</b></td><td class="text-right">8.74 <sup>°C</sup></td></tr>
                 </tbody>
               </table>
             </div>

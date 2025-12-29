@@ -90,7 +90,7 @@
                                 </div>
                                 
                                 <br>
-                                <h4><i class="fas fa-folder"></i> Site & Location</h4>
+                                <h4><i class="fas fa-map-marker-alt"></i> Site & Location</h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-4">
