@@ -1,0 +1,23 @@
+# Flask Framework
+Flask==3.0.0
+Flask-CORS==4.0.0
+
+# Database
+PyMySQL==1.1.0
+
+# Camera (ต้องใช้ NumPy 1.x)
+numpy==1.24.3
+opencv-python==4.8.1.78
+
+# GPIO (Raspberry Pi only)
+gpiozero==2.0.1
+RPi.GPIO==0.7.1
+
+# LINE Notify
+requests==2.31.0
+
+# YOLO (ใช้ทีหลัง - comment ไว้ก่อน)
+# ultralytics==8.1.0
+
+# Utilities
+python-dotenv==1.0.0
