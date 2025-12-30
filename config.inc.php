@@ -24,7 +24,7 @@
                             <!-- Tab 2: Network -->
                             <li class="nav-item">
                                 <a class="nav-link" id="network-tab" data-toggle="pill" href="#network" role="tab" aria-controls="network" aria-selected="false">
-                                    <i class="fas fa-network-wired"></i> Network
+                                    <i class="fas fa-database"></i> Database
                                 </a>
                             </li>
                             
@@ -183,30 +183,6 @@
                                         </div>
                                         <button class="btn btn-info">
                                             <i class="fas fa-plug"></i> Test Connection
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <br>
-                                <!-- WiFi Config -->
-                                <h4><i class="fas fa-wifi"></i> WiFi Configuration</h4>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="wifiSSID">Network Name (SSID)</label>
-                                            <input type="text" class="form-control" id="wifiSSID" placeholder="WH-PACJ">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="wifiUser">Username (Optional)</label>
-                                            <input type="text" class="form-control" id="wifiUser" placeholder="username">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="wifiPass">Password</label>
-                                            <input type="password" class="form-control" id="wifiPass" placeholder="••••••••">
-                                        </div>
-                                        <button class="btn btn-info">
-                                            <i class="fas fa-signal"></i> Test WiFi
                                         </button>
                                     </div>
                                 </div>
@@ -607,14 +583,7 @@ function loadConfig() {
                 document.getElementById('dbPort').value = data.network.database.port;
                 document.getElementById('dbName').value = data.network.database.database;
             }
-            
-            // Network - WiFi
-            if(document.getElementById('wifiSSID')) {
-                document.getElementById('wifiSSID').value = data.network.wifi.ssid;
-                document.getElementById('wifiUser').value = data.network.wifi.username;
-                document.getElementById('wifiPass').value = data.network.wifi.password;
-            }
-            
+                        
             // Network - LINE
             if(document.getElementById('lineToken')) {
                 document. getElementById('lineToken').value = data.network.lineNotify.token;
@@ -678,11 +647,6 @@ document.getElementById('btnSaveConfig').addEventListener('click', function() {
                 password: document.getElementById('dbPass').value,
                 port: parseInt(document.getElementById('dbPort').value) || 3306,
                 database: document.getElementById('dbName').value
-            },
-            wifi: {
-                ssid:  document.getElementById('wifiSSID').value,
-                username: document.getElementById('wifiUser').value,
-                password: document.getElementById('wifiPass').value
             },
             lineNotify: {
                 token: document. getElementById('lineToken').value,
@@ -862,34 +826,7 @@ document. addEventListener('DOMContentLoaded', function() {
 // 4. Test WiFi
 // ========================================
 document.addEventListener('DOMContentLoaded', function() {
-    const wifiSection = document.querySelector('#network');
-    if(wifiSection) {
-        const wifiTestBtn = Array.from(wifiSection.querySelectorAll('.btn-info')).find(btn => 
-            btn.textContent.includes('Test WiFi')
-        );
-        
-        if(wifiTestBtn) {
-            wifiTestBtn.addEventListener('click', function() {
-                showLoading('Testing network connection...');
-                
-                fetch(`${API_URL}/test/network`, {method: 'POST'})
-                    .then(r => r.json())
-                    .then(result => {
-                        Swal.close();
-                        if(result.success) {
-                            const details = result.details || {};
-                            showSuccess(`${result.message}\n\nSSID: ${details.ssid || 'N/A'}\nIP: ${details.ip_address || 'N/A'}\nInternet: ${details.internet ?  'Yes' : 'No'}`);
-                        } else {
-                            showError(result.message);
-                        }
-                    })
-                    .catch(err => {
-                        Swal.close();
-                        showError('Network test failed: ' + err.message);
-                    });
-            });
-        }
-    }
+    
 });
 
 // ========================================

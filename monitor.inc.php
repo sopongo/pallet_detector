@@ -60,10 +60,7 @@
               </div>
             </div>
             <div class="card-footer py-2 border-top">
-               <small class="text-muted">
-                 <i class="fas fa-network-wired text-success mr-1"></i> Status: Online (Home_WiFi) | 
-                 <i class="fas fa-database ml-3 mr-1"></i> Storage: 274 Mb (1,452 Files)
-               </small>
+               <small class="text-muted"><i class="fas fa-network-wired text-success mr-1"></i> Status: Online</small>
             </div>
           </div>
 
