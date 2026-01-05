@@ -11,19 +11,19 @@ from utils.logger import setup_logger
 
 logger = setup_logger()
 
-class LineMessagingAPI: 
+class LineMessagingAPI:
     """Class สำหรับส่งข้อความผ่าน LINE OA"""
     
     def __init__(self):
         """Initialize LINE Messaging API"""
-        self. cfg = config.load_config()
+        self.cfg = config.load_config()
         self.channel_access_token = self.cfg['network']['lineNotify']['token']
         self.group_id = self.cfg['network']['lineNotify']. get('groupId', '')
         self.api_url = 'https://api.line.me/v2/bot/message'
         
         # ✅ Validate Group ID
         if self.group_id and not self.group_id.startswith('C'):
-            logger.warning(f"⚠️ Group ID should start with 'C', got:  {self.group_id[: 5]}...")
+            logger.warning(f"⚠️ Group ID should start with 'C', got: {self.group_id[: 5]}...")
     
     def get_headers(self):
         """สร้าง headers สำหรับ API request"""
@@ -36,22 +36,22 @@ class LineMessagingAPI:
         """
         ส่งข้อความเข้า Group (Push Message)
         
-        Args:  
-            messages (list): รายการข้อความ [{'type': 'text', 'text': '.. .'}, ...]
+        Args: 
+            messages (list): รายการข้อความ
             
         Returns:
             dict: {'success': bool, 'message': str}
         """
-        try: 
+        try:
             # ✅ เช็คว่ามี Group ID หรือไม่
             if not self.group_id:
                 logger.error("❌ Group ID not configured")
                 return {'success': False, 'message': 'Group ID not set'}
             
             # ✅ ส่งผ่าน Push API
-            url = f'{self. api_url}/push'
+            url = f'{self.api_url}/push'
             payload = {
-                'to':  self.group_id,  # ✅ ใช้ Group ID
+                'to': self.group_id,
                 'messages': messages
             }
             
@@ -60,7 +60,7 @@ class LineMessagingAPI:
             response = requests.post(
                 url,
                 headers=self.get_headers(),
-                data=json. dumps(payload),
+                data=json.dumps(payload),
                 timeout=10
             )
             
@@ -73,7 +73,7 @@ class LineMessagingAPI:
                 
                 # ✅ แสดง error ที่เข้าใจง่าย
                 if response.status_code == 400:
-                    return {'success': False, 'message': 'Invalid Group ID or Token'}
+                    return {'success':  False, 'message': 'Invalid Group ID or Token'}
                 elif response.status_code == 401:
                     return {'success': False, 'message': 'Invalid Channel Access Token'}
                 elif response. status_code == 403:
@@ -81,33 +81,41 @@ class LineMessagingAPI:
                 else:
                     return {'success':  False, 'message': f'HTTP {response.status_code}'}
                 
-        except requests.exceptions. Timeout:
-            logger.error("❌ LINE API timeout")
+        except requests.exceptions.Timeout:
+            logger. error("❌ LINE API timeout")
             return {'success': False, 'message': 'Request timeout'}
         except Exception as e:
             logger.error(f"❌ LINE Messaging error: {e}")
             return {'success': False, 'message': str(e)}
     
-    def send_overtime_alert(self, pallet_info):
+    def send_text_message(self, text):
         """
-        ส่ง alert พาเลทค้างเกินเวลา (Flex Message) เข้า Group
+        ส่งข้อความธรรมดาเข้า Group
         
-        Args: 
-            pallet_info (dict): ข้อมูลพาเลท
-                - pallet_id: ID พาเลท
-                - duration: เวลาที่ค้าง (นาที)
-                - site:  สถานที่
-                - location: ตำแหน่ง
-                - image_url: URL รูปภาพ (optional)
+        Args:
+            text (str): ข้อความ
             
         Returns: 
             dict: result
         """
-        pallet_id = pallet_info.get('pallet_id', 'N/A')
+        messages = [{'type': 'text', 'text': text}]
+        return self.push_to_group(messages)
+    
+    def send_overtime_alert(self, pallet_info):
+        """
+        ส่ง alert พาเลทค้างเกินเวลา (Flex Message) เข้า Group
+        
+        Args:
+            pallet_info (dict): ข้อมูลพาเลท
+            
+        Returns:
+            dict: result
+        """
+        pallet_id = pallet_info. get('pallet_id', 'N/A')
         duration = pallet_info.get('duration', 0)
         site = pallet_info.get('site', 'N/A')
-        location = pallet_info. get('location', 'N/A')
-        image_url = pallet_info.get('image_url', '')
+        location = pallet_info.get('location', 'N/A')
+        image_url = pallet_info. get('image_url', '')
         
         # ✅ สร้าง Flex Message
         flex_content = {
@@ -119,16 +127,16 @@ class LineMessagingAPI:
                     {
                         "type": "text",
                         "text": "⚠️ PALLET OVERTIME ALERT",
-                        "color":  "#ffffff",
+                        "color": "#ffffff",
                         "weight": "bold",
                         "size": "lg",
                         "align": "center"
                     }
                 ],
-                "backgroundColor":  "#FF4444",
+                "backgroundColor": "#FF4444",
                 "paddingAll": "20px"
             },
-            "body": {
+            "body":  {
                 "type": "box",
                 "layout": "vertical",
                 "contents": [
@@ -137,7 +145,7 @@ class LineMessagingAPI:
                         "text": f"Pallet #{pallet_id}",
                         "weight": "bold",
                         "size": "xxl",
-                        "margin":  "md",
+                        "margin": "md",
                         "color": "#1e1e1e"
                     },
                     {
@@ -146,103 +154,44 @@ class LineMessagingAPI:
                     },
                     {
                         "type": "box",
-                        "layout":  "vertical",
+                        "layout": "vertical",
                         "margin": "lg",
                         "spacing": "md",
                         "contents": [
-                            # Site
                             {
                                 "type": "box",
                                 "layout": "baseline",
                                 "spacing": "sm",
                                 "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "📍 Site:",
-                                        "color": "#aaaaaa",
-                                        "size": "sm",
-                                        "flex": 2
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": str(site),
-                                        "wrap": True,
-                                        "color": "#333333",
-                                        "size": "sm",
-                                        "flex": 5,
-                                        "weight": "bold"
-                                    }
+                                    {"type": "text", "text":  "📍 Site:", "color": "#aaaaaa", "size": "sm", "flex": 2},
+                                    {"type":  "text", "text": str(site), "wrap": True, "color": "#333333", "size": "sm", "flex": 5, "weight": "bold"}
                                 ]
                             },
-                            # Location
                             {
                                 "type": "box",
                                 "layout": "baseline",
-                                "spacing":  "sm",
+                                "spacing": "sm",
                                 "contents": [
-                                    {
-                                        "type": "text",
-                                        "text":  "🏢 Location:",
-                                        "color": "#aaaaaa",
-                                        "size": "sm",
-                                        "flex":  2
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": str(location),
-                                        "wrap":  True,
-                                        "color": "#333333",
-                                        "size": "sm",
-                                        "flex": 5,
-                                        "weight":  "bold"
-                                    }
+                                    {"type": "text", "text": "🏢 Location:", "color": "#aaaaaa", "size": "sm", "flex": 2},
+                                    {"type": "text", "text": str(location), "wrap": True, "color":  "#333333", "size": "sm", "flex": 5, "weight": "bold"}
                                 ]
                             },
-                            # Duration
+                            {
+                                "type":  "box",
+                                "layout": "baseline",
+                                "spacing": "sm",
+                                "contents": [
+                                    {"type": "text", "text": "⏰ Duration:", "color":  "#aaaaaa", "size":  "sm", "flex": 2},
+                                    {"type":  "text", "text": f"{duration:. 0f} minutes", "wrap": True, "color": "#FF4444", "size": "md", "flex": 5, "weight": "bold"}
+                                ]
+                            },
                             {
                                 "type": "box",
                                 "layout":  "baseline",
                                 "spacing": "sm",
                                 "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "⏰ Duration:",
-                                        "color": "#aaaaaa",
-                                        "size":  "sm",
-                                        "flex": 2
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": f"{duration:. 0f} minutes",
-                                        "wrap": True,
-                                        "color": "#FF4444",
-                                        "size":  "md",
-                                        "flex":  5,
-                                        "weight": "bold"
-                                    }
-                                ]
-                            },
-                            # Time
-                            {
-                                "type": "box",
-                                "layout": "baseline",
-                                "spacing": "sm",
-                                "contents": [
-                                    {
-                                        "type": "text",
-                                        "text": "🕐 Time:",
-                                        "color": "#aaaaaa",
-                                        "size":  "sm",
-                                        "flex": 2
-                                    },
-                                    {
-                                        "type": "text",
-                                        "text": datetime.now().strftime('%d/%m/%Y %H:%M:%S'),
-                                        "wrap": True,
-                                        "color": "#666666",
-                                        "size": "sm",
-                                        "flex": 5
-                                    }
+                                    {"type": "text", "text":  "🕐 Time:", "color": "#aaaaaa", "size": "sm", "flex": 2},
+                                    {"type": "text", "text": datetime.now().strftime('%d/%m/%Y %H:%M:%S'), "wrap": True, "color": "#666666", "size": "sm", "flex": 5}
                                 ]
                             }
                         ]
@@ -256,7 +205,7 @@ class LineMessagingAPI:
                 "spacing": "sm",
                 "contents": [
                     {
-                        "type":  "box",
+                        "type": "box",
                         "layout": "vertical",
                         "contents": [
                             {
@@ -278,11 +227,11 @@ class LineMessagingAPI:
             }
         }
         
-        # ✅ ถ้ามีรูปภาพ → เพิ่ม Hero Section
-        if image_url: 
+        # ✅ ถ้ามีรูปภาพ → เพิ่ม Hero
+        if image_url:
             flex_content["hero"] = {
-                "type": "image",
-                "url": image_url,
+                "type":  "image",
+                "url":  image_url,
                 "size": "full",
                 "aspectRatio": "20:13",
                 "aspectMode": "cover"
@@ -290,26 +239,11 @@ class LineMessagingAPI:
         
         flex_message = {
             "type": "flex",
-            "altText":  f"⚠️ Pallet #{pallet_id} Overtime Alert ({duration:. 0f} min)",
+            "altText":  f"⚠️ Pallet #{pallet_id} Overtime Alert ({duration:.0f} min)",
             "contents": flex_content
         }
         
         messages = [flex_message]
-        
-        # ✅ ส่งเข้า Group
-        return self.push_to_group(messages)
-    
-    def send_text_message(self, text):
-        """
-        ส่งข้อความธรรมดาเข้า Group
-        
-        Args:
-            text (str): ข้อความ
-            
-        Returns:
-            dict: result
-        """
-        messages = [{'type': 'text', 'text': text}]
         return self.push_to_group(messages)
     
     def test_connection(self):
@@ -346,7 +280,7 @@ def send_pallet_alert(pallet_info):
     """
     try:
         line_api = LineMessagingAPI()
-        return line_api.send_overtime_alert(pallet_info)
+        return line_api. send_overtime_alert(pallet_info)
     except Exception as e:
         logger.error(f"❌ Send alert error: {e}")
         return {'success': False, 'message': str(e)}

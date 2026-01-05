@@ -186,6 +186,23 @@ def test_gpio_route():
 
 
 # ========================================
+# Routes - Test LINE OA
+# ========================================
+from utils.line_messaging import test_line_connection
+@app.route('/api/test/line', methods=['POST'])
+def test_line():
+    """ทดสอบ LINE OA"""
+    try:
+        result = test_line_connection()
+        return jsonify(result), 200
+    except Exception as e:
+        logger.error(f"LINE test error: {e}")
+        return jsonify({
+            "success": False,
+            "message": f"Error: {str(e)}"
+        }), 500
+
+# ========================================
 # Routes - Camera
 # ========================================
 
@@ -483,27 +500,49 @@ def get_today_summary():
         site_id = int(cfg['general']. get('siteCompany', 1))
         location_id = int(cfg['general'].get('siteLocation', 1))
         
-        # แปลง site/location เป็นชื่อ
-        site_map = {1: "PACJ", 2: "Site B", 3: "Site C"}
-        location_map = {1: "Building 1", 2: "Building 2", 3: "Building 3"}
+        # ✅ อ่าน sites.json
+        sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
+        
+        site_name = f"Site {site_id}"
+        location_name = f"Location {location_id}"
+        
+        try:
+            if os.path.exists(sites_file):
+                with open(sites_file, 'r', encoding='utf-8') as f:
+                    sites_data = json. load(f)
+                
+                # ดึงชื่อ Site
+                if str(site_id) in sites_data:
+                    site_info = sites_data[str(site_id)]
+                    site_name = site_info.get('site_name', site_name)
+                    
+                    # ดึงชื่อ Location
+                    locations = site_info.get('location', {})
+                    if str(location_id) in locations:
+                        location_name = locations[str(location_id)]
+            else:
+                logger.warning(f"sites.json not found")
+        
+        except Exception as e:
+            logger.error(f"Error reading sites.json: {e}")
         
         result = {
             "success": True,
-            "site": site_map. get(site_id, f"Site {site_id}"),
-            "location": location_map.get(location_id, f"Location {location_id}"),
-            "total_photos": summary. get('total_photos', 0),
+            "site": site_name,
+            "location": location_name,
+            "total_photos": summary.get('total_photos', 0),
             "total_detected": summary.get('total_detected', 0),
-            "in_time": summary.get('in_time', 0),
-            "over_time": summary.get('over_time', 0),
-            "notifications": summary.get('notifications', 0),
-            "date": summary.get('date', datetime.now().strftime('%Y-%m-%d'))
+            "in_time": summary. get('in_time', 0),
+            "over_time":  summary.get('over_time', 0),
+            "notifications":  summary.get('notifications', 0),
+            "date": summary. get('date', datetime.now().strftime('%Y-%m-%d'))
         }
         
-        logger.info(f"Summary:  {result}")
+        logger.info(f"Summary: {result}")
         
         return jsonify(result)
         
-    except Exception as e: 
+    except Exception as e:  
         logger.error(f"Error getting summary: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 

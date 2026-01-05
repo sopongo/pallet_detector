@@ -1189,38 +1189,53 @@ setInterval(function() {
 }, 30000);
 
 
-
 // ========================================
-// 5. Test LINE OA Connection and send message
+// 5. Test LINE OA Connection
 // ========================================
-lineTestBtn.addEventListener('click', function() {
-    const token = document.getElementById('lineToken').value;
-    const groupId = document. getElementById('lineGroup').value;
+document.addEventListener('DOMContentLoaded', function() {
+    const lineSection = document.querySelector('#network');
     
-    if(! token) {
-        showError('Please enter Channel Access Token first');
-        return;
-    }
-    
-    if(!groupId) {
-        showError('Please enter Group ID first');
-        return;
-    }
-    
-    showLoading('Testing LINE OA connection...');
-    
-    fetch(`${API_URL}/test/line`, {
-        method: 'POST'
-    })
-    .then(r => r.json())
-    .then(result => {
-        Swal.close();
-        if(result.success) {
-            showSuccess('✅ LINE OA connected!\n\nCheck your group for test message.');
-        } else {
-            showError(`❌ Failed: ${result. message}`);
+    if(lineSection) {
+        const lineTestBtn = Array.from(lineSection.querySelectorAll('.btn-info')).find(btn => 
+            btn.textContent.includes('Test Send')
+        );
+        
+        if(lineTestBtn) {
+            lineTestBtn.addEventListener('click', function() {
+                const token = document.getElementById('lineToken').value;
+                const groupId = document. getElementById('lineGroup').value;
+                
+                if(! token) {
+                    showError('❌ Please enter Channel Access Token first');
+                    return;
+                }
+                
+                if(!groupId) {
+                    showError('❌ Please enter Group ID first');
+                    return;
+                }
+                
+                showLoading('Testing LINE OA connection.. .');
+                
+                fetch(`${API_URL}/test/line`, {
+                    method: 'POST'
+                })
+                .then(r => r.json())
+                .then(result => {
+                    Swal.close();
+                    if(result.success) {
+                        showSuccess('✅ LINE OA connected!\n\nCheck your group for test message.');
+                    } else {
+                        showError(`❌ Failed: ${result. message}`);
+                    }
+                })
+                .catch(err => {
+                    Swal.close();
+                    showError(`❌ Request failed: ${err.message}`);
+                });
+            });
         }
-    });
+    }
 });
 
 // ========================================

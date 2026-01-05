@@ -16,13 +16,14 @@
           
           <div class="card card-dark shadow">
             <div class="card-header">
-              <h3 class="card-title"><i class="fas fa-desktop mr-2"></i> Live Detection (CAM 0) - Building 1</h3>
+              <h3 class="card-title"><i class="fas fa-desktop mr-2"></i> Live Detection - <span class="summary-site"></span> <i class="fas fa-angle-double-right text-sm" aria-hidden="true"></i>
+ <span class="summary-location"></span></h3>
             </div>
             <div class="card-body bg-gray-light">
               <div class="row">
                 <div class="col-md-6">
                   <div class="detection-wrapper border bg-white p-2 mb-2">
-                    <span class="badge badge-secondary position-absolute m-2" style="z-index:10;">Before: <span id="mock-time-before">-</span></span>
+                    <span class="badge badge-success position-absolute m-2" style="z-index:10;">Before: <span id="mock-time-before">-</span></span>
                     <div class="pallet-image-container position-relative">
                       <img id="img-before" src="dist/img/wait.png" class="img-fluid rounded border" alt="Before">
                       
@@ -80,12 +81,12 @@
         <div class="col-md-3">
           <div class="card card-gray-dark card-outline shadow-sm">
             <div class="card-header bg-white">
-              <h3 class="card-title text-bold">Detect Summary (<?PHP echo date("d/m/Y");?>)</h3>
+              <h3 class="card-title text-bold">Detect Summary (<span id="header-date"><?php echo date("d/m/Y"); ?></span>)</h3>
             </div>
             <div class="card-body p-0">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item pt-2 pb-2"><b>Site:</b> <span class="float-right" id="summary-site">-</span></li>
-                <li class="list-group-item pt-2 pb-2"><b>Location:</b> <span class="float-right" id="summary-location">-</span></li>
+                <li class="list-group-item pt-2 pb-2"><b>Site:</b> <span class="float-right summary-site">-</span></li>
+                <li class="list-group-item pt-2 pb-2"><b>Location:</b> <span class="float-right summary-location" >-</span></li>
                 <li class="list-group-item pt-2 pb-2 text-primary"><b>Total Photos:</b> <span class="float-right text-bold" id="summary-photos">0</span></li>
                 <li class="list-group-item pt-2 pb-2"><b>Total Detected:</b> <span class="float-right text-bold" id="summary-detected">0</span></li>
                 <li class="list-group-item pt-2 pb-2 text-success"><b>Pallet In Time:</b> <span class="float-right text-bold" id="summary-in-time">0</span></li>
@@ -107,14 +108,14 @@
             <div class="card-body p-0">
               <table class="table table-sm table-striped mb-0 text-sm">
                 <tbody>
-                  <tr><td><b>Working time Detection:</b></td><td class="text-right">08.00 - 18.00</td></tr>
-                  <tr><td><b>Confidence:</b></td><td class="text-right text-info font-weight-bold">0.77</td></tr>
-                  <tr><td><b>IoU Threshold:</b></td><td class="text-right text-info font-weight-bold">0.60</td></tr>
-                  <tr><td><b>Image Size:</b></td><td class="text-right">1280px</td></tr>
-                  <tr><td><b>Interval take photo:</b></td><td class="text-right">600s (10m)</td></tr>
-                  <tr><td><b>Alert Threshold:</b></td><td class="text-right text-danger">15m</td></tr>
-                  <tr><td><b>Mode:</b></td><td class="text-right text-success"><i class="fas fa-microchip mr-1"></i> CPU Mode (Used: 75%)</td></tr>
-                  <tr><td><b>Ram:</b></td><td class="text-right text-success"><i class="fas fa-memory mr-1"></i> 16 GB (Used: 68%)</td></tr>
+                  <tr><td><b>Working time Detection:</b></td><td class="text-right">-</td></tr>
+                  <tr><td><b>Confidence:</b></td><td class="text-right text-info font-weight-bold">-</td></tr>
+                  <tr><td><b>IoU Threshold:</b></td><td class="text-right text-info font-weight-bold">-</td></tr>
+                  <tr><td><b>Image Size:</b></td><td class="text-right">-</td></tr>
+                  <tr><td><b>Interval take photo:</b></td><td class="text-right">-</td></tr>
+                  <tr><td><b>Alert Threshold:</b></td><td class="text-right text-danger">-</td></tr>
+                  <tr><td><b>Mode:</b></td><td class="text-right text-success"><i class="fas fa-microchip mr-1"></i> -</td></tr>
+                  <tr><td><b>Ram:</b></td><td class="text-right text-success"><i class="fas fa-memory mr-1"></i> -</td></tr>
                   <tr><td><b>Temp box enclosure:</b></td><td class="text-right">- <sup>°C</sup></td></tr>
                 </tbody>
               </table>
@@ -138,7 +139,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
 $(function () {
@@ -155,17 +157,29 @@ $(function () {
   // 1. Real-time Header Clock
   // ========================================
   function updateHeaderClock() {
-    const now = new Date();
-    const formatted = now.toLocaleString('en-GB', { 
-      day: '2-digit', 
-      month: '2-digit', 
-      year: 'numeric',
-      hour: '2-digit', 
-      minute: '2-digit', 
-      second: '2-digit', 
-      hour12: false
-    }).replace(',', '');
-    $('#header-clock').text(formatted);
+      const now = new Date();
+
+      // 1. สร้าง String สำหรับ วันที่และเวลา (DD/MM/YYYY HH:mm:ss)
+      const formattedFull = now.toLocaleString('en-GB', { 
+          day: '2-digit', 
+          month: '2-digit', 
+          year: 'numeric',
+          hour: '2-digit', 
+          minute: '2-digit', 
+          second: '2-digit', 
+          hour12: false
+      }).replace(',', '');
+
+      // 2. สร้าง String สำหรับ เฉพาะวันที่ (DD/MM/YYYY)
+      const onlyDate = now.toLocaleDateString('en-GB', {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric'
+      });
+
+      // 3. ส่งค่าไปแสดงผลตาม ID ที่กำหนด
+      $('#header-clock').text(formattedFull); // แสดงทั้งวันที่และเวลา
+      $('#header-date').text(onlyDate);       // แสดงเฉพาะวันที่ 06/01/2026
   }
   setInterval(updateHeaderClock, 1000);
 
@@ -216,8 +230,8 @@ function fetchSummary() {
   $. get(API_URL + '/detection/summary/today', function(data) {
     if (data.success) {
       // Update โดยใช้ ID
-      $('#summary-site').text(data.site);
-      $('#summary-location').text(data.location);
+      $('.summary-site').text(data.site);
+      $('.summary-location').text(data.location);
       $('#summary-photos').text(data.total_photos);
       $('#summary-detected').text(data.total_detected);
       $('#summary-in-time').text(data.in_time);
@@ -299,12 +313,30 @@ function fetchLogs() {
         if (response. success) {
           updateButtonState(true);
           startPolling();
-          alert('✅ ' + response.message);
+          //alert('✅ ' + response.message);
+          Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: response.message,
+              confirmButtonColor: '#28a745'
+          });          
         } else {
-          alert('❌ ' + response.message);
+          //alert('❌ ' + response.message);
+          Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: response.message,
+              confirmButtonColor: '#dc3545'
+          });          
         }
       }).fail(function(xhr) {
-        alert('❌ Cannot start detection service');
+        //alert('❌ Cannot start detection service');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Cannot start detection service: ' + xhr.responseText,
+            confirmButtonColor: '#dc3545'
+        });
       });
       
     } else {
@@ -313,12 +345,30 @@ function fetchLogs() {
         if (response.success) {
           updateButtonState(false);
           stopPolling();
-          alert('✅ ' + response.message);
+          //alert('✅ ' + response.message);
+          Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: response.message,
+              confirmButtonColor: '#28a745'
+          });
         } else {
-          alert('❌ ' + response.message);
+          //alert('❌ ' + response.message);
+          Swal.fire({
+              icon: 'error',
+              title: 'Error!',
+              text: response.message,
+              confirmButtonColor: '#dc3545'
+          });
         }
       }).fail(function() {
-        alert('❌ Cannot stop detection service');
+        //alert('❌ Cannot stop detection service');
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Cannot stop detection service',
+            confirmButtonColor: '#dc3545'
+        });
       });
     }
   });

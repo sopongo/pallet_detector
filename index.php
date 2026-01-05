@@ -120,25 +120,25 @@ switch($module) {
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="./" class="nav-link">
+            <a href="./" class="nav-link <?PHP echo ($module === '') ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-house-laptop"></i>
               <p>Home</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="?module=monitoring" class="nav-link">
+            <a href="?module=monitoring" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'monitoring' ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-camera-rotate"></i>
               <p>Monitoring</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="?module=dashboard" class="nav-link">
+            <a href="?module=dashboard" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'dashboard' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-area-chart"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="?module=config" class="nav-link">
+            <a href="?module=config" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'config' ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-gears"></i>
               <p>Config</p>
             </a>
