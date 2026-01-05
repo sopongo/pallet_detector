@@ -212,37 +212,28 @@ def video_stream(camera_id):
         return jsonify({"success": False, "message": str(e)}), 500
 
 
-@app.route('/api/camera/snapshot/<int:camera_id>')
-def camera_snapshot(camera_id):
+@app.route('/api/camera/stream/<int:camera_id>')
+def video_stream(camera_id):
     """
-    ถ่ายรูปจากกล้อง (single frame)
-    Example: http://localhost:5000/api/camera/snapshot/0
+    Stream camera feed (MJPEG)
+    Example: http://localhost:5000/api/camera/stream/0
     """
-    try:
-        camera_id = int(camera_id)
-        cap = cv2.VideoCapture(camera_id, cv2.CAP_DSHOW)
+    try: 
+        response = Response(
+            generate_frames(camera_id),
+            mimetype='multipart/x-mixed-replace; boundary=frame'
+        )
         
-        if not cap.isOpened():
-            return jsonify({"success": False, "message": "Cannot open camera"}), 500
+        # ✅ เพิ่ม headers ป้องกัน cache
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, max-age=0'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+        response.headers['X-Content-Type-Options'] = 'nosniff'
         
-        # ตั้งค่าความละเอียด
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        return response
         
-        ret, frame = cap.read()
-        cap.release()
-        
-        if not ret:
-            return jsonify({"success": False, "message": "Cannot capture"}), 500
-        
-        # Encode เป็น JPEG
-        ret, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 85])
-        io_buf = io.BytesIO(buffer)
-        
-        return send_file(io_buf, mimetype='image/jpeg')
-        
-    except Exception as e: 
-        logger.error(f"Snapshot error: {e}")
+    except Exception as e:
+        logger.error(f"Video stream error: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 
 
