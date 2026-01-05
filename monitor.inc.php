@@ -233,36 +233,37 @@ function fetchSummary() {
 
 
 
-  // ========================================
-  // 5. Fetch System Logs
-  // ========================================
-  function fetchLogs() {
-    $.get(API_URL + '/detection/logs? limit=15', function(data) {
-      if (data.success && data.logs.length > 0) {
-        // Clear placeholder
-        if ($('#log-container . text-muted').length) {
-          $('#log-container').empty();
-        }
-        
-        // Add new logs
-        data.logs.forEach(function(log) {
-          // Extract time from log [YYYY-MM-DD HH: MM:SS]
-          const logHtml = '<div>' + log + '</div>';
-          $('#log-container').append(logHtml);
-        });
-        
-        // Auto scroll to bottom
-        $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
-        
-        // Keep only last 30 logs
-        if ($('#log-container div').length > 30) {
-          $('#log-container div:lt(' + ($('#log-container div').length - 30) + ')').remove();
-        }
+// ========================================
+// 5.  Fetch System Logs
+// ========================================
+function fetchLogs() {
+  $.get(API_URL + '/detection/logs? limit=15', function(data) {  // ✅ เอาช่องว่างออก
+    if (data.success && data.logs.length > 0) {
+      // Clear placeholder
+      if ($('#log-container').find('.text-muted').length) {  // ✅ ใช้ . find() แทน
+        $('#log-container').empty();
       }
-    }).fail(function() {
-      console.error('Cannot fetch logs');
-    });
-  }
+      
+      // Clear old logs first
+      $('#log-container').empty();
+      
+      // Add new logs
+      data.logs.forEach(function(log) {
+        const logHtml = '<div>' + log + '</div>';
+        $('#log-container').append(logHtml);
+      });
+      
+      // Auto scroll to bottom
+      $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
+      
+      console.log('✅ Logs updated:   ' + data.logs.length + ' lines');
+    } else {
+      console.log('⚠️ No logs found');
+    }
+  }).fail(function(xhr) {
+    console.error('❌ Cannot fetch logs:', xhr.responseText);
+  });
+}
 
   // ========================================
   // 6. Fetch System Info

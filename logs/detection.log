@@ -3329,3 +3329,1483 @@
 [2026-01-05 16:58:03] INFO: ✅ Detection service stopped
 [2026-01-05 16:58:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 84, 'total_detected': 5, 'in_time': 5, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
 [2026-01-05 16:58:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 84, 'total_detected': 5, 'in_time': 5, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:34:41] INFO: 🚀 Flask app initialized
+[2026-01-05 19:34:41] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 19:34:41] INFO: 🚀 Flask app initialized
+[2026-01-05 19:34:41] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 19:35:38] INFO: 🚀 Flask app initialized
+[2026-01-05 19:35:38] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 19:35:39] INFO: 🚀 Flask app initialized
+[2026-01-05 19:35:39] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 19:35:58] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:35:58] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:35:58] INFO: ✅ Detection service initialized
+[2026-01-05 19:35:58] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:35:58] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:35:58] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:36:01] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:36:01] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:36:04] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:36:04] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:36:07] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:36:07] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:36:10] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:36:10] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:36:10] INFO: Received signal 2
+[2026-01-05 19:36:11] INFO: 🛑 Stopping detection service...
+[2026-01-05 19:36:11] INFO: ✅ Detection service stopped
+[2026-01-05 19:37:48] INFO: Camera 0 stream started
+[2026-01-05 19:38:00] INFO: Config saved successfully
+[2026-01-05 19:38:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:38:04] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:38:05] INFO: Camera 0 released
+[2026-01-05 19:38:11] INFO: ✅ Detection service started (PID: 8876)
+[2026-01-05 19:38:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:38:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:38:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:38:21] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:38:21] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:38:21] INFO: ✅ Detection service initialized
+[2026-01-05 19:38:21] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:38:21] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:21] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:24] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:24] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:27] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:27] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:30] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:30] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:33] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:33] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:36] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:36] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:39] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:39] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:43] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:43] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:46] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:46] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:49] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:49] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:52] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:52] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:55] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:55] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:38:58] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:38:58] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:01] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:01] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:04] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:04] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:07] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:07] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:10] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:10] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:13] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:13] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:16] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:16] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:19] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:19] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:20] INFO: Camera 0 stream started
+[2026-01-05 19:39:22] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:22] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:25] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:25] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:27] INFO: Config saved successfully
+[2026-01-05 19:39:28] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:28] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:31] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:31] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:34] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:34] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:35] INFO: ✅ Detection service started (PID: 15492)
+[2026-01-05 19:39:35] INFO: Camera 0 released
+[2026-01-05 19:39:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:37] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:37] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:40] INFO: ⏸️ Outside operating hours, waiting...
+[2026-01-05 19:39:40] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:39:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:42] INFO: Received signal 2
+[2026-01-05 19:39:42] INFO: 🛑 Stopping detection service...
+[2026-01-05 19:39:42] INFO: ✅ Detection service stopped
+[2026-01-05 19:39:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:46] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:39:46] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:39:46] INFO: ✅ Detection service initialized
+[2026-01-05 19:39:46] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:39:46] ERROR: Main loop error: time data '24:00' does not match format '%H:%M'
+[2026-01-05 19:39:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:56] ERROR: Main loop error: time data '24:00' does not match format '%H:%M'
+[2026-01-05 19:39:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:39:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:06] ERROR: Main loop error: time data '24:00' does not match format '%H:%M'
+[2026-01-05 19:40:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:11] INFO: Received signal 2
+[2026-01-05 19:40:11] INFO: 🛑 Stopping detection service...
+[2026-01-05 19:40:11] INFO: ✅ Detection service stopped
+[2026-01-05 19:40:20] INFO: Camera 0 stream started
+[2026-01-05 19:40:28] INFO: Config saved successfully
+[2026-01-05 19:40:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:34] INFO: Camera 0 released
+[2026-01-05 19:40:36] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:40:36] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:40:36] INFO: ✅ Detection service initialized
+[2026-01-05 19:40:36] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:40:36] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:40:38] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194038.jpg
+[2026-01-05 19:40:41] INFO: Detected 0 pallet(s) in IMG_20260105_194038.jpg
+[2026-01-05 19:40:41] INFO: Saved image record #1:  IMG_20260105_194038.jpg
+[2026-01-05 19:40:41] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194038_detected.jpg
+[2026-01-05 19:40:41] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:40:41] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:40:41] INFO: ✅ Detection service started (PID: 12308)
+[2026-01-05 19:40:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 1, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:44] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:40:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 1, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:46] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194046.jpg
+[2026-01-05 19:40:47] INFO: Detected 0 pallet(s) in IMG_20260105_194046.jpg
+[2026-01-05 19:40:47] INFO: Saved image record #2:  IMG_20260105_194046.jpg
+[2026-01-05 19:40:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194046_detected.jpg
+[2026-01-05 19:40:47] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:40:47] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:40:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 2, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:50] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:40:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 2, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:52] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194052.jpg
+[2026-01-05 19:40:52] INFO: Detected 0 pallet(s) in IMG_20260105_194052.jpg
+[2026-01-05 19:40:53] INFO: Saved image record #3:  IMG_20260105_194052.jpg
+[2026-01-05 19:40:53] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194052_detected.jpg
+[2026-01-05 19:40:53] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:40:53] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:40:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 3, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:56] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:40:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 3, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:40:58] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194058.jpg
+[2026-01-05 19:40:58] INFO: Detected 0 pallet(s) in IMG_20260105_194058.jpg
+[2026-01-05 19:40:58] INFO: Saved image record #4:  IMG_20260105_194058.jpg
+[2026-01-05 19:40:58] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194058_detected.jpg
+[2026-01-05 19:40:58] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:40:58] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:40:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 4, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:01] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 4, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:04] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194104.jpg
+[2026-01-05 19:41:04] INFO: Detected 0 pallet(s) in IMG_20260105_194104.jpg
+[2026-01-05 19:41:04] INFO: Saved image record #5:  IMG_20260105_194104.jpg
+[2026-01-05 19:41:04] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194104_detected.jpg
+[2026-01-05 19:41:04] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:04] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 5, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:07] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 5, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:09] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194109.jpg
+[2026-01-05 19:41:10] INFO: Detected 0 pallet(s) in IMG_20260105_194109.jpg
+[2026-01-05 19:41:10] INFO: Saved image record #6:  IMG_20260105_194109.jpg
+[2026-01-05 19:41:10] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194109_detected.jpg
+[2026-01-05 19:41:10] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:10] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 6, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:13] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 6, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:15] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194115.jpg
+[2026-01-05 19:41:16] INFO: Detected 0 pallet(s) in IMG_20260105_194115.jpg
+[2026-01-05 19:41:16] INFO: Saved image record #7:  IMG_20260105_194115.jpg
+[2026-01-05 19:41:16] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194115_detected.jpg
+[2026-01-05 19:41:16] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:16] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 7, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:19] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 7, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:21] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194121.jpg
+[2026-01-05 19:41:22] INFO: Detected 0 pallet(s) in IMG_20260105_194121.jpg
+[2026-01-05 19:41:22] INFO: Saved image record #8:  IMG_20260105_194121.jpg
+[2026-01-05 19:41:22] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194121_detected.jpg
+[2026-01-05 19:41:22] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:22] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 8, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:25] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 8, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:27] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194127.jpg
+[2026-01-05 19:41:27] INFO: Detected 0 pallet(s) in IMG_20260105_194127.jpg
+[2026-01-05 19:41:27] INFO: Saved image record #9:  IMG_20260105_194127.jpg
+[2026-01-05 19:41:27] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194127_detected.jpg
+[2026-01-05 19:41:27] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:27] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 9, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:30] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 9, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:33] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194133.jpg
+[2026-01-05 19:41:33] INFO: Detected 0 pallet(s) in IMG_20260105_194133.jpg
+[2026-01-05 19:41:33] INFO: Saved image record #10:  IMG_20260105_194133.jpg
+[2026-01-05 19:41:33] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194133_detected.jpg
+[2026-01-05 19:41:33] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:33] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 10, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:36] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 10, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:38] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194138.jpg
+[2026-01-05 19:41:39] INFO: Detected 0 pallet(s) in IMG_20260105_194138.jpg
+[2026-01-05 19:41:39] INFO: Saved image record #11:  IMG_20260105_194138.jpg
+[2026-01-05 19:41:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194138_detected.jpg
+[2026-01-05 19:41:39] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:39] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 11, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:42] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 11, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:44] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194144.jpg
+[2026-01-05 19:41:45] INFO: Detected 0 pallet(s) in IMG_20260105_194144.jpg
+[2026-01-05 19:41:45] INFO: Saved image record #12:  IMG_20260105_194144.jpg
+[2026-01-05 19:41:45] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194144_detected.jpg
+[2026-01-05 19:41:45] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:45] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 12, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:48] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 12, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:50] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194150.jpg
+[2026-01-05 19:41:51] INFO: Detected 0 pallet(s) in IMG_20260105_194150.jpg
+[2026-01-05 19:41:51] INFO: Saved image record #13:  IMG_20260105_194150.jpg
+[2026-01-05 19:41:51] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194150_detected.jpg
+[2026-01-05 19:41:51] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:51] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 13, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:54] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:41:56] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194156.jpg
+[2026-01-05 19:41:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 13, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:41:57] INFO: Detected 0 pallet(s) in IMG_20260105_194156.jpg
+[2026-01-05 19:41:57] INFO: Saved image record #14:  IMG_20260105_194156.jpg
+[2026-01-05 19:41:57] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194156_detected.jpg
+[2026-01-05 19:41:57] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:41:57] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:41:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 14, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:00] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:42:02] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194202.jpg
+[2026-01-05 19:42:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 14, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:02] INFO: Detected 0 pallet(s) in IMG_20260105_194202.jpg
+[2026-01-05 19:42:02] INFO: Saved image record #15:  IMG_20260105_194202.jpg
+[2026-01-05 19:42:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194202_detected.jpg
+[2026-01-05 19:42:03] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:42:03] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:42:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 15, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:06] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:42:08] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194208.jpg
+[2026-01-05 19:42:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 15, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:08] INFO: Detected 0 pallet(s) in IMG_20260105_194208.jpg
+[2026-01-05 19:42:08] INFO: Saved image record #16:  IMG_20260105_194208.jpg
+[2026-01-05 19:42:08] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194208_detected.jpg
+[2026-01-05 19:42:08] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:42:08] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:42:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 16, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:11] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:42:14] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194214.jpg
+[2026-01-05 19:42:14] INFO: Detected 0 pallet(s) in IMG_20260105_194214.jpg
+[2026-01-05 19:42:14] INFO: Saved image record #17:  IMG_20260105_194214.jpg
+[2026-01-05 19:42:14] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194214_detected.jpg
+[2026-01-05 19:42:14] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:42:14] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:42:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 17, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:17] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:42:20] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194220.jpg
+[2026-01-05 19:42:20] INFO: Detected 0 pallet(s) in IMG_20260105_194220.jpg
+[2026-01-05 19:42:20] INFO: Saved image record #18:  IMG_20260105_194220.jpg
+[2026-01-05 19:42:20] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_194220_detected.jpg
+[2026-01-05 19:42:20] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:42:20] INFO: 💤 Sleeping for 3 seconds...
+[2026-01-05 19:42:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:22] INFO: Received signal 2
+[2026-01-05 19:42:22] INFO: 🛑 Stopping detection service...
+[2026-01-05 19:42:22] INFO: ✅ Detection service stopped
+[2026-01-05 19:42:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:42:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:43:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:44:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:45:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:46:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:47:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:48:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:49:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:50:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:51:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:52:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:44] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:53:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:54:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:54:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:54:07] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:54:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:55:53] INFO: Config saved successfully
+[2026-01-05 19:57:43] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:57:43] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:57:43] INFO: ✅ Detection service initialized
+[2026-01-05 19:57:43] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:57:43] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:57:43] ERROR: Capture error: invalid literal for int() with base 10: ''
+[2026-01-05 19:57:43] INFO: 💤 Sleeping for 30 seconds...
+[2026-01-05 19:57:46] INFO: Received signal 2
+[2026-01-05 19:57:46] INFO: 🛑 Stopping detection service...
+[2026-01-05 19:57:46] INFO: ✅ Detection service stopped
+[2026-01-05 19:57:55] INFO: Camera 0 stream started
+[2026-01-05 19:58:03] INFO: Config saved successfully
+[2026-01-05 19:58:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 18, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:07] INFO: Camera 0 released
+[2026-01-05 19:58:14] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 19:58:14] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 19:58:14] INFO: ✅ Detection service initialized
+[2026-01-05 19:58:14] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 19:58:14] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:58:16] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195816.jpg
+[2026-01-05 19:58:18] INFO: Detected 0 pallet(s) in IMG_20260105_195816.jpg
+[2026-01-05 19:58:18] INFO: Saved image record #19:  IMG_20260105_195816.jpg
+[2026-01-05 19:58:18] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195816_detected.jpg
+[2026-01-05 19:58:18] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:58:18] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:58:21] INFO: ✅ Detection service started (PID: 8104)
+[2026-01-05 19:58:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 19, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 19, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 19, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 19, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:33] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:58:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 19, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:35] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195835.jpg
+[2026-01-05 19:58:35] INFO: Detected 0 pallet(s) in IMG_20260105_195835.jpg
+[2026-01-05 19:58:36] INFO: Saved image record #20:  IMG_20260105_195835.jpg
+[2026-01-05 19:58:36] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195835_detected.jpg
+[2026-01-05 19:58:36] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:58:36] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:58:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:51] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:58:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 20, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:53] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195853.jpg
+[2026-01-05 19:58:53] INFO: Detected 0 pallet(s) in IMG_20260105_195853.jpg
+[2026-01-05 19:58:53] INFO: Saved image record #21:  IMG_20260105_195853.jpg
+[2026-01-05 19:58:53] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195853_detected.jpg
+[2026-01-05 19:58:53] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:58:53] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:58:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:58:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:08] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:59:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 21, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:11] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195911.jpg
+[2026-01-05 19:59:11] INFO: Detected 0 pallet(s) in IMG_20260105_195911.jpg
+[2026-01-05 19:59:11] INFO: Saved image record #22:  IMG_20260105_195911.jpg
+[2026-01-05 19:59:11] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195911_detected.jpg
+[2026-01-05 19:59:11] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:59:11] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:59:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:26] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:59:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 22, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:29] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195928.jpg
+[2026-01-05 19:59:29] INFO: Detected 0 pallet(s) in IMG_20260105_195928.jpg
+[2026-01-05 19:59:29] INFO: Saved image record #23:  IMG_20260105_195928.jpg
+[2026-01-05 19:59:29] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195928_detected.jpg
+[2026-01-05 19:59:29] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:59:29] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:59:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:44] INFO: 🔄 Starting detection cycle...
+[2026-01-05 19:59:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 23, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:46] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195946.jpg
+[2026-01-05 19:59:47] INFO: Detected 0 pallet(s) in IMG_20260105_195946.jpg
+[2026-01-05 19:59:47] INFO: Saved image record #24:  IMG_20260105_195946.jpg
+[2026-01-05 19:59:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_195946_detected.jpg
+[2026-01-05 19:59:47] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 19:59:47] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 19:59:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 19:59:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:02] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:00:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 24, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:04] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200004.jpg
+[2026-01-05 20:00:05] INFO: Detected 1 pallet(s) in IMG_20260105_200004.jpg
+[2026-01-05 20:00:05] INFO: Saved image record #25:  IMG_20260105_200004.jpg
+[2026-01-05 20:00:05] INFO: Created new pallet #1
+[2026-01-05 20:00:05] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200004_detected.jpg
+[2026-01-05 20:00:05] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:00:05] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:00:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:20] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:00:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 25, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:22] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200022.jpg
+[2026-01-05 20:00:23] INFO: Detected 1 pallet(s) in IMG_20260105_200022.jpg
+[2026-01-05 20:00:23] INFO: Saved image record #26:  IMG_20260105_200022.jpg
+[2026-01-05 20:00:23] INFO: Updated pallet #1 (duration: 0.3 min)
+[2026-01-05 20:00:23] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200022_detected.jpg
+[2026-01-05 20:00:23] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:00:23] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:00:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:38] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:00:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 26, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:40] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200040.jpg
+[2026-01-05 20:00:41] INFO: Detected 1 pallet(s) in IMG_20260105_200040.jpg
+[2026-01-05 20:00:41] INFO: Saved image record #27:  IMG_20260105_200040.jpg
+[2026-01-05 20:00:41] INFO: Updated pallet #1 (duration: 0.6 min)
+[2026-01-05 20:00:41] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200040_detected.jpg
+[2026-01-05 20:00:41] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:00:41] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:00:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:50] INFO: Received signal 2
+[2026-01-05 20:00:50] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:00:50] INFO: ✅ Detection service stopped
+[2026-01-05 20:00:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:00:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:01:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:04:48] INFO: 🚀 Flask app initialized
+[2026-01-05 20:04:48] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:04:48] INFO: 🚀 Flask app initialized
+[2026-01-05 20:04:48] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:04:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 27, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:05:40] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:05:40] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:05:40] INFO: ✅ Detection service initialized
+[2026-01-05 20:05:40] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:05:40] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:05:43] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200543.jpg
+[2026-01-05 20:05:44] INFO: Detected 0 pallet(s) in IMG_20260105_200543.jpg
+[2026-01-05 20:05:44] INFO: Saved image record #28:  IMG_20260105_200543.jpg
+[2026-01-05 20:05:44] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-05 20:05:45] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200543_detected.jpg
+[2026-01-05 20:05:45] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:05:45] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:05:46] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:05:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:05:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:05:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:05:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:00] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:06:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 28, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:02] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200602.jpg
+[2026-01-05 20:06:02] INFO: Detected 0 pallet(s) in IMG_20260105_200602.jpg
+[2026-01-05 20:06:02] INFO: Saved image record #29:  IMG_20260105_200602.jpg
+[2026-01-05 20:06:02] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200602_detected.jpg
+[2026-01-05 20:06:02] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:06:02] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:06:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:17] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:06:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 29, 'total_detected': 1, 'in_time': 1, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:20] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200620.jpg
+[2026-01-05 20:06:20] INFO: Detected 1 pallet(s) in IMG_20260105_200620.jpg
+[2026-01-05 20:06:20] INFO: Saved image record #30:  IMG_20260105_200620.jpg
+[2026-01-05 20:06:20] INFO: Created new pallet #2
+[2026-01-05 20:06:20] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200620_detected.jpg
+[2026-01-05 20:06:20] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:06:20] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:06:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:35] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:06:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 30, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:38] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200638.jpg
+[2026-01-05 20:06:38] INFO: Detected 0 pallet(s) in IMG_20260105_200638.jpg
+[2026-01-05 20:06:38] INFO: Saved image record #31:  IMG_20260105_200638.jpg
+[2026-01-05 20:06:38] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-05 20:06:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200638_detected.jpg
+[2026-01-05 20:06:38] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:06:38] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:06:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:53] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:06:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 31, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:06:55] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200655.jpg
+[2026-01-05 20:06:56] INFO: Detected 0 pallet(s) in IMG_20260105_200655.jpg
+[2026-01-05 20:06:56] INFO: Saved image record #32:  IMG_20260105_200655.jpg
+[2026-01-05 20:06:56] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200655_detected.jpg
+[2026-01-05 20:06:56] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:06:56] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:06:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:11] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:07:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 32, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:13] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200713.jpg
+[2026-01-05 20:07:14] INFO: Detected 0 pallet(s) in IMG_20260105_200713.jpg
+[2026-01-05 20:07:14] INFO: Saved image record #33:  IMG_20260105_200713.jpg
+[2026-01-05 20:07:14] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200713_detected.jpg
+[2026-01-05 20:07:14] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:07:14] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:07:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:29] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:07:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 33, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:31] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200731.jpg
+[2026-01-05 20:07:32] INFO: Detected 0 pallet(s) in IMG_20260105_200731.jpg
+[2026-01-05 20:07:32] INFO: Saved image record #34:  IMG_20260105_200731.jpg
+[2026-01-05 20:07:32] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200731_detected.jpg
+[2026-01-05 20:07:32] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:07:32] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:07:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:47] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:07:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 34, 'total_detected': 2, 'in_time': 2, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:49] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200749.jpg
+[2026-01-05 20:07:50] INFO: Detected 1 pallet(s) in IMG_20260105_200749.jpg
+[2026-01-05 20:07:50] INFO: Saved image record #35:  IMG_20260105_200749.jpg
+[2026-01-05 20:07:50] INFO: Created new pallet #3
+[2026-01-05 20:07:50] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200749_detected.jpg
+[2026-01-05 20:07:50] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:07:50] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:07:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:07:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:05] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:08:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 35, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:07] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200807.jpg
+[2026-01-05 20:08:07] INFO: Detected 1 pallet(s) in IMG_20260105_200807.jpg
+[2026-01-05 20:08:07] INFO: Saved image record #36:  IMG_20260105_200807.jpg
+[2026-01-05 20:08:07] INFO: Updated pallet #3 (duration: 0.3 min)
+[2026-01-05 20:08:07] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200807_detected.jpg
+[2026-01-05 20:08:07] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:08:07] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:08:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:22] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:08:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 36, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:25] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200825.jpg
+[2026-01-05 20:08:25] INFO: Detected 1 pallet(s) in IMG_20260105_200825.jpg
+[2026-01-05 20:08:25] INFO: Saved image record #37:  IMG_20260105_200825.jpg
+[2026-01-05 20:08:25] INFO: Updated pallet #3 (duration: 0.6 min)
+[2026-01-05 20:08:25] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_200825_detected.jpg
+[2026-01-05 20:08:25] INFO: ✅ Cycle completed:  1 pallet(s) detected
+[2026-01-05 20:08:25] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:08:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:08:40] INFO: Received signal 2
+[2026-01-05 20:08:40] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:08:40] INFO: ✅ Detection service stopped
+[2026-01-05 20:08:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:09:30] INFO: 🚀 Flask app initialized
+[2026-01-05 20:09:30] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:09:30] INFO: 🚀 Flask app initialized
+[2026-01-05 20:09:30] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:09:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 37, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:04] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:11:04] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:11:04] INFO: ✅ Detection service initialized
+[2026-01-05 20:11:04] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:11:04] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:11:06] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201106.jpg
+[2026-01-05 20:11:08] INFO: Detected 0 pallet(s) in IMG_20260105_201106.jpg
+[2026-01-05 20:11:08] INFO: Saved image record #38:  IMG_20260105_201106.jpg
+[2026-01-05 20:11:08] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-05 20:11:08] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201106_detected.jpg
+[2026-01-05 20:11:08] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:11:08] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:11:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 38, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:15] INFO: ✅ Detection service started (PID: 9276)
+[2026-01-05 20:11:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 38, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 38, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 38, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:23] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:11:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 38, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:25] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201125.jpg
+[2026-01-05 20:11:26] INFO: Detected 0 pallet(s) in IMG_20260105_201125.jpg
+[2026-01-05 20:11:26] INFO: Saved image record #39:  IMG_20260105_201125.jpg
+[2026-01-05 20:11:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201125_detected.jpg
+[2026-01-05 20:11:26] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:11:26] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:11:28] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:37] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:40] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:41] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:11:43] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 39, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:43] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201143.jpg
+[2026-01-05 20:11:44] INFO: Detected 0 pallet(s) in IMG_20260105_201143.jpg
+[2026-01-05 20:11:44] INFO: Saved image record #40:  IMG_20260105_201143.jpg
+[2026-01-05 20:11:44] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201143_detected.jpg
+[2026-01-05 20:11:44] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:11:44] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:11:46] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:49] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:52] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:55] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:58] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:11:59] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:12:01] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 40, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:01] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201201.jpg
+[2026-01-05 20:12:02] INFO: Detected 0 pallet(s) in IMG_20260105_201201.jpg
+[2026-01-05 20:12:02] INFO: Saved image record #41:  IMG_20260105_201201.jpg
+[2026-01-05 20:12:02] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201201_detected.jpg
+[2026-01-05 20:12:02] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:12:02] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:12:04] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:07] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:10] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:13] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:16] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:17] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:12:19] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201219.jpg
+[2026-01-05 20:12:19] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 41, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:20] INFO: Detected 0 pallet(s) in IMG_20260105_201219.jpg
+[2026-01-05 20:12:20] INFO: Saved image record #42:  IMG_20260105_201219.jpg
+[2026-01-05 20:12:20] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201219_detected.jpg
+[2026-01-05 20:12:20] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:12:20] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:12:22] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 42, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:25] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 42, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:28] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 42, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:31] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 42, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:34] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 42, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:35] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:12:37] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201237.jpg
+[2026-01-05 20:12:38] INFO: Detected 0 pallet(s) in IMG_20260105_201237.jpg
+[2026-01-05 20:12:38] INFO: Saved image record #43:  IMG_20260105_201237.jpg
+[2026-01-05 20:12:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201237_detected.jpg
+[2026-01-05 20:12:38] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:12:38] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:12:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:43] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:46] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:49] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:52] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:53] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:12:55] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201255.jpg
+[2026-01-05 20:12:55] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 43, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:12:55] INFO: Detected 0 pallet(s) in IMG_20260105_201255.jpg
+[2026-01-05 20:12:55] INFO: Saved image record #44:  IMG_20260105_201255.jpg
+[2026-01-05 20:12:56] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201255_detected.jpg
+[2026-01-05 20:12:56] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:12:56] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:12:58] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:01] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:04] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:07] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:10] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:11] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:13:13] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201313.jpg
+[2026-01-05 20:13:13] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 44, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:13] INFO: Detected 0 pallet(s) in IMG_20260105_201313.jpg
+[2026-01-05 20:13:13] INFO: Saved image record #45:  IMG_20260105_201313.jpg
+[2026-01-05 20:13:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201313_detected.jpg
+[2026-01-05 20:13:13] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:13:13] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:13:16] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:19] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:22] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:25] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:28] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:13:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 45, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:31] INFO: 📸 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201331.jpg
+[2026-01-05 20:13:31] INFO: Detected 0 pallet(s) in IMG_20260105_201331.jpg
+[2026-01-05 20:13:31] INFO: Saved image record #46:  IMG_20260105_201331.jpg
+[2026-01-05 20:13:31] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-05\IMG_20260105_201331_detected.jpg
+[2026-01-05 20:13:31] INFO: ✅ Cycle completed:  0 pallet(s) detected
+[2026-01-05 20:13:31] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:13:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:46] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:13:49] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:52] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:53] ERROR: Cannot capture image
+[2026-01-05 20:13:53] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:13:55] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:13:58] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:01] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:04] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:07] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:08] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:14:08] ERROR: Cannot open camera 0
+[2026-01-05 20:14:08] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:14:10] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:13] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:16] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:19] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:22] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:23] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:14:23] ERROR: Cannot open camera 0
+[2026-01-05 20:14:23] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:14:25] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:28] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:31] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:34] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:37] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:38] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:14:39] ERROR: Cannot open camera 0
+[2026-01-05 20:14:39] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:14:40] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:43] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:14:54] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:14:54] ERROR: Cannot open camera 0
+[2026-01-05 20:14:54] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:15:09] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:15:09] ERROR: Cannot open camera 0
+[2026-01-05 20:15:09] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:15:24] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:15:25] ERROR: Cannot open camera 0
+[2026-01-05 20:15:25] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:15:40] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:15:40] ERROR: Cannot open camera 0
+[2026-01-05 20:15:40] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:15:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:15:55] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:15:55] ERROR: Cannot open camera 0
+[2026-01-05 20:15:55] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:16:10] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:16:11] ERROR: Cannot open camera 0
+[2026-01-05 20:16:11] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:16:26] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:16:26] ERROR: Cannot open camera 0
+[2026-01-05 20:16:26] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:16:41] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:16:41] ERROR: Cannot open camera 0
+[2026-01-05 20:16:41] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:16:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:16:56] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:16:56] ERROR: Cannot open camera 0
+[2026-01-05 20:16:56] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:17:11] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:17:12] ERROR: Cannot open camera 0
+[2026-01-05 20:17:12] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:17:27] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:17:27] ERROR: Cannot open camera 0
+[2026-01-05 20:17:27] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:17:42] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:17:42] ERROR: Cannot open camera 0
+[2026-01-05 20:17:42] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:17:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:17:57] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:17:58] ERROR: Cannot open camera 0
+[2026-01-05 20:17:58] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:18:13] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:18:13] ERROR: Cannot open camera 0
+[2026-01-05 20:18:13] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:18:28] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:18:28] ERROR: Cannot open camera 0
+[2026-01-05 20:18:28] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:18:43] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:18:43] ERROR: Cannot open camera 0
+[2026-01-05 20:18:43] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:18:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:18:58] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:18:59] ERROR: Cannot open camera 0
+[2026-01-05 20:18:59] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:19:11] INFO: 🚀 Flask app initialized
+[2026-01-05 20:19:11] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:19:14] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:19:14] ERROR: Cannot open camera 0
+[2026-01-05 20:19:14] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:19:27] INFO: 🚀 Flask app initialized
+[2026-01-05 20:19:27] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:19:27] INFO: 🚀 Flask app initialized
+[2026-01-05 20:19:27] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:19:29] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:19:29] ERROR: Cannot open camera 0
+[2026-01-05 20:19:29] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:19:31] ERROR: Log file not found: logs/detection. log
+[2026-01-05 20:19:44] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:19:45] ERROR: Cannot open camera 0
+[2026-01-05 20:19:45] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:19:49] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:19:49] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:19:49] INFO: ✅ Detection service initialized
+[2026-01-05 20:19:49] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:19:49] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:19:50] ERROR: Cannot open camera 0
+[2026-01-05 20:19:50] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:19:51] INFO: Received signal 2
+[2026-01-05 20:19:51] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:19:51] INFO: ✅ Detection service stopped
+[2026-01-05 20:19:56] INFO: 🚀 Flask app initialized
+[2026-01-05 20:19:56] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:19:56] INFO: 🚀 Flask app initialized
+[2026-01-05 20:19:56] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:19:59] INFO: Received signal 2
+[2026-01-05 20:19:59] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:19:59] INFO: ✅ Detection service stopped
+[2026-01-05 20:20:03] ERROR: Log file not found: logs/detection. log
+[2026-01-05 20:20:10] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:20:10] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:20:10] INFO: ✅ Detection service initialized
+[2026-01-05 20:20:10] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:20:10] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:20:10] ERROR: Cannot open camera 0
+[2026-01-05 20:20:10] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:20:18] ERROR: Log file not found: logs/detection. log
+[2026-01-05 20:20:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:20:18] ERROR: Log file not found: logs/detection. log
+[2026-01-05 20:20:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:20:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:20:25] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:20:25] ERROR: Cannot open camera 0
+[2026-01-05 20:20:25] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:20:26] INFO: Received signal 2
+[2026-01-05 20:20:26] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:20:26] INFO: ✅ Detection service stopped
+[2026-01-05 20:20:32] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:20:32] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:20:32] INFO: ✅ Detection service initialized
+[2026-01-05 20:20:32] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:20:32] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:20:32] ERROR: Cannot open camera 0
+[2026-01-05 20:20:32] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:20:41] ERROR: Log file not found: logs/detection. log
+[2026-01-05 20:20:47] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:20:48] ERROR: Cannot open camera 0
+[2026-01-05 20:20:48] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:21:03] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:21:03] ERROR: Cannot open camera 0
+[2026-01-05 20:21:03] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:21:08] INFO: Received signal 2
+[2026-01-05 20:21:08] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:21:08] INFO: ✅ Detection service stopped
+[2026-01-05 20:23:55] INFO: 🚀 Flask app initialized
+[2026-01-05 20:23:55] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:23:56] INFO: Log file size: 491326 bytes
+[2026-01-05 20:23:56] INFO: Total lines in log file: 4444
+[2026-01-05 20:23:56] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:23:56] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:23:56] INFO: Sample logs: ['[2026-01-05 20:20:48] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:21:03] INFO: 🔄 Starting detection cycle...', '[2026-01-05 20:21:03] ERROR: Cannot open camera 0']
+[2026-01-05 20:25:25] INFO: 🚀 Flask app initialized
+[2026-01-05 20:25:25] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:25:25] INFO: 🚀 Flask app initialized
+[2026-01-05 20:25:25] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 20:25:37] INFO: ✅ YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-05 20:25:37] INFO: 📋 Model classes: {0: 'pallet'}
+[2026-01-05 20:25:37] INFO: ✅ Detection service initialized
+[2026-01-05 20:25:37] INFO: 🚀 Starting Pallet Detection Service...
+[2026-01-05 20:25:37] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:25:37] ERROR: Cannot open camera 0
+[2026-01-05 20:25:37] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:25:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:47] INFO: ✅ Detection service started (PID: 10088)
+[2026-01-05 20:25:47] INFO: Log file size: 492778 bytes
+[2026-01-05 20:25:47] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:47] INFO: Total lines in log file: 4463
+[2026-01-05 20:25:47] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:25:47] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:25:47] INFO: Sample logs: ["[2026-01-05 20:25:37] INFO: 📋 Model classes: {0: 'pallet'}", '[2026-01-05 20:25:37] INFO: ✅ Detection service initialized', '[2026-01-05 20:25:37] INFO: 🚀 Starting Pallet Detection Service...']
+[2026-01-05 20:25:50] INFO: Log file size: 493478 bytes
+[2026-01-05 20:25:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:50] INFO: Total lines in log file: 4469
+[2026-01-05 20:25:50] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:25:50] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:25:50] INFO: Sample logs: ["[2026-01-05 20:25:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:25:47] INFO: ✅ Detection service started (PID: 10088)', '[2026-01-05 20:25:47] INFO: Log file size: 492778 bytes']
+[2026-01-05 20:25:52] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:25:53] ERROR: Cannot open camera 0
+[2026-01-05 20:25:53] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:25:53] INFO: Log file size: 494496 bytes
+[2026-01-05 20:25:53] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:53] INFO: Total lines in log file: 4478
+[2026-01-05 20:25:53] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:25:53] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:25:53] INFO: Sample logs: ["[2026-01-05 20:25:50] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:25:50] INFO: Total lines in log file: 4469', '[2026-01-05 20:25:50] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:25:56] INFO: Log file size: 495337 bytes
+[2026-01-05 20:25:56] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:56] INFO: Total lines in log file: 4484
+[2026-01-05 20:25:56] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:25:56] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:25:56] INFO: Sample logs: ['[2026-01-05 20:25:53] ERROR: Cannot open camera 0', '[2026-01-05 20:25:53] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:25:53] INFO: Log file size: 494496 bytes']
+[2026-01-05 20:25:59] INFO: Log file size: 496009 bytes
+[2026-01-05 20:25:59] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:25:59] INFO: Total lines in log file: 4490
+[2026-01-05 20:25:59] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:25:59] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:25:59] INFO: Sample logs: ['[2026-01-05 20:25:53] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:25:53] INFO: Sample logs: ["[2026-01-05 20:25:50] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:25:50] INFO: Total lines in log file: 4469\', \'[2026-01-05 20:25:50] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:25:56] INFO: Log file size: 495337 bytes']
+[2026-01-05 20:26:02] INFO: Log file size: 497043 bytes
+[2026-01-05 20:26:02] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:02] INFO: Total lines in log file: 4496
+[2026-01-05 20:26:02] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:02] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:02] INFO: Sample logs: ['[2026-01-05 20:25:56] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:25:56] INFO: Sample logs: ['[2026-01-05 20:25:53] ERROR: Cannot open camera 0', '[2026-01-05 20:25:53] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:25:53] INFO: Log file size: 494496 bytes']", '[2026-01-05 20:25:59] INFO: Log file size: 496009 bytes']
+[2026-01-05 20:26:05] INFO: Log file size: 497880 bytes
+[2026-01-05 20:26:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:05] INFO: Total lines in log file: 4502
+[2026-01-05 20:26:05] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:05] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:05] INFO: Sample logs: ['[2026-01-05 20:25:59] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:25:59] INFO: Sample logs: [\'[2026-01-05 20:25:53] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:25:53] INFO: Sample logs: ["[2026-01-05 20:25:50] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:25:50] INFO: Total lines in log file: 4469\\\', \\\'[2026-01-05 20:25:50] INFO: Recent logs (before filter): 10 lines\\\']\', \'[2026-01-05 20:25:56] INFO: Log file size: 495337 bytes\']', '[2026-01-05 20:26:02] INFO: Log file size: 497043 bytes']
+[2026-01-05 20:26:08] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:26:08] ERROR: Cannot open camera 0
+[2026-01-05 20:26:08] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:26:08] INFO: Log file size: 499315 bytes
+[2026-01-05 20:26:08] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:08] INFO: Total lines in log file: 4511
+[2026-01-05 20:26:08] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:08] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:08] INFO: Sample logs: ["[2026-01-05 20:26:05] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:26:05] INFO: Total lines in log file: 4502', '[2026-01-05 20:26:05] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:26:11] INFO: Log file size: 500156 bytes
+[2026-01-05 20:26:11] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:11] INFO: Total lines in log file: 4517
+[2026-01-05 20:26:11] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:11] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:11] INFO: Sample logs: ['[2026-01-05 20:26:08] ERROR: Cannot open camera 0', '[2026-01-05 20:26:08] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:08] INFO: Log file size: 499315 bytes']
+[2026-01-05 20:26:14] INFO: Log file size: 500828 bytes
+[2026-01-05 20:26:14] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:14] INFO: Total lines in log file: 4523
+[2026-01-05 20:26:14] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:14] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:14] INFO: Sample logs: ['[2026-01-05 20:26:08] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:08] INFO: Sample logs: ["[2026-01-05 20:26:05] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:26:05] INFO: Total lines in log file: 4502\', \'[2026-01-05 20:26:05] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:26:11] INFO: Log file size: 500156 bytes']
+[2026-01-05 20:26:17] INFO: Log file size: 501862 bytes
+[2026-01-05 20:26:17] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:17] INFO: Total lines in log file: 4529
+[2026-01-05 20:26:17] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:17] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:17] INFO: Sample logs: ['[2026-01-05 20:26:11] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:26:11] INFO: Sample logs: ['[2026-01-05 20:26:08] ERROR: Cannot open camera 0', '[2026-01-05 20:26:08] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:08] INFO: Log file size: 499315 bytes']", '[2026-01-05 20:26:14] INFO: Log file size: 500828 bytes']
+[2026-01-05 20:26:20] INFO: Log file size: 502699 bytes
+[2026-01-05 20:26:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:20] INFO: Total lines in log file: 4535
+[2026-01-05 20:26:20] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:20] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:20] INFO: Sample logs: ['[2026-01-05 20:26:14] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:14] INFO: Sample logs: [\'[2026-01-05 20:26:08] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:26:08] INFO: Sample logs: ["[2026-01-05 20:26:05] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:26:05] INFO: Total lines in log file: 4502\\\', \\\'[2026-01-05 20:26:05] INFO: Recent logs (before filter): 10 lines\\\']\', \'[2026-01-05 20:26:11] INFO: Log file size: 500156 bytes\']', '[2026-01-05 20:26:17] INFO: Log file size: 501862 bytes']
+[2026-01-05 20:26:23] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:26:23] INFO: Log file size: 504022 bytes
+[2026-01-05 20:26:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:23] INFO: Total lines in log file: 4542
+[2026-01-05 20:26:23] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:23] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:23] INFO: Sample logs: ['[2026-01-05 20:26:17] INFO: Sample logs: [\'[2026-01-05 20:26:11] INFO: Logs (after filter): 10 lines\', "[2026-01-05 20:26:11] INFO: Sample logs: [\'[2026-01-05 20:26:08] ERROR: Cannot open camera 0\', \'[2026-01-05 20:26:08] INFO: 💤 Sleeping for 15 seconds...\', \'[2026-01-05 20:26:08] INFO: Log file size: 499315 bytes\']", \'[2026-01-05 20:26:14] INFO: Log file size: 500828 bytes\']', '[2026-01-05 20:26:20] INFO: Log file size: 502699 bytes', "[2026-01-05 20:26:20] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}"]
+[2026-01-05 20:26:23] ERROR: Cannot open camera 0
+[2026-01-05 20:26:23] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:26:26] INFO: Log file size: 505299 bytes
+[2026-01-05 20:26:26] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:26] INFO: Total lines in log file: 4550
+[2026-01-05 20:26:26] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:26] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:26] INFO: Sample logs: ['[2026-01-05 20:26:23] INFO: Log file size: 504022 bytes', "[2026-01-05 20:26:23] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:26:23] INFO: Total lines in log file: 4542']
+[2026-01-05 20:26:29] INFO: Log file size: 506130 bytes
+[2026-01-05 20:26:29] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:29] INFO: Total lines in log file: 4556
+[2026-01-05 20:26:29] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:29] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:29] INFO: Sample logs: ['[2026-01-05 20:26:23] ERROR: Cannot open camera 0', '[2026-01-05 20:26:23] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:26] INFO: Log file size: 505299 bytes']
+[2026-01-05 20:26:32] INFO: Log file size: 506802 bytes
+[2026-01-05 20:26:32] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:32] INFO: Total lines in log file: 4562
+[2026-01-05 20:26:32] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:32] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:32] INFO: Sample logs: ['[2026-01-05 20:26:26] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:26] INFO: Sample logs: [\'[2026-01-05 20:26:23] INFO: Log file size: 504022 bytes\', "[2026-01-05 20:26:23] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:26:23] INFO: Total lines in log file: 4542\']', '[2026-01-05 20:26:29] INFO: Log file size: 506130 bytes']
+[2026-01-05 20:26:35] INFO: Log file size: 507826 bytes
+[2026-01-05 20:26:35] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:35] INFO: Total lines in log file: 4568
+[2026-01-05 20:26:35] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:35] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:35] INFO: Sample logs: ['[2026-01-05 20:26:29] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:26:29] INFO: Sample logs: ['[2026-01-05 20:26:23] ERROR: Cannot open camera 0', '[2026-01-05 20:26:23] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:26] INFO: Log file size: 505299 bytes']", '[2026-01-05 20:26:32] INFO: Log file size: 506802 bytes']
+[2026-01-05 20:26:38] INFO: Log file size: 508663 bytes
+[2026-01-05 20:26:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:38] INFO: Total lines in log file: 4574
+[2026-01-05 20:26:38] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:38] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:26:38] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:38] INFO: Sample logs: ['[2026-01-05 20:26:32] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:32] INFO: Sample logs: [\'[2026-01-05 20:26:26] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:26:26] INFO: Sample logs: [\\\'[2026-01-05 20:26:23] INFO: Log file size: 504022 bytes\\\', "[2026-01-05 20:26:23] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:26:23] INFO: Total lines in log file: 4542\\\']\', \'[2026-01-05 20:26:29] INFO: Log file size: 506130 bytes\']', '[2026-01-05 20:26:35] INFO: Log file size: 507826 bytes']
+[2026-01-05 20:26:39] ERROR: Cannot open camera 0
+[2026-01-05 20:26:39] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:26:41] INFO: Log file size: 510088 bytes
+[2026-01-05 20:26:41] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:41] INFO: Total lines in log file: 4583
+[2026-01-05 20:26:41] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:41] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:41] INFO: Sample logs: ["[2026-01-05 20:26:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:26:38] INFO: Total lines in log file: 4574', '[2026-01-05 20:26:38] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:26:45] INFO: Log file size: 510929 bytes
+[2026-01-05 20:26:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:45] INFO: Total lines in log file: 4589
+[2026-01-05 20:26:45] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:45] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:45] INFO: Sample logs: ['[2026-01-05 20:26:39] ERROR: Cannot open camera 0', '[2026-01-05 20:26:39] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:41] INFO: Log file size: 510088 bytes']
+[2026-01-05 20:26:48] INFO: Log file size: 511601 bytes
+[2026-01-05 20:26:48] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:48] INFO: Total lines in log file: 4595
+[2026-01-05 20:26:48] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:48] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:48] INFO: Sample logs: ['[2026-01-05 20:26:41] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:41] INFO: Sample logs: ["[2026-01-05 20:26:38] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:26:38] INFO: Total lines in log file: 4574\', \'[2026-01-05 20:26:38] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:26:45] INFO: Log file size: 510929 bytes']
+[2026-01-05 20:26:51] INFO: Log file size: 512635 bytes
+[2026-01-05 20:26:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:51] INFO: Total lines in log file: 4601
+[2026-01-05 20:26:51] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:51] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:51] INFO: Sample logs: ['[2026-01-05 20:26:45] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:26:45] INFO: Sample logs: ['[2026-01-05 20:26:39] ERROR: Cannot open camera 0', '[2026-01-05 20:26:39] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:41] INFO: Log file size: 510088 bytes']", '[2026-01-05 20:26:48] INFO: Log file size: 511601 bytes']
+[2026-01-05 20:26:54] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:26:54] ERROR: Cannot open camera 0
+[2026-01-05 20:26:54] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:26:54] INFO: Log file size: 513646 bytes
+[2026-01-05 20:26:54] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:54] INFO: Total lines in log file: 4610
+[2026-01-05 20:26:54] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:54] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:54] INFO: Sample logs: ["[2026-01-05 20:26:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:26:51] INFO: Total lines in log file: 4601', '[2026-01-05 20:26:51] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:26:57] INFO: Log file size: 514487 bytes
+[2026-01-05 20:26:57] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:26:57] INFO: Total lines in log file: 4616
+[2026-01-05 20:26:57] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:26:57] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:26:57] INFO: Sample logs: ['[2026-01-05 20:26:54] ERROR: Cannot open camera 0', '[2026-01-05 20:26:54] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:54] INFO: Log file size: 513646 bytes']
+[2026-01-05 20:27:00] INFO: Log file size: 515159 bytes
+[2026-01-05 20:27:00] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:00] INFO: Total lines in log file: 4622
+[2026-01-05 20:27:00] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:00] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:00] INFO: Sample logs: ['[2026-01-05 20:26:54] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:26:54] INFO: Sample logs: ["[2026-01-05 20:26:51] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:26:51] INFO: Total lines in log file: 4601\', \'[2026-01-05 20:26:51] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:26:57] INFO: Log file size: 514487 bytes']
+[2026-01-05 20:27:03] INFO: Log file size: 516193 bytes
+[2026-01-05 20:27:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:03] INFO: Total lines in log file: 4628
+[2026-01-05 20:27:03] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:03] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:03] INFO: Sample logs: ['[2026-01-05 20:26:57] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:26:57] INFO: Sample logs: ['[2026-01-05 20:26:54] ERROR: Cannot open camera 0', '[2026-01-05 20:26:54] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:26:54] INFO: Log file size: 513646 bytes']", '[2026-01-05 20:27:00] INFO: Log file size: 515159 bytes']
+[2026-01-05 20:27:06] INFO: Log file size: 517030 bytes
+[2026-01-05 20:27:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:06] INFO: Total lines in log file: 4634
+[2026-01-05 20:27:06] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:06] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:06] INFO: Sample logs: ['[2026-01-05 20:27:00] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:00] INFO: Sample logs: [\'[2026-01-05 20:26:54] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:26:54] INFO: Sample logs: ["[2026-01-05 20:26:51] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:26:51] INFO: Total lines in log file: 4601\\\', \\\'[2026-01-05 20:26:51] INFO: Recent logs (before filter): 10 lines\\\']\', \'[2026-01-05 20:26:57] INFO: Log file size: 514487 bytes\']', '[2026-01-05 20:27:03] INFO: Log file size: 516193 bytes']
+[2026-01-05 20:27:09] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:27:09] INFO: Log file size: 518353 bytes
+[2026-01-05 20:27:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:09] INFO: Total lines in log file: 4641
+[2026-01-05 20:27:09] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:09] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:09] INFO: Sample logs: ['[2026-01-05 20:27:03] INFO: Sample logs: [\'[2026-01-05 20:26:57] INFO: Logs (after filter): 10 lines\', "[2026-01-05 20:26:57] INFO: Sample logs: [\'[2026-01-05 20:26:54] ERROR: Cannot open camera 0\', \'[2026-01-05 20:26:54] INFO: 💤 Sleeping for 15 seconds...\', \'[2026-01-05 20:26:54] INFO: Log file size: 513646 bytes\']", \'[2026-01-05 20:27:00] INFO: Log file size: 515159 bytes\']', '[2026-01-05 20:27:06] INFO: Log file size: 517030 bytes', "[2026-01-05 20:27:06] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}"]
+[2026-01-05 20:27:09] ERROR: Cannot open camera 0
+[2026-01-05 20:27:09] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:27:12] INFO: Log file size: 519630 bytes
+[2026-01-05 20:27:12] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:12] INFO: Total lines in log file: 4649
+[2026-01-05 20:27:12] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:12] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:12] INFO: Sample logs: ['[2026-01-05 20:27:09] INFO: Log file size: 518353 bytes', "[2026-01-05 20:27:09] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:27:09] INFO: Total lines in log file: 4641']
+[2026-01-05 20:27:15] INFO: Log file size: 520461 bytes
+[2026-01-05 20:27:15] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:15] INFO: Total lines in log file: 4655
+[2026-01-05 20:27:15] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:15] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:15] INFO: Sample logs: ['[2026-01-05 20:27:09] ERROR: Cannot open camera 0', '[2026-01-05 20:27:09] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:27:12] INFO: Log file size: 519630 bytes']
+[2026-01-05 20:27:18] INFO: Log file size: 521133 bytes
+[2026-01-05 20:27:18] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:18] INFO: Total lines in log file: 4661
+[2026-01-05 20:27:18] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:18] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:18] INFO: Sample logs: ['[2026-01-05 20:27:12] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:12] INFO: Sample logs: [\'[2026-01-05 20:27:09] INFO: Log file size: 518353 bytes\', "[2026-01-05 20:27:09] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:27:09] INFO: Total lines in log file: 4641\']', '[2026-01-05 20:27:15] INFO: Log file size: 520461 bytes']
+[2026-01-05 20:27:21] INFO: Log file size: 522157 bytes
+[2026-01-05 20:27:21] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:21] INFO: Total lines in log file: 4667
+[2026-01-05 20:27:21] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:21] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:21] INFO: Sample logs: ['[2026-01-05 20:27:15] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:27:15] INFO: Sample logs: ['[2026-01-05 20:27:09] ERROR: Cannot open camera 0', '[2026-01-05 20:27:09] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:27:12] INFO: Log file size: 519630 bytes']", '[2026-01-05 20:27:18] INFO: Log file size: 521133 bytes']
+[2026-01-05 20:27:24] INFO: Log file size: 522994 bytes
+[2026-01-05 20:27:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:24] INFO: Total lines in log file: 4673
+[2026-01-05 20:27:24] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:24] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:24] INFO: Sample logs: ['[2026-01-05 20:27:18] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:18] INFO: Sample logs: [\'[2026-01-05 20:27:12] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:27:12] INFO: Sample logs: [\\\'[2026-01-05 20:27:09] INFO: Log file size: 518353 bytes\\\', "[2026-01-05 20:27:09] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:27:09] INFO: Total lines in log file: 4641\\\']\', \'[2026-01-05 20:27:15] INFO: Log file size: 520461 bytes\']', '[2026-01-05 20:27:21] INFO: Log file size: 522157 bytes']
+[2026-01-05 20:27:24] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:27:25] ERROR: Cannot open camera 0
+[2026-01-05 20:27:25] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:27:27] INFO: Log file size: 524419 bytes
+[2026-01-05 20:27:27] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:27] INFO: Total lines in log file: 4682
+[2026-01-05 20:27:27] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:27] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:27] INFO: Sample logs: ["[2026-01-05 20:27:24] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:27:24] INFO: Total lines in log file: 4673', '[2026-01-05 20:27:24] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:27:30] INFO: Log file size: 525260 bytes
+[2026-01-05 20:27:30] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:30] INFO: Total lines in log file: 4688
+[2026-01-05 20:27:30] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:30] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:30] INFO: Sample logs: ['[2026-01-05 20:27:25] ERROR: Cannot open camera 0', '[2026-01-05 20:27:25] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:27:27] INFO: Log file size: 524419 bytes']
+[2026-01-05 20:27:33] INFO: Log file size: 525932 bytes
+[2026-01-05 20:27:33] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:33] INFO: Total lines in log file: 4694
+[2026-01-05 20:27:33] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:33] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:33] INFO: Sample logs: ['[2026-01-05 20:27:27] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:27] INFO: Sample logs: ["[2026-01-05 20:27:24] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:27:24] INFO: Total lines in log file: 4673\', \'[2026-01-05 20:27:24] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:27:30] INFO: Log file size: 525260 bytes']
+[2026-01-05 20:27:36] INFO: Log file size: 526966 bytes
+[2026-01-05 20:27:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:36] INFO: Total lines in log file: 4700
+[2026-01-05 20:27:36] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:36] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:36] INFO: Sample logs: ['[2026-01-05 20:27:30] INFO: Logs (after filter): 10 lines', "[2026-01-05 20:27:30] INFO: Sample logs: ['[2026-01-05 20:27:25] ERROR: Cannot open camera 0', '[2026-01-05 20:27:25] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:27:27] INFO: Log file size: 524419 bytes']", '[2026-01-05 20:27:33] INFO: Log file size: 525932 bytes']
+[2026-01-05 20:27:39] INFO: Log file size: 527803 bytes
+[2026-01-05 20:27:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:39] INFO: Total lines in log file: 4706
+[2026-01-05 20:27:39] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:39] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:39] INFO: Sample logs: ['[2026-01-05 20:27:33] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:33] INFO: Sample logs: [\'[2026-01-05 20:27:27] INFO: Logs (after filter): 10 lines\', \'[2026-01-05 20:27:27] INFO: Sample logs: ["[2026-01-05 20:27:24] INFO: Summary:  {\\\'success\\\': True, \\\'site\\\': \\\'PACJ\\\', \\\'location\\\': \\\'Building 2\\\', \\\'total_photos\\\': 46, \\\'total_detected\\\': 3, \\\'in_time\\\': 3, \\\'over_time\\\': 0, \\\'notifications\\\': 0, \\\'date\\\': \\\'2026-01-05\\\'}", \\\'[2026-01-05 20:27:24] INFO: Total lines in log file: 4673\\\', \\\'[2026-01-05 20:27:24] INFO: Recent logs (before filter): 10 lines\\\']\', \'[2026-01-05 20:27:30] INFO: Log file size: 525260 bytes\']', '[2026-01-05 20:27:36] INFO: Log file size: 526966 bytes']
+[2026-01-05 20:27:40] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:27:40] ERROR: Cannot open camera 0
+[2026-01-05 20:27:40] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:27:42] INFO: Log file size: 529238 bytes
+[2026-01-05 20:27:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:42] INFO: Total lines in log file: 4715
+[2026-01-05 20:27:42] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:42] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:42] INFO: Sample logs: ["[2026-01-05 20:27:39] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}", '[2026-01-05 20:27:39] INFO: Total lines in log file: 4706', '[2026-01-05 20:27:39] INFO: Recent logs (before filter): 10 lines']
+[2026-01-05 20:27:45] INFO: Log file size: 530079 bytes
+[2026-01-05 20:27:45] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:45] INFO: Total lines in log file: 4721
+[2026-01-05 20:27:45] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:45] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:45] INFO: Sample logs: ['[2026-01-05 20:27:40] ERROR: Cannot open camera 0', '[2026-01-05 20:27:40] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:27:42] INFO: Log file size: 529238 bytes']
+[2026-01-05 20:27:51] INFO: Log file size: 530751 bytes
+[2026-01-05 20:27:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:27:51] INFO: Total lines in log file: 4727
+[2026-01-05 20:27:51] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:27:51] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:27:51] INFO: Sample logs: ['[2026-01-05 20:27:42] INFO: Logs (after filter): 10 lines', '[2026-01-05 20:27:42] INFO: Sample logs: ["[2026-01-05 20:27:39] INFO: Summary:  {\'success\': True, \'site\': \'PACJ\', \'location\': \'Building 2\', \'total_photos\': 46, \'total_detected\': 3, \'in_time\': 3, \'over_time\': 0, \'notifications\': 0, \'date\': \'2026-01-05\'}", \'[2026-01-05 20:27:39] INFO: Total lines in log file: 4706\', \'[2026-01-05 20:27:39] INFO: Recent logs (before filter): 10 lines\']', '[2026-01-05 20:27:45] INFO: Log file size: 530079 bytes']
+[2026-01-05 20:27:55] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:27:55] ERROR: Cannot open camera 0
+[2026-01-05 20:27:55] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:28:10] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:28:11] ERROR: Cannot open camera 0
+[2026-01-05 20:28:11] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:28:26] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:28:26] ERROR: Cannot open camera 0
+[2026-01-05 20:28:26] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:28:41] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:28:41] ERROR: Cannot open camera 0
+[2026-01-05 20:28:41] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:28:51] INFO: Log file size: 532481 bytes
+[2026-01-05 20:28:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:28:51] INFO: Total lines in log file: 4745
+[2026-01-05 20:28:51] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:28:51] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:28:51] INFO: Sample logs: ['[2026-01-05 20:28:11] ERROR: Cannot open camera 0', '[2026-01-05 20:28:11] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:28:26] INFO: 🔄 Starting detection cycle...']
+[2026-01-05 20:28:56] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:28:56] ERROR: Cannot open camera 0
+[2026-01-05 20:28:56] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:29:11] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:29:12] ERROR: Cannot open camera 0
+[2026-01-05 20:29:12] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:29:27] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:29:27] ERROR: Cannot open camera 0
+[2026-01-05 20:29:27] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:29:42] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:29:42] ERROR: Cannot open camera 0
+[2026-01-05 20:29:42] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:29:51] INFO: Log file size: 533854 bytes
+[2026-01-05 20:29:51] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:29:51] INFO: Total lines in log file: 4763
+[2026-01-05 20:29:51] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:29:51] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:29:51] INFO: Sample logs: ['[2026-01-05 20:29:12] ERROR: Cannot open camera 0', '[2026-01-05 20:29:12] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:29:27] INFO: 🔄 Starting detection cycle...']
+[2026-01-05 20:29:57] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:29:58] ERROR: Cannot open camera 0
+[2026-01-05 20:29:58] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:30:13] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:30:13] ERROR: Cannot open camera 0
+[2026-01-05 20:30:13] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:30:28] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:30:28] ERROR: Cannot open camera 0
+[2026-01-05 20:30:28] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:30:36] INFO: Log file size: 535053 bytes
+[2026-01-05 20:30:36] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:30:36] INFO: Total lines in log file: 4778
+[2026-01-05 20:30:36] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:30:36] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:30:36] INFO: Sample logs: ['[2026-01-05 20:29:58] ERROR: Cannot open camera 0', '[2026-01-05 20:29:58] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:30:13] INFO: 🔄 Starting detection cycle...']
+[2026-01-05 20:30:38] INFO: Log file size: 535730 bytes
+[2026-01-05 20:30:38] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:30:38] INFO: Total lines in log file: 4784
+[2026-01-05 20:30:38] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:30:38] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:30:38] INFO: Sample logs: ['[2026-01-05 20:30:28] ERROR: Cannot open camera 0', '[2026-01-05 20:30:28] INFO: 💤 Sleeping for 15 seconds...', '[2026-01-05 20:30:36] INFO: Log file size: 535053 bytes']
+[2026-01-05 20:30:42] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 20:30:43] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:30:44] ERROR: Cannot open camera 0
+[2026-01-05 20:30:44] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:30:59] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:30:59] ERROR: Cannot open camera 0
+[2026-01-05 20:30:59] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:31:14] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:31:14] ERROR: Cannot open camera 0
+[2026-01-05 20:31:14] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:31:29] INFO: 🔄 Starting detection cycle...
+[2026-01-05 20:31:30] ERROR: Cannot open camera 0
+[2026-01-05 20:31:30] INFO: 💤 Sleeping for 15 seconds...
+[2026-01-05 20:31:36] INFO: Received signal 2
+[2026-01-05 20:31:36] INFO: 🛑 Stopping detection service...
+[2026-01-05 20:31:36] INFO: ✅ Detection service stopped
+[2026-01-05 20:32:52] INFO: Log file size: 537480 bytes
+[2026-01-05 20:32:52] INFO: Total lines in log file: 4805
+[2026-01-05 20:32:52] INFO: Recent logs (before filter): 10 lines
+[2026-01-05 20:32:52] INFO: Logs (after filter): 10 lines
+[2026-01-05 20:32:52] INFO: Sample logs: ['[2026-01-05 20:31:14] INFO: 🔄 Starting detection cycle...', '[2026-01-05 20:31:14] ERROR: Cannot open camera 0', '[2026-01-05 20:31:14] INFO: 💤 Sleeping for 15 seconds...']
+[2026-01-05 20:33:01] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 21:16:31] INFO: Config saved successfully

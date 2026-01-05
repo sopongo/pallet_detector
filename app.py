@@ -447,7 +447,7 @@ def get_latest_detection():
         cursor = conn.cursor()
         
         # ดึง 2 รูปล่าสุด
-        cursor. execute("""
+        cursor.execute("""
             SELECT id_img, image_date, image_name, pallet_detected, site, location
             FROM tb_image
             ORDER BY image_date DESC
@@ -458,26 +458,33 @@ def get_latest_detection():
         
         result = {
             "success": True,
-            "before": None,
+            "before":  None,
             "after": None
         }
         
         if len(images) >= 2:
+            # ✅ Before image (ใช้รูปที่ตีกรอบ)
+            before_name = images[1]['image_name']
+            before_name_detected = before_name.replace('.jpg', '_detected.jpg')
+            
             result["before"] = {
                 "id": images[1]['id_img'],
                 "date": images[1]['image_date']. strftime('%d/%m/%Y %H:%M:%S'),
                 "filename": images[1]['image_name'],
                 "count": images[1]['pallet_detected'],
-                # ✅ แก้ตรงนี้ - เปลี่ยน path
-                "image_url": f"http://localhost:5000/static/upload_image/{images[1]['image_date'].strftime('%Y-%m-%d')}/{images[1]['image_name']}"
+                "image_url": f"http://localhost:5000/static/upload_image/{images[1]['image_date'].strftime('%Y-%m-%d')}/{before_name_detected}"
             }
+            
+            # ✅ After image (ใช้รูปที่ตีกรอบ)
+            after_name = images[0]['image_name']
+            after_name_detected = after_name.replace('.jpg', '_detected.jpg')
+            
             result["after"] = {
                 "id": images[0]['id_img'],
                 "date": images[0]['image_date'].strftime('%d/%m/%Y %H:%M:%S'),
                 "filename": images[0]['image_name'],
-                "count":  images[0]['pallet_detected'],
-                # ✅ แก้ตรงนี้ - เปลี่ยน path
-                "image_url":  f"http://localhost:5000/static/upload_image/{images[0]['image_date'].strftime('%Y-%m-%d')}/{images[0]['image_name']}"
+                "count": images[0]['pallet_detected'],
+                "image_url": f"http://localhost:5000/static/upload_image/{images[0]['image_date'].strftime('%Y-%m-%d')}/{after_name_detected}"
             }
         
         cursor.close()
@@ -486,7 +493,7 @@ def get_latest_detection():
         return jsonify(result)
         
     except Exception as e:
-        logger.error(f"Error getting latest detection: {e}")
+        logger. error(f"Error getting latest detection: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 
 
@@ -534,28 +541,57 @@ def get_detection_logs():
         limit = int(request.args.get('limit', 10))
         
         # อ่านจากไฟล์ log
-        log_file = 'logs/detection. log'
+        log_file = 'logs/detection.log'
         
+        # ✅ Debug:  ตรวจสอบไฟล์
         if not os.path.exists(log_file):
-            return jsonify({"success": True, "logs": []})
+            logger.error(f"Log file not found: {log_file}")
+            return jsonify({"success": True, "logs": [], "error": "Log file not found"})
         
-        with open(log_file, 'r', encoding='utf-8') as f:
-            lines = f.readlines()
+        # ✅ Debug: ดูขนาดไฟล์
+        file_size = os.path.getsize(log_file)
+        logger.info(f"Log file size: {file_size} bytes")
+        
+        # ✅ อ่านไฟล์ (เพิ่ม error handling)
+        try:
+            with open(log_file, 'r', encoding='utf-8', errors='ignore') as f:
+                lines = f.readlines()
+        except Exception as e:
+            logger.error(f"Cannot read log file: {e}")
+            return jsonify({"success":  False, "message": f"Cannot read log file: {str(e)}"})
+        
+        # ✅ Debug: จำนวนบรรทัดทั้งหมด
+        logger.info(f"Total lines in log file: {len(lines)}")
         
         # ดึง N บรรทัดล่าสุด
         recent_logs = lines[-limit: ] if len(lines) > limit else lines
         
-        # แปลงเป็น list
-        logs = [line.strip() for line in recent_logs]
+        # ✅ Debug: ดูข้อมูลก่อน filter
+        logger.info(f"Recent logs (before filter): {len(recent_logs)} lines")
+        
+        # แปลงเป็น list (ลบ newline + filter blank)
+        logs = [line.strip() for line in recent_logs if line.strip()]
+        
+        # ✅ Debug: ดูข้อมูลหลัง filter
+        logger.info(f"Logs (after filter): {len(logs)} lines")
+        
+        # ✅ Debug: แสดง log 3 บรรทัดแรก
+        if logs: 
+            logger.info(f"Sample logs: {logs[:3]}")
         
         return jsonify({
-            "success": True,
-            "logs": logs
+            "success":  True,
+            "logs": logs,
+            "debug": {
+                "file_size": file_size,
+                "total_lines": len(lines),
+                "filtered_lines": len(logs)
+            }
         })
         
     except Exception as e:
         logger.error(f"Error getting logs: {e}")
-        return jsonify({"success": False, "message":  str(e)}), 500
+        return jsonify({"success": False, "message": str(e)}), 500
 
 
 @app.route('/api/system/info', methods=['GET'])

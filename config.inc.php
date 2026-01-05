@@ -97,7 +97,15 @@
                                         <div class="form-group">
                                             <label for="siteCompany">Site / Company</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="siteCompany" value="">
+                                                <!---<input type="text" class="form-control" id="siteCompany" value="">-->
+                                                <select class="custom-select" id="siteCompany">
+                                                    <option value="" selected>-- Select Site / Company --</option>
+                                                    <?PHP
+                                                    foreach($arr_site as $site_id => $site_info) {
+                                                        echo '<option value="' . htmlspecialchars($site_id) . '">' . htmlspecialchars($site_info['site_name']) . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>   
                                             </div>
                                             <small class="form-text text-muted">Name of the site or company</small>
                                         </div>
@@ -107,7 +115,12 @@
                                         <div class="form-group">
                                             <label for="siteLocation">Location</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="siteLocation" value="">
+                                                <!--<input type="text" class="form-control" id="siteLocation" value="">-->
+                                                <select class="custom-select" id="siteLocation">
+                                                    <option value="" selected>-- Select Location --</option>
+                                                    <?PHP
+                                                    ?>
+                                                </select>
                                             </div>
                                             <small class="form-text text-muted">Specific location within the site</small>
                                         </div>
@@ -579,6 +592,7 @@ function loadConfig() {
                 document.getElementById('imagePath').value = data.general.imagePath;
             }
             if(document.getElementById('siteCompany')) {
+                //alert('Site / Company: ' + data.general.siteCompany);
                 document.getElementById('siteCompany').value = data.general.siteCompany || '';
             }
             if(document.getElementById('siteLocation')) {

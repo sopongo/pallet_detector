@@ -3,12 +3,14 @@ session_start();
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', true);
 error_reporting(error_reporting() & ~E_NOTICE);
-
 date_default_timezone_set('Asia/Bangkok');	
+
+include_once('config/config.php');
 
 if(empty($_SESSION['admin_config'])){
   die(include_once('login.inc.php'));
 }
+
 
 $module = $_GET['module'] ?? '';
 switch($module) {
