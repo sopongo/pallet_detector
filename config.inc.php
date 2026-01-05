@@ -497,7 +497,7 @@ $(document).ready(function() {
     var slider = $("#timeRangeSlider").ionRangeSlider({
         type: "double",
         min: 0,
-        max:  1440,
+        max:  1439,  // ✅ 23:59 (แทน 24:00)
         from: 480,   // 08:00
         to: 1020,    // 17:00
         step: 30,
@@ -510,7 +510,7 @@ $(document).ready(function() {
             updateTimeDisplay(data.from, data.to);
         },
         onChange: function(data) {
-            updateTimeDisplay(data.from, data. to);
+            updateTimeDisplay(data.from, data.to);
         }
     });
 
@@ -518,18 +518,38 @@ $(document).ready(function() {
     window.timeRangeSliderInstance = slider. data("ionRangeSlider");
 }); //document.ready
 
-// แปลงนาทีเป็น HH:mm
-function minutesToTime(totalMinutes) {
-    var hours = Math.floor(totalMinutes / 60);
-    var minutes = totalMinutes % 60;
-    return hours. toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
-}
+    // แปลงนาทีเป็น HH:mm
+    function minutesToTime(totalMinutes) {
+        // ✅ จำกัดไม่เกิน 1439 นาที (23:59)
+        if (totalMinutes >= 1440) {
+            totalMinutes = 1439;
+        }
+        
+        var hours = Math.floor(totalMinutes / 60);
+        var minutes = totalMinutes % 60;
+        
+        return hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+    }
 
-// แปลง HH:mm เป็นนาที
-function timeToMinutes(timeStr) {
-    var parts = timeStr.split(':');
-    return parseInt(parts[0]) * 60 + parseInt(parts[1]);
-}
+    function timeToMinutes(timeStr) {
+        var parts = timeStr.split(':');
+        var hours = parseInt(parts[0]);
+        var minutes = parseInt(parts[1]);
+        
+        // ✅ แปลง 24:00 เป็น 23:59
+        if (hours >= 24) {
+            hours = 23;
+            minutes = 59;
+        }
+        
+        // ✅ จำกัดไม่เกิน 23:59
+        var totalMinutes = hours * 60 + minutes;
+        if (totalMinutes >= 1440) {
+            totalMinutes = 1439;
+        }
+        
+        return totalMinutes;
+    }
 
 // อัพเดทข้อความแสดงผล
 function updateTimeDisplay(from, to) {
@@ -775,6 +795,25 @@ function loadConfig() {
             
             // ตั้งค่า selected
             cameraSelect.value = savedCamera;
+            
+            // ✅ Auto preview ถ้ามีกล้องเลือกอยู่
+            if(savedCamera && savedCamera !== '') {
+                setTimeout(function() {
+                    startCameraPreview(savedCamera);
+                }, 1000);
+            }
+            
+            console.log('📷 Camera loaded:', savedCamera);
+        }
+            
+            console.log('✅ Config loaded');
+            console.log('📍 Site:', savedSiteId, 'Location:', savedLocationId);
+        })
+        .catch(err => {
+            console.error('❌ Load config error:', err);
+            showError('Failed to load configuration');
+        });
+}
 
             // ========================================
             // Start Camera Preview
@@ -812,83 +851,75 @@ function loadConfig() {
                 
                 console.log(`📷 Started preview for camera ${cameraId}`);
             }            
-            
-            // ✅ Auto preview ถ้ามีกล้องเลือกอยู่
-            if(savedCamera && savedCamera !== '') {
-                setTimeout(function() {
-                    startCameraPreview(savedCamera);
-                }, 1000);
-            }
-            
-            console.log('📷 Camera loaded:', savedCamera);
-        }
-            
-            console.log('✅ Config loaded');
-            console.log('📍 Site:', savedSiteId, 'Location:', savedLocationId);
-        })
-        .catch(err => {
-            console.error('❌ Load config error:', err);
-            showError('Failed to load configuration');
-        });
-}
 
-// Save Config โดยอ้างอิง id btnSaveConfig แทนการใช้ class
-document.getElementById('btnSaveConfig').addEventListener('click', function() {
-    const config = {
-        general: {
-            imagePath: document.getElementById('imagePath').value,
-            version: "1.0",
-            lastUpdate: new Date().toISOString().split('T')[0],
-            device: "Raspberry Pi 5",
-            siteCompany: document.getElementById('siteCompany').value,
-            siteLocation: document.getElementById('siteLocation').value 
-        },
-        network: {
-            database: {
-                host: document. getElementById('dbHost').value,
-                user: document.getElementById('dbUser').value,
-                password: document.getElementById('dbPass').value,
-                port: parseInt(document.getElementById('dbPort').value) || 3306,
-                database: document.getElementById('dbName').value
+    // Save Config โดยอ้างอิง id btnSaveConfig แทนการใช้ class
+    document.getElementById('btnSaveConfig').addEventListener('click', function() {
+        // ✅ ตรวจสอบ time range
+        const startTime = minutesToTime(window.timeRangeSliderInstance.result.from);
+        const endTime = minutesToTime(window.timeRangeSliderInstance.result.to);
+        
+        // Debug log
+        console.log('⏰ Start:', startTime, 'End:', endTime);
+        
+        // ✅ แปลง 24:00 เป็น 23:59 (ถ้ามี)
+        const safStartTime = startTime.replace('24:', '23:59');
+        const safeEndTime = endTime.replace('24:', '23:59');
+        
+        const config = {
+            general: {
+                imagePath: document.getElementById('imagePath').value,
+                version: "1.0",
+                lastUpdate: new Date().toISOString().split('T')[0],
+                device: "Raspberry Pi 5",
+                siteCompany: document.getElementById('siteCompany').value,
+                siteLocation: document.getElementById('siteLocation').value 
             },
-            lineNotify: {
-                token: document. getElementById('lineToken').value,
-                groupId: document.getElementById('lineGroup').value
-            }
-        },
-        detection: {
-            modelPath: document.getElementById('modelPath').value,
-            confidenceThreshold: parseFloat(document. getElementById('confThreshold').value),
-            iouThreshold: parseFloat(document.getElementById('iouThreshold').value),
-            imageSize: parseInt(document.getElementById('imageSize').value),
-            deviceMode: document.querySelector('input[name="deviceMode"]:checked').value,
-            captureInterval: parseInt(document.getElementById('captureInterval').value),
-            alertThreshold: parseInt(document.getElementById('alertThreshold').value),
-            operatingHours: {
-                start: minutesToTime(window.timeRangeSliderInstance.result.from),
-                end: minutesToTime(window.timeRangeSliderInstance.result.to)
-            } 
-        },
-        camera: {
-            selectedCamera: document.getElementById('cameraSelect').value,
-            resolution: { width: 1280, height: 720 }
-        },
-        gpio: { redLightPin: 17, greenLightPin: 27 },
-        system: { storageUsedMB: 0, totalFiles: 0, autoCleanupDays: 7 }
-    };
-    
-    showLoading('Saving.. .');
-    fetch(`${API_URL}/config`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON. stringify(config)
-    })
-    .then(r => r. json())
-    .then(data => {
-        Swal. close();
-        data.success ? showSuccess(data. message) : showError(data.message);
+            network: {
+                database: {
+                    host: document.getElementById('dbHost').value,
+                    user: document.getElementById('dbUser').value,
+                    password: document. getElementById('dbPass').value,
+                    port: parseInt(document.getElementById('dbPort').value) || 3306,
+                    database: document.getElementById('dbName').value
+                },
+                lineNotify: {
+                    token: document.getElementById('lineToken').value,
+                    groupId: document.getElementById('lineGroup').value
+                }
+            },
+            detection: {
+                modelPath: document.getElementById('modelPath').value,
+                confidenceThreshold: parseFloat(document.getElementById('confThreshold').value),
+                iouThreshold: parseFloat(document.getElementById('iouThreshold').value),
+                imageSize: parseInt(document.getElementById('imageSize').value),
+                deviceMode: document.querySelector('input[name="deviceMode"]:checked').value,
+                captureInterval: parseInt(document.getElementById('captureInterval').value),
+                alertThreshold: parseInt(document.getElementById('alertThreshold').value),
+                operatingHours: {
+                    start: safeStartTime,  // ✅ ใช้ safe version
+                    end: safeEndTime       // ✅ ใช้ safe version
+                } 
+            },
+            camera:  {
+                selectedCamera: document.getElementById('cameraSelect').value,
+                resolution: { width: 1280, height: 720 }
+            },
+            gpio: { redLightPin: 17, greenLightPin: 27 },
+            system: { storageUsedMB: 0, totalFiles: 0, autoCleanupDays: 7 }
+        };
+        
+        showLoading('Saving.. .');
+        fetch(`${API_URL}/config`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON. stringify(config)
+        })
+        .then(r => r.json())
+        .then(data => {
+            Swal.close();
+            data.success ? showSuccess(data.message) : showError(data.message);
+        });
     });
-});
 
 
 // ========================================
