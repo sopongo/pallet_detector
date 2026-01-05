@@ -200,7 +200,7 @@
                                 
                                 <br>
                                 <!-- LINE OA Notify Config -->
-                                <h4><i class="fab fa-line"></i> LINE OA Notify Configuration</h4>
+                                <h4><i class="fab fa-line"></i> LINE OA Configuration</h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -1191,26 +1191,36 @@ setInterval(function() {
 
 
 // ========================================
-// 5. Test LINE Notify
+// 5. Test LINE OA Connection and send message
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const lineSection = document.querySelector('#network');
-    if(lineSection) {
-        const lineTestBtn = Array.from(lineSection.querySelectorAll('.btn-info')).find(btn => 
-            btn.textContent.includes('Test Send')
-        );
-        
-        if(lineTestBtn) {
-            lineTestBtn.addEventListener('click', function() {
-                const token = document.getElementById('lineToken').value;
-                if(!token) {
-                    showError('Please enter LINE Notify Token first');
-                    return;
-                }
-                showSuccess('LINE Notify test will be implemented soon');
-            });
-        }
+lineTestBtn.addEventListener('click', function() {
+    const token = document.getElementById('lineToken').value;
+    const groupId = document. getElementById('lineGroup').value;
+    
+    if(! token) {
+        showError('Please enter Channel Access Token first');
+        return;
     }
+    
+    if(!groupId) {
+        showError('Please enter Group ID first');
+        return;
+    }
+    
+    showLoading('Testing LINE OA connection...');
+    
+    fetch(`${API_URL}/test/line`, {
+        method: 'POST'
+    })
+    .then(r => r.json())
+    .then(result => {
+        Swal.close();
+        if(result.success) {
+            showSuccess('✅ LINE OA connected!\n\nCheck your group for test message.');
+        } else {
+            showError(`❌ Failed: ${result. message}`);
+        }
+    });
 });
 
 // ========================================
