@@ -5,6 +5,7 @@
 
 from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
+import json
 import os
 import cv2
 import io
@@ -17,8 +18,6 @@ from utils.logger import setup_logger
 import subprocess
 import psutil
 from datetime import datetime
-
-
 
 # ========================================
 # สร้างโฟลเดอร์ที่จำเป็น
@@ -700,6 +699,45 @@ def serve_uploaded_image(filename):
         logger.error(f"Error serving image: {e}")
         return jsonify({"success": False, "message": str(e)}), 404
 
+@app.route('/api/config/locations', methods=['GET'])
+def get_locations():
+    """ดึง locations ตาม site_id"""
+    try: 
+        site_id = request. args.get('site_id')
+        
+        if not site_id:
+            return jsonify({"success": False, "message":  "site_id required"}), 400
+        
+        # อ่าน sites.json
+        sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
+        
+        if not os.path.exists(sites_file):
+            return jsonify({
+                "success": False,
+                "message": "Sites data not found"
+            }), 404
+        
+        with open(sites_file, 'r', encoding='utf-8') as f:
+            sites_data = json.load(f)
+        
+        # ดึง locations ของ site นี้
+        site_id_int = int(site_id)
+        
+        if str(site_id_int) in sites_data:
+            locations = sites_data[str(site_id_int)].get('location', {})
+            return jsonify({
+                "success": True,
+                "locations": locations
+            })
+        else:
+            return jsonify({
+                "success": False,
+                "message": f"Site {site_id} not found"
+            }), 404
+            
+    except Exception as e:
+        logger.error(f"Error getting locations: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
 
 # ========================================
 # Main

@@ -59,4 +59,8 @@ $arr_site = [
         ]
     ],
 ];
+
+// เขียน array เป็น JSON file
+//$json_path = __DIR__ . '/sites.json';
+//file_put_contents($json_path, json_encode($arr_site, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 ?>

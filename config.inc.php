@@ -116,10 +116,8 @@
                                             <label for="siteLocation">Location</label>
                                             <div class="input-group">
                                                 <!--<input type="text" class="form-control" id="siteLocation" value="">-->
-                                                <select class="custom-select" id="siteLocation">
-                                                    <option value="" selected>-- Select Location --</option>
-                                                    <?PHP
-                                                    ?>
+                                                <select class="custom-select" id="siteLocation" disabled>
+                                                    <option value="">-- Please select Site first --</option>
                                                 </select>
                                             </div>
                                             <small class="form-text text-muted">Specific location within the site</small>
@@ -582,6 +580,133 @@ function showLoading(message = 'Processing...') {
 window.addEventListener('DOMContentLoaded', function() {
     loadConfig();
 });
+
+// ========================================
+// Dynamic Location Dropdown
+// ========================================
+
+// Event:  เมื่อเปลี่ยน Site
+document.getElementById('siteCompany').addEventListener('change', function() {
+    const siteId = this.value;
+    const locationSelect = document.getElementById('siteLocation');
+    
+    // Reset location dropdown
+    locationSelect.innerHTML = '<option value="">-- Loading...  --</option>';
+    locationSelect.disabled = true;
+    
+    if(! siteId || siteId === '') {
+        // ถ้าไม่เลือก Site
+        locationSelect.innerHTML = '<option value="">-- Please select Site first --</option>';
+        locationSelect.disabled = true;
+        return;
+    }
+    
+    // ดึง locations จาก API
+    fetch(`${API_URL}/config/locations?site_id=${siteId}`)
+        .then(r => r.json())
+        .then(data => {
+            if(data.success && data.locations) {
+                // สร้าง options
+                let html = '<option value="">-- Select Location --</option>';
+                
+                Object.keys(data.locations).forEach(locId => {
+                    html += `<option value="${locId}">${data.locations[locId]}</option>`;
+                });
+                
+                locationSelect.innerHTML = html;
+                locationSelect. disabled = false;
+                
+                console.log(`✅ Loaded ${Object.keys(data.locations).length} locations for Site ${siteId}`);
+            } else {
+                locationSelect.innerHTML = '<option value="">No locations available</option>';
+                locationSelect. disabled = true;
+                showError('Failed to load locations');
+            }
+        })
+        .catch(err => {
+            console.error('❌ Load locations error:', err);
+            locationSelect. innerHTML = '<option value="">Error loading locations</option>';
+            locationSelect.disabled = true;
+            showError('Failed to load locations:  ' + err.message);
+        });
+});
+
+// Validation: ตรวจสอบก่อน Save
+document.getElementById('btnSaveConfig').addEventListener('click', function(e) {
+    const siteId = document.getElementById('siteCompany').value;
+    const locationId = document.getElementById('siteLocation').value;
+    
+    // ถ้าเลือก Site แต่ไม่เลือก Location
+    if(siteId && siteId !== '' && (! locationId || locationId === '')) {
+        e.preventDefault(); // หยุดการ save
+        e.stopImmediatePropagation();
+        
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please Select Location',
+            text: 'You must select a location for the selected site',
+            confirmButtonColor: '#ffc107'
+        });
+        
+        return false;
+    }
+    
+    // ถ้าไม่เลือกทั้ง Site และ Location
+    if((! siteId || siteId === '') && (!locationId || locationId === '')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please Select Site & Location',
+            text: 'Please select both site and location before saving',
+            confirmButtonColor:  '#ffc107'
+        });
+        
+        return false;
+    }
+}, true); // ใช้ capture phase
+
+// Load locations เมื่อ load config (สำหรับ edit)
+function loadLocationForSite(siteId, selectedLocationId = null) {
+    if(!siteId) return;
+    
+    const locationSelect = document.getElementById('siteLocation');
+    locationSelect. innerHTML = '<option value="">-- Loading... --</option>';
+    locationSelect.disabled = true;
+    
+    fetch(`${API_URL}/config/locations?site_id=${siteId}`)
+        .then(r => r.json())
+        .then(data => {
+            if(data.success && data.locations) {
+                let html = '<option value="">-- Select Location --</option>';
+                
+                Object.keys(data. locations).forEach(locId => {
+                    const selected = (locId == selectedLocationId) ? 'selected' : '';
+                    html += `<option value="${locId}" ${selected}>${data.locations[locId]}</option>`;
+                });
+                
+                locationSelect.innerHTML = html;
+                locationSelect.disabled = false;
+            }
+        });
+}
+
+// แก้ไข loadConfig() เพื่อโหลด Location ด้วย
+const originalLoadConfig = loadConfig;
+loadConfig = function() {
+    originalLoadConfig();
+    
+    // รอ config โหลดเสร็จแล้วโหลด locations
+    setTimeout(function() {
+        const siteId = document.getElementById('siteCompany').value;
+        const locationId = document.getElementById('siteLocation').value;
+        
+        if(siteId && siteId !== '') {
+            loadLocationForSite(siteId, locationId);
+        }
+    }, 500);
+};
 
 function loadConfig() {
     fetch(`${API_URL}/config`)

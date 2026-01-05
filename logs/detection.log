@@ -4809,3 +4809,34 @@
 [2026-01-05 20:32:52] INFO: Sample logs: ['[2026-01-05 20:31:14] INFO: 🔄 Starting detection cycle...', '[2026-01-05 20:31:14] ERROR: Cannot open camera 0', '[2026-01-05 20:31:14] INFO: 💤 Sleeping for 15 seconds...']
 [2026-01-05 20:33:01] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 2', 'total_photos': 46, 'total_detected': 3, 'in_time': 3, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
 [2026-01-05 21:16:31] INFO: Config saved successfully
+[2026-01-05 22:07:39] INFO: 🚀 Flask app initialized
+[2026-01-05 22:07:39] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:11:15] INFO: 🚀 Flask app initialized
+[2026-01-05 22:11:15] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:11:15] INFO: 🚀 Flask app initialized
+[2026-01-05 22:11:15] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:11:30] ERROR: Error getting locations: Expecting value: line 1 column 1 (char 0)
+[2026-01-05 22:12:16] ERROR: Error getting locations: Expecting value: line 1 column 1 (char 0)
+[2026-01-05 22:12:20] ERROR: Error getting locations: Expecting value: line 1 column 1 (char 0)
+[2026-01-05 22:13:44] ERROR: Error getting locations: Expecting value: line 1 column 1 (char 0)
+[2026-01-05 22:13:56] ERROR: Error getting locations: Expecting value: line 1 column 1 (char 0)
+[2026-01-05 22:20:08] INFO: 🚀 Flask app initialized
+[2026-01-05 22:20:08] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:20:28] INFO: 🚀 Flask app initialized
+[2026-01-05 22:20:28] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:20:52] INFO: 🚀 Flask app initialized
+[2026-01-05 22:20:52] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:20:52] INFO: 🚀 Flask app initialized
+[2026-01-05 22:20:52] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 22:42:27] INFO: Config saved successfully
+[2026-01-05 23:07:56] INFO: Config saved successfully
+[2026-01-05 23:08:03] ERROR: Error getting daily summary: (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+[2026-01-05 23:08:03] INFO: Summary:  {'success': True, 'site': 'PACJ', 'location': 'Building 1', 'total_photos': 0, 'total_detected': 0, 'in_time': 0, 'over_time': 0, 'notifications': 0, 'date': '2026-01-05'}
+[2026-01-05 23:08:22] INFO: Config saved successfully
+[2026-01-05 23:09:07] INFO: 🚀 Flask app initialized
+[2026-01-05 23:09:07] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 23:09:07] INFO: 🚀 Flask app initialized
+[2026-01-05 23:09:07] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 23:10:44] INFO: 🚀 Flask app initialized
+[2026-01-05 23:10:44] INFO: 🚀 Starting Pallet Detection Backend...
+[2026-01-05 23:11:46] INFO: Config saved successfully
