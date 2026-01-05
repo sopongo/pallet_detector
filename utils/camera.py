@@ -7,7 +7,57 @@ import cv2
 import os
 
 
-def test_camera(camera_index=0):
+def test_camera(camera_index):
+    """
+    ทดสอบกล้อง
+    
+    Args: 
+        camera_index (int): index ของกล้อง
+        
+    Returns:
+        dict:  result
+    """
+    try:
+        camera_index = int(camera_index)
+        
+        # เปิดกล้อง
+        cap = cv2.VideoCapture(camera_index, cv2.CAP_DSHOW)  # ✅ เพิ่ม CAP_DSHOW สำหรับ Windows
+        
+        if not cap.isOpened():
+            return {
+                "success": False,
+                "message": f"❌ Cannot open camera {camera_index}"
+            }
+        
+        # อ่านภาพ
+        ret, frame = cap.read()
+        
+        # ปิดกล้อง
+        cap.release()
+        
+        if not ret: 
+            return {
+                "success":  False,
+                "message": "❌ Cannot capture image from camera"
+            }
+        
+        # ดึงขนาดรูป
+        height, width = frame.shape[:2]
+        
+        return {
+            "success": True,
+            "message": f"✅ Camera {camera_index} is working! ",
+            "details": {
+                "resolution": f"{width}x{height}",
+                "camera_index": camera_index
+            }
+        }
+        
+    except Exception as e:
+        return {
+            "success": False,
+            "message": f"❌ Camera test failed: {str(e)}"
+        }
     """
     ทดสอบกล้อง
     Args:

@@ -22,45 +22,45 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="detection-wrapper border bg-white p-2 mb-2">
-                    <span class="badge badge-secondary position-absolute m-2" style="z-index:10;">Before: <span id="mock-time-before">24/12/2025 15:00:00</span></span>
+                    <span class="badge badge-secondary position-absolute m-2" style="z-index:10;">Before: <span id="mock-time-before">-</span></span>
                     <div class="pallet-image-container position-relative">
-                      <img id="img-before" src="dist/img/pallet_071.jpg" class="img-fluid rounded border" alt="Before">
+                      <img id="img-before" src="dist/img/wait.png" class="img-fluid rounded border" alt="Before">
                       
-                      <div class="ai-box mock-box-1" style="top: 60%; left: 15%; width: 15%; height: 20%;">
+                      <!--<div class="ai-box mock-box-1" style="top: 60%; left: 15%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-001</span>
                       </div>
                       <div class="ai-box mock-box-2" style="top: 45%; left: 35%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-002</span>
-                      </div>
+                      </div>-->
                     </div>
                     <div class="mt-2 text-xs text-muted">
-                      File: <span id="file-before">IMG20251224_150000.jpg</span> | Result: 4 Pallets
+                      File: <span id="file-before">-</span>
                     </div>
                   </div>
                 </div>
                 
                 <div class="col-md-6">
                   <div class="detection-wrapper border bg-white p-2 mb-2">
-                    <span class="badge badge-primary position-absolute m-2" style="z-index:10;">After: <span id="mock-time-after">24/12/2025 15:10:00</span></span>
+                    <span class="badge badge-primary position-absolute m-2" style="z-index:10;">After: <span id="mock-time-after">-</span></span>
                     <div class="pallet-image-container position-relative">
-                      <img id="img-after" src="dist/img/pallet_070.jpg" class="img-fluid rounded border" alt="After">
+                      <img id="img-after" src="dist/img/wait.png" class="img-fluid rounded border" alt="After">
                       
-                      <div class="ai-box mock-box-3" style="top: 45%; left: 35%; width: 15%; height: 20%;">
+                      <!---<div class="ai-box mock-box-3" style="top: 45%; left: 35%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-002</span>
                       </div>
                       <div class="ai-box mock-box-4" style="top: 48%; left: 55%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-003</span>
-                      </div>
+                      </div>-->
                     </div>
                     <div class="mt-2 text-xs text-muted">
-                      File: <span id="file-after">IMG20251224_151000.jpg</span> | Result: 2 Pallets
+                      File: <span id="file-after">-</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="card-footer py-2 border-top">
-               <small class="text-muted"><i class="fas fa-network-wired text-success mr-1"></i> Status: Online</small>
+               <small class="text-muted"><i class="fas fa-network-wired text-success mr-1"></i> Status: </small>
             </div>
           </div>
 
@@ -84,13 +84,13 @@
             </div>
             <div class="card-body p-0">
               <ul class="list-group list-group-flush">
-                <li class="list-group-item pt-2 pb-2"><b>Site:</b> <span class="float-right">PACJ</span></li>
-                <li class="list-group-item pt-2 pb-2"><b>Location:</b> <span class="float-right">Building 1</span></li>
-                <li class="list-group-item pt-2 pb-2 text-primary"><b>Total Photos:</b> <span class="float-right text-bold">45</span></li>
-                <li class="list-group-item pt-2 pb-2"><b>Total Detected:</b> <span class="float-right text-bold">154</span></li>
-                <li class="list-group-item pt-2 pb-2 text-success"><b>Pallet In Time:</b> <span class="float-right text-bold">130</span></li>
-                <li class="list-group-item pt-2 pb-2 text-danger"><b>Pallet Over Time:</b> <span class="float-right text-bold">24</span></li>
-                <li class="list-group-item pt-2 pb-2 text-purple" style="color: #6f42c1 !important;"><b>Notifications:</b> <span class="float-right text-bold">31</span></li>
+                <li class="list-group-item pt-2 pb-2"><b>Site:</b> <span class="float-right" id="summary-site">-</span></li>
+                <li class="list-group-item pt-2 pb-2"><b>Location:</b> <span class="float-right" id="summary-location">-</span></li>
+                <li class="list-group-item pt-2 pb-2 text-primary"><b>Total Photos:</b> <span class="float-right text-bold" id="summary-photos">0</span></li>
+                <li class="list-group-item pt-2 pb-2"><b>Total Detected:</b> <span class="float-right text-bold" id="summary-detected">0</span></li>
+                <li class="list-group-item pt-2 pb-2 text-success"><b>Pallet In Time:</b> <span class="float-right text-bold" id="summary-in-time">0</span></li>
+                <li class="list-group-item pt-2 pb-2 text-danger"><b>Pallet Over Time:</b> <span class="float-right text-bold" id="summary-over-time">0</span></li>
+                <li class="list-group-item pt-2 pb-2 text-purple" style="color: #6f42c1 !important;"><b>Notifications:</b> <span class="float-right text-bold" id="summary-notifications">0</span></li>
               </ul>
             </div>
             <div class="card-footer p-2 bg-white border-top-0">
@@ -115,7 +115,7 @@
                   <tr><td><b>Alert Threshold:</b></td><td class="text-right text-danger">15m</td></tr>
                   <tr><td><b>Mode:</b></td><td class="text-right text-success"><i class="fas fa-microchip mr-1"></i> CPU Mode (Used: 75%)</td></tr>
                   <tr><td><b>Ram:</b></td><td class="text-right text-success"><i class="fas fa-memory mr-1"></i> 16 GB (Used: 68%)</td></tr>
-                  <tr><td><b>Temp box enclosure:</b></td><td class="text-right">8.74 <sup>°C</sup></td></tr>
+                  <tr><td><b>Temp box enclosure:</b></td><td class="text-right">- <sup>°C</sup></td></tr>
                 </tbody>
               </table>
             </div>
@@ -125,7 +125,7 @@
         </div> </div> </div> </div> </div> 
         
 <style type="text/css">
-  .pallet-image-container { background: #000; min-height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+  .pallet-image-container { background: #eaeaea; min-height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
     .ai-box { position: absolute; border: 2px solid #ff0000; pointer-events: none; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); border-radius: 2px; z-index: 5; }
     .ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95) !important; font-weight: bold; color: #fff; }
     #log-container { height: 130px; overflow-y: auto; background: #1e1e1e; color: #00ff00; 
@@ -139,30 +139,23 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 <script type="text/javascript">
 $(function () {
-  // --- 1. Global Variables for Mockup ---
-  const mockImages = [
-    'dist/img/pallet_070.jpg', 'dist/img/pallet_071.jpg', 'dist/img/pallet_072.jpg',
-    'dist/img/pallet_073.jpg', 'dist/img/pallet_074.jpg', 'dist/img/pallet_075.jpg', 'dist/img/pallet_076.jpg'
-  ];
-  const mockLogs = [
-    "Capturing photo from CAM 0...",
-    "Sending frame to YOLOv8 inference engine...",
-    "Detected 4 pallets (PL-001, PL-002, PL-003, PL-004)",
-    "Comparison complete: No movement detected.",
-    "Updating status to Dashboard database...",
-    "Heartbeat: Camera online, storage 85% free.",
-    "Detection result: 1 pallet approaching Alert Threshold."
-  ];
+  // ========================================
+  // Configuration
+  // ========================================
+  const API_URL = 'http://localhost:5000/api';
+  const POLLING_INTERVAL = 3000; // 3 seconds
   
   let isRunning = false;
-  let logTimer, imgTimer;
+  let pollingTimer = null;
 
-  // --- 2. Requirement 1: Real-time Header Clock ---
+  // ========================================
+  // 1. Real-time Header Clock
+  // ========================================
   function updateHeaderClock() {
     const now = new Date();
-    // ใช้ 'en-GB' เพื่อให้ได้รูปแบบ วัน/เดือน/ปี ค.ศ.
     const formatted = now.toLocaleString('en-GB', { 
       day: '2-digit', 
       month: '2-digit', 
@@ -176,69 +169,206 @@ $(function () {
   }
   setInterval(updateHeaderClock, 1000);
 
-
-  // --- 4. Mockup Functions (Log Feed & Image Swap) ---
-  
-  function addMockLog() {
-    const now = new Date();
-    const timeStr = now.getHours().toString().padStart(2, '0') + ":" + 
-                    now.getMinutes().toString().padStart(2, '0') + ":" + 
-                    now.getSeconds().toString().padStart(2, '0');
-    const msg = mockLogs[Math.floor(Math.random() * mockLogs.length)];
-    const logHtml = `<div><span class="text-white">[${timeStr}]</span> : ${msg}</div>`;
-    
-    if($('#log-container .text-muted').length) $('#log-container').empty();
-    
-    $('#log-container').append(logHtml);
-    $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
-    
-    // Keep logs manageable
-    if ($('#log-container div').length > 30) $('#log-container div:first').remove();
+  // ========================================
+  // 2. Fetch Detection Status
+  // ========================================
+  function fetchDetectionStatus() {
+    $.get(API_URL + '/detection/status', function(data) {
+      if (data.running) {
+        updateButtonState(true);
+      } else {
+        updateButtonState(false);
+      }
+    }).fail(function() {
+      console.error('Cannot fetch detection status');
+    });
   }
 
-  function swapMockImages() {
-    // Pick random images
-    const bImg = mockImages[Math.floor(Math.random() * mockImages.length)];
-    const aImg = mockImages[Math.floor(Math.random() * mockImages.length)];
-    
-    // Fade effect for images
-    $('#img-before, #img-after').css('opacity', '0.3');
-    
-    setTimeout(() => {
-      $('#img-before').attr('src', bImg);
-      $('#img-after').attr('src', aImg);
-      $('#img-before, #img-after').css('opacity', '1');
+  // ========================================
+  // 3.  Fetch Latest Detection (2 images)
+  // ========================================
+  function fetchLatestDetection() {
+    $.get(API_URL + '/detection/latest', function(data) {
+      if (data.success) {
+        // Update Before image
+        if (data.before) {
+          $('#img-before').attr('src', data.before.image_url + '?t=' + Date.now());
+          $('#mock-time-before').text(data.before.date);
+          $('#file-before').text(data.before.filename + ' | Result: ' + data.before.count + ' Pallets');
+        }
+        
+        // Update After image
+        if (data.after) {
+          $('#img-after').attr('src', data.after.image_url + '?t=' + Date. now());
+          $('#mock-time-after').text(data.after.date);
+          $('#file-after').text(data.after.filename + ' | Result: ' + data.after.count + ' Pallets');
+        }
+      }
+    }).fail(function() {
+      console.error('Cannot fetch latest detection');
+    });
+  }
+
+// ========================================
+// 4. Fetch Summary (แบบใหม่ - ใช้ ID)
+// ========================================
+function fetchSummary() {
+  $. get(API_URL + '/detection/summary/today', function(data) {
+    if (data.success) {
+      // Update โดยใช้ ID
+      $('#summary-site').text(data.site);
+      $('#summary-location').text(data.location);
+      $('#summary-photos').text(data.total_photos);
+      $('#summary-detected').text(data.total_detected);
+      $('#summary-in-time').text(data.in_time);
+      $('#summary-over-time').text(data.over_time);
+      $('#summary-notif').text(data.notifications);
       
-      // Slightly move AI boxes to look dynamic
-      $('.ai-box').each(function() {
-         const newTop = (Math.random() * 40 + 20) + '%';
-         const newLeft = (Math.random() * 50 + 10) + '%';
-         $(this).animate({ top: newTop, left: newLeft }, 600);
-      });
-    }, 500);
+      console.log('✅ Summary updated:', data);
+    }
+  }).fail(function(xhr) {
+    console.error('❌ Cannot fetch summary:', xhr.responseText);
+  });
+}
+
+
+
+  // ========================================
+  // 5. Fetch System Logs
+  // ========================================
+  function fetchLogs() {
+    $.get(API_URL + '/detection/logs? limit=15', function(data) {
+      if (data.success && data.logs.length > 0) {
+        // Clear placeholder
+        if ($('#log-container . text-muted').length) {
+          $('#log-container').empty();
+        }
+        
+        // Add new logs
+        data.logs.forEach(function(log) {
+          // Extract time from log [YYYY-MM-DD HH: MM:SS]
+          const logHtml = '<div>' + log + '</div>';
+          $('#log-container').append(logHtml);
+        });
+        
+        // Auto scroll to bottom
+        $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
+        
+        // Keep only last 30 logs
+        if ($('#log-container div').length > 30) {
+          $('#log-container div:lt(' + ($('#log-container div').length - 30) + ')').remove();
+        }
+      }
+    }).fail(function() {
+      console.error('Cannot fetch logs');
+    });
   }
 
-  // --- 5. Requirement 3: Toggle Start/Stop Button ---
+  // ========================================
+  // 6. Fetch System Info
+  // ========================================
+  function fetchSystemInfo() {
+    $.get(API_URL + '/system/info', function(data) {
+      if (data.success) {
+        // Update system info table
+        $('table.table-sm tbody tr:eq(0) td:last').text(data.working_hours);
+        $('table.table-sm tbody tr:eq(1) td:last').text(data.confidence);
+        $('table.table-sm tbody tr:eq(2) td:last').text(data.iou_threshold);
+        $('table.table-sm tbody tr:eq(3) td:last').text(data.image_size);
+        $('table.table-sm tbody tr:eq(4) td:last').text(data.interval);
+        $('table.table-sm tbody tr:eq(5) td:last').text(data.alert_threshold);
+        $('table.table-sm tbody tr:eq(6) td:last').html('<i class="fas fa-microchip mr-1"></i> ' + data.device_mode + ' Mode (Used: ' + data.cpu_usage + ')');
+        $('table.table-sm tbody tr:eq(7) td:last').html('<i class="fas fa-memory mr-1"></i> ' + data.ram_total + ' (Used: ' + data.ram_usage + ')');
+        $('table.table-sm tbody tr:eq(8) td:last').text(data.temperature);
+      }
+    }).fail(function() {
+      console.error('Cannot fetch system info');
+    });
+  }
+
+  // ========================================
+  // 7. Start/Stop Button Handler
+  // ========================================
   $('#btn-toggle-monitor').click(function() {
     const $btn = $(this);
-    if (!isRunning) {
+    
+    if (! isRunning) {
       // START
-      isRunning = true;
-      $btn.removeClass('btn-danger').addClass('btn-success')
-          .html('<i class="fas fa-stop-circle mr-2"></i> Stop Monitoring');
+      $. post(API_URL + '/detection/start', function(response) {
+        if (response. success) {
+          updateButtonState(true);
+          startPolling();
+          alert('✅ ' + response.message);
+        } else {
+          alert('❌ ' + response.message);
+        }
+      }).fail(function(xhr) {
+        alert('❌ Cannot start detection service');
+      });
       
-      logTimer = setInterval(addMockLog, 2500);   // Feed log every 2.5s
-      imgTimer = setInterval(swapMockImages, 3000); // Swap image every 3s
-      addMockLog(); // Trigger once immediately
     } else {
       // STOP
-      isRunning = false;
-      $btn.removeClass('btn-success').addClass('btn-danger')
-          .html('<i class="fas fa-play-circle mr-2"></i> Start Monitoring');
-      
-      clearInterval(logTimer);
-      clearInterval(imgTimer);
+      $.post(API_URL + '/detection/stop', function(response) {
+        if (response.success) {
+          updateButtonState(false);
+          stopPolling();
+          alert('✅ ' + response.message);
+        } else {
+          alert('❌ ' + response.message);
+        }
+      }).fail(function() {
+        alert('❌ Cannot stop detection service');
+      });
     }
   });
+
+  // ========================================
+  // 8. Helper Functions
+  // ========================================
+  function updateButtonState(running) {
+    const $btn = $('#btn-toggle-monitor');
+    isRunning = running;
+    
+    if (running) {
+      $btn.removeClass('btn-danger').addClass('btn-success')
+          .html('<i class="fas fa-stop-circle mr-2"></i> Stop Monitoring');
+    } else {
+      $btn.removeClass('btn-success').addClass('btn-danger')
+          .html('<i class="fas fa-play-circle mr-2"></i> Start Monitoring');
+    }
+  }
+
+  function startPolling() {
+    if (pollingTimer) return;
+    
+    // Fetch immediately
+    fetchLatestDetection();
+    fetchSummary();
+    fetchLogs();
+    
+    // Then poll every 3 seconds
+    pollingTimer = setInterval(function() {
+      fetchLatestDetection();
+      fetchSummary();
+      fetchLogs();
+    }, POLLING_INTERVAL);
+  }
+
+  function stopPolling() {
+    if (pollingTimer) {
+      clearInterval(pollingTimer);
+      pollingTimer = null;
+    }
+  }
+
+  // ========================================
+  // 9. Initialize on Page Load
+  // ========================================
+  fetchDetectionStatus();  // Check if already running
+  fetchSummary();           // Load summary
+  fetchSystemInfo();        // Load system info
+  
+  // Fetch system info every 3 seconds
+  setInterval(fetchSystemInfo, 3000);
 });
 </script>

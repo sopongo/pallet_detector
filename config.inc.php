@@ -359,12 +359,10 @@
                                             <label for="cameraSelect">Select Camera</label>
                                             <select class="custom-select" id="cameraSelect">
                                                 <option value="" disabled selected>-- Select Camera --</option>
-                                                <option value="0">USB Camera 0</option>
-                                                <option value="1">USB Camera 1</option>
-                                                <option value="2">USB Camera 2</option>
-                                                <option value="rtsp">IP Camera (RTSP)</option>
                                             </select>
                                         </div>
+
+                                        
                                         
                                         <div class="form-group">
                                             <button class="btn btn-info">
@@ -376,17 +374,29 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <br>
-                                <h4><i class="fas fa-eye"></i> Live Camera Preview</h4>
-                                <hr>
-                                <div class="camera-preview">
-                                    <!-- TODO: Replace with <img id="cameraFeed" src=""> or <canvas> for real-time feed -->
-                                </div>
-                                <div class="text-center">
-                                    <img id="cameraFeed" src="https://pixsector.com/cache/d01b7e30/av7801257c459e42a24b5.png" alt="Camera Feed"  style="width:100%; max-width:800px; height:600px; background:#000; border:2px solid #ddd; border-radius:8px;">
-                                    <p id="cameraStatus" class="text-muted">No camera selected</p>
-                                </div>
+
+<div class="card">
+    <div class="card-header">
+        <h5><i class="fas fa-eye"></i> Live Camera Preview</h5>
+    </div>
+    <div class="card-body text-center">
+        <!-- ✅ เพิ่ม id="cameraFeed" -->
+        <img id="cameraFeed" 
+             src="" 
+             alt="Camera Feed" 
+             style="width: 100%; max-width:  640px; height: 480px; background: #000; border:  2px solid #ddd; border-radius: 8px; object-fit: contain;">
+        
+        <p id="cameraStatus" class="text-muted mt-2">
+            Select a camera to start streaming
+        </p>
+        
+        <!-- ✅ เพิ่มปุ่ม Stop Stream -->
+        <button class="btn btn-danger btn-sm mt-2" id="btnStopStream" style="display: none;">
+            <i class="fas fa-stop"></i> Stop Stream
+        </button>
+    </div>
+</div>
+
                                 
                             </div>
                             
@@ -1030,21 +1040,52 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ========================================
-// Live Camera Preview Update
+// Live Camera Preview Update 05-01-2025
 // ========================================
 document.getElementById('cameraSelect').addEventListener('change', function() {
     const camera = this.value;
     const feedImg = document.getElementById('cameraFeed');
     const status = document.getElementById('cameraStatus');
     
-    if(camera) {
-        feedImg.src = `${API_URL}/camera/stream/${camera}`;
-        status.textContent = `Streaming from Camera ${camera}`;
-    } else {
+    if(camera && camera !== '') {
+        // ✅ หยุด stream เก่าก่อน
         feedImg. src = '';
+        
+        // รอ 500ms แล้วเริ่ม stream ใหม่
+        setTimeout(function() {
+            feedImg.src = `${API_URL}/camera/stream/${camera}`;
+            feedImg.onerror = function() {
+                status.innerHTML = `<br />❌ Cannot stream from Camera ${camera}`;
+                status.className = 'text-danger';
+            };
+            feedImg.onload = function() {
+                status.innerHTML = `<br />✅ Streaming from Camera ${camera}`;
+                status.className = 'text-success';
+            };
+        }, 500);
+    } else {
+        feedImg.src = '';
         status.textContent = 'No camera selected';
+        status.className = 'text-muted';
     }
 });
+
+// Stop Stream Button
+document.getElementById('btnStopStream').addEventListener('click', function() {
+    const feedImg = document.getElementById('cameraFeed');
+    const status = document.getElementById('cameraStatus');
+    
+    feedImg.src = '';
+    status.textContent = 'Stream stopped';
+    status.className = 'text-warning';
+    this.style.display = 'none';
+});
+
+// แสดงปุ่ม Stop เมื่อ stream เริ่ม
+document.getElementById('cameraFeed').addEventListener('load', function() {
+    document.getElementById('btnStopStream').style.display = 'inline-block';
+});
+
 
 // ========================================
 // 8. GPIO Test Buttons
