@@ -1,0 +1,52 @@
+{
+    "general": {
+        "imagePath": "C:\\laragon\\www\\pallet_detector\\upload_image",
+        "version": "1.0",
+        "lastUpdate": "2026-01-05",
+        "device": "Raspberry Pi 5",
+        "siteCompany": "1",
+        "siteLocation": "2"
+    },
+    "network": {
+        "database": {
+            "host": "localhost",
+            "user": "root",
+            "password": "1234",
+            "port": 3306,
+            "database": "db_pallet_detector"
+        },
+        "lineNotify": {
+            "token": "NULL",
+            "groupId": "NULL"
+        }
+    },
+    "detection": {
+        "modelPath": "models/pallet_best.pt",
+        "confidenceThreshold": 0.65,
+        "iouThreshold": 0.55,
+        "imageSize": 1280,
+        "deviceMode": "cpu",
+        "captureInterval": 15,
+        "alertThreshold": 15,
+        "operatingHours": {
+            "start": "08:00",
+            "end": "23:00"
+        }
+    },
+    "camera": {
+        "selectedCamera": "",
+        "resolution": {
+            "width": 1280,
+            "height": 720
+        }
+    },
+    "gpio": {
+        "redLightPin": 17,
+        "greenLightPin": 27
+    },
+    "system": {
+        "storageUsedMB": 0,
+        "totalFiles": 0,
+        "autoCleanupDays": 7
+    }
+}
