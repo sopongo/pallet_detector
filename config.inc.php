@@ -199,8 +199,8 @@
                                 </div>
                                 
                                 <br>
-                                <!-- LINE Notify Config -->
-                                <h4><i class="fab fa-line"></i> LINE Notify Configuration</h4>
+                                <!-- LINE OA Notify Config -->
+                                <h4><i class="fab fa-line"></i> LINE OA Notify Configuration</h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -852,75 +852,103 @@ function loadConfig() {
                 console.log(`📷 Started preview for camera ${cameraId}`);
             }            
 
-    // Save Config โดยอ้างอิง id btnSaveConfig แทนการใช้ class
-    document.getElementById('btnSaveConfig').addEventListener('click', function() {
-        // ✅ ตรวจสอบ time range
-        const startTime = minutesToTime(window.timeRangeSliderInstance.result.from);
-        const endTime = minutesToTime(window.timeRangeSliderInstance.result.to);
-        
-        // Debug log
-        console.log('⏰ Start:', startTime, 'End:', endTime);
-        
-        // ✅ แปลง 24:00 เป็น 23:59 (ถ้ามี)
-        const safStartTime = startTime.replace('24:', '23:59');
-        const safeEndTime = endTime.replace('24:', '23:59');
-        
-        const config = {
-            general: {
-                imagePath: document.getElementById('imagePath').value,
-                version: "1.0",
-                lastUpdate: new Date().toISOString().split('T')[0],
-                device: "Raspberry Pi 5",
-                siteCompany: document.getElementById('siteCompany').value,
-                siteLocation: document.getElementById('siteLocation').value 
-            },
-            network: {
-                database: {
-                    host: document.getElementById('dbHost').value,
-                    user: document.getElementById('dbUser').value,
-                    password: document. getElementById('dbPass').value,
-                    port: parseInt(document.getElementById('dbPort').value) || 3306,
-                    database: document.getElementById('dbName').value
+// ========================================
+// Save All Changes
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    // หาปุ่ม Save All Changes
+    const saveButton = document. querySelector('.card-footer .btn-success.btn-lg');
+    
+    if(saveButton) {
+        saveButton.addEventListener('click', function() {
+            // ✅ ตรวจสอบ time range
+            const startMinutes = window.timeRangeSliderInstance.result.from;
+            const endMinutes = window.timeRangeSliderInstance.result. to;
+            
+            // ✅ แปลงเป็นเวลา (จำกัดไม่เกิน 23:59)
+            const startTime = minutesToTime(startMinutes);
+            const endTime = minutesToTime(endMinutes);
+            
+            // Debug log
+            console.log('⏰ Start:', startTime, 'End:', endTime);
+            
+            const config = {
+                general: {
+                    imagePath: document. getElementById('imagePath')?.value || '',
+                    version: "1.0",
+                    lastUpdate:  new Date().toISOString().split('T')[0],
+                    device: "Raspberry Pi 5",
+                    siteCompany: document.getElementById('siteCompany')?.value || '',
+                    siteLocation: document. getElementById('siteLocation')?.value || ''
                 },
-                lineNotify: {
-                    token: document.getElementById('lineToken').value,
-                    groupId: document.getElementById('lineGroup').value
+                network: {
+                    database: {
+                        host: document.getElementById('dbHost')?.value || '',
+                        user: document.getElementById('dbUser')?.value || '',
+                        password: document. getElementById('dbPass')?.value || '',
+                        port: parseInt(document.getElementById('dbPort')?.value) || 3306,
+                        database: document.getElementById('dbName')?.value || ''
+                    },
+                    lineNotify: {
+                        token:  document.getElementById('lineToken')?.value || '',
+                        groupId: document.getElementById('lineGroup')?.value || ''
+                    }
+                },
+                detection: {
+                    modelPath: document. getElementById('modelPath')?.value || '',
+                    confidenceThreshold: parseFloat(document.getElementById('confThreshold')?.value) || 0.75,
+                    iouThreshold: parseFloat(document.getElementById('iouThreshold')?.value) || 0.45,
+                    imageSize: parseInt(document.getElementById('imageSize')?.value) || 1280,
+                    deviceMode: document. querySelector('input[name="deviceMode"]:checked')?.value || 'cpu',
+                    captureInterval:  parseInt(document.getElementById('captureInterval')?.value) || 600,
+                    alertThreshold:  parseInt(document.getElementById('alertThreshold')?.value) || 30,
+                    operatingHours: {
+                        start: startTime,  // ✅ ใช้ startTime โดยตรง
+                        end: endTime       // ✅ ใช้ endTime โดยตรง
+                    }
+                },
+                camera: {
+                    selectedCamera: document.getElementById('cameraSelect')?.value || '0',
+                    resolution: {
+                        width: 1280,
+                        height: 720
+                    }
+                },
+                gpio: {
+                    redLightPin:  17,
+                    greenLightPin: 27
+                },
+                system: {
+                    storageUsedMB: 0,
+                    totalFiles:  0,
+                    autoCleanupDays: 7
                 }
-            },
-            detection: {
-                modelPath: document.getElementById('modelPath').value,
-                confidenceThreshold: parseFloat(document.getElementById('confThreshold').value),
-                iouThreshold: parseFloat(document.getElementById('iouThreshold').value),
-                imageSize: parseInt(document.getElementById('imageSize').value),
-                deviceMode: document.querySelector('input[name="deviceMode"]:checked').value,
-                captureInterval: parseInt(document.getElementById('captureInterval').value),
-                alertThreshold: parseInt(document.getElementById('alertThreshold').value),
-                operatingHours: {
-                    start: safeStartTime,  // ✅ ใช้ safe version
-                    end: safeEndTime       // ✅ ใช้ safe version
-                } 
-            },
-            camera:  {
-                selectedCamera: document.getElementById('cameraSelect').value,
-                resolution: { width: 1280, height: 720 }
-            },
-            gpio: { redLightPin: 17, greenLightPin: 27 },
-            system: { storageUsedMB: 0, totalFiles: 0, autoCleanupDays: 7 }
-        };
-        
-        showLoading('Saving.. .');
-        fetch(`${API_URL}/config`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON. stringify(config)
-        })
-        .then(r => r.json())
-        .then(data => {
-            Swal.close();
-            data.success ? showSuccess(data.message) : showError(data.message);
+            };
+            
+            showLoading('Saving configuration.. .');
+            
+            fetch(`${API_URL}/config`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(config)
+            })
+            .then(r => r.json())
+            .then(data => {
+                Swal.close();
+                if(data.success) {
+                    showSuccess(data.message);
+                    loadConfig();
+                } else {
+                    showError(data.message);
+                }
+            })
+            .catch(err => {
+                Swal. close();
+                showError('Save failed: ' + err.message);
+            });
         });
-    });
-
+    }
+});    
 
 // ========================================
 // 2. Save All Changes (แก้ selector)
