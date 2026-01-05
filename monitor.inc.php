@@ -304,73 +304,114 @@ function fetchLogs() {
   // ========================================
   // 7. Start/Stop Button Handler
   // ========================================
-  $('#btn-toggle-monitor').click(function() {
-    const $btn = $(this);
-    
-    if (! isRunning) {
-      // START
-      $. post(API_URL + '/detection/start', function(response) {
-        if (response. success) {
-          updateButtonState(true);
-          startPolling();
-          //alert('✅ ' + response.message);
-          Swal.fire({
-              icon: 'success',
-              title: 'Success!',
-              text: response.message,
-              confirmButtonColor: '#28a745'
-          });          
-        } else {
-          //alert('❌ ' + response.message);
-          Swal.fire({
-              icon: 'error',
-              title: 'Error!',
-              text: response.message,
-              confirmButtonColor: '#dc3545'
-          });          
-        }
-      }).fail(function(xhr) {
-        //alert('❌ Cannot start detection service');
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Cannot start detection service: ' + xhr.responseText,
-            confirmButtonColor: '#dc3545'
-        });
-      });
+    $('#btn-toggle-monitor').click(function() {
+      const $btn = $(this);
       
-    } else {
-      // STOP
-      $.post(API_URL + '/detection/stop', function(response) {
-        if (response.success) {
-          updateButtonState(false);
-          stopPolling();
-          //alert('✅ ' + response.message);
-          Swal.fire({
-              icon: 'success',
-              title: 'Success!',
-              text: response.message,
-              confirmButtonColor: '#28a745'
+      if (! isRunning) {
+          // START
+          console.log('🟢 Starting detection...');
+          
+          $.post(API_URL + '/detection/start', function(response) {
+              console.log('📥 Start response:', response);
+              
+              if (response.success) {
+                  updateButtonState(true);
+                  startPolling();
+                  Swal. fire({
+                      icon: 'success',
+                      title:  'Success!',
+                      text: response.message,
+                      confirmButtonColor: '#28a745'
+                  });
+              } else {
+                  console.error('❌ Start failed:', response.message);
+                  Swal.fire({
+                      icon: 'error',
+                      title: 'Error!',
+                      text: response.message,
+                      confirmButtonColor:  '#dc3545'
+                  });
+              }
+          }).fail(function(xhr, status, error) {
+              console.error('❌ Start request failed:', {
+                  status: xhr.status,
+                  responseText: xhr.responseText,
+                  error: error
+              });
+              
+              Swal.fire({
+                  icon: 'error',
+                  title: 'Error!',
+                  text: 'Cannot start detection service:  ' + error,
+                  confirmButtonColor: '#dc3545'
+              });
           });
-        } else {
-          //alert('❌ ' + response.message);
-          Swal.fire({
-              icon: 'error',
-              title: 'Error!',
-              text: response.message,
-              confirmButtonColor: '#dc3545'
+          
+      } else {
+          // STOP
+          // ✅ เช็ค status ก่อน stop
+          console.log('🔴 Checking status before stop...');
+          
+          $.get(API_URL + '/detection/status', function(statusData) {
+              console.log('📊 Current status:', statusData);
+              
+              if (! statusData.running) {
+                  console.warn('⚠️ Service not running, updating UI');
+                  updateButtonState(false);
+                  stopPolling();
+                  
+                  Swal.fire({
+                      icon: 'warning',
+                      title: 'Already Stopped',
+                      text: 'Detection service is not running',
+                      confirmButtonColor: '#ffc107'
+                  });
+                  return;
+              }
+              
+              // ✅ ถ้ารันอยู่ → หยุด
+              console.log('🛑 Stopping detection...');
+              
+              $.post(API_URL + '/detection/stop', function(response) {
+                  console.log('📥 Stop response:', response);
+                  
+                  if (response.success) {
+                      updateButtonState(false);
+                      stopPolling();
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Success!',
+                          text: response.message,
+                          confirmButtonColor: '#28a745'
+                      });
+                  } else {
+                      console.error('❌ Stop failed:', response.message);
+                      Swal.fire({
+                          icon: 'error',
+                          title: 'Error!',
+                          text: response.message,
+                          confirmButtonColor: '#dc3545'
+                      });
+                  }
+              }).fail(function(xhr, status, error) {
+                  console.error('❌ Stop request failed:', {
+                      status: xhr.status,
+                      responseText: xhr.responseText,
+                      error: error
+                  });
+                  
+                  Swal. fire({
+                      icon: 'error',
+                      title:  'Error!',
+                      text: `Cannot stop detection service\n\nStatus: ${xhr.status}\nError: ${error}`,
+                      confirmButtonColor: '#dc3545'
+                  });
+              });
+              
+          }).fail(function() {
+              console.error('❌ Cannot check status');
           });
-        }
-      }).fail(function() {
-        //alert('❌ Cannot stop detection service');
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: 'Cannot stop detection service',
-            confirmButtonColor: '#dc3545'
-        });
-      });
-    }
+      }
   });
 
   // ========================================

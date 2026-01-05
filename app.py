@@ -402,28 +402,53 @@ def stop_detection():
     """หยุด detection service"""
     global detection_process
     
-    try: 
-        if not detection_process or detection_process.poll() is not None:
+    try:
+        logger.info(f"🔴 Stop request received.  Current process: {detection_process}")
+        
+        # ✅ เช็คว่า process มีหรือไม่
+        if not detection_process: 
+            logger.warning("⚠️ detection_process is None")
             return jsonify({
                 "success": False,
-                "message": "⚠️ Detection service is not running"
+                "message": "⚠️ Detection service is not running (process is None)"
             }), 400
         
-        # หยุด process
-        detection_process.terminate()
-        detection_process.wait(timeout=5)
+        # ✅ เช็คว่า process ยังทำงานอยู่หรือไม่
+        if detection_process.poll() is not None:
+            logger.warning(f"⚠️ Process already terminated (returncode: {detection_process.returncode})")
+            detection_process = None
+            return jsonify({
+                "success": False,
+                "message": "⚠️ Detection service is not running (already terminated)"
+            }), 400
         
-        logger.info("✅ Detection service stopped")
+        # ✅ หยุด process
+        logger.info(f"🛑 Terminating process PID: {detection_process.pid}")
+        detection_process.terminate()
+        detection_process.wait(timeout=10)  # ✅ เพิ่ม timeout เป็น 10 วินาที
+        
+        logger.info("✅ Detection service stopped successfully")
         
         detection_process = None
         
         return jsonify({
             "success": True,
-            "message":  "✅ Detection service stopped"
+            "message": "✅ Detection service stopped"
         })
         
-    except Exception as e:
-        logger. error(f"❌ Cannot stop detection service: {e}")
+    except subprocess.TimeoutExpired:
+        # ✅ ถ้า terminate ไม่ได้ภายใน 10 วินาที → kill แบบบังคับ
+        logger.warning("⚠️ Terminate timeout, forcing kill...")
+        detection_process.kill()
+        detection_process = None
+        
+        return jsonify({
+            "success": True,
+            "message": "✅ Detection service killed (forced)"
+        })
+        
+    except Exception as e: 
+        logger.error(f"❌ Cannot stop detection service: {e}")
         return jsonify({
             "success": False,
             "message": f"❌ Error:  {str(e)}"
