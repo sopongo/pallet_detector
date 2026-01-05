@@ -202,22 +202,6 @@ def video_stream(camera_id):
     Stream camera feed (MJPEG)
     Example: http://localhost:5000/api/camera/stream/0
     """
-    try:
-        return Response(
-            generate_frames(camera_id),
-            mimetype='multipart/x-mixed-replace; boundary=frame'
-        )
-    except Exception as e:
-        logger.error(f"Video stream error: {e}")
-        return jsonify({"success": False, "message": str(e)}), 500
-
-
-@app.route('/api/camera/stream/<int:camera_id>')
-def video_stream(camera_id):
-    """
-    Stream camera feed (MJPEG)
-    Example: http://localhost:5000/api/camera/stream/0
-    """
     try: 
         response = Response(
             generate_frames(camera_id),
