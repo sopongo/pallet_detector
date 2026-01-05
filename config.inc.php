@@ -692,22 +692,6 @@ function loadLocationForSite(siteId, selectedLocationId = null) {
         });
 }
 
-// แก้ไข loadConfig() เพื่อโหลด Location ด้วย
-const originalLoadConfig = loadConfig;
-loadConfig = function() {
-    originalLoadConfig();
-    
-    // รอ config โหลดเสร็จแล้วโหลด locations
-    setTimeout(function() {
-        const siteId = document.getElementById('siteCompany').value;
-        const locationId = document.getElementById('siteLocation').value;
-        
-        if(siteId && siteId !== '') {
-            loadLocationForSite(siteId, locationId);
-        }
-    }, 500);
-};
-
 function loadConfig() {
     fetch(`${API_URL}/config`)
         .then(r => r.json())
@@ -716,12 +700,19 @@ function loadConfig() {
             if(document.getElementById('imagePath')) {
                 document.getElementById('imagePath').value = data.general.imagePath;
             }
+            
+            // ✅ เก็บค่า Site และ Location ไว้ก่อน
+            const savedSiteId = data.general.siteCompany || '';
+            const savedLocationId = data.general.siteLocation || '';
+            
             if(document.getElementById('siteCompany')) {
-                //alert('Site / Company: ' + data.general.siteCompany);
-                document.getElementById('siteCompany').value = data.general.siteCompany || '';
+                document.getElementById('siteCompany').value = savedSiteId;
             }
-            if(document.getElementById('siteLocation')) {
-                document.getElementById('siteLocation').value = data.general.siteLocation || '';
+            
+            // ✅ โหลด Location ถ้ามี Site
+            if(savedSiteId && savedSiteId !== '') {
+                // โหลด locations สำหรับ site นี้
+                loadLocationForSite(savedSiteId, savedLocationId);
             }
             
             // Network - Database
@@ -743,40 +734,103 @@ function loadConfig() {
             if(document.getElementById('modelPath')) {
                 document.getElementById('modelPath').value = data.detection.modelPath;
                 document.getElementById('confThreshold').value = data.detection. confidenceThreshold;
-                document.getElementById('confValue').innerText = data.detection.confidenceThreshold;
+                document. getElementById('confValue').innerText = data.detection.confidenceThreshold;
                 document.getElementById('iouThreshold').value = data.detection.iouThreshold;
                 document.getElementById('iouValue').innerText = data.detection. iouThreshold;
-                document.getElementById('imageSize').value = data.detection. imageSize;
+                document.getElementById('imageSize').value = data.detection.imageSize;
                 document.getElementById('captureInterval').value = data.detection.captureInterval;
                 document.getElementById('alertThreshold').value = data.detection. alertThreshold;
+                
                 // Device Mode
                 if(data.detection. deviceMode === 'gpu') {
                     document.getElementById('deviceGPU').checked = true;
                 } else {
                     document.getElementById('deviceCPU').checked = true;
                 }
-                // Operating Hours (ใหม่)
-                if(data.detection.operatingHours && window.timeRangeSliderInstance) {
+                
+                // Operating Hours
+                if(data.detection. operatingHours && window.timeRangeSliderInstance) {
                     window.timeRangeSliderInstance.update({
-                        from: timeToMinutes(data.detection. operatingHours.start),
+                        from: timeToMinutes(data.detection.operatingHours.start),
                         to: timeToMinutes(data.detection.operatingHours.end)
                     });
                 }                
             }
+                    
+        // Camera
+        if(document.getElementById('cameraSelect')) {
+            const savedCamera = data.camera.selectedCamera || '';
             
-            // Camera
-            if(document.getElementById('cameraSelect')) {
-                document.getElementById('cameraSelect').value = data.camera.selectedCamera;
+            // ✅ เช็คว่ามี option นี้ใน dropdown หรือยัง
+            const cameraSelect = document.getElementById('cameraSelect');
+            const existingOption = Array.from(cameraSelect.options).find(opt => opt.value == savedCamera);
+            
+            if(savedCamera && ! existingOption) {
+                // ถ้ายังไม่มี option → เพิ่มเข้าไป
+                const newOption = document.createElement('option');
+                newOption.value = savedCamera;
+                newOption. text = `Camera ${savedCamera}`;
+                cameraSelect.add(newOption);
             }
             
+            // ตั้งค่า selected
+            cameraSelect.value = savedCamera;
+
+            // ========================================
+            // Start Camera Preview
+            // ========================================
+            function startCameraPreview(cameraId) {
+                const feedImg = document.getElementById('cameraFeed');
+                const status = document.getElementById('cameraStatus');
+                const stopBtn = document.getElementById('btnStopStream');
+                
+                if(! feedImg || !cameraId || cameraId === '') return;
+                
+                // แสดงสถานะ loading
+                status.innerHTML = `<br />⏳ Loading camera ${cameraId}...`;
+                status.className = 'text-info';
+                
+                // หยุด stream เก่า
+                feedImg.src = '';
+                
+                // เริ่ม stream ใหม่
+                setTimeout(function() {
+                    feedImg.src = `${API_URL}/camera/stream/${cameraId}? t=${Date.now()}`;
+                    
+                    feedImg.onerror = function() {
+                        status.innerHTML = `<br />❌ Cannot stream from Camera ${cameraId}`;
+                        status.className = 'text-danger';
+                        stopBtn.style.display = 'none';
+                    };
+                    
+                    feedImg.onload = function() {
+                        status.innerHTML = `<br />✅ Streaming from Camera ${cameraId}`;
+                        status.className = 'text-success';
+                        stopBtn.style.display = 'inline-block';
+                    };
+                }, 500);
+                
+                console.log(`📷 Started preview for camera ${cameraId}`);
+            }            
+            
+            // ✅ Auto preview ถ้ามีกล้องเลือกอยู่
+            if(savedCamera && savedCamera !== '') {
+                setTimeout(function() {
+                    startCameraPreview(savedCamera);
+                }, 1000);
+            }
+            
+            console.log('📷 Camera loaded:', savedCamera);
+        }
+            
             console.log('✅ Config loaded');
+            console.log('📍 Site:', savedSiteId, 'Location:', savedLocationId);
         })
         .catch(err => {
             console.error('❌ Load config error:', err);
             showError('Failed to load configuration');
         });
 }
-
 
 // Save Config โดยอ้างอิง id btnSaveConfig แทนการใช้ class
 document.getElementById('btnSaveConfig').addEventListener('click', function() {
@@ -1139,73 +1193,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ========================================
-// 7. Auto Detect Cameras
-// ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    const cameraTab = document.querySelector('#camera');
-    if(cameraTab) {
-        const autoDetectBtn = Array.from(cameraTab. querySelectorAll('.btn-info')).find(btn => 
-            btn.textContent.includes('Auto Detect')
-        );
-        
-        if(autoDetectBtn) {
-            autoDetectBtn.addEventListener('click', function() {
-                showLoading('Detecting cameras...');
-                
-                fetch(`${API_URL}/camera/detect`)
-                    .then(r => r.json())
-                    . then(data => {
-                        Swal.close();
-                        const select = document.getElementById('cameraSelect');
-                        select.innerHTML = '<option value="">-- Select Camera --</option>';
-                        
-                        if(data. cameras && data.cameras.length > 0) {
-                            data.cameras.forEach(cam => {
-                                select.innerHTML += `<option value="${cam}">USB Camera ${cam}</option>`;
-                            });
-                            showSuccess(`Found ${data.cameras.length} camera(s)`);
-                        } else {
-                            showError('No cameras detected');
-                        }
-                    })
-                    . catch(err => {
-                        Swal.close();
-                        showError('Detection failed: ' + err.message);
-                    });
-            });
+    // ========================================
+    // 7. Auto Detect Cameras
+    // ========================================
+    document.addEventListener('DOMContentLoaded', function() {
+        const cameraTab = document.querySelector('#camera');
+        if(cameraTab) {
+            const autoDetectBtn = Array.from(cameraTab.querySelectorAll('.btn-info')).find(btn => 
+                btn.textContent.includes('Auto Detect')
+            );
+            
+            if(autoDetectBtn) {
+                autoDetectBtn.addEventListener('click', function() {
+                    showLoading('Detecting cameras...');
+                    
+                    fetch(`${API_URL}/camera/detect`)
+                        .then(r => r.json())
+                        .then(data => {
+                            Swal.close();
+                            const select = document.getElementById('cameraSelect');
+                            
+                            // ✅ เก็บค่าเดิมไว้ก่อน
+                            const currentValue = select.value;
+                            
+                            // สร้าง options ใหม่
+                            let html = '<option value="">-- Select Camera --</option>';
+                            
+                            if(data.cameras && data.cameras.length > 0) {
+                                data.cameras.forEach(cam => {
+                                    const selected = (cam == currentValue) ? 'selected' : '';
+                                    html += `<option value="${cam}" ${selected}>USB Camera ${cam}</option>`;
+                                });
+                                
+                                select.innerHTML = html;
+                                showSuccess(`Found ${data.cameras.length} camera(s)`);
+                                
+                                // ✅ ถ้ามีค่าเดิม → เลือกกลับ
+                                if(currentValue && data.cameras.includes(parseInt(currentValue))) {
+                                    select.value = currentValue;
+                                }
+                            } else {
+                                select.innerHTML = html;
+                                showError('No cameras detected');
+                            }
+                        })
+                        .catch(err => {
+                            Swal.close();
+                            showError('Detection failed: ' + err.message);
+                        });
+                });
+            }
         }
-    }
-});
+    });
 
 // ========================================
 // Live Camera Preview Update 05-01-2025
 // ========================================
 document.getElementById('cameraSelect').addEventListener('change', function() {
     const camera = this.value;
-    const feedImg = document.getElementById('cameraFeed');
-    const status = document.getElementById('cameraStatus');
     
     if(camera && camera !== '') {
-        // ✅ หยุด stream เก่าก่อน
-        feedImg. src = '';
-        
-        // รอ 500ms แล้วเริ่ม stream ใหม่
-        setTimeout(function() {
-            feedImg.src = `${API_URL}/camera/stream/${camera}`;
-            feedImg.onerror = function() {
-                status.innerHTML = `<br />❌ Cannot stream from Camera ${camera}`;
-                status.className = 'text-danger';
-            };
-            feedImg.onload = function() {
-                status.innerHTML = `<br />✅ Streaming from Camera ${camera}`;
-                status.className = 'text-success';
-            };
-        }, 500);
+        startCameraPreview(camera);
     } else {
+        const feedImg = document.getElementById('cameraFeed');
+        const status = document.getElementById('cameraStatus');
+        const stopBtn = document.getElementById('btnStopStream');
+        
         feedImg.src = '';
         status.textContent = 'No camera selected';
         status.className = 'text-muted';
+        stopBtn.style.display = 'none';
     }
 });
 
