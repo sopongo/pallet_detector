@@ -1,23 +1,28 @@
-# Flask Framework
-Flask==3.0.0
-Flask-CORS==4.0.0
+# Pallet Detector - Requirements for Raspberry Pi
+# Python 3.9+
+
+# Web Framework
+Flask>=2.3.0
+flask-cors>=4.0.0
+
+# Computer Vision
+opencv-python>=4.8.0
+ultralytics>=8.0.0
+Pillow>=10.0.0
+numpy>=1.24.0
+
+# Deep Learning (CPU version for Pi)
+torch>=2.0.0
+torchvision>=0.15.0
 
 # Database
-PyMySQL==1.1.0
+pymysql>=1.1.0
 
-# Camera (ต้องใช้ NumPy 1.x)
-numpy==1.24.3
-opencv-python==4.8.1.78
+# HTTP Client
+requests>=2.31.0
 
-# GPIO (Raspberry Pi only)
-gpiozero==2.0.1
-RPi.GPIO==0.7.1
+# System Monitoring
+psutil>=5.9.0
 
-# LINE Notify
-requests==2.31.0
-
-# YOLO (ใช้ทีหลัง - comment ไว้ก่อน)
-# ultralytics==8.1.0
-
-# Utilities
-python-dotenv==1.0.0
+# Raspberry Pi GPIO
+RPi.GPIO>=0.7.1

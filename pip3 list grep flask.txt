@@ -1,0 +1,113 @@
+# 1. ติดตั้ง python3-venv
+sudo apt update
+sudo apt install -y python3-venv python3-full
+
+# 2. สร้าง virtual environment
+cd ~/pallet_detector
+python3 -m venv venv
+
+# 3. Activate venv
+source venv/bin/activate
+
+# 4. อัพเดท pip
+pip install --upgrade pip
+
+# 5. ติดตั้ง libraries
+pip install Flask flask-cors
+pip install opencv-python
+pip install ultralytics
+pip install pymysql
+pip install requests
+pip install psutil
+pip install Pillow numpy
+
+# 6. ติดตั้ง PyTorch (CPU version สำหรับ Pi)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# 7. Raspberry Pi specific
+pip install RPi.GPIO
+
+
+
+# Activate venv
+source venv/bin/activate
+
+# ไปที่ project folder
+cd ~/pallet_detector
+
+# รัน app
+python3 app.py
+
+
+
+
+
+# 1. เข้า MySQL
+mysql -u root -p
+
+# 2. สร้าง database (ถ้ายังไม่มี)
+CREATE DATABASE pallet_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+# 3. ออกจาก MySQL
+EXIT;
+
+# 4. Import ไฟล์ .sql
+mysql -u root -p pallet_db < /path/to/your/file.sql
+
+# ตัวอย่าง
+mysql -u root -p pallet_db < /var/www/pallet_detector/db_pallet.sql
+
+
+
+# 1. ติดตั้ง MariaDB (MySQL fork สำหรับ Pi)
+sudo apt update
+sudo apt install -y mariadb-server mariadb-client
+
+# 2. เริ่ม service
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+
+# 3. ตั้งค่าความปลอดภัย (กำหนด root password)
+sudo mysql_secure_installation
+
+# ตอบคำถาม: 
+# - Enter current password: (กด Enter - ยังไม่มี password)
+# - Switch to unix_socket authentication: n
+# - Change root password: Y → ตั้ง password ใหม่
+# - Remove anonymous users: Y
+# - Disallow root login remotely: Y
+# - Remove test database: Y
+# - Reload privilege tables: Y
+
+# 4. สร้าง database
+mysql -u root -p
+CREATE DATABASE pallet_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+EXIT;
+
+# 5. Import ไฟล์
+mysql -u root -p pallet_db < /path/to/file.sql
+
+
+
+🎯 วิธีที่ 2: ใช้ phpMyAdmin (ถ้าต้องการ GUI)
+# 1. ติดตั้ง Apache + PHP
+sudo apt install -y apache2 php php-mysql php-mbstring php-zip php-gd php-json php-curl
+
+# 2. ติดตั้ง phpMyAdmin
+sudo apt install -y phpmyadmin
+
+# เลือก: 
+# - Web server: apache2 (กด Space เพื่อเลือก, Enter เพื่อยืนยัน)
+# - Configure database: Yes
+# - Password: ตั้ง password สำหรับ phpMyAdmin
+
+# 3. เปิดใช้งาน phpMyAdmin
+sudo ln -s /usr/share/phpmyadmin /var/www/html/phpmyadmin
+
+# 4. Restart Apache
+sudo systemctl restart apache2
+
+# 5. เข้าผ่าน browser
+# http://<raspberry-pi-ip>/phpmyadmin
+# User: root
+# Password: (password ที่ตั้งไว้)
