@@ -151,7 +151,7 @@ class DetectionService:
                 return None
             
             # 3. Track pallets
-            active_pallets = self.tracker. get_active_pallets()
+            active_pallets = self.tracker.get_active_pallets()
             detected_pallets = detection_result['pallets']
             current_pallet_ids = []
             overtime_pallets = []
@@ -175,7 +175,7 @@ class DetectionService:
                     )
                     
                     if result and result['status'] == 1:  # Overtime
-                        overtime_pallets. append({
+                        overtime_pallets.append({
                             'pallet_id': result['pallet_id'],
                             'duration': result['duration'],
                             'site': image_data['site'],
