@@ -11,9 +11,9 @@ from datetime import datetime, timedelta
 import signal
 import sys
 import config
-from utils. logger import setup_logger
+from utils.logger import setup_logger
 from utils.detector import PalletDetector
-from utils. tracker import PalletTracker
+from utils.tracker import PalletTracker
 from utils.database import DatabaseManager
 from utils.line_messaging import LineMessagingAPI
 from utils.gpio_control import LightController
@@ -145,7 +145,7 @@ class DetectionService:
         current_time = now.time()
         
         start_time = datetime.strptime(self.cfg['detection']['operatingHours']['start'], '%H:%M').time()
-        end_time = datetime.strptime(self. cfg['detection']['operatingHours']['end'], '%H:%M').time()
+        end_time = datetime.strptime(self.cfg['detection']['operatingHours']['end'], '%H:%M').time()
         
         return start_time <= current_time <= end_time
     
