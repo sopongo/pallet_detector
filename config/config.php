@@ -4,6 +4,7 @@ $site_config = __DIR__ . '/sites.json';
 $pallet_config = __DIR__ . '/pallet_config.json';
 
 $pallet_name_prefix = 'PL-'; // Prefix ของชื่อพาเลท เช่น PL-0001
+$person_name_prefix = 'PE-'; // Prefix ของชื่อพาเลท เช่น PE-0001
 
 $arr_site = [
     1 => [
