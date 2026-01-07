@@ -1,0 +1,146 @@
+[2026-01-07 23:45:48] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-07 23:45:48] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 23:45:48] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 23:45:48] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-07 23:45:48] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-07 23:45:48] INFO: \u2705 Detection service initialized
+[2026-01-07 23:45:48] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 23:45:48] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:45:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234551.jpg
+[2026-01-07 23:45:53] INFO: Detected 0 object(s) in IMG_20260107_234551.jpg
+[2026-01-07 23:45:53] INFO: Image dimensions: 640x480
+[2026-01-07 23:45:53] INFO: Saved image record #96:  IMG_20260107_234551.jpg
+[2026-01-07 23:45:53] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234551_detected.jpg
+[2026-01-07 23:45:53] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:45:53] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:45:53] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:45:53] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:45:53] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:46:03] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:46:05] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234605.jpg
+[2026-01-07 23:46:06] INFO: Detected 0 object(s) in IMG_20260107_234605.jpg
+[2026-01-07 23:46:06] INFO: Image dimensions: 640x480
+[2026-01-07 23:46:06] INFO: Saved image record #97:  IMG_20260107_234605.jpg
+[2026-01-07 23:46:06] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234605_detected.jpg
+[2026-01-07 23:46:06] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:46:06] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:46:06] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:46:06] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:46:06] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:46:16] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:46:18] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234618.jpg
+[2026-01-07 23:46:19] INFO: Detected 0 object(s) in IMG_20260107_234618.jpg
+[2026-01-07 23:46:19] INFO: Image dimensions: 640x480
+[2026-01-07 23:46:19] INFO: Saved image record #98:  IMG_20260107_234618.jpg
+[2026-01-07 23:46:19] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234618_detected.jpg
+[2026-01-07 23:46:19] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:46:19] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:46:19] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:46:19] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:46:19] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:46:29] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:46:31] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234631.jpg
+[2026-01-07 23:46:32] INFO: Detected 0 object(s) in IMG_20260107_234631.jpg
+[2026-01-07 23:46:32] INFO: Image dimensions: 640x480
+[2026-01-07 23:46:32] INFO: Saved image record #99:  IMG_20260107_234631.jpg
+[2026-01-07 23:46:32] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234631_detected.jpg
+[2026-01-07 23:46:32] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:46:32] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:46:32] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:46:32] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:46:32] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:46:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:46:45] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234645.jpg
+[2026-01-07 23:46:45] INFO: Detected 0 object(s) in IMG_20260107_234645.jpg
+[2026-01-07 23:46:45] INFO: Image dimensions: 640x480
+[2026-01-07 23:46:45] INFO: Saved image record #100:  IMG_20260107_234645.jpg
+[2026-01-07 23:46:45] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234645_detected.jpg
+[2026-01-07 23:46:45] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:46:45] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:46:45] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:46:45] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:46:45] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:46:55] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:46:58] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234658.jpg
+[2026-01-07 23:46:58] INFO: Detected 0 object(s) in IMG_20260107_234658.jpg
+[2026-01-07 23:46:58] INFO: Image dimensions: 640x480
+[2026-01-07 23:46:58] INFO: Saved image record #101:  IMG_20260107_234658.jpg
+[2026-01-07 23:46:58] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234658_detected.jpg
+[2026-01-07 23:46:58] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:46:58] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:46:58] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:46:58] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:46:58] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:47:08] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:47:11] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234711.jpg
+[2026-01-07 23:47:11] INFO: Detected 0 object(s) in IMG_20260107_234711.jpg
+[2026-01-07 23:47:11] INFO: Image dimensions: 640x480
+[2026-01-07 23:47:11] INFO: Saved image record #102:  IMG_20260107_234711.jpg
+[2026-01-07 23:47:11] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234711_detected.jpg
+[2026-01-07 23:47:11] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:47:11] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:47:11] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:47:11] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:47:11] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:47:21] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:47:24] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234724.jpg
+[2026-01-07 23:47:24] INFO: Detected 0 object(s) in IMG_20260107_234724.jpg
+[2026-01-07 23:47:24] INFO: Image dimensions: 640x480
+[2026-01-07 23:47:24] INFO: Saved image record #103:  IMG_20260107_234724.jpg
+[2026-01-07 23:47:24] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234724_detected.jpg
+[2026-01-07 23:47:24] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:47:24] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:47:24] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:47:24] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:47:24] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:47:34] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:47:36] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234736.jpg
+[2026-01-07 23:47:37] INFO: Detected 0 object(s) in IMG_20260107_234736.jpg
+[2026-01-07 23:47:37] INFO: Image dimensions: 640x480
+[2026-01-07 23:47:37] INFO: Saved image record #104:  IMG_20260107_234736.jpg
+[2026-01-07 23:47:37] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234736_detected.jpg
+[2026-01-07 23:47:37] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:47:37] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:47:37] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:47:37] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 23:47:37] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:47:47] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:47:49] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234749.jpg
+[2026-01-07 23:47:50] INFO: Detected 1 object(s) in IMG_20260107_234749.jpg
+[2026-01-07 23:47:50] INFO: Image dimensions: 640x480
+[2026-01-07 23:47:50] INFO: Saved image record #105:  IMG_20260107_234749.jpg
+[2026-01-07 23:47:50] INFO: \u274c No match found for position [188.38385009765625, 201.2477264404297] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 23:47:50] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234749_detected.jpg
+[2026-01-07 23:47:50] INFO: Created new pallet #17 (PL-0017)
+[2026-01-07 23:47:50] INFO: \u2705 Created pallet: #17 (PL-0017)
+[2026-01-07 23:47:50] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:47:50] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:47:50] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:47:50] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 23:47:50] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:48:00] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:48:02] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234802.jpg
+[2026-01-07 23:48:03] INFO: Detected 1 object(s) in IMG_20260107_234802.jpg
+[2026-01-07 23:48:03] INFO: Image dimensions: 640x480
+[2026-01-07 23:48:03] INFO: Saved image record #106:  IMG_20260107_234802.jpg
+[2026-01-07 23:48:03] INFO: \u2705 Matched: New pos [186.6221466064453, 203.60374450683594] \u2192 Pallet #17 (distance: 2.9px)
+[2026-01-07 23:48:03] INFO: Updated pallet #17 (duration: 0.2 min)
+[2026-01-07 23:48:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234802_detected.jpg
+[2026-01-07 23:48:03] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:48:03] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:48:03] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:48:03] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 23:48:03] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 23:48:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 23:48:15] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234815.jpg
+[2026-01-07 23:48:16] INFO: Detected 1 object(s) in IMG_20260107_234815.jpg
+[2026-01-07 23:48:16] INFO: Image dimensions: 640x480
+[2026-01-07 23:48:16] INFO: Saved image record #107:  IMG_20260107_234815.jpg
+[2026-01-07 23:48:16] INFO: \u2705 Matched: New pos [188.85549926757812, 199.931884765625] \u2192 Pallet #17 (distance: 1.4px)
+[2026-01-07 23:48:16] INFO: Updated pallet #17 (duration: 0.4 min)
+[2026-01-07 23:48:16] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_234815_detected.jpg
+[2026-01-07 23:48:16] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 23:48:16] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 23:48:16] INFO: \u2705 No overtime pallets - turning on green light
+[2026-01-07 23:48:16] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 23:48:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
