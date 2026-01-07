@@ -73,7 +73,7 @@ class PalletTracker:
     
     def find_matching_pallet(self, new_center, active_pallets, image_width, image_height):
         """
-        หาพาเลทที่ตรงกับตำแหน่งใหม่ (Position-based matching ±5%)
+        หาพาเลทที่ตรงกับตำแหน่งใหม่ (Position-based matching ±15%)
         
         Args:
             new_center:  [cx, cy] ของพาเลทใหม่
@@ -84,9 +84,11 @@ class PalletTracker:
         Returns:
             dict or None: พาเลทที่ตรงกัน หรือ None
         """
-        # ✅ คำนวณ threshold แบบ dynamic (±5% ของขนาดภาพ)
-        threshold_x = image_width * 0.05
-        threshold_y = image_height * 0.05
+        # ✅ คำนวณ threshold แบบ dynamic (±15% ของขนาดภาพ - เพิ่มจาก 5% เพื่อรองรับการเคลื่อนไหวเล็กน้อย)
+        threshold_x = image_width * 0.15
+        threshold_y = image_height * 0.15
+        
+        logger.debug(f"Position tolerance: ±{threshold_x:.1f}px (X), ±{threshold_y:.1f}px (Y)")
         
         best_match = None
         min_distance = float('inf')
@@ -104,6 +106,12 @@ class PalletTracker:
                 if distance < min_distance:
                     min_distance = distance
                     best_match = pallet
+                    logger.debug(f"  → Match candidate: Pallet #{pallet['id_pallet']} (distance: {distance:.1f}px)")
+        
+        if best_match:
+            logger.info(f"✅ Matched: New pos {new_center} → Pallet #{best_match['id_pallet']} (distance: {min_distance:.1f}px)")
+        else:
+            logger.info(f"❌ No match found for position {new_center} (threshold: ±{threshold_x:.1f}px, ±{threshold_y:.1f}px)")
         
         return best_match
     
@@ -249,3 +257,65 @@ class PalletTracker:
             
         except Exception as e:
             logger.error(f"Error deactivating pallets: {e}")
+    
+    def find_recently_deactivated_pallet(self, new_center, image_width, image_height, minutes=5):
+        """
+        หาพาเลทที่ถูก deactivate ไปไม่นาน ที่ตำแหน่งใกล้เคียง
+        ใช้สำหรับตรวจสอบว่าพาเลทใหม่อาจเป็นพาเลทเดิมที่หายไปชั่วคราว
+        
+        Args:
+            new_center: [cx, cy] ของตำแหน่งใหม่
+            image_width: ความกว้างภาพ (pixels)
+            image_height: ความสูงภาพ (pixels)
+            minutes: ช่วงเวลาย้อนหลัง (นาที) - default 5 นาที
+            
+        Returns:
+            dict or None: พาเลทที่เคย deactivate หรือ None
+        """
+        try:
+            conn = self.get_db_connection()
+            cursor = conn.cursor()
+            
+            # ✅ Query พาเลทที่ถูก deactivate ไม่เกิน X นาที และคำนวณระยะเวลารวม
+            cursor.execute("""
+                SELECT 
+                    id_pallet,
+                    pallet_no,
+                    pallet_name,
+                    pos_x,
+                    pos_y,
+                    TIMESTAMPDIFF(MINUTE, first_detected_at, last_detected_at) as total_duration,
+                    last_detected_at,
+                    in_over
+                FROM tb_pallet
+                WHERE is_active = 0
+                  AND status = 2
+                  AND last_detected_at >= DATE_SUB(NOW(), INTERVAL %s MINUTE)
+                ORDER BY last_detected_at DESC
+            """, (minutes,))
+            
+            recent_pallets = cursor.fetchall()
+            cursor.close()
+            conn.close()
+            
+            if not recent_pallets:
+                return None
+            
+            # ✅ หาว่าตรงกับตำแหน่งใหม่หรือไม่ (ใช้ threshold เดียวกับ find_matching_pallet)
+            threshold_x = image_width * 0.15
+            threshold_y = image_height * 0.15
+            
+            for pallet in recent_pallets:
+                old_center = [float(pallet['pos_x']), float(pallet['pos_y'])]
+                dx = abs(new_center[0] - old_center[0])
+                dy = abs(new_center[1] - old_center[1])
+                
+                if dx <= threshold_x and dy <= threshold_y:
+                    logger.info(f"🔍 Found recently deactivated pallet: #{pallet['id_pallet']} ({pallet['pallet_name']}) - duration: {pallet['total_duration']:.1f} min")
+                    return pallet
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error finding recently deactivated pallet: {e}")
+            return None

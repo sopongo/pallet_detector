@@ -189,6 +189,16 @@ class PalletDetector:
                     pallet['pallet_no'] = next_no
                     pallet['pallet_name'] = pallet_name
                     next_no += 1
+                    
+                    # ✅ อัปเดตข้อมูลกลับไปที่ pallets ต้นฉบับ (เพื่อให้บันทึกลง database ได้)
+                    for orig_pallet in pallets:
+                        # หาตัวเดียวกันโดยเทียบ center และ bbox
+                        if (orig_pallet.get('center') == pallet['center'] and 
+                            orig_pallet.get('bbox') == pallet['bbox']):
+                            orig_pallet['pallet_no'] = pallet['pallet_no']
+                            orig_pallet['pallet_name'] = pallet['pallet_name']
+                            logger.debug(f"✅ Updated original pallet: {pallet['pallet_name']}")
+                            break
                 
                 # วาดกรอบ
                 x1, y1, x2, y2 = bbox
