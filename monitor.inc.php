@@ -139,6 +139,9 @@
       font-family: Arial, Helvetica, sans-serif;
       padding: 12px; font-size: 13px; }
     .detection-wrapper img { width: 100%; transition: opacity 0.5s ease; }
+    /* ✅ เพิ่ม style สำหรับ log error (สีแดง) */
+    .log-error { color: #ff4444 !important; font-weight: bold; }
+    .log-warning { color: #ffaa00 !important; }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -315,6 +318,7 @@ function fetchSummary() {
   // ========================================
   // 5.  Fetch System Logs
   // - note: fixed previous spacing bug (parameter 'limit' passing)
+  // - ✅ Updated to handle log objects with class
   // ========================================
   function fetchLogs() {
     $.get(API_URL + '/detection/logs?limit=15', function(data) {
@@ -327,10 +331,17 @@ function fetchSummary() {
         // Clear old logs first
         $('#log-container').empty();
         
-        // Add new logs
+        // ✅ Add new logs (now handling objects with class)
         data.logs.forEach(function(log) {
-          const logHtml = '<div>' + log + '</div>';
-          $('#log-container').append(logHtml);
+          // Check if log is object or string (backward compatibility)
+          if (typeof log === 'object' && log.text) {
+            const logHtml = '<div class="' + (log.class || '') + '">' + log.text + '</div>';
+            $('#log-container').append(logHtml);
+          } else {
+            // Fallback for old format
+            const logHtml = '<div>' + log + '</div>';
+            $('#log-container').append(logHtml);
+          }
         });
         
         // Auto scroll to bottom
