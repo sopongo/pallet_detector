@@ -524,3 +524,484 @@
 [ WARN:0@378.742] global cap.cpp:480 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
 [2026-01-07 15:17:17] ERROR: Cannot open camera 0
 [2026-01-07 15:17:17] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:09:37] INFO: \u2705 YOLOv8 model loaded:   models/best8s.pt
+[2026-01-07 17:09:37] INFO: \U0001f4cb Model classes: {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep', 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave', 69: 'oven', 70: 'toaster', 71: 'sink', 72: 'refrigerator', 73: 'book', 74: 'clock', 75: 'vase', 76: 'scissors', 77: 'teddy bear', 78: 'hair drier', 79: 'toothbrush'}
+[2026-01-07 17:09:37] INFO: \u2705 Detection service initialized
+[2026-01-07 17:09:37] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 17:09:37] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@4.266] global cap.cpp:480 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 17:09:38] ERROR: Cannot open camera 0
+[2026-01-07 17:09:38] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:09:48] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@14.453] global cap.cpp:480 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 17:09:48] ERROR: Cannot open camera 0
+[2026-01-07 17:09:48] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:09:58] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@24.644] global cap.cpp:480 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 17:09:58] ERROR: Cannot open camera 0
+[2026-01-07 17:09:58] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:12:40] INFO: \u2705 YOLOv8 model loaded:   models/best8s.pt
+[2026-01-07 17:12:40] INFO: \U0001f4cb Model classes: {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep', 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave', 69: 'oven', 70: 'toaster', 71: 'sink', 72: 'refrigerator', 73: 'book', 74: 'clock', 75: 'vase', 76: 'scissors', 77: 'teddy bear', 78: 'hair drier', 79: 'toothbrush'}
+[2026-01-07 17:12:40] INFO: \u2705 Detection service initialized
+[2026-01-07 17:12:40] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 17:12:40] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:12:42] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171242.jpg
+[2026-01-07 17:12:42] INFO: Detected 0 object(s) in IMG_20260107_171242.jpg
+[2026-01-07 17:12:42] INFO: Image dimensions: 640x480
+[2026-01-07 17:12:42] INFO: Saved image record #221:  IMG_20260107_171242.jpg
+[2026-01-07 17:12:42] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171242_detected.jpg
+[2026-01-07 17:12:42] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:12:42] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:12:52] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:12:54] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171254.jpg
+[2026-01-07 17:12:55] INFO: Detected 1 object(s) in IMG_20260107_171254.jpg
+[2026-01-07 17:12:55] INFO: Image dimensions: 640x480
+[2026-01-07 17:12:55] INFO: Saved image record #222:  IMG_20260107_171254.jpg
+[2026-01-07 17:12:55] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171254_detected.jpg
+[2026-01-07 17:12:55] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:12:55] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:12:55] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:13:05] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:13:07] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171307.jpg
+[2026-01-07 17:13:08] INFO: Detected 1 object(s) in IMG_20260107_171307.jpg
+[2026-01-07 17:13:08] INFO: Image dimensions: 640x480
+[2026-01-07 17:13:08] INFO: Saved image record #223:  IMG_20260107_171307.jpg
+[2026-01-07 17:13:08] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171307_detected.jpg
+[2026-01-07 17:13:08] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:13:08] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:13:08] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:13:18] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:13:21] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171321.jpg
+[2026-01-07 17:13:21] INFO: Detected 1 object(s) in IMG_20260107_171321.jpg
+[2026-01-07 17:13:21] INFO: Image dimensions: 640x480
+[2026-01-07 17:13:21] INFO: Saved image record #224:  IMG_20260107_171321.jpg
+[2026-01-07 17:13:21] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171321_detected.jpg
+[2026-01-07 17:13:21] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:13:21] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:13:21] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:13:31] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:13:33] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171333.jpg
+[2026-01-07 17:13:34] INFO: Detected 1 object(s) in IMG_20260107_171333.jpg
+[2026-01-07 17:13:34] INFO: Image dimensions: 640x480
+[2026-01-07 17:13:34] INFO: Saved image record #225:  IMG_20260107_171333.jpg
+[2026-01-07 17:13:34] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171333_detected.jpg
+[2026-01-07 17:13:34] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:13:34] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:13:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:13:44] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:13:46] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171346.jpg
+[2026-01-07 17:13:47] INFO: Detected 0 object(s) in IMG_20260107_171346.jpg
+[2026-01-07 17:13:47] INFO: Image dimensions: 640x480
+[2026-01-07 17:13:47] INFO: Saved image record #226:  IMG_20260107_171346.jpg
+[2026-01-07 17:13:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171346_detected.jpg
+[2026-01-07 17:13:47] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:13:47] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:13:57] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:13:59] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171359.jpg
+[2026-01-07 17:13:59] INFO: Detected 1 object(s) in IMG_20260107_171359.jpg
+[2026-01-07 17:13:59] INFO: Image dimensions: 640x480
+[2026-01-07 17:13:59] INFO: Saved image record #227:  IMG_20260107_171359.jpg
+[2026-01-07 17:13:59] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171359_detected.jpg
+[2026-01-07 17:13:59] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:14:00] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:14:00] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:14:10] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:14:12] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171412.jpg
+[2026-01-07 17:14:12] INFO: Detected 1 object(s) in IMG_20260107_171412.jpg
+[2026-01-07 17:14:12] INFO: Image dimensions: 640x480
+[2026-01-07 17:14:12] INFO: Saved image record #228:  IMG_20260107_171412.jpg
+[2026-01-07 17:14:12] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171412_detected.jpg
+[2026-01-07 17:14:12] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:14:12] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:14:12] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:14:22] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:14:24] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171424.jpg
+[2026-01-07 17:14:25] INFO: Detected 0 object(s) in IMG_20260107_171424.jpg
+[2026-01-07 17:14:25] INFO: Image dimensions: 640x480
+[2026-01-07 17:14:25] INFO: Saved image record #229:  IMG_20260107_171424.jpg
+[2026-01-07 17:14:25] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171424_detected.jpg
+[2026-01-07 17:14:25] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:14:25] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:14:35] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:14:37] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171437.jpg
+[2026-01-07 17:14:38] INFO: Detected 1 object(s) in IMG_20260107_171437.jpg
+[2026-01-07 17:14:38] INFO: Image dimensions: 640x480
+[2026-01-07 17:14:38] INFO: Saved image record #230:  IMG_20260107_171437.jpg
+[2026-01-07 17:14:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171437_detected.jpg
+[2026-01-07 17:14:38] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:14:38] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:14:38] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:14:48] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:14:50] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171450.jpg
+[2026-01-07 17:14:50] INFO: Detected 1 object(s) in IMG_20260107_171450.jpg
+[2026-01-07 17:14:50] INFO: Image dimensions: 640x480
+[2026-01-07 17:14:50] INFO: Saved image record #231:  IMG_20260107_171450.jpg
+[2026-01-07 17:14:50] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171450_detected.jpg
+[2026-01-07 17:14:50] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:14:50] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:14:50] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:15:00] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:15:02] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171502.jpg
+[2026-01-07 17:15:03] INFO: Detected 1 object(s) in IMG_20260107_171502.jpg
+[2026-01-07 17:15:03] INFO: Image dimensions: 640x480
+[2026-01-07 17:15:03] INFO: Saved image record #232:  IMG_20260107_171502.jpg
+[2026-01-07 17:15:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171502_detected.jpg
+[2026-01-07 17:15:03] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:15:03] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:15:03] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:15:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:15:15] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171515.jpg
+[2026-01-07 17:15:16] INFO: Detected 1 object(s) in IMG_20260107_171515.jpg
+[2026-01-07 17:15:16] INFO: Image dimensions: 640x480
+[2026-01-07 17:15:16] INFO: Saved image record #233:  IMG_20260107_171515.jpg
+[2026-01-07 17:15:16] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171515_detected.jpg
+[2026-01-07 17:15:16] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:15:16] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:15:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:15:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:15:28] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171528.jpg
+[2026-01-07 17:15:28] INFO: Detected 1 object(s) in IMG_20260107_171528.jpg
+[2026-01-07 17:15:28] INFO: Image dimensions: 640x480
+[2026-01-07 17:15:28] INFO: Saved image record #234:  IMG_20260107_171528.jpg
+[2026-01-07 17:15:28] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171528_detected.jpg
+[2026-01-07 17:15:28] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:15:28] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:15:28] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:15:38] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:15:40] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171540.jpg
+[2026-01-07 17:15:41] INFO: Detected 1 object(s) in IMG_20260107_171540.jpg
+[2026-01-07 17:15:41] INFO: Image dimensions: 640x480
+[2026-01-07 17:15:41] INFO: Saved image record #235:  IMG_20260107_171540.jpg
+[2026-01-07 17:15:41] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171540_detected.jpg
+[2026-01-07 17:15:41] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:15:41] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:15:41] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:15:51] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:15:53] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171553.jpg
+[2026-01-07 17:15:54] INFO: Detected 1 object(s) in IMG_20260107_171553.jpg
+[2026-01-07 17:15:54] INFO: Image dimensions: 640x480
+[2026-01-07 17:15:54] INFO: Saved image record #236:  IMG_20260107_171553.jpg
+[2026-01-07 17:15:54] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171553_detected.jpg
+[2026-01-07 17:15:54] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:15:54] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:15:54] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:16:04] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:16:06] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171606.jpg
+[2026-01-07 17:16:06] INFO: Detected 1 object(s) in IMG_20260107_171606.jpg
+[2026-01-07 17:16:06] INFO: Image dimensions: 640x480
+[2026-01-07 17:16:06] INFO: Saved image record #237:  IMG_20260107_171606.jpg
+[2026-01-07 17:16:06] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171606_detected.jpg
+[2026-01-07 17:16:06] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:16:06] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:16:06] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:16:16] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:16:18] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171618.jpg
+[2026-01-07 17:16:19] INFO: Detected 1 object(s) in IMG_20260107_171618.jpg
+[2026-01-07 17:16:19] INFO: Image dimensions: 640x480
+[2026-01-07 17:16:19] INFO: Saved image record #238:  IMG_20260107_171618.jpg
+[2026-01-07 17:16:19] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171618_detected.jpg
+[2026-01-07 17:16:19] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:16:19] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:16:19] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:16:29] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:16:31] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171631.jpg
+[2026-01-07 17:16:32] INFO: Detected 1 object(s) in IMG_20260107_171631.jpg
+[2026-01-07 17:16:32] INFO: Image dimensions: 640x480
+[2026-01-07 17:16:32] INFO: Saved image record #239:  IMG_20260107_171631.jpg
+[2026-01-07 17:16:32] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171631_detected.jpg
+[2026-01-07 17:16:32] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:16:32] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:16:32] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:16:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:16:44] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171644.jpg
+[2026-01-07 17:16:44] INFO: Detected 1 object(s) in IMG_20260107_171644.jpg
+[2026-01-07 17:16:44] INFO: Image dimensions: 640x480
+[2026-01-07 17:16:44] INFO: Saved image record #240:  IMG_20260107_171644.jpg
+[2026-01-07 17:16:44] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171644_detected.jpg
+[2026-01-07 17:16:44] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:16:44] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:16:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:16:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:16:57] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171657.jpg
+[2026-01-07 17:16:57] INFO: Detected 1 object(s) in IMG_20260107_171657.jpg
+[2026-01-07 17:16:57] INFO: Image dimensions: 640x480
+[2026-01-07 17:16:57] INFO: Saved image record #241:  IMG_20260107_171657.jpg
+[2026-01-07 17:16:57] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171657_detected.jpg
+[2026-01-07 17:16:57] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:16:57] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:16:57] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:17:07] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:17:09] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171709.jpg
+[2026-01-07 17:17:10] INFO: Detected 2 object(s) in IMG_20260107_171709.jpg
+[2026-01-07 17:17:10] INFO: Image dimensions: 640x480
+[2026-01-07 17:17:10] INFO: Saved image record #242:  IMG_20260107_171709.jpg
+[2026-01-07 17:17:10] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171709_detected.jpg
+[2026-01-07 17:17:10] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:10] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:10] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:17:10] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:17:20] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:17:22] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171722.jpg
+[2026-01-07 17:17:22] INFO: Detected 2 object(s) in IMG_20260107_171722.jpg
+[2026-01-07 17:17:22] INFO: Image dimensions: 640x480
+[2026-01-07 17:17:22] INFO: Saved image record #243:  IMG_20260107_171722.jpg
+[2026-01-07 17:17:22] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171722_detected.jpg
+[2026-01-07 17:17:23] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:23] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:23] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:17:23] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:17:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:17:35] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171735.jpg
+[2026-01-07 17:17:35] INFO: Detected 2 object(s) in IMG_20260107_171735.jpg
+[2026-01-07 17:17:35] INFO: Image dimensions: 640x480
+[2026-01-07 17:17:35] INFO: Saved image record #244:  IMG_20260107_171735.jpg
+[2026-01-07 17:17:35] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171735_detected.jpg
+[2026-01-07 17:17:35] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:35] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:35] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:17:35] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:17:45] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:17:47] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171747.jpg
+[2026-01-07 17:17:48] INFO: Detected 1 object(s) in IMG_20260107_171747.jpg
+[2026-01-07 17:17:48] INFO: Image dimensions: 640x480
+[2026-01-07 17:17:48] INFO: Saved image record #245:  IMG_20260107_171747.jpg
+[2026-01-07 17:17:48] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171747_detected.jpg
+[2026-01-07 17:17:48] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:17:48] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:17:48] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:17:58] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:18:00] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171800.jpg
+[2026-01-07 17:18:01] INFO: Detected 0 object(s) in IMG_20260107_171800.jpg
+[2026-01-07 17:18:01] INFO: Image dimensions: 640x480
+[2026-01-07 17:18:01] INFO: Saved image record #246:  IMG_20260107_171800.jpg
+[2026-01-07 17:18:01] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171800_detected.jpg
+[2026-01-07 17:18:01] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:18:01] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:18:11] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:18:13] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171813.jpg
+[2026-01-07 17:18:13] INFO: Detected 1 object(s) in IMG_20260107_171813.jpg
+[2026-01-07 17:18:13] INFO: Image dimensions: 640x480
+[2026-01-07 17:18:13] INFO: Saved image record #247:  IMG_20260107_171813.jpg
+[2026-01-07 17:18:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171813_detected.jpg
+[2026-01-07 17:18:13] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:18:13] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:18:13] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:18:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:18:25] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171825.jpg
+[2026-01-07 17:18:26] INFO: Detected 1 object(s) in IMG_20260107_171825.jpg
+[2026-01-07 17:18:26] INFO: Image dimensions: 640x480
+[2026-01-07 17:18:26] INFO: Saved image record #248:  IMG_20260107_171825.jpg
+[2026-01-07 17:18:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171825_detected.jpg
+[2026-01-07 17:18:26] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:18:26] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:18:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:18:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:18:38] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171838.jpg
+[2026-01-07 17:18:39] INFO: Detected 2 object(s) in IMG_20260107_171838.jpg
+[2026-01-07 17:18:39] INFO: Image dimensions: 640x480
+[2026-01-07 17:18:39] INFO: Saved image record #249:  IMG_20260107_171838.jpg
+[2026-01-07 17:18:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171838_detected.jpg
+[2026-01-07 17:18:39] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:18:39] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:18:39] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:18:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:18:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:18:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171851.jpg
+[2026-01-07 17:18:51] INFO: Detected 0 object(s) in IMG_20260107_171851.jpg
+[2026-01-07 17:18:51] INFO: Image dimensions: 640x480
+[2026-01-07 17:18:51] INFO: Saved image record #250:  IMG_20260107_171851.jpg
+[2026-01-07 17:18:51] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171851_detected.jpg
+[2026-01-07 17:18:51] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:18:51] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:19:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:19:03] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171903.jpg
+[2026-01-07 17:19:04] INFO: Detected 2 object(s) in IMG_20260107_171903.jpg
+[2026-01-07 17:19:04] INFO: Image dimensions: 640x480
+[2026-01-07 17:19:04] INFO: Saved image record #251:  IMG_20260107_171903.jpg
+[2026-01-07 17:19:04] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171903_detected.jpg
+[2026-01-07 17:19:04] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:19:04] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:19:04] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:19:04] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:19:14] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:19:16] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171916.jpg
+[2026-01-07 17:19:17] INFO: Detected 2 object(s) in IMG_20260107_171916.jpg
+[2026-01-07 17:19:17] INFO: Image dimensions: 640x480
+[2026-01-07 17:19:17] INFO: Saved image record #252:  IMG_20260107_171916.jpg
+[2026-01-07 17:19:17] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171916_detected.jpg
+[2026-01-07 17:19:17] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:19:17] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:19:17] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:19:17] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:19:27] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:19:29] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171929.jpg
+[2026-01-07 17:19:29] INFO: Detected 0 object(s) in IMG_20260107_171929.jpg
+[2026-01-07 17:19:29] INFO: Image dimensions: 640x480
+[2026-01-07 17:19:29] INFO: Saved image record #253:  IMG_20260107_171929.jpg
+[2026-01-07 17:19:29] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_171929_detected.jpg
+[2026-01-07 17:19:29] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:19:29] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:22:04] INFO: \u2705 YOLOv8 model loaded:   models/best8s.pt
+[2026-01-07 17:22:04] INFO: \U0001f4cb Model classes: {0: 'person', 1: 'bicycle', 2: 'car', 3: 'motorcycle', 4: 'airplane', 5: 'bus', 6: 'train', 7: 'truck', 8: 'boat', 9: 'traffic light', 10: 'fire hydrant', 11: 'stop sign', 12: 'parking meter', 13: 'bench', 14: 'bird', 15: 'cat', 16: 'dog', 17: 'horse', 18: 'sheep', 19: 'cow', 20: 'elephant', 21: 'bear', 22: 'zebra', 23: 'giraffe', 24: 'backpack', 25: 'umbrella', 26: 'handbag', 27: 'tie', 28: 'suitcase', 29: 'frisbee', 30: 'skis', 31: 'snowboard', 32: 'sports ball', 33: 'kite', 34: 'baseball bat', 35: 'baseball glove', 36: 'skateboard', 37: 'surfboard', 38: 'tennis racket', 39: 'bottle', 40: 'wine glass', 41: 'cup', 42: 'fork', 43: 'knife', 44: 'spoon', 45: 'bowl', 46: 'banana', 47: 'apple', 48: 'sandwich', 49: 'orange', 50: 'broccoli', 51: 'carrot', 52: 'hot dog', 53: 'pizza', 54: 'donut', 55: 'cake', 56: 'chair', 57: 'couch', 58: 'potted plant', 59: 'bed', 60: 'dining table', 61: 'toilet', 62: 'tv', 63: 'laptop', 64: 'mouse', 65: 'remote', 66: 'keyboard', 67: 'cell phone', 68: 'microwave', 69: 'oven', 70: 'toaster', 71: 'sink', 72: 'refrigerator', 73: 'book', 74: 'clock', 75: 'vase', 76: 'scissors', 77: 'teddy bear', 78: 'hair drier', 79: 'toothbrush'}
+[2026-01-07 17:22:04] INFO: \u2705 Detection service initialized
+[2026-01-07 17:22:04] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 17:22:04] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:22:06] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172206.jpg
+[2026-01-07 17:22:06] INFO: Detected 1 object(s) in IMG_20260107_172206.jpg
+[2026-01-07 17:22:06] INFO: Image dimensions: 640x480
+[2026-01-07 17:22:06] INFO: Saved image record #254:  IMG_20260107_172206.jpg
+[2026-01-07 17:22:06] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172206_detected.jpg
+[2026-01-07 17:22:06] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:07] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:22:07] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:22:17] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:22:19] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172219.jpg
+[2026-01-07 17:22:19] INFO: Detected 3 object(s) in IMG_20260107_172219.jpg
+[2026-01-07 17:22:19] INFO: Image dimensions: 640x480
+[2026-01-07 17:22:19] INFO: Saved image record #255:  IMG_20260107_172219.jpg
+[2026-01-07 17:22:19] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172219_detected.jpg
+[2026-01-07 17:22:19] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:19] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:19] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:19] INFO: \u2705 Cycle completed:  3 pallet(s) detected
+[2026-01-07 17:22:19] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:22:29] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:22:31] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172231.jpg
+[2026-01-07 17:22:32] INFO: Detected 2 object(s) in IMG_20260107_172231.jpg
+[2026-01-07 17:22:32] INFO: Image dimensions: 640x480
+[2026-01-07 17:22:32] INFO: Saved image record #256:  IMG_20260107_172231.jpg
+[2026-01-07 17:22:32] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172231_detected.jpg
+[2026-01-07 17:22:32] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:32] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:32] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:22:32] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:22:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:22:44] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172244.jpg
+[2026-01-07 17:22:45] INFO: Detected 2 object(s) in IMG_20260107_172244.jpg
+[2026-01-07 17:22:45] INFO: Image dimensions: 640x480
+[2026-01-07 17:22:45] INFO: Saved image record #257:  IMG_20260107_172244.jpg
+[2026-01-07 17:22:45] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172244_detected.jpg
+[2026-01-07 17:22:45] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:45] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:45] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:22:45] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:22:55] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:22:57] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172257.jpg
+[2026-01-07 17:22:58] INFO: Detected 2 object(s) in IMG_20260107_172257.jpg
+[2026-01-07 17:22:58] INFO: Image dimensions: 640x480
+[2026-01-07 17:22:58] INFO: Saved image record #258:  IMG_20260107_172257.jpg
+[2026-01-07 17:22:58] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172257_detected.jpg
+[2026-01-07 17:22:58] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:58] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:22:58] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:22:58] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:23:08] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:23:10] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172310.jpg
+[2026-01-07 17:23:11] INFO: Detected 0 object(s) in IMG_20260107_172310.jpg
+[2026-01-07 17:23:11] INFO: Image dimensions: 640x480
+[2026-01-07 17:23:11] INFO: Saved image record #259:  IMG_20260107_172310.jpg
+[2026-01-07 17:23:11] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172310_detected.jpg
+[2026-01-07 17:23:11] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:23:11] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:23:21] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:23:23] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172323.jpg
+[2026-01-07 17:23:23] INFO: Detected 0 object(s) in IMG_20260107_172323.jpg
+[2026-01-07 17:23:23] INFO: Image dimensions: 640x480
+[2026-01-07 17:23:23] INFO: Saved image record #260:  IMG_20260107_172323.jpg
+[2026-01-07 17:23:23] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172323_detected.jpg
+[2026-01-07 17:23:23] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:23:23] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:23:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:23:35] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172335.jpg
+[2026-01-07 17:23:36] INFO: Detected 0 object(s) in IMG_20260107_172335.jpg
+[2026-01-07 17:23:36] INFO: Image dimensions: 640x480
+[2026-01-07 17:23:36] INFO: Saved image record #261:  IMG_20260107_172335.jpg
+[2026-01-07 17:23:36] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172335_detected.jpg
+[2026-01-07 17:23:36] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 17:23:36] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:23:46] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:23:48] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172348.jpg
+[2026-01-07 17:23:49] INFO: Detected 1 object(s) in IMG_20260107_172348.jpg
+[2026-01-07 17:23:49] INFO: Image dimensions: 640x480
+[2026-01-07 17:23:49] INFO: Saved image record #262:  IMG_20260107_172348.jpg
+[2026-01-07 17:23:49] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172348_detected.jpg
+[2026-01-07 17:23:49] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:23:49] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:23:49] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:23:59] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:24:01] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172401.jpg
+[2026-01-07 17:24:01] INFO: Detected 3 object(s) in IMG_20260107_172401.jpg
+[2026-01-07 17:24:01] INFO: Image dimensions: 640x480
+[2026-01-07 17:24:01] INFO: Saved image record #263:  IMG_20260107_172401.jpg
+[2026-01-07 17:24:01] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172401_detected.jpg
+[2026-01-07 17:24:01] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:01] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:01] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:01] INFO: \u2705 Cycle completed:  3 pallet(s) detected
+[2026-01-07 17:24:01] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:24:11] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:24:13] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172413.jpg
+[2026-01-07 17:24:14] INFO: Detected 3 object(s) in IMG_20260107_172413.jpg
+[2026-01-07 17:24:14] INFO: Image dimensions: 640x480
+[2026-01-07 17:24:14] INFO: Saved image record #264:  IMG_20260107_172413.jpg
+[2026-01-07 17:24:14] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172413_detected.jpg
+[2026-01-07 17:24:14] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:14] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:14] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:14] INFO: \u2705 Cycle completed:  3 pallet(s) detected
+[2026-01-07 17:24:14] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:24:24] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:24:26] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172426.jpg
+[2026-01-07 17:24:27] INFO: Detected 2 object(s) in IMG_20260107_172426.jpg
+[2026-01-07 17:24:27] INFO: Image dimensions: 640x480
+[2026-01-07 17:24:27] INFO: Saved image record #265:  IMG_20260107_172426.jpg
+[2026-01-07 17:24:27] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172426_detected.jpg
+[2026-01-07 17:24:27] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:27] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:27] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:24:27] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:24:37] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:24:39] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172439.jpg
+[2026-01-07 17:24:39] INFO: Detected 1 object(s) in IMG_20260107_172439.jpg
+[2026-01-07 17:24:39] INFO: Image dimensions: 640x480
+[2026-01-07 17:24:39] INFO: Saved image record #266:  IMG_20260107_172439.jpg
+[2026-01-07 17:24:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172439_detected.jpg
+[2026-01-07 17:24:39] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:39] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:24:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:24:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:24:52] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172452.jpg
+[2026-01-07 17:24:52] INFO: Detected 1 object(s) in IMG_20260107_172452.jpg
+[2026-01-07 17:24:52] INFO: Image dimensions: 640x480
+[2026-01-07 17:24:52] INFO: Saved image record #267:  IMG_20260107_172452.jpg
+[2026-01-07 17:24:52] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172452_detected.jpg
+[2026-01-07 17:24:52] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:24:52] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 17:24:52] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:25:02] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:25:04] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172504.jpg
+[2026-01-07 17:25:05] INFO: Detected 2 object(s) in IMG_20260107_172504.jpg
+[2026-01-07 17:25:05] INFO: Image dimensions: 640x480
+[2026-01-07 17:25:05] INFO: Saved image record #268:  IMG_20260107_172504.jpg
+[2026-01-07 17:25:05] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172504_detected.jpg
+[2026-01-07 17:25:05] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:25:05] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:25:05] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:25:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:25:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:25:17] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172517.jpg
+[2026-01-07 17:25:17] INFO: Detected 2 object(s) in IMG_20260107_172517.jpg
+[2026-01-07 17:25:17] INFO: Image dimensions: 640x480
+[2026-01-07 17:25:17] INFO: Saved image record #269:  IMG_20260107_172517.jpg
+[2026-01-07 17:25:17] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_172517_detected.jpg
+[2026-01-07 17:25:17] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:25:17] ERROR: Error creating pallet: (1054, "Unknown column 'pallet_date_in' in 'field list'")
+[2026-01-07 17:25:17] INFO: \u2705 Cycle completed:  2 pallet(s) detected
+[2026-01-07 17:25:17] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:25:27] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 17:25:34] ERROR: Cannot capture image
+[2026-01-07 17:25:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 17:25:44] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@222.844] global cap.cpp:480 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 17:25:44] ERROR: Cannot open camera 0
+[2026-01-07 17:25:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
