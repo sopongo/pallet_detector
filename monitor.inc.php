@@ -102,7 +102,7 @@
                 </button>
 
                 <!-- ปรับปรุง: แสดง PID ของ detection service เมื่อรัน -->
-                <div id="service-pid" class="text-center mt-2 small text-muted"></div>
+                <!--<div id="service-pid" class="text-center mt-2 small text-muted"></div>-->
             </div>
           </div>
 
@@ -133,8 +133,7 @@
 <style type="text/css">
   .pallet-image-container { background: #eaeaea; min-height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
     .ai-box { position: absolute; border: 2px solid #ff0000; pointer-events: none; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); border-radius: 2px; z-index: 5; }
-    /*.ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95); color: #fff !important; z-index: 10; }*/
-    .ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95) !important; font-weight: bold; color: #fff; }
+  .ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95) !important; font-weight: bold; color: #fff; }
     #log-container { height: 130px; overflow-y: auto; background: #1e1e1e; color: #00ff00; 
       /*font-family: 'Courier New', monospace; */
       font-family: Arial, Helvetica, sans-serif;
@@ -195,7 +194,7 @@ console.log('🔗 API_URL:', API_URL);
 
   // ========================================
   // Helper: อัพเดตข้อความ Online/Offline ตรง Status
-  // - เพิ่ม comment: ฟังก์ชันนี้จะถูกเรียกจาก fetchDetectionStatus และเมื่อเริ่ม/หยุด
+  // - ฟังก์ชันนี้จะถูกเรียกจาก fetchDetectionStatus และเมื่อเริ่ม/หยุด
   // ========================================
   function updateSystemStatus(online, running, pid) {
     const $status = $('#system-status');
@@ -223,6 +222,7 @@ console.log('🔗 API_URL:', API_URL);
   // ========================================
   // 2. Fetch Detection Status
   // - ปรับให้ call updateSystemStatus เพื่ออัพเดต Status และ PID
+  // - ถ้า backend รายงาน running=true ให้เริ่ม polling อัตโนมัติ (เติม behavior ที่ผู้ใช้ต้องการ)
   // ========================================
   function fetchDetectionStatus() {
     $.get(API_URL + '/detection/status', function(data) {
@@ -230,6 +230,25 @@ console.log('🔗 API_URL:', API_URL);
         // อัพเดตปุ่มและสถานะระบบ
         updateButtonState(!!data.running);
         updateSystemStatus(true, !!data.running, data.pid);
+
+        // ถ้า backend ระบุว่ากำลังรัน ให้เริ่ม poll ข้อมูล (เหมือนกด Start)
+        if (data.running) {
+          // ถ้ายังไม่ polling ให้เริ่ม
+          if (!pollingTimer) {
+            // เรียกข้อมูลทันทีเพื่อเติม UI (images, logs, summary)
+            fetchLatestDetection();
+            fetchSummary();
+            fetchLogs();
+            // เริ่ม polling แบบต่อเนื่อง
+            startPolling();
+          }
+        } else {
+          // ถ้า backend บอกว่าไม่รัน ให้หยุด polling และแสดงค่า default (ถ้าต้องการ)
+          stopPolling();
+          // ไม่ล้างรูป/summary ให้ผู้ใช้ยังเห็นค่าล่าสุด (ถ้าต้องการล้าง ให้ uncomment)
+          // $('#img-before').attr('src', 'dist/img/wait.png');
+          // $('#img-after').attr('src', 'dist/img/wait.png');
+        }
       } else {
         updateButtonState(false);
         updateSystemStatus(true, false, null);
@@ -239,6 +258,8 @@ console.log('🔗 API_URL:', API_URL);
       // ถ้าเรียกไม่ได้ ถือว่า Offline
       updateButtonState(false);
       updateSystemStatus(false, false, null);
+      // หยุด polling ถ้าเคยรัน
+      stopPolling();
     });
   }
 
@@ -271,7 +292,7 @@ console.log('🔗 API_URL:', API_URL);
   // 4. Fetch Summary (แบบใหม่ - ใช้ ID)
   // ========================================
 function fetchSummary() {
-  $. get(API_URL + '/detection/summary/today', function(data) {
+  $.get(API_URL + '/detection/summary/today', function(data) {
     if (data.success) {
       // Update โดยใช้ ID
       $('.summary-site').text(data.site);
@@ -348,7 +369,7 @@ function fetchSummary() {
 
   // ========================================
   // 7. Start/Stop Button Handler
-  // - ปรับปรุง: disable ปุ่มขณะรอ request และแสดง spinner / คืนค่าปุ่มเมื่อเสร็จ
+  // - ปรับป���ุง: disable ปุ่มขณะรอ request และแสดง spinner / คืนค่าปุ่มเมื่อเสร็จ
   // - เพิ่ม error handling ที่ชัดเจน
   // ========================================
     $('#btn-toggle-monitor').click(function() {
@@ -531,12 +552,12 @@ function fetchSummary() {
 
   // ========================================
   // 9. Initialize on Page Load
-  // - โหลดสถานะตอนเปิดหน้า และเริ่ม poll info ที่จำเป็น
+  // - ตอนเข้าเพจให้เช็คสถานะจาก backend ก่อน (fetchDetectionStatus)
+  // - ถ้า backend บอกว่ากำลังรัน จะเริ่ม poll และเติมข้อมูลหน้าอัตโนมัติ
+  // - ถ้า backend ไม่รัน จะไม่เริ่ม poll (ผู้ใช้ต้องกด Start)
   // ========================================
-  fetchDetectionStatus();  // Check if already running
-  fetchSummary();           // Load summary
-  fetchSystemInfo();        // Load system info
-  
+  fetchDetectionStatus();  // Check if already running (will start polling if running)
+  fetchSystemInfo();        // Load system info once
   // Fetch system info every 3 seconds
   setInterval(fetchSystemInfo, 3000);
 });
