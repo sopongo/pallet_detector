@@ -284,7 +284,7 @@
                                         <div class="form-group">
                                             <label for="alertThreshold">Alert Threshold (Minutes)</label>
                                             <select class="custom-select" id="alertThreshold">
-                                                <option value="0.15">20 Seconds (Test)</option>
+                                                <option value="0.12">20 Seconds (Test)</option>
                                                 <option value="15">15 minutes</option>
                                                 <option value="30">30 minutes</option>
                                                 <option value="45">45 minutes</option>

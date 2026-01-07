@@ -1275,3 +1275,699 @@
 [2026-01-07 18:10:44] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
 [2026-01-07 18:10:44] INFO: \u2705 Cycle completed:  2 pallet(s) detected
 [2026-01-07 18:10:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:09:18] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 22:09:18] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 22:09:18] INFO: \u2705 Detection service initialized
+[2026-01-07 22:09:18] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 22:09:18] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:09:21] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_220921.jpg
+[2026-01-07 22:09:23] INFO: Detected 0 object(s) in IMG_20260107_220921.jpg
+[2026-01-07 22:09:23] INFO: Image dimensions: 640x480
+[2026-01-07 22:09:23] INFO: Saved image record #1:  IMG_20260107_220921.jpg
+[2026-01-07 22:09:23] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_220921_detected.jpg
+[2026-01-07 22:09:23] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:09:23] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:09:23] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:09:23] INFO: \U0001f4a4 Sleeping for 15 seconds...
+[2026-01-07 22:10:09] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 22:10:09] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 22:10:09] INFO: \u2705 Detection service initialized
+[2026-01-07 22:10:09] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 22:10:09] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:10:12] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221012.jpg
+[2026-01-07 22:10:13] INFO: Detected 0 object(s) in IMG_20260107_221012.jpg
+[2026-01-07 22:10:13] INFO: Image dimensions: 640x480
+[2026-01-07 22:10:13] INFO: Saved image record #2:  IMG_20260107_221012.jpg
+[2026-01-07 22:10:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221012_detected.jpg
+[2026-01-07 22:10:13] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:10:13] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:10:13] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:10:13] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:10:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:10:26] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221026.jpg
+[2026-01-07 22:10:26] INFO: Detected 0 object(s) in IMG_20260107_221026.jpg
+[2026-01-07 22:10:26] INFO: Image dimensions: 640x480
+[2026-01-07 22:10:26] INFO: Saved image record #3:  IMG_20260107_221026.jpg
+[2026-01-07 22:10:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221026_detected.jpg
+[2026-01-07 22:10:26] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:10:26] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:10:26] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:10:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:10:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:10:38] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221038.jpg
+[2026-01-07 22:10:39] INFO: Detected 0 object(s) in IMG_20260107_221038.jpg
+[2026-01-07 22:10:39] INFO: Image dimensions: 640x480
+[2026-01-07 22:10:39] INFO: Saved image record #4:  IMG_20260107_221038.jpg
+[2026-01-07 22:10:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221038_detected.jpg
+[2026-01-07 22:10:39] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:10:39] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:10:39] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:10:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:10:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:10:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221051.jpg
+[2026-01-07 22:10:52] INFO: Detected 0 object(s) in IMG_20260107_221051.jpg
+[2026-01-07 22:10:52] INFO: Image dimensions: 640x480
+[2026-01-07 22:10:52] INFO: Saved image record #5:  IMG_20260107_221051.jpg
+[2026-01-07 22:10:52] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221051_detected.jpg
+[2026-01-07 22:10:52] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:10:52] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:10:52] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:10:52] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:11:02] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:11:04] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221104.jpg
+[2026-01-07 22:11:05] INFO: Detected 0 object(s) in IMG_20260107_221104.jpg
+[2026-01-07 22:11:05] INFO: Image dimensions: 640x480
+[2026-01-07 22:11:05] INFO: Saved image record #6:  IMG_20260107_221104.jpg
+[2026-01-07 22:11:05] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221104_detected.jpg
+[2026-01-07 22:11:05] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:11:05] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:11:05] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:11:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:11:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:11:17] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221117.jpg
+[2026-01-07 22:11:18] INFO: Detected 0 object(s) in IMG_20260107_221117.jpg
+[2026-01-07 22:11:18] INFO: Image dimensions: 640x480
+[2026-01-07 22:11:18] INFO: Saved image record #7:  IMG_20260107_221117.jpg
+[2026-01-07 22:11:18] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221117_detected.jpg
+[2026-01-07 22:11:18] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:11:18] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:11:18] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:11:18] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:11:28] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:11:31] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221131.jpg
+[2026-01-07 22:11:31] INFO: Detected 0 object(s) in IMG_20260107_221131.jpg
+[2026-01-07 22:11:31] INFO: Image dimensions: 640x480
+[2026-01-07 22:11:31] INFO: Saved image record #8:  IMG_20260107_221131.jpg
+[2026-01-07 22:11:31] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221131_detected.jpg
+[2026-01-07 22:11:31] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:11:31] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:11:31] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:11:31] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:11:41] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:11:44] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221144.jpg
+[2026-01-07 22:11:44] INFO: Detected 0 object(s) in IMG_20260107_221144.jpg
+[2026-01-07 22:11:44] INFO: Image dimensions: 640x480
+[2026-01-07 22:11:44] INFO: Saved image record #9:  IMG_20260107_221144.jpg
+[2026-01-07 22:11:44] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221144_detected.jpg
+[2026-01-07 22:11:44] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:11:44] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:11:44] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:11:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:11:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:11:56] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221156.jpg
+[2026-01-07 22:11:57] INFO: Detected 1 object(s) in IMG_20260107_221156.jpg
+[2026-01-07 22:11:57] INFO: Image dimensions: 640x480
+[2026-01-07 22:11:57] INFO: Saved image record #10:  IMG_20260107_221156.jpg
+[2026-01-07 22:11:57] INFO: \u274c No match found for position [170.6536865234375, 192.9541015625] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 22:11:57] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221156_detected.jpg
+[2026-01-07 22:11:57] INFO: Created new pallet #1 (PL-0001)
+[2026-01-07 22:11:57] INFO: \u2705 Created pallet: #1 (PL-0001)
+[2026-01-07 22:11:57] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:11:57] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:11:57] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:11:57] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:12:07] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:12:14] ERROR: Cannot capture image
+[2026-01-07 22:12:14] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:12:24] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@136.231] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:12:24] ERROR: Cannot open camera 0
+[2026-01-07 22:12:24] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:12:34] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@146.512] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:12:34] ERROR: Cannot open camera 0
+[2026-01-07 22:12:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:12:44] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@156.820] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:12:45] ERROR: Cannot open camera 0
+[2026-01-07 22:12:45] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:12:55] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@167.148] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:12:55] ERROR: Cannot open camera 0
+[2026-01-07 22:12:55] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:13:05] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@177.422] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:13:05] ERROR: Cannot open camera 0
+[2026-01-07 22:13:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:13:15] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@187.705] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-07 22:13:15] ERROR: Cannot open camera 0
+[2026-01-07 22:13:15] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:14:21] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 22:14:21] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 22:14:21] INFO: \u2705 Detection service initialized
+[2026-01-07 22:14:21] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 22:14:21] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:14:23] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221423.jpg
+[2026-01-07 22:14:25] INFO: Detected 1 object(s) in IMG_20260107_221423.jpg
+[2026-01-07 22:14:25] INFO: Image dimensions: 640x480
+[2026-01-07 22:14:25] INFO: Saved image record #11:  IMG_20260107_221423.jpg
+[2026-01-07 22:14:25] INFO: \u2705 Matched: New pos [178.34967041015625, 194.66441345214844] \u2192 Pallet #1 (distance: 7.9px)
+[2026-01-07 22:14:25] INFO: Updated pallet #1 (duration: 2.5 min)
+[2026-01-07 22:14:25] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221423_detected.jpg
+[2026-01-07 22:14:25] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:14:25] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:14:25] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:14:25] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:14:35] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:14:37] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221437.jpg
+[2026-01-07 22:14:38] INFO: Detected 1 object(s) in IMG_20260107_221437.jpg
+[2026-01-07 22:14:38] INFO: Image dimensions: 640x480
+[2026-01-07 22:14:38] INFO: Saved image record #12:  IMG_20260107_221437.jpg
+[2026-01-07 22:14:38] INFO: \u2705 Matched: New pos [178.56607055664062, 194.42857360839844] \u2192 Pallet #1 (distance: 8.1px)
+[2026-01-07 22:14:38] INFO: Updated pallet #1 (duration: 2.7 min)
+[2026-01-07 22:14:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221437_detected.jpg
+[2026-01-07 22:14:38] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:14:38] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:14:38] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:14:38] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:15:58] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 22:15:58] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 22:15:58] INFO: \u2705 Detection service initialized
+[2026-01-07 22:15:58] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 22:15:58] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:16:01] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221601.jpg
+[2026-01-07 22:16:02] INFO: Detected 1 object(s) in IMG_20260107_221601.jpg
+[2026-01-07 22:16:02] INFO: Image dimensions: 640x480
+[2026-01-07 22:16:02] INFO: Saved image record #13:  IMG_20260107_221601.jpg
+[2026-01-07 22:16:02] INFO: \u2705 Matched: New pos [178.47900390625, 194.73544311523438] \u2192 Pallet #1 (distance: 8.0px)
+[2026-01-07 22:16:02] INFO: Updated pallet #1 (duration: 4.1 min)
+[2026-01-07 22:16:02] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (4.1 min)
+[2026-01-07 22:16:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221601_detected.jpg
+[2026-01-07 22:16:03] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:16:03] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:16:03] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:16:03] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:16:03] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:16:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:16:15] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221615.jpg
+[2026-01-07 22:16:15] INFO: Detected 1 object(s) in IMG_20260107_221615.jpg
+[2026-01-07 22:16:15] INFO: Image dimensions: 640x480
+[2026-01-07 22:16:15] INFO: Saved image record #14:  IMG_20260107_221615.jpg
+[2026-01-07 22:16:15] INFO: \u2705 Matched: New pos [179.61502075195312, 194.39251708984375] \u2192 Pallet #1 (distance: 9.1px)
+[2026-01-07 22:16:15] INFO: Updated pallet #1 (duration: 4.3 min)
+[2026-01-07 22:16:15] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (4.3 min)
+[2026-01-07 22:16:15] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221615_detected.jpg
+[2026-01-07 22:16:15] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:16:15] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:16:16] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:16:16] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:16:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:16:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:16:28] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221628.jpg
+[2026-01-07 22:16:28] INFO: Detected 1 object(s) in IMG_20260107_221628.jpg
+[2026-01-07 22:16:28] INFO: Image dimensions: 640x480
+[2026-01-07 22:16:28] INFO: Saved image record #15:  IMG_20260107_221628.jpg
+[2026-01-07 22:16:28] INFO: \u2705 Matched: New pos [178.95619201660156, 194.44874572753906] \u2192 Pallet #1 (distance: 8.4px)
+[2026-01-07 22:16:28] INFO: Updated pallet #1 (duration: 4.5 min)
+[2026-01-07 22:16:28] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (4.5 min)
+[2026-01-07 22:16:28] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221628_detected.jpg
+[2026-01-07 22:16:28] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:16:28] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:16:28] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:16:28] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:16:28] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:16:38] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:16:41] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221641.jpg
+[2026-01-07 22:16:41] INFO: Detected 1 object(s) in IMG_20260107_221641.jpg
+[2026-01-07 22:16:41] INFO: Image dimensions: 640x480
+[2026-01-07 22:16:41] INFO: Saved image record #16:  IMG_20260107_221641.jpg
+[2026-01-07 22:16:41] INFO: \u2705 Matched: New pos [231.5159912109375, 194.61912536621094] \u2192 Pallet #1 (distance: 60.9px)
+[2026-01-07 22:16:41] INFO: Updated pallet #1 (duration: 4.7 min)
+[2026-01-07 22:16:41] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (4.7 min)
+[2026-01-07 22:16:41] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221641_detected.jpg
+[2026-01-07 22:16:41] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:16:41] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:16:41] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:16:41] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:16:41] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:16:51] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:16:54] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221654.jpg
+[2026-01-07 22:16:54] INFO: Detected 1 object(s) in IMG_20260107_221654.jpg
+[2026-01-07 22:16:54] INFO: Image dimensions: 640x480
+[2026-01-07 22:16:54] INFO: Saved image record #17:  IMG_20260107_221654.jpg
+[2026-01-07 22:16:54] INFO: \u2705 Matched: New pos [231.5655517578125, 194.54818725585938] \u2192 Pallet #1 (distance: 60.9px)
+[2026-01-07 22:16:54] INFO: Updated pallet #1 (duration: 4.9 min)
+[2026-01-07 22:16:54] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (4.9 min)
+[2026-01-07 22:16:54] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221654_detected.jpg
+[2026-01-07 22:16:54] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:16:54] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:16:54] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:16:54] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:16:54] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:17:04] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:17:06] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221706.jpg
+[2026-01-07 22:17:07] INFO: Detected 1 object(s) in IMG_20260107_221706.jpg
+[2026-01-07 22:17:07] INFO: Image dimensions: 640x480
+[2026-01-07 22:17:07] INFO: Saved image record #18:  IMG_20260107_221706.jpg
+[2026-01-07 22:17:07] INFO: \u2705 Matched: New pos [166.41427612304688, 217.27191162109375] \u2192 Pallet #1 (distance: 24.7px)
+[2026-01-07 22:17:07] INFO: Updated pallet #1 (duration: 5.2 min)
+[2026-01-07 22:17:07] WARNING: \u26a0\ufe0f Overtime detected: Pallet #1 (5.2 min)
+[2026-01-07 22:17:07] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221706_detected.jpg
+[2026-01-07 22:17:07] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:17:07] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:17:07] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:17:07] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:17:07] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:17:17] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:17:19] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221719.jpg
+[2026-01-07 22:17:20] INFO: Detected 0 object(s) in IMG_20260107_221719.jpg
+[2026-01-07 22:17:20] INFO: Image dimensions: 640x480
+[2026-01-07 22:17:20] INFO: Saved image record #19:  IMG_20260107_221719.jpg
+[2026-01-07 22:17:20] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221719_detected.jpg
+[2026-01-07 22:17:20] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-07 22:17:20] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:17:20] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:17:20] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:17:20] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:17:30] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:17:33] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221733.jpg
+[2026-01-07 22:17:34] INFO: Detected 1 object(s) in IMG_20260107_221733.jpg
+[2026-01-07 22:17:34] INFO: Image dimensions: 640x480
+[2026-01-07 22:17:34] INFO: Saved image record #20:  IMG_20260107_221733.jpg
+[2026-01-07 22:17:34] INFO: \u274c No match found for position [166.61041259765625, 216.43460083007812] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 22:17:34] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221733_detected.jpg
+[2026-01-07 22:17:34] INFO: \U0001f50d Found recently deactivated pallet: #1 (PL-0001) - duration: 5.0 min
+[2026-01-07 22:17:34] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #1 (PL-0001)
+[2026-01-07 22:17:34] WARNING:    Previous duration: 5.0 min
+[2026-01-07 22:17:34] WARNING: \u26a0\ufe0f Immediate alert: Position matches overtime pallet! (duration: 5.0 min)
+[2026-01-07 22:17:34] INFO: Created new pallet #2 (PL-0002)
+[2026-01-07 22:17:34] INFO: \u2705 Created pallet: #2 (PL-0002)
+[2026-01-07 22:17:34] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:17:34] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:17:34] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:17:34] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:17:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:17:44] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:17:46] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221746.jpg
+[2026-01-07 22:17:47] INFO: Detected 1 object(s) in IMG_20260107_221746.jpg
+[2026-01-07 22:17:47] INFO: Image dimensions: 640x480
+[2026-01-07 22:17:47] INFO: Saved image record #21:  IMG_20260107_221746.jpg
+[2026-01-07 22:17:47] INFO: \u2705 Matched: New pos [166.91090393066406, 216.3041229248047] \u2192 Pallet #2 (distance: 0.3px)
+[2026-01-07 22:17:47] INFO: Updated pallet #2 (duration: 0.2 min)
+[2026-01-07 22:17:47] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (0.2 min)
+[2026-01-07 22:17:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221746_detected.jpg
+[2026-01-07 22:17:47] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:17:47] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:17:47] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:17:47] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:17:47] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:17:57] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:17:59] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221759.jpg
+[2026-01-07 22:18:00] INFO: Detected 1 object(s) in IMG_20260107_221759.jpg
+[2026-01-07 22:18:00] INFO: Image dimensions: 640x480
+[2026-01-07 22:18:00] INFO: Saved image record #22:  IMG_20260107_221759.jpg
+[2026-01-07 22:18:00] INFO: \u2705 Matched: New pos [166.50680541992188, 217.1201171875] \u2192 Pallet #2 (distance: 0.7px)
+[2026-01-07 22:18:00] INFO: Updated pallet #2 (duration: 0.4 min)
+[2026-01-07 22:18:00] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (0.4 min)
+[2026-01-07 22:18:00] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221759_detected.jpg
+[2026-01-07 22:18:00] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:18:00] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:18:00] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:18:00] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:18:00] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:18:10] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:18:12] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221812.jpg
+[2026-01-07 22:18:12] INFO: Detected 1 object(s) in IMG_20260107_221812.jpg
+[2026-01-07 22:18:12] INFO: Image dimensions: 640x480
+[2026-01-07 22:18:13] INFO: Saved image record #23:  IMG_20260107_221812.jpg
+[2026-01-07 22:18:13] INFO: \u2705 Matched: New pos [167.01116943359375, 217.48973083496094] \u2192 Pallet #2 (distance: 1.1px)
+[2026-01-07 22:18:13] INFO: Updated pallet #2 (duration: 0.7 min)
+[2026-01-07 22:18:13] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (0.7 min)
+[2026-01-07 22:18:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221812_detected.jpg
+[2026-01-07 22:18:13] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:18:13] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:18:13] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:18:13] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:18:13] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:18:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:18:25] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221825.jpg
+[2026-01-07 22:18:25] INFO: Detected 1 object(s) in IMG_20260107_221825.jpg
+[2026-01-07 22:18:25] INFO: Image dimensions: 640x480
+[2026-01-07 22:18:25] INFO: Saved image record #24:  IMG_20260107_221825.jpg
+[2026-01-07 22:18:25] INFO: \u2705 Matched: New pos [166.58209228515625, 217.07664489746094] \u2192 Pallet #2 (distance: 0.6px)
+[2026-01-07 22:18:25] INFO: Updated pallet #2 (duration: 0.9 min)
+[2026-01-07 22:18:25] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (0.9 min)
+[2026-01-07 22:18:25] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221825_detected.jpg
+[2026-01-07 22:18:26] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:18:26] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+✅ Config loaded successfully
+⚠️ Not running on Raspberry Pi - GPIO disabled
+✅ Config loaded successfully
+✅ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+✅ Config loaded successfully
+✅ Config loaded successfully
+✅ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-07 22:18:26] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:18:26] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:18:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:18:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:18:38] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221838.jpg
+[2026-01-07 22:18:38] INFO: Detected 1 object(s) in IMG_20260107_221838.jpg
+[2026-01-07 22:18:38] INFO: Image dimensions: 640x480
+[2026-01-07 22:18:38] INFO: Saved image record #25:  IMG_20260107_221838.jpg
+[2026-01-07 22:18:38] INFO: \u2705 Matched: New pos [170.90237426757812, 221.66334533691406] \u2192 Pallet #2 (distance: 6.8px)
+[2026-01-07 22:18:38] INFO: Updated pallet #2 (duration: 1.1 min)
+[2026-01-07 22:18:38] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (1.1 min)
+[2026-01-07 22:18:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221838_detected.jpg
+[2026-01-07 22:18:38] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:18:38] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:18:38] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:18:38] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:18:38] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:18:48] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:18:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221851.jpg
+[2026-01-07 22:18:51] INFO: Detected 1 object(s) in IMG_20260107_221851.jpg
+[2026-01-07 22:18:51] INFO: Image dimensions: 640x480
+[2026-01-07 22:18:51] INFO: Saved image record #26:  IMG_20260107_221851.jpg
+[2026-01-07 22:18:51] INFO: \u2705 Matched: New pos [170.21505737304688, 219.86386108398438] \u2192 Pallet #2 (distance: 5.0px)
+[2026-01-07 22:18:51] INFO: Updated pallet #2 (duration: 1.3 min)
+[2026-01-07 22:18:51] WARNING: \u26a0\ufe0f Overtime detected: Pallet #2 (1.3 min)
+[2026-01-07 22:18:51] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221851_detected.jpg
+[2026-01-07 22:18:51] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:18:51] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:18:51] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:18:51] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:18:51] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:19:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:19:04] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221904.jpg
+[2026-01-07 22:19:05] INFO: Detected 0 object(s) in IMG_20260107_221904.jpg
+[2026-01-07 22:19:05] INFO: Image dimensions: 640x480
+[2026-01-07 22:19:05] INFO: Saved image record #27:  IMG_20260107_221904.jpg
+[2026-01-07 22:19:05] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221904_detected.jpg
+[2026-01-07 22:19:05] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-07 22:19:05] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:19:05] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:19:05] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:19:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:19:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:19:17] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221917.jpg
+[2026-01-07 22:19:18] INFO: Detected 0 object(s) in IMG_20260107_221917.jpg
+[2026-01-07 22:19:18] INFO: Image dimensions: 640x480
+[2026-01-07 22:19:18] INFO: Saved image record #28:  IMG_20260107_221917.jpg
+[2026-01-07 22:19:18] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221917_detected.jpg
+[2026-01-07 22:19:18] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:19:18] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:19:18] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:19:18] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:19:28] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:19:30] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221930.jpg
+[2026-01-07 22:19:31] INFO: Detected 1 object(s) in IMG_20260107_221930.jpg
+[2026-01-07 22:19:31] INFO: Image dimensions: 640x480
+[2026-01-07 22:19:31] INFO: Saved image record #29:  IMG_20260107_221930.jpg
+[2026-01-07 22:19:31] INFO: \u274c No match found for position [157.41925048828125, 210.22694396972656] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 22:19:31] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221930_detected.jpg
+[2026-01-07 22:19:31] INFO: \U0001f50d Found recently deactivated pallet: #2 (PL-0002) - duration: 1.0 min
+[2026-01-07 22:19:31] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #2 (PL-0002)
+[2026-01-07 22:19:31] WARNING:    Previous duration: 1.0 min
+[2026-01-07 22:19:31] WARNING: \u26a0\ufe0f Immediate alert: Position matches overtime pallet! (duration: 1.0 min)
+[2026-01-07 22:19:31] INFO: Created new pallet #3 (PL-0003)
+[2026-01-07 22:19:31] INFO: \u2705 Created pallet: #3 (PL-0003)
+[2026-01-07 22:19:31] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:19:31] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:19:31] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:19:31] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:19:31] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:19:41] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:19:43] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221943.jpg
+[2026-01-07 22:19:43] INFO: Detected 1 object(s) in IMG_20260107_221943.jpg
+[2026-01-07 22:19:43] INFO: Image dimensions: 640x480
+[2026-01-07 22:19:44] INFO: Saved image record #30:  IMG_20260107_221943.jpg
+[2026-01-07 22:19:44] INFO: \u2705 Matched: New pos [157.7299041748047, 212.51504516601562] \u2192 Pallet #3 (distance: 2.3px)
+[2026-01-07 22:19:44] INFO: Updated pallet #3 (duration: 0.2 min)
+[2026-01-07 22:19:44] WARNING: \u26a0\ufe0f Overtime detected: Pallet #3 (0.2 min)
+[2026-01-07 22:19:44] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221943_detected.jpg
+[2026-01-07 22:19:44] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:19:44] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:19:44] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:19:44] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:19:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:19:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:19:56] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221956.jpg
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-07 22:19:56] INFO: Detected 1 object(s) in IMG_20260107_221956.jpg
+[2026-01-07 22:19:56] INFO: Image dimensions: 640x480
+[2026-01-07 22:19:56] INFO: Saved image record #31:  IMG_20260107_221956.jpg
+[2026-01-07 22:19:56] INFO: \u2705 Matched: New pos [157.719970703125, 210.5738525390625] \u2192 Pallet #3 (distance: 0.5px)
+[2026-01-07 22:19:56] INFO: Updated pallet #3 (duration: 0.4 min)
+[2026-01-07 22:19:56] WARNING: \u26a0\ufe0f Overtime detected: Pallet #3 (0.4 min)
+[2026-01-07 22:19:56] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_221956_detected.jpg
+[2026-01-07 22:19:56] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:19:56] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:19:56] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:19:56] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:19:56] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:21:33] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-07 22:21:33] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-07 22:21:33] INFO: \u2705 Detection service initialized
+[2026-01-07 22:21:33] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-07 22:21:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:21:35] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222135.jpg
+[2026-01-07 22:21:37] INFO: Detected 0 object(s) in IMG_20260107_222135.jpg
+[2026-01-07 22:21:37] INFO: Image dimensions: 640x480
+[2026-01-07 22:21:37] INFO: Saved image record #32:  IMG_20260107_222135.jpg
+[2026-01-07 22:21:37] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222135_detected.jpg
+[2026-01-07 22:21:37] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-07 22:21:37] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:21:37] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:21:37] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:21:37] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:21:47] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:21:49] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222149.jpg
+[2026-01-07 22:21:50] INFO: Detected 1 object(s) in IMG_20260107_222149.jpg
+[2026-01-07 22:21:50] INFO: Image dimensions: 640x480
+[2026-01-07 22:21:50] INFO: Saved image record #33:  IMG_20260107_222149.jpg
+[2026-01-07 22:21:50] INFO: \u274c No match found for position [157.9783935546875, 211.31468200683594] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 22:21:50] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222149_detected.jpg
+[2026-01-07 22:21:50] INFO: \U0001f50d Found recently deactivated pallet: #3 (PL-0003) - duration: 0.0 min
+[2026-01-07 22:21:50] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #3 (PL-0003)
+[2026-01-07 22:21:50] WARNING:    Previous duration: 0.0 min
+[2026-01-07 22:21:50] INFO: Created new pallet #4 (PL-0004)
+[2026-01-07 22:21:50] INFO: \u2705 Created pallet: #4 (PL-0004)
+[2026-01-07 22:21:50] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:21:50] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:21:50] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:21:50] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:22:00] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:22:02] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222202.jpg
+[2026-01-07 22:22:03] INFO: Detected 0 object(s) in IMG_20260107_222202.jpg
+[2026-01-07 22:22:03] INFO: Image dimensions: 640x480
+[2026-01-07 22:22:03] INFO: Saved image record #34:  IMG_20260107_222202.jpg
+[2026-01-07 22:22:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222202_detected.jpg
+[2026-01-07 22:22:03] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-07 22:22:03] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:22:03] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:22:03] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-07 22:22:03] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:22:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:22:15] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222215.jpg
+[2026-01-07 22:22:16] INFO: Detected 1 object(s) in IMG_20260107_222215.jpg
+[2026-01-07 22:22:16] INFO: Image dimensions: 640x480
+[2026-01-07 22:22:16] INFO: Saved image record #35:  IMG_20260107_222215.jpg
+[2026-01-07 22:22:16] INFO: \u274c No match found for position [158.36795043945312, 210.04286193847656] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-07 22:22:16] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222215_detected.jpg
+[2026-01-07 22:22:16] INFO: \U0001f50d Found recently deactivated pallet: #4 (PL-0004) - duration: 0.0 min
+[2026-01-07 22:22:16] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #4 (PL-0004)
+[2026-01-07 22:22:16] WARNING:    Previous duration: 0.0 min
+[2026-01-07 22:22:16] INFO: Created new pallet #5 (PL-0005)
+[2026-01-07 22:22:16] INFO: \u2705 Created pallet: #5 (PL-0005)
+[2026-01-07 22:22:16] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-07 22:22:16] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-07 22:22:16] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:22:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:22:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:22:28] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222228.jpg
+[2026-01-07 22:22:29] INFO: Detected 1 object(s) in IMG_20260107_222228.jpg
+[2026-01-07 22:22:29] INFO: Image dimensions: 640x480
+[2026-01-07 22:22:29] INFO: Saved image record #36:  IMG_20260107_222228.jpg
+[2026-01-07 22:22:29] INFO: \u2705 Matched: New pos [158.02357482910156, 211.30845642089844] \u2192 Pallet #5 (distance: 1.3px)
+[2026-01-07 22:22:29] INFO: Updated pallet #5 (duration: 0.2 min)
+[2026-01-07 22:22:29] WARNING: \u26a0\ufe0f Overtime detected: Pallet #5 (0.2 min)
+[2026-01-07 22:22:29] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222228_detected.jpg
+[2026-01-07 22:22:29] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:22:29] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:22:29] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:22:29] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:22:29] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-07 22:22:39] INFO: \U0001f504 Starting detection cycle...
+[2026-01-07 22:22:41] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222241.jpg
+[2026-01-07 22:22:42] INFO: Detected 1 object(s) in IMG_20260107_222241.jpg
+[2026-01-07 22:22:42] INFO: Image dimensions: 640x480
+[2026-01-07 22:22:42] INFO: Saved image record #37:  IMG_20260107_222241.jpg
+[2026-01-07 22:22:42] INFO: \u2705 Matched: New pos [159.18460083007812, 210.63290405273438] \u2192 Pallet #5 (distance: 1.0px)
+[2026-01-07 22:22:42] INFO: Updated pallet #5 (duration: 0.4 min)
+[2026-01-07 22:22:42] WARNING: \u26a0\ufe0f Overtime detected: Pallet #5 (0.4 min)
+[2026-01-07 22:22:42] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-07\IMG_20260107_222241_detected.jpg
+[2026-01-07 22:22:42] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-07 22:22:42] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-07 22:22:42] ERROR: Alert handling error: Format specifier missing precision
+[2026-01-07 22:22:42] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-07 22:22:42] INFO: \U0001f4a4 Sleeping for 10 seconds...
