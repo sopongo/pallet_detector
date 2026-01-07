@@ -61,7 +61,8 @@
               </div>
             </div>
             <div class="card-footer py-2 border-top">
-               <small class="text-muted"><i class="fas fa-network-wired text-success mr-1"></i> Status: </small>
+               <!-- แก้ไข: เพิ่ม span id="system-status" เพื่อแสดง Online/Offline ของระบบ -->
+               <small class="text-muted"><i class="fas fa-network-wired text-success mr-1"></i> Status: <span id="system-status" class="ml-2 text-info">Checking...</span></small>
             </div>
           </div>
 
@@ -95,9 +96,13 @@
               </ul>
             </div>
             <div class="card-footer p-2 bg-white border-top-0">
+                <!-- ปรับปรุง: ปุ่มจะถูก disable ขณะเรียก API และแสดง spinner ระหว่างรอ -->
                 <button id="btn-toggle-monitor" class="btn btn-lg btn-danger btn-block text-bold shadow">
                   <i class="fas fa-play-circle mr-2"></i> Start Monitoring
                 </button>
+
+                <!-- ปรับปรุง: แสดง PID ของ detection service เมื่อรัน -->
+                <div id="service-pid" class="text-center mt-2 small text-muted"></div>
             </div>
           </div>
 
@@ -128,6 +133,7 @@
 <style type="text/css">
   .pallet-image-container { background: #eaeaea; min-height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
     .ai-box { position: absolute; border: 2px solid #ff0000; pointer-events: none; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); border-radius: 2px; z-index: 5; }
+    /*.ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95); color: #fff !important; z-index: 10; }*/
     .ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95) !important; font-weight: bold; color: #fff; }
     #log-container { height: 130px; overflow-y: auto; background: #1e1e1e; color: #00ff00; 
       /*font-family: 'Courier New', monospace; */
@@ -188,17 +194,51 @@ console.log('🔗 API_URL:', API_URL);
   setInterval(updateHeaderClock, 1000);
 
   // ========================================
+  // Helper: อัพเดตข้อความ Online/Offline ตรง Status
+  // - เพิ่ม comment: ฟังก์ชันนี้จะถูกเรียกจาก fetchDetectionStatus และเมื่อเริ่ม/หยุด
+  // ========================================
+  function updateSystemStatus(online, running, pid) {
+    const $status = $('#system-status');
+    if (!online) {
+      // ถ้าเรียก API ไม่ได้ -> Offline
+      $status.text('Offline').removeClass('text-success text-info').addClass('text-danger');
+      $('#service-pid').text(''); // ล้าง pid
+      return;
+    }
+
+    // ถ้าถึง API ได้ ให้แสดงสถานะการรันของ detection service
+    if (running) {
+      $status.text('Online (Detection running)').removeClass('text-danger text-info').addClass('text-success');
+      if (pid) {
+        $('#service-pid').text('PID: ' + pid);
+      } else {
+        $('#service-pid').text('PID: —');
+      }
+    } else {
+      $status.text('Online (Idle)').removeClass('text-danger text-success').addClass('text-info');
+      $('#service-pid').text('PID: —');
+    }
+  }
+
+  // ========================================
   // 2. Fetch Detection Status
+  // - ปรับให้ call updateSystemStatus เพื่ออัพเดต Status และ PID
   // ========================================
   function fetchDetectionStatus() {
     $.get(API_URL + '/detection/status', function(data) {
-      if (data.running) {
-        updateButtonState(true);
+      if (data && data.success) {
+        // อัพเดตปุ่มและสถานะระบบ
+        updateButtonState(!!data.running);
+        updateSystemStatus(true, !!data.running, data.pid);
       } else {
         updateButtonState(false);
+        updateSystemStatus(true, false, null);
       }
     }).fail(function() {
       console.error('Cannot fetch detection status');
+      // ถ้าเรียกไม่ได้ ถือว่า Offline
+      updateButtonState(false);
+      updateSystemStatus(false, false, null);
     });
   }
 
@@ -227,9 +267,9 @@ console.log('🔗 API_URL:', API_URL);
     });
   }
 
-// ========================================
-// 4. Fetch Summary (แบบใหม่ - ใช้ ID)
-// ========================================
+  // ========================================
+  // 4. Fetch Summary (แบบใหม่ - ใช้ ID)
+  // ========================================
 function fetchSummary() {
   $. get(API_URL + '/detection/summary/today', function(data) {
     if (data.success) {
@@ -240,7 +280,7 @@ function fetchSummary() {
       $('#summary-detected').text(data.total_detected);
       $('#summary-in-time').text(data.in_time);
       $('#summary-over-time').text(data.over_time);
-      $('#summary-notif').text(data.notifications);
+      $('#summary-notifications').text(data.notifications);
       
       console.log('✅ Summary updated:', data);
     }
@@ -251,37 +291,38 @@ function fetchSummary() {
 
 
 
-// ========================================
-// 5.  Fetch System Logs
-// ========================================
-function fetchLogs() {
-  $.get(API_URL + '/detection/logs? limit=15', function(data) {  // ✅ เอาช่องว่างออก
-    if (data.success && data.logs.length > 0) {
-      // Clear placeholder
-      if ($('#log-container').find('.text-muted').length) {  // ✅ ใช้ . find() แทน
+  // ========================================
+  // 5.  Fetch System Logs
+  // - note: fixed previous spacing bug (parameter 'limit' passing)
+  // ========================================
+  function fetchLogs() {
+    $.get(API_URL + '/detection/logs?limit=15', function(data) {
+      if (data.success && data.logs.length > 0) {
+        // Clear placeholder
+        if ($('#log-container').find('.text-muted').length) {
+          $('#log-container').empty();
+        }
+        
+        // Clear old logs first
         $('#log-container').empty();
+        
+        // Add new logs
+        data.logs.forEach(function(log) {
+          const logHtml = '<div>' + log + '</div>';
+          $('#log-container').append(logHtml);
+        });
+        
+        // Auto scroll to bottom
+        $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
+        
+        console.log('✅ Logs updated:   ' + data.logs.length + ' lines');
+      } else {
+        console.log('⚠️ No logs found');
       }
-      
-      // Clear old logs first
-      $('#log-container').empty();
-      
-      // Add new logs
-      data.logs.forEach(function(log) {
-        const logHtml = '<div>' + log + '</div>';
-        $('#log-container').append(logHtml);
-      });
-      
-      // Auto scroll to bottom
-      $('#log-container').scrollTop($('#log-container')[0].scrollHeight);
-      
-      console.log('✅ Logs updated:   ' + data.logs.length + ' lines');
-    } else {
-      console.log('⚠️ No logs found');
-    }
-  }).fail(function(xhr) {
-    console.error('❌ Cannot fetch logs:', xhr.responseText);
-  });
-}
+    }).fail(function(xhr) {
+      console.error('❌ Cannot fetch logs:', xhr.responseText);
+    });
+  }
 
   // ========================================
   // 6. Fetch System Info
@@ -307,6 +348,8 @@ function fetchLogs() {
 
   // ========================================
   // 7. Start/Stop Button Handler
+  // - ปรับปรุง: disable ปุ่มขณะรอ request และแสดง spinner / คืนค่าปุ่มเมื่อเสร็จ
+  // - เพิ่ม error handling ที่ชัดเจน
   // ========================================
     $('#btn-toggle-monitor').click(function() {
       const $btn = $(this);
@@ -315,13 +358,19 @@ function fetchLogs() {
           // START
           console.log('🟢 Starting detection...');
           
+          // ปิดปุ่มระหว่างเรียก เพื่อป้องกันกดซ้ำ
+          $btn.prop('disabled', true);
+          const originalHtml = $btn.html();
+          $btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Starting...');
+
           $.post(API_URL + '/detection/start', function(response) {
               console.log('📥 Start response:', response);
               
               if (response.success) {
                   updateButtonState(true);
                   startPolling();
-                  Swal. fire({
+                  updateSystemStatus(true, true, response.pid); // อัพเดต status และ PID
+                  Swal.fire({
                       icon: 'success',
                       title:  'Success!',
                       text: response.message,
@@ -349,6 +398,12 @@ function fetchLogs() {
                   text: 'Cannot start detection service:  ' + error,
                   confirmButtonColor: '#dc3545'
               });
+          }).always(function() {
+              // คืนค่าปุ่มไม่ว่าจะสำเร็จหรือไม่
+              $btn.prop('disabled', false);
+              $btn.html(originalHtml);
+              // รีเช็คสถานะจริง (fallback)
+              fetchDetectionStatus();
           });
           
       } else {
@@ -356,6 +411,11 @@ function fetchLogs() {
           // ✅ เช็ค status ก่อน stop
           console.log('🔴 Checking status before stop...');
           
+          // ปิดปุ่มขณะรอ
+          $btn.prop('disabled', true);
+          const origHtml = $btn.html();
+          $btn.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Stopping...');
+
           $.get(API_URL + '/detection/status', function(statusData) {
               console.log('📊 Current status:', statusData);
               
@@ -363,6 +423,7 @@ function fetchLogs() {
                   console.warn('⚠️ Service not running, updating UI');
                   updateButtonState(false);
                   stopPolling();
+                  updateSystemStatus(true, false, null);
                   
                   Swal.fire({
                       icon: 'warning',
@@ -370,10 +431,12 @@ function fetchLogs() {
                       text: 'Detection service is not running',
                       confirmButtonColor: '#ffc107'
                   });
+                  $btn.prop('disabled', false);
+                  $btn.html(origHtml);
                   return;
               }
               
-              // ✅ ถ้ารันอยู่ → หยุด
+              // ✅ ถ้ากำลังรันอยู่ → หยุด
               console.log('🛑 Stopping detection...');
               
               $.post(API_URL + '/detection/stop', function(response) {
@@ -382,6 +445,7 @@ function fetchLogs() {
                   if (response.success) {
                       updateButtonState(false);
                       stopPolling();
+                      updateSystemStatus(true, false, null);
                       Swal.fire({
                           icon: 'success',
                           title: 'Success!',
@@ -404,16 +468,24 @@ function fetchLogs() {
                       error: error
                   });
                   
-                  Swal. fire({
+                  Swal.fire({
                       icon: 'error',
                       title:  'Error!',
                       text: `Cannot stop detection service\n\nStatus: ${xhr.status}\nError: ${error}`,
                       confirmButtonColor: '#dc3545'
                   });
+              }).always(function() {
+                  // คืนค่าปุ่ม
+                  $btn.prop('disabled', false);
+                  $btn.html(origHtml);
+                  // รีเช็คสถานะจริง
+                  fetchDetectionStatus();
               });
               
           }).fail(function() {
               console.error('❌ Cannot check status');
+              $btn.prop('disabled', false);
+              $btn.html(origHtml);
           });
       }
   });
@@ -459,6 +531,7 @@ function fetchLogs() {
 
   // ========================================
   // 9. Initialize on Page Load
+  // - โหลดสถานะตอนเปิดหน้า และเริ่ม poll info ที่จำเป็น
   // ========================================
   fetchDetectionStatus();  // Check if already running
   fetchSummary();           // Load summary
