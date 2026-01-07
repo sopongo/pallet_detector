@@ -106,10 +106,15 @@ class LineMessagingAPI:
         ส่ง alert พาเลทเกินเวลา (Text Message ธรรมดา)
         
         Args:
-            pallet_info (dict): ข้อมูลพาเลท
+            pallet_info (dict): ข้อมูลพาเลท (currently unused, kept for API compatibility)
             
         Returns:
             dict: {'success': bool, 'message': str}
+        
+        Note:
+            This method now sends a simple text message "มีพาเลทเกินเวลา" instead of
+            a complex Flex Message to ensure reliability. The pallet_info parameter
+            is kept for backward compatibility but is not currently used.
         """
         try:
             # ✅ ส่งข้อความสั้นๆ ธรรมดา
