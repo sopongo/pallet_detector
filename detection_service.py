@@ -204,6 +204,29 @@ class DetectionService:
             
             # ✅ 5. สร้างพาเลทใหม่ (หลังจากได้ pallet_no/name แล้ว)
             for pallet_data in new_pallets_to_create:
+                # ✅ เช็คว่ามีพาเลทเก่าที่ตำแหน่งใกล้เคียงหรือไม่ (ภายใน 5 นาทีที่ผ่านมา)
+                recently_deactivated = self.tracker.find_recently_deactivated_pallet(
+                    pallet_data['center'],
+                    image_width,
+                    image_height,
+                    minutes=5
+                )
+                
+                if recently_deactivated:
+                    logger.warning(f"⚠️ New pallet at same position as recently deactivated #{recently_deactivated['id_pallet']} ({recently_deactivated['pallet_name']})")
+                    logger.warning(f"   Previous duration: {recently_deactivated['total_duration']:.1f} min")
+                    
+                    # ✅ ถ้าพาเลทเก่าเคย overtime (in_over=1) → แจ้งเตือนทันที
+                    if recently_deactivated['in_over'] == 1 and recently_deactivated['total_duration'] > self.tracker.alert_threshold:
+                        overtime_pallets.append({
+                            'pallet_id': recently_deactivated['id_pallet'],
+                            'duration': recently_deactivated['total_duration'],
+                            'site': image_data['site'],
+                            'location': image_data['location']
+                        })
+                        logger.warning(f"⚠️ Immediate alert: Position matches overtime pallet! (duration: {recently_deactivated['total_duration']:.1f} min)")
+                
+                # สร้างพาเลทใหม่
                 new_id = self.tracker.create_new_pallet(
                     ref_id_img,
                     pallet_data,
@@ -213,6 +236,7 @@ class DetectionService:
                 )
                 if new_id:
                     current_pallet_ids.append(new_id)
+                    logger.info(f"✅ Created pallet: #{new_id} ({pallet_data.get('pallet_name', 'UNKNOWN')})")
             
             # 6. Deactivate missing pallets
             self.tracker.deactivate_missing_pallets(current_pallet_ids, ref_id_img)
