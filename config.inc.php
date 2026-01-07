@@ -559,9 +559,14 @@ function updateTimeDisplay(from, to) {
 
 
 // ========================================
-// API Base URL
+// API Base URL / Configuration
 // ========================================
-const API_URL = 'http://localhost:5000/api';
+// ✅ Auto-detect hostname (works on any device)
+const API_URL = `http://${window.location.hostname}:5000/api`;
+const POLLING_INTERVAL = 3000;
+
+// Debug: แสดง API_URL ที่ใช้
+console.log('🔗 API_URL:', API_URL);
 
 // ========================================
 // SweetAlert2 Helper Functions

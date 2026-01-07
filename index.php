@@ -7,7 +7,7 @@ date_default_timezone_set('Asia/Bangkok');
 
 include_once('config/config.php');
 
-if(empty($_SESSION['admin_config'])){
+if(empty($_SESSION['admin_config']) || $_SESSION['admin_config'] !== 1){
   die(include_once('login.inc.php'));
 }
 

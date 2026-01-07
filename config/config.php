@@ -1,4 +1,8 @@
 <?PHP
+$config_admin_password = '7110eda4d09e062aa5e4a390b0a572ac0d2c0220'; // sha1('1234')
+$site_config = __DIR__ . '/sites.json';
+$pallet_config = __DIR__ . '/pallet_config.json';
+
 $arr_site = [
     1 => [
         "site_name" => "PCS",

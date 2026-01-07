@@ -27,7 +27,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <h4 class="text-muted"><i class="fas fa-map-marker-alt"></i> Site: PACJ <i class="fas fas fa-angle-double-right text-sm"></i> <i class="fas fa-industry"></i> Building 1</h4>
+              <h4 class="text-muted"><i class="fas fa-map-marker-alt"></i> Site: <?php echo $_SESSION['siteName']; ?> <i class="fas fas fa-angle-double-right text-sm"></i> <i class="fas fa-industry"></i> <?php echo $_SESSION['locationName']; ?></h4>
             </div>
           </div>
         </div>

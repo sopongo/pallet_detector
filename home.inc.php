@@ -1,3 +1,20 @@
+<?php
+//print_r($_SESSION['admin_config']);
+//print_r($_SESSION['site_config']);
+//echo $_SESSION['pallet_config']['general']['siteCompany'];
+//echo $_SESSION['pallet_config']['general']['siteLocation'];
+//$siteName = $_SESSION['site_config'][$_SESSION['pallet_config']['general']['siteCompany']]['site_name'];
+//$locationName = $_SESSION['site_config'][$_SESSION['pallet_config']['general']['siteCompany']]['location'][$_SESSION['pallet_config']['general']['siteLocation']];
+/*echo "<br>Site ID: " . $siteName;
+echo "<br>Location: " . $locationName;
+echo '<pre>';
+print_r($_SESSION['site_config']);
+echo '</pre>';
+echo '<pre>';
+print_r($_SESSION['pallet_config']);
+echo '</pre>';*/
+
+?>
 <div class="card">
   <div class="card-header">
     <h3 class="card-title"><i class="fas fa-cogs"></i> Dashboard summary (Date: 24/12/2025)</h3>
@@ -7,7 +24,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <h4 class="text-muted"><i class="fas fa-map-marker-alt"></i> Site: PACJ <i class="fas fas fa-angle-double-right text-sm"></i> <i class="fas fa-industry"></i> Building 1</h4>
+            <h4 class="text-muted"><i class="fas fa-map-marker-alt"></i> Site: <?php echo $_SESSION['siteName']; ?> <i class="fas fas fa-angle-double-right text-sm"></i> <i class="fas fa-industry"></i> <?php echo $_SESSION['locationName']; ?></h4>
           </div>
         </div>
       </div>

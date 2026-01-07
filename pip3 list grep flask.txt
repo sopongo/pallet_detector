@@ -1,3 +1,40 @@
+# เช็ค process
+ps aux | grep python3 | grep app.py
+
+# เช็ค port 5000
+sudo netstat -tulpn | grep 5000
+
+# หรือ
+sudo lsof -i :5000
+**ถ้าไม่เห็นอะไร → Flask ไม่ได้รัน! **
+
+2. รัน Flask ใหม่:
+bash
+# ไป path ที่ถูก
+cd /var/www/pallet_detector
+
+# Activate venv
+source venv/bin/activate
+
+# รัน Flask
+python3 app.py
+
+
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED VIA mysql_native_password;
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('รหัสผ่านที่คุณต้องการ');
+FLUSH PRIVILEGES;
+EXIT;
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'Pcs@1234';
+FLUSH PRIVILEGES;
+EXIT;
+
+pip install Flask==3.0.0 Flask-CORS==4.0.0 PyMySQL==1.1.0 opencv-python==4.8.1.78 gpiozero==2.0.1 requests==2.31.0
+
+
+
 # 1. ติดตั้ง python3-venv
 sudo apt update
 sudo apt install -y python3-venv python3-full
@@ -37,9 +74,6 @@ cd ~/pallet_detector
 
 # รัน app
 python3 app.py
-
-
-
 
 
 # 1. เข้า MySQL
