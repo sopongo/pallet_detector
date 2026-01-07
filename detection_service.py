@@ -6,13 +6,14 @@ Background service สำหรับ detection loop
 import os
 import time
 import cv2
+import json
 from datetime import datetime, timedelta
 import signal
 import sys
 import config
-from utils. logger import setup_logger
+from utils.logger import setup_logger
 from utils.detector import PalletDetector
-from utils. tracker import PalletTracker
+from utils.tracker import PalletTracker
 from utils.database import DatabaseManager
 from utils.line_messaging import LineMessagingAPI
 from utils.gpio_control import LightController
@@ -27,12 +28,39 @@ class DetectionService:
         self.running = False
         self.cfg = config.load_config()
         
+        # ✅ โหลด sites.json ครั้งเดียวตอน init (แทนที่จะอ่านทุกครั้งที่เรียก method)
+        self._sites_data = None
+        try:
+            sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
+            if os.path.exists(sites_file):
+                with open(sites_file, 'r', encoding='utf-8') as f:
+                    self._sites_data = json.load(f)
+                    logger.info(f"✅ Loaded sites data: {len(self._sites_data)} site(s)")
+        except Exception as e:
+            logger.error(f"Error loading sites.json: {e}")
+            self._sites_data = {}
+        
         # Initialize components
         try:
             self.detector = PalletDetector()
             self.tracker = PalletTracker()
             self.db = DatabaseManager()
             self.line = LineMessagingAPI()
+            
+            # ✅ ตรวจสอบ LINE config
+            line_token = self.cfg['network']['lineNotify'].get('token', '')
+            line_group = self.cfg['network']['lineNotify'].get('groupId', '')
+            
+            if not line_token or line_token == 'NULL':
+                logger.warning("⚠️ LINE token not configured - alerts will NOT be sent!")
+            else:
+                logger.info(f"✅ LINE token configured: {line_token[:20]}...")
+            
+            if not line_group or line_group == 'NULL':
+                logger.warning("⚠️ LINE group ID not configured - alerts will NOT be sent!")
+            else:
+                logger.info(f"✅ LINE group ID configured: {line_group[:10]}...")
+            
             self.lights = LightController(
                 red_pin=self.cfg['gpio']['redLightPin'],
                 green_pin=self.cfg['gpio']['greenLightPin']
@@ -44,13 +72,80 @@ class DetectionService:
             logger.error(f"❌ Initialization failed: {e}")
             raise
     
+    def get_site_name(self, site_id):
+        """
+        แปลง site ID เป็นชื่อ
+        
+        Args:
+            site_id (int): Site ID (1, 2, 3...)
+            
+        Returns:
+            str: Site name (e.g., "PCS", "PACT")
+        """
+        try:
+            if self._sites_data:
+                site_info = self._sites_data.get(str(site_id), {})
+                return site_info.get('site_name', f'Site {site_id}')
+        except Exception as e:
+            logger.error(f"Error getting site name: {e}")
+        
+        # Fallback: ใช้ ID
+        return f'Site {site_id}'
+    
+    def get_location_name(self, site_id, location_id):
+        """
+        แปลง location ID เป็นชื่อ
+        
+        Args:
+            site_id (int): Site ID
+            location_id (int): Location ID
+            
+        Returns:
+            str: Location name (e.g., "Building 1")
+        """
+        try:
+            if self._sites_data:
+                site_info = self._sites_data.get(str(site_id), {})
+                locations = site_info.get('location', {})
+                return locations.get(str(location_id), f'Location {location_id}')
+        except Exception as e:
+            logger.error(f"Error getting location name: {e}")
+        
+        # Fallback: ใช้ ID
+        return f'Location {location_id}'
+    
+    def generate_image_url(self, annotated_path):
+        """
+        สร้าง image URL จาก annotated_path
+        
+        Args:
+            annotated_path (str): Path ของรูปภาพที่มี annotation
+            
+        Returns:
+            str: Image URL หรือ empty string ถ้าสร้างไม่ได้
+        """
+        if not annotated_path:
+            return ''
+        
+        try:
+            base_path = self.cfg['general']['imagePath']
+            if not os.path.isabs(base_path):
+                base_path = os.path.abspath(base_path)
+            
+            image_rel_path = os.path.relpath(annotated_path, base_path)
+            image_url = f"http://localhost/{os.path.basename(base_path)}/{image_rel_path.replace(os.sep, '/')}"
+            return image_url
+        except Exception as e:
+            logger.warning(f"Cannot create image URL: {e}")
+            return ''
+    
     def is_within_operating_hours(self):
         """ตรวจสอบว่าอยู่ในช่วงเวลาทำงานหรือไม่"""
         now = datetime.now()
         current_time = now.time()
         
         start_time = datetime.strptime(self.cfg['detection']['operatingHours']['start'], '%H:%M').time()
-        end_time = datetime.strptime(self. cfg['detection']['operatingHours']['end'], '%H:%M').time()
+        end_time = datetime.strptime(self.cfg['detection']['operatingHours']['end'], '%H:%M').time()
         
         return start_time <= current_time <= end_time
     
@@ -180,7 +275,8 @@ class DetectionService:
                             'pallet_id': result['pallet_id'],
                             'duration': result['duration'],
                             'site': image_data['site'],
-                            'location': image_data['location']
+                            'location': image_data['location'],
+                            'image_url': ''  # ✅ จะถูกอัพเดทหลังจากมี annotated_path
                         })
                         logger.warning(f"⚠️ Overtime detected: Pallet #{result['pallet_id']} ({result['duration']:.1f} min)")
                     
@@ -202,6 +298,14 @@ class DetectionService:
                 self.db
             )
             
+            # ✅ อัพเดท image URL ให้กับ overtime_pallets ทั้งหมด (หลังจากมี annotated_path แล้ว)
+            if annotated_path and overtime_pallets:
+                image_url = self.generate_image_url(annotated_path)
+                if image_url:
+                    for pallet in overtime_pallets:
+                        pallet['image_url'] = image_url
+                    logger.info(f"📷 Image URL added to {len(overtime_pallets)} overtime alert(s): {image_url}")
+            
             # ✅ 5. สร้างพาเลทใหม่ (หลังจากได้ pallet_no/name แล้ว)
             for pallet_data in new_pallets_to_create:
                 # ✅ เช็คว่ามีพาเลทเก่าที่ตำแหน่งใกล้เคียงหรือไม่ (ภายใน 5 นาทีที่ผ่านมา)
@@ -218,11 +322,15 @@ class DetectionService:
                     
                     # ✅ ถ้าพาเลทเก่าเคย overtime (in_over=1) → แจ้งเตือนทันที
                     if recently_deactivated['in_over'] == 1 and recently_deactivated['total_duration'] > self.tracker.alert_threshold:
+                        # ✅ สร้าง image URL (มี annotated_path แล้ว)
+                        image_url = self.generate_image_url(annotated_path)
+                        
                         overtime_pallets.append({
                             'pallet_id': recently_deactivated['id_pallet'],
                             'duration': recently_deactivated['total_duration'],
                             'site': image_data['site'],
-                            'location': image_data['location']
+                            'location': image_data['location'],
+                            'image_url': image_url
                         })
                         logger.warning(f"⚠️ Immediate alert: Position matches overtime pallet! (duration: {recently_deactivated['total_duration']:.1f} min)")
                 
@@ -258,41 +366,73 @@ class DetectionService:
     def handle_alerts(self, overtime_pallets, annotated_path):
         """จัดการ alerts (LINE + GPIO)"""
         try:
-            # บันทึก log เมื่อเริ่มจัดการ alerts
+            # ✅ Debug log แสดงข้อมูลที่ส่งเข้ามา
             logger.info(f"📢 Handling alerts: {len(overtime_pallets)} overtime pallet(s)")
+            logger.debug(f"📋 Overtime pallets data: {overtime_pallets}")
             
             if overtime_pallets:
                 # เปิดไฟแดง
                 self.lights.test_red()
                 
-                # ส่ง LINE alert
-                for pallet in overtime_pallets:
-                    # แก้ไข: ลบ parameter ที่ 2 (None) ออก
-                    result = self.line.send_overtime_alert(pallet)
-                    
-                    # บันทึก log
-                    self.db.save_notification_log({
-                        'ref_id_pallet': pallet['pallet_id'],
-                        'notify_type': 'LINE',
-                        'message': f"Overtime alert: {pallet['duration']:.1f} min",
-                        'sent_at': datetime.now(),
-                        'success': result['success']
-                    })
-                    
-                    # อัพเดทจำนวนครั้งแจ้งเตือน
-                    if result['success']:
-                        self.db.increment_notify_count(pallet['pallet_id'])
-                        logger.info(f"✅ LINE alert sent for Pallet #{pallet['pallet_id']}")
-                    else:
-                        logger.error(f"❌ LINE alert failed for Pallet #{pallet['pallet_id']}: {result['message']}")
+                # ✅ Log ก่อนเข้า loop
+                logger.info(f"🔄 Processing {len(overtime_pallets)} alert(s)...")
                 
-                logger.warning(f"⚠️ Sent {len(overtime_pallets)} overtime alert(s)")
+                # ส่ง LINE alert
+                for i, pallet in enumerate(overtime_pallets):
+                    # ✅ Log แต่ละ pallet
+                    logger.info(f"📤 Sending alert {i+1}/{len(overtime_pallets)}: Pallet #{pallet['pallet_id']} (duration: {pallet['duration']:.1f} min)")
+                    
+                    # ✅ แปลง site/location ID เป็น name
+                    site_name = self.get_site_name(pallet.get('site', 0))
+                    location_name = self.get_location_name(pallet.get('site', 0), pallet.get('location', 0))
+                    
+                    # ✅ สร้าง dict ใหม่พร้อม site/location names
+                    alert_data = {
+                        'pallet_id': pallet['pallet_id'],
+                        'duration': pallet['duration'],
+                        'site': site_name,           # ← ชื่อแทน ID
+                        'location': location_name,   # ← ชื่อแทน ID
+                        'image_url': pallet.get('image_url', '')  # ← เพิ่ม (ถ้ามี)
+                    }
+                    
+                    # ✅ Log ข้อมูลที่จะส่ง
+                    logger.debug(f"   Alert data: {alert_data}")
+                    
+                    # ส่ง LINE alert
+                    try:
+                        result = self.line.send_overtime_alert(alert_data)
+                        
+                        # ✅ Log ผลลัพธ์
+                        if result['success']:
+                            logger.info(f"   ✅ LINE alert sent successfully")
+                        else:
+                            logger.error(f"   ❌ LINE alert failed: {result['message']}")
+                        
+                        # บันทึก log
+                        self.db.save_notification_log({
+                            'ref_id_pallet': pallet['pallet_id'],
+                            'notify_type': 'LINE',
+                            'message': f"Overtime alert: {pallet['duration']:.1f} min",
+                            'sent_at': datetime.now(),
+                            'success': result['success']
+                        })
+                        
+                        # อัพเดทจำนวนครั้งแจ้งเตือน
+                        if result['success']:
+                            self.db.increment_notify_count(pallet['pallet_id'])
+                            
+                    except Exception as alert_error:
+                        # ✅ Catch exception ของแต่ละ alert
+                        logger.error(f"   ❌ Exception sending alert: {alert_error}", exc_info=True)
+                
+                logger.warning(f"⚠️ Completed sending {len(overtime_pallets)} overtime alert(s)")
             else:
                 # เปิดไฟเขียว
+                logger.info("✅ No overtime pallets - turning on green light")
                 self.lights.test_green()
                 
         except Exception as e:
-            logger.error(f"Alert handling error: {e}")
+            logger.error(f"Alert handling error: {e}", exc_info=True)  # ✅ เพิ่ม exc_info=True เพื่อแสดง stack trace
     
     def run_detection_cycle(self):
         """รันวงจร detection 1 รอบ"""
