@@ -6,6 +6,7 @@ Background service สำหรับ detection loop
 import os
 import time
 import cv2
+import json
 from datetime import datetime, timedelta
 import signal
 import sys
@@ -26,6 +27,18 @@ class DetectionService:
         """Initialize detection service"""
         self.running = False
         self.cfg = config.load_config()
+        
+        # ✅ โหลด sites.json ครั้งเดียวตอน init (แทนที่จะอ่านทุกครั้งที่เรียก method)
+        self._sites_data = None
+        try:
+            sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
+            if os.path.exists(sites_file):
+                with open(sites_file, 'r', encoding='utf-8') as f:
+                    self._sites_data = json.load(f)
+                    logger.info(f"✅ Loaded sites data: {len(self._sites_data)} site(s)")
+        except Exception as e:
+            logger.error(f"Error loading sites.json: {e}")
+            self._sites_data = {}
         
         # Initialize components
         try:
@@ -69,16 +82,12 @@ class DetectionService:
         Returns:
             str: Site name (e.g., "PCS", "PACT")
         """
-        import json
         try:
-            sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
-            if os.path.exists(sites_file):
-                with open(sites_file, 'r', encoding='utf-8') as f:
-                    sites = json.load(f)
-                    site_info = sites.get(str(site_id), {})
-                    return site_info.get('site_name', f'Site {site_id}')
+            if self._sites_data:
+                site_info = self._sites_data.get(str(site_id), {})
+                return site_info.get('site_name', f'Site {site_id}')
         except Exception as e:
-            logger.error(f"Error reading sites.json: {e}")
+            logger.error(f"Error getting site name: {e}")
         
         # Fallback: ใช้ ID
         return f'Site {site_id}'
@@ -94,20 +103,41 @@ class DetectionService:
         Returns:
             str: Location name (e.g., "Building 1")
         """
-        import json
         try:
-            sites_file = os.path.join(os.path.dirname(__file__), 'config', 'sites.json')
-            if os.path.exists(sites_file):
-                with open(sites_file, 'r', encoding='utf-8') as f:
-                    sites = json.load(f)
-                    site_info = sites.get(str(site_id), {})
-                    locations = site_info.get('location', {})
-                    return locations.get(str(location_id), f'Location {location_id}')
+            if self._sites_data:
+                site_info = self._sites_data.get(str(site_id), {})
+                locations = site_info.get('location', {})
+                return locations.get(str(location_id), f'Location {location_id}')
         except Exception as e:
-            logger.error(f"Error reading sites.json: {e}")
+            logger.error(f"Error getting location name: {e}")
         
         # Fallback: ใช้ ID
         return f'Location {location_id}'
+    
+    def generate_image_url(self, annotated_path):
+        """
+        สร้าง image URL จาก annotated_path
+        
+        Args:
+            annotated_path (str): Path ของรูปภาพที่มี annotation
+            
+        Returns:
+            str: Image URL หรือ empty string ถ้าสร้างไม่ได้
+        """
+        if not annotated_path:
+            return ''
+        
+        try:
+            base_path = self.cfg['general']['imagePath']
+            if not os.path.isabs(base_path):
+                base_path = os.path.abspath(base_path)
+            
+            image_rel_path = os.path.relpath(annotated_path, base_path)
+            image_url = f"http://localhost/{os.path.basename(base_path)}/{image_rel_path.replace(os.sep, '/')}"
+            return image_url
+        except Exception as e:
+            logger.warning(f"Cannot create image URL: {e}")
+            return ''
     
     def is_within_operating_hours(self):
         """ตรวจสอบว่าอยู่ในช่วงเวลาทำงานหรือไม่"""
@@ -241,16 +271,12 @@ class DetectionService:
                     
                     # ตรวจสอบว่าพาเลท/person เกินเวลาหรือไม่
                     if result and result['status'] == 1:  # Status = 1 หมายถึง Overtime
-                        # ✅ สร้าง image URL (ถ้ามี annotated_path)
-                        image_url = ''
-                        # Note: annotated_path ยังไม่ถูกสร้างในจุดนี้ จะสร้างหลังจากนี้
-                        
                         overtime_pallets.append({
                             'pallet_id': result['pallet_id'],
                             'duration': result['duration'],
                             'site': image_data['site'],
                             'location': image_data['location'],
-                            'image_url': image_url  # ✅ เพิ่ม (จะถูกอัพเดทภายหลัง)
+                            'image_url': ''  # ✅ จะถูกอัพเดทหลังจากมี annotated_path
                         })
                         logger.warning(f"⚠️ Overtime detected: Pallet #{result['pallet_id']} ({result['duration']:.1f} min)")
                     
@@ -274,24 +300,11 @@ class DetectionService:
             
             # ✅ อัพเดท image URL ให้กับ overtime_pallets ทั้งหมด (หลังจากมี annotated_path แล้ว)
             if annotated_path and overtime_pallets:
-                try:
-                    # แปลง path เป็น URL (ถ้า web server serve จากโฟลเดอร์ upload_image)
-                    # Example: /path/to/upload_image/2026-01-07/IMG_xxx_detected.jpg
-                    #       -> http://localhost/upload_image/2026-01-07/IMG_xxx_detected.jpg
-                    base_path = self.cfg['general']['imagePath']
-                    if not os.path.isabs(base_path):
-                        base_path = os.path.abspath(base_path)
-                    
-                    image_rel_path = os.path.relpath(annotated_path, base_path)
-                    image_url = f"http://localhost/{os.path.basename(base_path)}/{image_rel_path.replace(os.sep, '/')}"
-                    
-                    # อัพเดท image_url ให้กับทุก pallet
+                image_url = self.generate_image_url(annotated_path)
+                if image_url:
                     for pallet in overtime_pallets:
                         pallet['image_url'] = image_url
-                    
                     logger.info(f"📷 Image URL added to {len(overtime_pallets)} overtime alert(s): {image_url}")
-                except Exception as e:
-                    logger.warning(f"Cannot create image URL: {e}")
             
             # ✅ 5. สร้างพาเลทใหม่ (หลังจากได้ pallet_no/name แล้ว)
             for pallet_data in new_pallets_to_create:
@@ -309,25 +322,15 @@ class DetectionService:
                     
                     # ✅ ถ้าพาเลทเก่าเคย overtime (in_over=1) → แจ้งเตือนทันที
                     if recently_deactivated['in_over'] == 1 and recently_deactivated['total_duration'] > self.tracker.alert_threshold:
-                        # ✅ สร้าง image URL (ถ้ามี annotated_path)
-                        image_url = ''
-                        if annotated_path:
-                            try:
-                                base_path = self.cfg['general']['imagePath']
-                                if not os.path.isabs(base_path):
-                                    base_path = os.path.abspath(base_path)
-                                
-                                image_rel_path = os.path.relpath(annotated_path, base_path)
-                                image_url = f"http://localhost/{os.path.basename(base_path)}/{image_rel_path.replace(os.sep, '/')}"
-                            except Exception as e:
-                                logger.warning(f"Cannot create image URL: {e}")
+                        # ✅ สร้าง image URL (มี annotated_path แล้ว)
+                        image_url = self.generate_image_url(annotated_path)
                         
                         overtime_pallets.append({
                             'pallet_id': recently_deactivated['id_pallet'],
                             'duration': recently_deactivated['total_duration'],
                             'site': image_data['site'],
                             'location': image_data['location'],
-                            'image_url': image_url  # ✅ เพิ่ม
+                            'image_url': image_url
                         })
                         logger.warning(f"⚠️ Immediate alert: Position matches overtime pallet! (duration: {recently_deactivated['total_duration']:.1f} min)")
                 

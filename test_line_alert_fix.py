@@ -96,18 +96,28 @@ def test_image_url_in_overtime_pallets():
         with open('detection_service.py', 'r') as f:
             code = f.read()
         
-        # Count occurrences of overtime_pallets.append with image_url
+        # Count occurrences of overtime_pallets.append with image_url field
         append_count = code.count("overtime_pallets.append(")
-        image_url_in_append = code.count("'image_url': image_url")
+        # Look for 'image_url': in the context of append calls
+        image_url_field_count = code.count("'image_url':")
         
         print(f"Found {append_count} overtime_pallets.append() calls")
-        print(f"Found {image_url_in_append} with 'image_url' field")
+        print(f"Found {image_url_field_count} 'image_url' field definitions")
         
-        if image_url_in_append >= 2:  # We expect at least 2 locations
-            print(f"✅ Image URL is included in overtime_pallets")
+        # We expect at least 2 append calls and at least 2 image_url fields
+        if append_count >= 2 and image_url_field_count >= 2:
+            print(f"✅ Image URL field is included in overtime_pallets")
+            
+            # Also check for image URL update logic
+            has_update = "pallet['image_url'] = image_url" in code or 'pallet["image_url"] = image_url' in code
+            if has_update:
+                print(f"✅ Image URL update logic found")
+            else:
+                print(f"⚠️ Warning: Image URL update logic not found, but fields exist")
+            
             return True
         else:
-            print(f"❌ Image URL not properly included (expected at least 2, found {image_url_in_append})")
+            print(f"❌ Image URL not properly included (expected 2 appends and 2+ fields, found {append_count} appends and {image_url_field_count} fields)")
             return False
             
     except Exception as e:
