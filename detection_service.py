@@ -174,13 +174,15 @@ class DetectionService:
                         datetime.now()
                     )
                     
-                    if result and result['status'] == 1:  # Overtime
+                    # ตรวจสอบว่าพาเลท/person เกินเวลาหรือไม่
+                    if result and result['status'] == 1:  # Status = 1 หมายถึง Overtime
                         overtime_pallets.append({
                             'pallet_id': result['pallet_id'],
                             'duration': result['duration'],
                             'site': image_data['site'],
                             'location': image_data['location']
                         })
+                        logger.warning(f"⚠️ Overtime detected: Pallet #{result['pallet_id']} ({result['duration']:.1f} min)")
                     
                     current_pallet_ids.append(matching_pallet['id_pallet'])
                     # ✅ ใส่ข้อมูลเก่า
@@ -215,6 +217,9 @@ class DetectionService:
             # 6. Deactivate missing pallets
             self.tracker.deactivate_missing_pallets(current_pallet_ids, ref_id_img)
             
+            # ตรวจสอบ overtime เสร็จสิ้น
+            logger.info(f"🔍 Overtime check complete: {len(overtime_pallets)} alert(s) pending")
+            
             return {
                 'ref_id_img': ref_id_img,
                 'detected_count': detection_result['count'],
@@ -229,13 +234,17 @@ class DetectionService:
     def handle_alerts(self, overtime_pallets, annotated_path):
         """จัดการ alerts (LINE + GPIO)"""
         try:
+            # บันทึก log เมื่อเริ่มจัดการ alerts
+            logger.info(f"📢 Handling alerts: {len(overtime_pallets)} overtime pallet(s)")
+            
             if overtime_pallets:
                 # เปิดไฟแดง
                 self.lights.test_red()
                 
                 # ส่ง LINE alert
                 for pallet in overtime_pallets:
-                    result = self.line.send_overtime_alert(pallet, None)
+                    # แก้ไข: ลบ parameter ที่ 2 (None) ออก
+                    result = self.line.send_overtime_alert(pallet)
                     
                     # บันทึก log
                     self.db.save_notification_log({
@@ -249,6 +258,9 @@ class DetectionService:
                     # อัพเดทจำนวนครั้งแจ้งเตือน
                     if result['success']:
                         self.db.increment_notify_count(pallet['pallet_id'])
+                        logger.info(f"✅ LINE alert sent for Pallet #{pallet['pallet_id']}")
+                    else:
+                        logger.error(f"❌ LINE alert failed for Pallet #{pallet['pallet_id']}: {result['message']}")
                 
                 logger.warning(f"⚠️ Sent {len(overtime_pallets)} overtime alert(s)")
             else:
