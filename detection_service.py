@@ -130,6 +130,11 @@ class DetectionService:
                 logger.warning("Detection failed")
                 return None
             
+            # ✅ ดึงขนาดภาพ
+            original_image = detection_result['original_image']
+            image_height, image_width = original_image.shape[:2]
+            logger.info(f"Image dimensions: {image_width}x{image_height}")
+            
             # 2. Save image record
             image_data = {
                 'image_date': datetime.now(),
@@ -146,16 +151,21 @@ class DetectionService:
                 return None
             
             # 3. Track pallets
-            active_pallets = self.tracker. get_active_pallets()
+            active_pallets = self.tracker.get_active_pallets()
             detected_pallets = detection_result['pallets']
             current_pallet_ids = []
             overtime_pallets = []
             
+            # ✅ สำหรับพาเลทใหม่ที่จะสร้าง - รอเรียงลำดับก่อน
+            new_pallets_to_create = []
+            
             for pallet_data in detected_pallets:
                 center = pallet_data['center']
                 
-                # หาว่าตรงกับพาเลทเก่าหรือไม่
-                matching_pallet = self.tracker.find_matching_pallet(center, active_pallets)
+                # ✅ หาว่าตรงกับพาเลทเก่าหรือไม่ (ส่ง image dimensions)
+                matching_pallet = self.tracker.find_matching_pallet(
+                    center, active_pallets, image_width, image_height
+                )
                 
                 if matching_pallet: 
                     # อัพเดทพาเลทเดิม
@@ -165,7 +175,7 @@ class DetectionService:
                     )
                     
                     if result and result['status'] == 1:  # Overtime
-                        overtime_pallets. append({
+                        overtime_pallets.append({
                             'pallet_id': result['pallet_id'],
                             'duration': result['duration'],
                             'site': image_data['site'],
@@ -173,24 +183,37 @@ class DetectionService:
                         })
                     
                     current_pallet_ids.append(matching_pallet['id_pallet'])
+                    # ✅ ใส่ข้อมูลเก่า
+                    pallet_data['pallet_no'] = matching_pallet['pallet_no']
+                    pallet_data['pallet_name'] = matching_pallet['pallet_name']
+                    pallet_data['is_existing'] = True
                 else:
-                    # สร้างพาเลทใหม่
-                    new_id = self.tracker.create_new_pallet(
-                        ref_id_img,
-                        pallet_data,
-                        datetime.now()
-                    )
-                    if new_id:
-                        current_pallet_ids.append(new_id)
+                    # ✅ เก็บไว้สร้างทีหลัง
+                    pallet_data['is_existing'] = False
+                    new_pallets_to_create.append(pallet_data)
             
-            # 4. Deactivate missing pallets
-            self.tracker.deactivate_missing_pallets(current_pallet_ids, ref_id_img)
-            
-            # 5. บันทึกรูปที่วาดกรอบ
+            # ✅ 4. วาดกรอบก่อน (เพื่อให้ได้ pallet_no/pallet_name)
             annotated_path = self.detector.save_annotated_image(
-                detection_result['annotated_image'],
-                image_path
+                original_image,
+                detected_pallets,
+                image_path,
+                self.db
             )
+            
+            # ✅ 5. สร้างพาเลทใหม่ (หลังจากได้ pallet_no/name แล้ว)
+            for pallet_data in new_pallets_to_create:
+                new_id = self.tracker.create_new_pallet(
+                    ref_id_img,
+                    pallet_data,
+                    datetime.now(),
+                    pallet_data.get('pallet_no', 0),
+                    pallet_data.get('pallet_name', '')
+                )
+                if new_id:
+                    current_pallet_ids.append(new_id)
+            
+            # 6. Deactivate missing pallets
+            self.tracker.deactivate_missing_pallets(current_pallet_ids, ref_id_img)
             
             return {
                 'ref_id_img': ref_id_img,

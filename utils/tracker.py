@@ -25,11 +25,11 @@ class PalletTracker:
             'port': self.cfg['network']['database']['port']
         }
         self.alert_threshold = self.cfg['detection']['alertThreshold']  # นาที
-        self.distance_threshold = 50  # pixels (ระยะห่างที่ถือว่าเป็นพาเลทเดิม)
+        # ✅ ลบ fixed distance_threshold - จะคำนวณแบบ dynamic แทน
     
     def get_db_connection(self):
         """สร้าง database connection"""
-        return pymysql.connect(**self. db_config, cursorclass=pymysql.cursors.DictCursor)
+        return pymysql.connect(**self.db_config, cursorclass=pymysql.cursors.DictCursor)
     
     def calculate_distance(self, pos1, pos2):
         """
@@ -62,7 +62,7 @@ class PalletTracker:
             """)
             
             pallets = cursor.fetchall()
-            cursor. close()
+            cursor.close()
             conn.close()
             
             return pallets
@@ -71,27 +71,39 @@ class PalletTracker:
             logger.error(f"Error getting active pallets: {e}")
             return []
     
-    def find_matching_pallet(self, new_center, active_pallets):
+    def find_matching_pallet(self, new_center, active_pallets, image_width, image_height):
         """
-        หาพาเลทที่ตรงกับตำแหน่งใหม่
+        หาพาเลทที่ตรงกับตำแหน่งใหม่ (Position-based matching ±5%)
         
         Args:
             new_center:  [cx, cy] ของพาเลทใหม่
             active_pallets: list ของพาเลท active
+            image_width: ความกว้างของภาพ (pixels)
+            image_height: ความสูงของภาพ (pixels)
             
         Returns:
             dict or None: พาเลทที่ตรงกัน หรือ None
         """
+        # ✅ คำนวณ threshold แบบ dynamic (±5% ของขนาดภาพ)
+        threshold_x = image_width * 0.05
+        threshold_y = image_height * 0.05
+        
         best_match = None
         min_distance = float('inf')
         
         for pallet in active_pallets:
             old_center = [float(pallet['pos_x']), float(pallet['pos_y'])]
-            distance = self.calculate_distance(new_center, old_center)
             
-            if distance < self. distance_threshold and distance < min_distance:
-                min_distance = distance
-                best_match = pallet
+            # ✅ เช็คตำแหน่งว่าอยู่ใน tolerance หรือไม่
+            dx = abs(new_center[0] - old_center[0])
+            dy = abs(new_center[1] - old_center[1])
+            
+            if dx <= threshold_x and dy <= threshold_y:
+                # คำนวณระยะห่างจริงเพื่อหา best match
+                distance = self.calculate_distance(new_center, old_center)
+                if distance < min_distance:
+                    min_distance = distance
+                    best_match = pallet
         
         return best_match
     
@@ -152,7 +164,7 @@ class PalletTracker:
             logger.error(f"Error updating pallet:  {e}")
             return None
     
-    def create_new_pallet(self, ref_id_img, pallet_data, detection_time):
+    def create_new_pallet(self, ref_id_img, pallet_data, detection_time, pallet_no, pallet_name):
         """
         สร้างพาเลทใหม่
         
@@ -160,6 +172,8 @@ class PalletTracker:
             ref_id_img: ID ของรูป
             pallet_data: {'bbox': [... ], 'center': [...], 'confidence': ...}
             detection_time: เวลาที่เจอ
+            pallet_no: เลขลำดับพาเลท (INT)
+            pallet_name: ชื่อพาเลท (VARCHAR เช่น "PL-0001")
             
         Returns:
             int: ID ของพาเลทที่สร้าง
@@ -174,15 +188,15 @@ class PalletTracker:
             
             cursor.execute("""
                 INSERT INTO tb_pallet (
-                    ref_id_img, pos_x, pos_y,
+                    pallet_no, pallet_name, ref_id_img, pos_x, pos_y,
                     bbox_x1, bbox_y1, bbox_x2, bbox_y2,
-                    accuracy, first_detected_at, last_detected_at,
+                    accuracy, pallet_date_in, first_detected_at, last_detected_at,
                     is_active, status, detector_count
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 1, 0, 1)
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 1, 0, 1)
             """, (
-                ref_id_img, center[0], center[1],
+                pallet_no, pallet_name, ref_id_img, center[0], center[1],
                 bbox[0], bbox[1], bbox[2], bbox[3],
-                confidence, detection_time, detection_time
+                confidence, detection_time, detection_time, detection_time
             ))
             
             pallet_id = cursor.lastrowid
@@ -190,7 +204,7 @@ class PalletTracker:
             cursor.close()
             conn.close()
             
-            logger.info(f"Created new pallet #{pallet_id}")
+            logger.info(f"Created new pallet #{pallet_id} ({pallet_name})")
             
             return pallet_id
             

@@ -183,6 +183,43 @@ class DatabaseManager:
         except Exception as e: 
             logger.error(f"Error saving notification log: {e}")
     
+    def get_latest_pallet_no(self, date=None):
+        """
+        ดึงเลข pallet_no ล่าสุดของวันนั้นๆ (สำหรับ auto-increment)
+        
+        Args:
+            date (str): วันที่ในรูปแบบ 'YYYY-MM-DD' (ถ้าไม่ระบุใช้วันนี้)
+            
+        Returns:
+            int: เลข pallet_no สูงสุด (เช่น 5 → ถัดไปจะเป็น 6) หรือ 0 ถ้ายังไม่มีข้อมูล
+        """
+        if date is None:
+            date = datetime.now().strftime('%Y-%m-%d')
+        
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Query MAX(pallet_no) สำหรับวันที่กำหนด
+            cursor.execute("""
+                SELECT COALESCE(MAX(pallet_no), 0) as max_no
+                FROM tb_pallet p
+                JOIN tb_image i ON p.ref_id_img = i.id_img
+                WHERE DATE(i.image_date) = %s
+            """, (date,))
+            
+            result = cursor.fetchone()
+            max_no = result['max_no'] if result else 0
+            
+            cursor.close()
+            conn.close()
+            
+            return max_no
+            
+        except Exception as e:
+            logger.error(f"Error getting latest pallet_no: {e}")
+            return 0
+    
     def get_daily_summary(self, date=None):
         """
         ดึงข้อมูลสรุปประจำวัน

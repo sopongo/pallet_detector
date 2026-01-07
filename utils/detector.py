@@ -38,7 +38,7 @@ class PalletDetector:
     
     def detect_pallets(self, image_path):
         """
-        ตรวจจับพาเลทในรูป
+        ตรวจจับพาเลทและคนในรูป (Multi-class detection)
         
         Args: 
             image_path (str): path ของรูปที่จะ detect
@@ -51,32 +51,29 @@ class PalletDetector:
                         'bbox': [x1, y1, x2, y2],
                         'center': [cx, cy],
                         'confidence': float,
-                        'class_name': str
+                        'class_name': str,
+                        'class_type': str  # 'pallet' or 'person'
                     }
                 ],
                 'image_path':  str,
-                'annotated_image': numpy.ndarray
+                'original_image': numpy.ndarray
             }
         """
         try:
             # อ่านรูป
             image = cv2.imread(image_path)
             if image is None:
-                logger. error(f"Cannot read image:  {image_path}")
+                logger.error(f"Cannot read image: {image_path}")
                 return None
             
-            # ✅ กำหนด class ที่ต้องการ (ถ้ารู้ class ID)
-            # ถ้าไม่รู้ ให้รันดู log ก่อน
-            PALLET_CLASSES = None  # หรือ [0] ถ้ารู้ว่า pallet เป็น class 0
-            
-            # Run detection
+            # Run detection (ไม่กรอง class ให้ detect ทุกอย่าง)
             results = self.model.predict(
                 source=image,
                 conf=self.confidence,
-                iou=self. iou,
+                iou=self.iou,
                 imgsz=self.img_size,
                 device=self.device,
-                classes=PALLET_CLASSES,  # ✅ กรอง class
+                classes=None,  # ✅ ตรวจจับทุก class
                 verbose=False
             )
             
@@ -92,13 +89,18 @@ class PalletDetector:
                     class_id = int(box.cls[0])
                     class_name = class_names[class_id]
                     
-                    # ✅ กรองเฉพาะ pallet
-                    if 'pallet' not in class_name. lower():
-                        logger.warning(f"Filtered out: {class_name}")
+                    # ✅ กรองเฉพาะ pallet และ person (case-insensitive)
+                    class_name_lower = class_name.lower()
+                    if 'pallet' in class_name_lower:
+                        class_type = 'pallet'
+                    elif 'person' in class_name_lower:
+                        class_type = 'person'
+                    else:
+                        logger.debug(f"Filtered out: {class_name}")
                         continue
                     
                     # Bounding box coordinates
-                    x1, y1, x2, y2 = box.xyxy[0]. cpu().numpy()
+                    x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
                     
                     # Center point
                     cx = (x1 + x2) / 2
@@ -111,37 +113,118 @@ class PalletDetector:
                         'bbox': [int(x1), int(y1), int(x2), int(y2)],
                         'center': [float(cx), float(cy)],
                         'confidence': conf,
-                        'class_name':  class_name
+                        'class_name': class_name,
+                        'class_type': class_type  # ✅ เพิ่ม class_type
                     })
             
-            # Annotated image (วาดกรอบ)
-            annotated_image = results[0].plot()
-            
-            logger.info(f"Detected {len(pallets)} pallet(s) in {os.path.basename(image_path)}")
+            logger.info(f"Detected {len(pallets)} object(s) in {os.path.basename(image_path)}")
             
             return {
                 'count':   len(pallets),
                 'pallets': pallets,
                 'image_path': image_path,
-                'annotated_image': annotated_image
+                'original_image': image  # ✅ คืนรูปต้นฉบับแทน annotated
             }
             
         except Exception as e:
             logger.error(f"Detection error: {e}")
             return None
     
-    def save_annotated_image(self, annotated_image, original_path):
+    def save_annotated_image(self, original_image, pallets, original_path, db_manager):
         """
-        บันทึกรูปที่วาดกรอบแล้ว
+        วาดกรอบและ label แบบกำหนดเอง พร้อมเรียงลำดับ
         
         Args:
-            annotated_image:   รูปที่วาดกรอบแล้ว
+            original_image: รูปต้นฉบับ
+            pallets: list ของ detection results (จะถูก modified in-place)
             original_path:  path รูปต้นฉบับ
+            db_manager: DatabaseManager instance สำหรับ query pallet_no
             
         Returns:
-            str:   path ของรูปที่บันทึก
+            str: path ของรูปที่บันทึก
         """
-        try:  
+        try:
+            # คัดลอกรูปเพื่อวาดกรอบ
+            annotated = original_image.copy()
+            
+            # ✅ เรียงลำดับ: top-to-bottom (y), left-to-right (x)
+            sorted_pallets = sorted(pallets, key=lambda p: (p['center'][1], p['center'][0]))
+            
+            # ✅ Query เลข pallet_no ล่าสุด
+            latest_no = db_manager.get_latest_pallet_no()
+            next_no = latest_no + 1
+            
+            # ✅ Prefix สำหรับแต่ละ class
+            PALLET_PREFIX = "PL-"
+            PERSON_PREFIX = "PE-"
+            
+            # ✅ กำหนดสี (BGR format)
+            COLOR_PALLET = (0, 255, 0)   # เขียว
+            COLOR_PERSON = (255, 0, 0)   # น้ำเงิน
+            
+            # วาดกรอบและ label
+            for pallet in sorted_pallets:
+                class_type = pallet['class_type']
+                bbox = pallet['bbox']
+                confidence = pallet['confidence']
+                
+                # กำหนด prefix และสี
+                if class_type == 'pallet':
+                    prefix = PALLET_PREFIX
+                    color = COLOR_PALLET
+                elif class_type == 'person':
+                    prefix = PERSON_PREFIX
+                    color = COLOR_PERSON
+                else:
+                    continue
+                
+                # ✅ ใช้เลขเก่าถ้าเป็นพาเลทเดิม, สร้างใหม่ถ้าเป็นพาเลทใหม่
+                if pallet.get('is_existing', False):
+                    # ใช้เลขเก่า
+                    pallet_no = pallet.get('pallet_no', next_no)
+                    pallet_name = pallet.get('pallet_name', f"{prefix}{next_no:04d}")
+                else:
+                    # สร้างเลขใหม่
+                    pallet_name = f"{prefix}{next_no:04d}"
+                    pallet['pallet_no'] = next_no
+                    pallet['pallet_name'] = pallet_name
+                    next_no += 1
+                
+                # วาดกรอบ
+                x1, y1, x2, y2 = bbox
+                cv2.rectangle(annotated, (x1, y1), (x2, y2), color, 2)
+                
+                # สร้าง label text
+                label = f"{pallet_name} ({confidence*100:.1f}%)"
+                
+                # คำนวณขนาด text
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                font_scale = 0.6
+                thickness = 2
+                (text_width, text_height), baseline = cv2.getTextSize(
+                    label, font, font_scale, thickness
+                )
+                
+                # วาดพื้นหลัง label
+                cv2.rectangle(
+                    annotated,
+                    (x1, y1 - text_height - baseline - 10),
+                    (x1 + text_width + 10, y1),
+                    color,
+                    -1
+                )
+                
+                # วาด text
+                cv2.putText(
+                    annotated,
+                    label,
+                    (x1 + 5, y1 - baseline - 5),
+                    font,
+                    font_scale,
+                    (255, 255, 255),  # สีขาว
+                    thickness
+                )
+            
             # สร้าง path ใหม่ (เพิ่ม _detected)
             dir_name = os.path.dirname(original_path)
             file_name = os.path.basename(original_path)
@@ -149,7 +232,7 @@ class PalletDetector:
             new_path = os.path.join(dir_name, f"{name}_detected{ext}")
             
             # บันทึกรูป
-            cv2.imwrite(new_path, annotated_image)
+            cv2.imwrite(new_path, annotated)
             logger.info(f"Saved annotated image:   {new_path}")
             
             return new_path
