@@ -144,3 +144,1363 @@
 [2026-01-07 23:48:16] INFO: \u2705 No overtime pallets - turning on green light
 [2026-01-07 23:48:16] INFO: \u2705 Cycle completed:  1 pallet(s) detected
 [2026-01-07 23:48:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:17:59] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-08 00:17:59] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-08 00:17:59] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-08 00:17:59] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-08 00:17:59] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-08 00:17:59] INFO: \u2705 Detection service initialized
+[2026-01-08 00:17:59] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-08 00:17:59] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:18:01] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001801.jpg
+[2026-01-08 00:18:03] INFO: Detected 0 object(s) in IMG_20260108_001801.jpg
+[2026-01-08 00:18:03] INFO: Image dimensions: 640x480
+[2026-01-08 00:18:03] INFO: Saved image record #108:  IMG_20260108_001801.jpg
+[2026-01-08 00:18:03] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001801_detected.jpg
+[2026-01-08 00:18:03] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:18:03] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:18:03] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:18:03] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:18:03] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:18:03] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:18:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:18:15] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001815.jpg
+[2026-01-08 00:18:16] INFO: Detected 0 object(s) in IMG_20260108_001815.jpg
+[2026-01-08 00:18:16] INFO: Image dimensions: 640x480
+[2026-01-08 00:18:16] INFO: Saved image record #109:  IMG_20260108_001815.jpg
+[2026-01-08 00:18:16] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001815_detected.jpg
+[2026-01-08 00:18:16] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:18:16] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:18:16] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:18:16] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:18:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:18:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:18:28] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001828.jpg
+[2026-01-08 00:18:29] INFO: Detected 0 object(s) in IMG_20260108_001828.jpg
+[2026-01-08 00:18:29] INFO: Image dimensions: 640x480
+[2026-01-08 00:18:29] INFO: Saved image record #110:  IMG_20260108_001828.jpg
+[2026-01-08 00:18:29] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001828_detected.jpg
+[2026-01-08 00:18:29] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:18:29] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:18:29] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:18:29] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:18:29] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:18:39] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:18:41] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001841.jpg
+[2026-01-08 00:18:41] INFO: Detected 0 object(s) in IMG_20260108_001841.jpg
+[2026-01-08 00:18:41] INFO: Image dimensions: 640x480
+[2026-01-08 00:18:41] INFO: Saved image record #111:  IMG_20260108_001841.jpg
+[2026-01-08 00:18:42] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001841_detected.jpg
+[2026-01-08 00:18:42] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:18:42] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:18:42] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:18:42] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:18:42] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:18:52] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:18:55] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001855.jpg
+[2026-01-08 00:18:55] INFO: Detected 0 object(s) in IMG_20260108_001855.jpg
+[2026-01-08 00:18:55] INFO: Image dimensions: 640x480
+[2026-01-08 00:18:55] INFO: Saved image record #112:  IMG_20260108_001855.jpg
+[2026-01-08 00:18:55] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001855_detected.jpg
+[2026-01-08 00:18:55] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:18:55] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:18:55] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:18:55] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:18:55] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:19:05] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:19:08] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001908.jpg
+[2026-01-08 00:19:08] INFO: Detected 0 object(s) in IMG_20260108_001908.jpg
+[2026-01-08 00:19:08] INFO: Image dimensions: 640x480
+[2026-01-08 00:19:08] INFO: Saved image record #113:  IMG_20260108_001908.jpg
+[2026-01-08 00:19:08] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001908_detected.jpg
+[2026-01-08 00:19:08] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:19:08] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:19:08] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:19:08] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:19:08] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:19:18] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:19:20] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001920.jpg
+[2026-01-08 00:19:21] INFO: Detected 0 object(s) in IMG_20260108_001920.jpg
+[2026-01-08 00:19:21] INFO: Image dimensions: 640x480
+[2026-01-08 00:19:21] INFO: Saved image record #114:  IMG_20260108_001920.jpg
+[2026-01-08 00:19:21] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001920_detected.jpg
+[2026-01-08 00:19:21] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:19:21] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:19:21] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:19:21] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:19:21] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:19:31] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:19:33] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001933.jpg
+[2026-01-08 00:19:34] INFO: Detected 0 object(s) in IMG_20260108_001933.jpg
+[2026-01-08 00:19:34] INFO: Image dimensions: 640x480
+[2026-01-08 00:19:34] INFO: Saved image record #115:  IMG_20260108_001933.jpg
+[2026-01-08 00:19:34] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001933_detected.jpg
+[2026-01-08 00:19:34] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:19:34] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:19:34] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:19:34] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:19:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:19:44] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:19:46] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001946.jpg
+[2026-01-08 00:19:47] INFO: Detected 0 object(s) in IMG_20260108_001946.jpg
+[2026-01-08 00:19:47] INFO: Image dimensions: 640x480
+[2026-01-08 00:19:47] INFO: Saved image record #116:  IMG_20260108_001946.jpg
+[2026-01-08 00:19:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001946_detected.jpg
+[2026-01-08 00:19:47] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:19:47] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:19:47] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:19:47] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:19:47] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:19:57] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:19:59] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001959.jpg
+[2026-01-08 00:20:00] INFO: Detected 0 object(s) in IMG_20260108_001959.jpg
+[2026-01-08 00:20:00] INFO: Image dimensions: 640x480
+[2026-01-08 00:20:00] INFO: Saved image record #117:  IMG_20260108_001959.jpg
+[2026-01-08 00:20:00] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_001959_detected.jpg
+[2026-01-08 00:20:00] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:20:00] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:20:00] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:20:00] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:20:00] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:20:10] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:20:12] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002012.jpg
+[2026-01-08 00:20:13] INFO: Detected 0 object(s) in IMG_20260108_002012.jpg
+[2026-01-08 00:20:13] INFO: Image dimensions: 640x480
+[2026-01-08 00:20:13] INFO: Saved image record #118:  IMG_20260108_002012.jpg
+[2026-01-08 00:20:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002012_detected.jpg
+[2026-01-08 00:20:13] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:20:13] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:20:13] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:20:13] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:20:13] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:20:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:20:25] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002025.jpg
+[2026-01-08 00:20:26] INFO: Detected 0 object(s) in IMG_20260108_002025.jpg
+[2026-01-08 00:20:26] INFO: Image dimensions: 640x480
+[2026-01-08 00:20:26] INFO: Saved image record #119:  IMG_20260108_002025.jpg
+[2026-01-08 00:20:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002025_detected.jpg
+[2026-01-08 00:20:26] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:20:26] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:20:26] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:20:26] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:20:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:20:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:20:38] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002038.jpg
+[2026-01-08 00:20:38] INFO: Detected 0 object(s) in IMG_20260108_002038.jpg
+[2026-01-08 00:20:38] INFO: Image dimensions: 640x480
+[2026-01-08 00:20:38] INFO: Saved image record #120:  IMG_20260108_002038.jpg
+[2026-01-08 00:20:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002038_detected.jpg
+[2026-01-08 00:20:39] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:20:39] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:20:39] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:20:39] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:20:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:20:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:20:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002051.jpg
+[2026-01-08 00:20:51] INFO: Detected 0 object(s) in IMG_20260108_002051.jpg
+[2026-01-08 00:20:51] INFO: Image dimensions: 640x480
+[2026-01-08 00:20:51] INFO: Saved image record #121:  IMG_20260108_002051.jpg
+[2026-01-08 00:20:51] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002051_detected.jpg
+[2026-01-08 00:20:51] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:20:51] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:20:51] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:20:51] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:20:51] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:21:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:21:04] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002104.jpg
+[2026-01-08 00:21:04] INFO: Detected 0 object(s) in IMG_20260108_002104.jpg
+[2026-01-08 00:21:04] INFO: Image dimensions: 640x480
+[2026-01-08 00:21:04] INFO: Saved image record #122:  IMG_20260108_002104.jpg
+[2026-01-08 00:21:04] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002104_detected.jpg
+[2026-01-08 00:21:04] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:21:04] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+‚úÖ Config loaded successfully
+‚ö†Ô∏è Not running on Raspberry Pi - GPIO disabled
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:21:04] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:21:04] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:21:04] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:21:14] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:21:17] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002117.jpg
+[2026-01-08 00:21:17] INFO: Detected 0 object(s) in IMG_20260108_002117.jpg
+[2026-01-08 00:21:17] INFO: Image dimensions: 640x480
+[2026-01-08 00:21:17] INFO: Saved image record #123:  IMG_20260108_002117.jpg
+[2026-01-08 00:21:17] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002117_detected.jpg
+[2026-01-08 00:21:17] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:21:17] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:21:17] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:21:17] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:21:17] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:21:27] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:21:30] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002130.jpg
+[2026-01-08 00:21:30] INFO: Detected 0 object(s) in IMG_20260108_002130.jpg
+[2026-01-08 00:21:30] INFO: Image dimensions: 640x480
+[2026-01-08 00:21:30] INFO: Saved image record #124:  IMG_20260108_002130.jpg
+[2026-01-08 00:21:30] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002130_detected.jpg
+[2026-01-08 00:21:30] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:21:30] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:21:30] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:21:30] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:21:30] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:21:40] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:21:42] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002142.jpg
+[2026-01-08 00:21:43] INFO: Detected 0 object(s) in IMG_20260108_002142.jpg
+[2026-01-08 00:21:43] INFO: Image dimensions: 640x480
+[2026-01-08 00:21:43] INFO: Saved image record #125:  IMG_20260108_002142.jpg
+[2026-01-08 00:21:43] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002142_detected.jpg
+[2026-01-08 00:21:43] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:21:43] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:21:43] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:21:43] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:21:43] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:21:53] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:21:55] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002155.jpg
+[2026-01-08 00:21:56] INFO: Detected 1 object(s) in IMG_20260108_002155.jpg
+[2026-01-08 00:21:56] INFO: Image dimensions: 640x480
+[2026-01-08 00:21:56] INFO: Saved image record #126:  IMG_20260108_002155.jpg
+[2026-01-08 00:21:56] INFO: \u274c No match found for position [235.12754821777344, 202.7991180419922] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:21:56] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002155_detected.jpg
+[2026-01-08 00:21:56] INFO: Created new pallet #18 (PL-0001)
+[2026-01-08 00:21:56] INFO: \u2705 Created pallet: #18 (PL-0001)
+[2026-01-08 00:21:56] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:21:56] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:21:56] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:21:56] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:21:56] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:22:06] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:22:08] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002208.jpg
+[2026-01-08 00:22:09] INFO: Detected 1 object(s) in IMG_20260108_002208.jpg
+[2026-01-08 00:22:09] INFO: Image dimensions: 640x480
+[2026-01-08 00:22:09] INFO: Saved image record #127:  IMG_20260108_002208.jpg
+[2026-01-08 00:22:09] INFO: \u2705 Matched: New pos [234.99288940429688, 203.9735870361328] \u2192 Pallet #18 (distance: 1.2px)
+[2026-01-08 00:22:09] INFO: \u2705 Updated pallet #18 (duration: 0.2 min, status: 0)
+[2026-01-08 00:22:09] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002208_detected.jpg
+[2026-01-08 00:22:09] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:22:09] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:22:09] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:22:09] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:22:09] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:22:19] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:22:21] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002221.jpg
+[2026-01-08 00:22:22] INFO: Detected 1 object(s) in IMG_20260108_002221.jpg
+[2026-01-08 00:22:22] INFO: Image dimensions: 640x480
+[2026-01-08 00:22:22] INFO: Saved image record #128:  IMG_20260108_002221.jpg
+[2026-01-08 00:22:22] INFO: \u2705 Matched: New pos [235.79283142089844, 202.46034240722656] \u2192 Pallet #18 (distance: 0.7px)
+[2026-01-08 00:22:22] INFO: \u2705 Updated pallet #18 (duration: 0.4 min, status: 0)
+[2026-01-08 00:22:22] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002221_detected.jpg
+[2026-01-08 00:22:22] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:22:22] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:22:22] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:22:22] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:22:22] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:22:32] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:22:34] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002234.jpg
+[2026-01-08 00:22:35] INFO: Detected 1 object(s) in IMG_20260108_002234.jpg
+[2026-01-08 00:22:35] INFO: Image dimensions: 640x480
+[2026-01-08 00:22:35] INFO: Saved image record #129:  IMG_20260108_002234.jpg
+[2026-01-08 00:22:35] INFO: \u2705 Matched: New pos [235.91998291015625, 204.37808227539062] \u2192 Pallet #18 (distance: 1.8px)
+[2026-01-08 00:22:35] INFO: \u2705 Updated pallet #18 (duration: 0.6 min, status: 0)
+[2026-01-08 00:22:35] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002234_detected.jpg
+[2026-01-08 00:22:35] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:22:35] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:22:35] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:22:35] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:22:35] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:22:45] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:22:47] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002247.jpg
+[2026-01-08 00:22:48] INFO: Detected 0 object(s) in IMG_20260108_002247.jpg
+[2026-01-08 00:22:48] INFO: Image dimensions: 640x480
+[2026-01-08 00:22:48] INFO: Saved image record #130:  IMG_20260108_002247.jpg
+[2026-01-08 00:22:48] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002247_detected.jpg
+[2026-01-08 00:22:48] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:22:48] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:22:48] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:22:48] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:22:48] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:22:48] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:22:58] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:23:00] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002300.jpg
+[2026-01-08 00:23:00] INFO: Detected 1 object(s) in IMG_20260108_002300.jpg
+[2026-01-08 00:23:00] INFO: Image dimensions: 640x480
+[2026-01-08 00:23:00] INFO: Saved image record #131:  IMG_20260108_002300.jpg
+[2026-01-08 00:23:00] INFO: \u274c No match found for position [235.82850646972656, 201.5165557861328] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:23:01] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002300_detected.jpg
+[2026-01-08 00:23:01] INFO: \U0001f50d Found recently deactivated pallet: #18 (PL-0001) - duration: 0.0 min
+[2026-01-08 00:23:01] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #18 (PL-0001)
+[2026-01-08 00:23:01] WARNING:    Previous duration: 0.0 min
+[2026-01-08 00:23:01] INFO: Created new pallet #19 (PL-0002)
+[2026-01-08 00:23:01] INFO: \u2705 Created pallet: #19 (PL-0002)
+[2026-01-08 00:23:01] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:23:01] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:23:01] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:23:01] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:23:01] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:23:11] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:23:13] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002313.jpg
+[2026-01-08 00:23:13] INFO: Detected 1 object(s) in IMG_20260108_002313.jpg
+[2026-01-08 00:23:13] INFO: Image dimensions: 640x480
+[2026-01-08 00:23:13] INFO: Saved image record #132:  IMG_20260108_002313.jpg
+[2026-01-08 00:23:13] INFO: \u2705 Matched: New pos [236.39210510253906, 201.3878936767578] \u2192 Pallet #19 (distance: 0.6px)
+[2026-01-08 00:23:14] INFO: \u2705 Updated pallet #19 (duration: 0.2 min, status: 0)
+[2026-01-08 00:23:14] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002313_detected.jpg
+[2026-01-08 00:23:14] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:23:14] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:23:14] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:23:14] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:23:14] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:23:24] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:23:26] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002326.jpg
+[2026-01-08 00:23:26] INFO: Detected 1 object(s) in IMG_20260108_002326.jpg
+[2026-01-08 00:23:26] INFO: Image dimensions: 640x480
+[2026-01-08 00:23:26] INFO: Saved image record #133:  IMG_20260108_002326.jpg
+[2026-01-08 00:23:26] INFO: \u2705 Matched: New pos [236.02734375, 203.4208221435547] \u2192 Pallet #19 (distance: 1.9px)
+[2026-01-08 00:23:26] INFO: \u2705 Updated pallet #19 (duration: 0.4 min, status: 0)
+[2026-01-08 00:23:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002326_detected.jpg
+[2026-01-08 00:23:26] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:23:26] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:23:26] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:23:26] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:23:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:23:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:23:39] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002339.jpg
+[2026-01-08 00:23:39] INFO: Detected 0 object(s) in IMG_20260108_002339.jpg
+[2026-01-08 00:23:39] INFO: Image dimensions: 640x480
+[2026-01-08 00:23:39] INFO: Saved image record #134:  IMG_20260108_002339.jpg
+[2026-01-08 00:23:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002339_detected.jpg
+[2026-01-08 00:23:39] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:23:39] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:23:39] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:23:39] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:23:39] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:23:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:23:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:23:52] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002352.jpg
+[2026-01-08 00:23:52] INFO: Detected 0 object(s) in IMG_20260108_002352.jpg
+[2026-01-08 00:23:52] INFO: Image dimensions: 640x480
+[2026-01-08 00:23:52] INFO: Saved image record #135:  IMG_20260108_002352.jpg
+[2026-01-08 00:23:52] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002352_detected.jpg
+[2026-01-08 00:23:52] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:23:52] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:23:52] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:23:52] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:23:52] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:24:02] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:24:05] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002405.jpg
+[2026-01-08 00:24:06] INFO: Detected 0 object(s) in IMG_20260108_002405.jpg
+[2026-01-08 00:24:06] INFO: Image dimensions: 640x480
+[2026-01-08 00:24:06] INFO: Saved image record #136:  IMG_20260108_002405.jpg
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:24:06] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002405_detected.jpg
+[2026-01-08 00:24:06] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:24:06] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:24:06] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:24:06] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:24:06] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:24:16] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:24:18] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002418.jpg
+[2026-01-08 00:24:19] INFO: Detected 0 object(s) in IMG_20260108_002418.jpg
+[2026-01-08 00:24:19] INFO: Image dimensions: 640x480
+[2026-01-08 00:24:19] INFO: Saved image record #137:  IMG_20260108_002418.jpg
+[2026-01-08 00:24:19] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002418_detected.jpg
+[2026-01-08 00:24:19] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:24:19] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:24:19] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:24:19] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:24:19] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:25:34] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-08 00:25:34] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-08 00:25:34] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-08 00:25:34] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-08 00:25:34] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-08 00:25:34] INFO: \u2705 Detection service initialized
+[2026-01-08 00:25:34] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-08 00:25:34] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:25:37] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002537.jpg
+[2026-01-08 00:25:38] INFO: Detected 0 object(s) in IMG_20260108_002537.jpg
+[2026-01-08 00:25:38] INFO: Image dimensions: 640x480
+[2026-01-08 00:25:38] INFO: Saved image record #138:  IMG_20260108_002537.jpg
+[2026-01-08 00:25:38] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002537_detected.jpg
+[2026-01-08 00:25:38] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:25:38] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:25:38] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:25:38] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:25:38] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:25:48] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:25:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002551.jpg
+[2026-01-08 00:25:51] INFO: Detected 0 object(s) in IMG_20260108_002551.jpg
+[2026-01-08 00:25:51] INFO: Image dimensions: 640x480
+[2026-01-08 00:25:51] INFO: Saved image record #139:  IMG_20260108_002551.jpg
+[2026-01-08 00:25:51] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002551_detected.jpg
+[2026-01-08 00:25:51] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:25:51] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:25:51] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:25:51] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:25:51] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:26:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:26:03] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002603.jpg
+[2026-01-08 00:26:04] INFO: Detected 0 object(s) in IMG_20260108_002603.jpg
+[2026-01-08 00:26:04] INFO: Image dimensions: 640x480
+[2026-01-08 00:26:04] INFO: Saved image record #140:  IMG_20260108_002603.jpg
+[2026-01-08 00:26:04] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002603_detected.jpg
+[2026-01-08 00:26:04] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:26:04] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:26:04] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:26:04] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:26:04] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:26:14] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:26:16] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002616.jpg
+[2026-01-08 00:26:17] INFO: Detected 0 object(s) in IMG_20260108_002616.jpg
+[2026-01-08 00:26:17] INFO: Image dimensions: 640x480
+[2026-01-08 00:26:17] INFO: Saved image record #141:  IMG_20260108_002616.jpg
+[2026-01-08 00:26:17] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002616_detected.jpg
+[2026-01-08 00:26:17] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:26:17] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:26:17] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:26:17] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:26:17] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:26:27] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:26:29] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002629.jpg
+[2026-01-08 00:26:30] INFO: Detected 0 object(s) in IMG_20260108_002629.jpg
+[2026-01-08 00:26:30] INFO: Image dimensions: 640x480
+[2026-01-08 00:26:30] INFO: Saved image record #142:  IMG_20260108_002629.jpg
+[2026-01-08 00:26:30] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002629_detected.jpg
+[2026-01-08 00:26:30] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:26:30] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:26:30] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:26:30] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:26:30] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:26:40] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:26:42] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002642.jpg
+[2026-01-08 00:26:43] INFO: Detected 0 object(s) in IMG_20260108_002642.jpg
+[2026-01-08 00:26:43] INFO: Image dimensions: 640x480
+[2026-01-08 00:26:43] INFO: Saved image record #143:  IMG_20260108_002642.jpg
+[2026-01-08 00:26:43] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002642_detected.jpg
+[2026-01-08 00:26:43] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:26:43] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:26:43] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:26:43] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:26:43] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:26:53] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:26:55] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002655.jpg
+[2026-01-08 00:26:55] INFO: Detected 1 object(s) in IMG_20260108_002655.jpg
+[2026-01-08 00:26:55] INFO: Image dimensions: 640x480
+[2026-01-08 00:26:55] INFO: Saved image record #144:  IMG_20260108_002655.jpg
+[2026-01-08 00:26:55] INFO: \u274c No match found for position [221.70159912109375, 227.21939086914062] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:26:55] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002655_detected.jpg
+[2026-01-08 00:26:56] INFO: \U0001f50d Found recently deactivated pallet: #19 (PL-0002) - duration: 0.0 min
+[2026-01-08 00:26:56] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #19 (PL-0002)
+[2026-01-08 00:26:56] WARNING:    Previous duration: 0.0 min
+[2026-01-08 00:26:56] INFO: Created new pallet #20 (PL-0003)
+[2026-01-08 00:26:56] INFO: \u2705 Created pallet: #20 (PL-0003)
+[2026-01-08 00:26:56] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:26:56] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:26:56] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:26:56] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:26:56] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:27:06] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:27:08] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002708.jpg
+[2026-01-08 00:27:08] INFO: Detected 0 object(s) in IMG_20260108_002708.jpg
+[2026-01-08 00:27:08] INFO: Image dimensions: 640x480
+[2026-01-08 00:27:08] INFO: Saved image record #145:  IMG_20260108_002708.jpg
+[2026-01-08 00:27:08] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002708_detected.jpg
+[2026-01-08 00:27:09] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:27:09] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:27:09] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:27:09] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:27:09] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:27:09] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:27:19] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:27:21] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002721.jpg
+[2026-01-08 00:27:21] INFO: Detected 0 object(s) in IMG_20260108_002721.jpg
+[2026-01-08 00:27:21] INFO: Image dimensions: 640x480
+[2026-01-08 00:27:21] INFO: Saved image record #146:  IMG_20260108_002721.jpg
+[2026-01-08 00:27:21] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002721_detected.jpg
+[2026-01-08 00:27:21] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:27:21] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:27:21] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:27:21] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:27:21] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:27:31] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:27:34] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002734.jpg
+[2026-01-08 00:27:34] INFO: Detected 0 object(s) in IMG_20260108_002734.jpg
+[2026-01-08 00:27:34] INFO: Image dimensions: 640x480
+[2026-01-08 00:27:34] INFO: Saved image record #147:  IMG_20260108_002734.jpg
+[2026-01-08 00:27:34] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002734_detected.jpg
+[2026-01-08 00:27:34] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:27:34] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:27:34] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:27:34] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:27:34] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:27:44] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:27:46] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002746.jpg
+[2026-01-08 00:27:47] INFO: Detected 0 object(s) in IMG_20260108_002746.jpg
+[2026-01-08 00:27:47] INFO: Image dimensions: 640x480
+[2026-01-08 00:27:47] INFO: Saved image record #148:  IMG_20260108_002746.jpg
+[2026-01-08 00:27:47] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002746_detected.jpg
+[2026-01-08 00:27:47] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:27:47] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:27:47] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:27:47] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:27:47] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:27:57] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:27:59] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002759.jpg
+[2026-01-08 00:28:00] INFO: Detected 0 object(s) in IMG_20260108_002759.jpg
+[2026-01-08 00:28:00] INFO: Image dimensions: 640x480
+[2026-01-08 00:28:00] INFO: Saved image record #149:  IMG_20260108_002759.jpg
+[2026-01-08 00:28:00] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002759_detected.jpg
+[2026-01-08 00:28:00] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:28:00] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:28:00] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:28:00] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:28:00] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:28:10] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:28:12] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002812.jpg
+[2026-01-08 00:28:13] INFO: Detected 0 object(s) in IMG_20260108_002812.jpg
+[2026-01-08 00:28:13] INFO: Image dimensions: 640x480
+[2026-01-08 00:28:13] INFO: Saved image record #150:  IMG_20260108_002812.jpg
+[2026-01-08 00:28:13] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002812_detected.jpg
+[2026-01-08 00:28:13] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:28:13] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:28:13] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:28:13] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:28:13] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:28:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:28:25] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002825.jpg
+[2026-01-08 00:28:26] INFO: Detected 0 object(s) in IMG_20260108_002825.jpg
+[2026-01-08 00:28:26] INFO: Image dimensions: 640x480
+[2026-01-08 00:28:26] INFO: Saved image record #151:  IMG_20260108_002825.jpg
+[2026-01-08 00:28:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002825_detected.jpg
+[2026-01-08 00:28:26] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:28:26] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:28:26] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:28:26] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:28:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:28:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:28:38] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002838.jpg
+‚úÖ Config loaded successfully
+‚ö†Ô∏è Not running on Raspberry Pi - GPIO disabled
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:28:39] INFO: Detected 0 object(s) in IMG_20260108_002838.jpg
+[2026-01-08 00:28:39] INFO: Image dimensions: 640x480
+[2026-01-08 00:28:39] INFO: Saved image record #152:  IMG_20260108_002838.jpg
+[2026-01-08 00:28:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002838_detected.jpg
+[2026-01-08 00:28:39] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:28:39] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:28:39] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:28:39] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:28:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:28:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:28:55] ERROR: Cannot capture image
+[2026-01-08 00:28:55] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:29:05] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@212.747] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-08 00:29:05] ERROR: Cannot open camera 0
+[2026-01-08 00:29:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:29:28] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-08 00:29:28] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-08 00:29:28] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-08 00:29:28] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-08 00:29:28] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-08 00:29:28] INFO: \u2705 Detection service initialized
+[2026-01-08 00:29:28] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-08 00:29:28] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:29:30] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002930.jpg
+[2026-01-08 00:29:32] INFO: Detected 1 object(s) in IMG_20260108_002930.jpg
+[2026-01-08 00:29:32] INFO: Image dimensions: 640x480
+[2026-01-08 00:29:32] INFO: Saved image record #153:  IMG_20260108_002930.jpg
+[2026-01-08 00:29:32] INFO: \u274c No match found for position [357.4082946777344, 76.7778091430664] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:29:32] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002930_detected.jpg
+[2026-01-08 00:29:32] INFO: Created new pallet #21 (PL-0004)
+[2026-01-08 00:29:32] INFO: \u2705 Created pallet: #21 (PL-0004)
+[2026-01-08 00:29:32] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:29:32] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:29:32] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:29:32] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:29:32] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:29:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:29:44] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002944.jpg
+[2026-01-08 00:29:45] INFO: Detected 1 object(s) in IMG_20260108_002944.jpg
+[2026-01-08 00:29:45] INFO: Image dimensions: 640x480
+[2026-01-08 00:29:45] INFO: Saved image record #154:  IMG_20260108_002944.jpg
+[2026-01-08 00:29:45] INFO: \u2705 Matched: New pos [357.1257629394531, 76.93770599365234] \u2192 Pallet #21 (distance: 0.3px)
+[2026-01-08 00:29:45] WARNING: \U0001f534 Pallet #21 OVERTIME: 0.22m > 0.12m
+[2026-01-08 00:29:45] INFO: \u2705 Updated pallet #21 (duration: 0.2 min, status: 1)
+[2026-01-08 00:29:45] WARNING: \u26a0\ufe0f Overtime detected: Pallet #21 (0.2 min)
+[2026-01-08 00:29:45] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002944_detected.jpg
+[2026-01-08 00:29:45] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_002944_detected.jpg
+[2026-01-08 00:29:45] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:29:45] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:29:45] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:29:45] INFO: \U0001f4e4 Sending alert 1/1: Pallet #21 (duration: 0.2 min)
+[2026-01-08 00:29:45] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:29:45] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:29:45] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:29:45] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:29:45] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:29:45] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:29:45] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:29:45] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:29:55] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:29:58] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002958.jpg
+[2026-01-08 00:29:58] INFO: Detected 1 object(s) in IMG_20260108_002958.jpg
+[2026-01-08 00:29:58] INFO: Image dimensions: 640x480
+[2026-01-08 00:29:58] INFO: Saved image record #155:  IMG_20260108_002958.jpg
+[2026-01-08 00:29:58] INFO: \u2705 Matched: New pos [356.8556213378906, 76.99256896972656] \u2192 Pallet #21 (distance: 0.6px)
+[2026-01-08 00:29:58] WARNING: \U0001f534 Pallet #21 OVERTIME: 0.44m > 0.12m
+[2026-01-08 00:29:58] INFO: \u2705 Updated pallet #21 (duration: 0.4 min, status: 1)
+[2026-01-08 00:29:58] WARNING: \u26a0\ufe0f Overtime detected: Pallet #21 (0.4 min)
+[2026-01-08 00:29:58] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_002958_detected.jpg
+[2026-01-08 00:29:58] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_002958_detected.jpg
+[2026-01-08 00:29:58] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:29:58] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:29:58] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:29:58] INFO: \U0001f4e4 Sending alert 1/1: Pallet #21 (duration: 0.4 min)
+[2026-01-08 00:29:58] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:29:58] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:29:59] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:29:59] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:29:59] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:29:59] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:29:59] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:29:59] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:30:09] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:30:11] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003011.jpg
+[2026-01-08 00:30:11] INFO: Detected 1 object(s) in IMG_20260108_003011.jpg
+[2026-01-08 00:30:12] INFO: Image dimensions: 640x480
+[2026-01-08 00:30:12] INFO: Saved image record #156:  IMG_20260108_003011.jpg
+[2026-01-08 00:30:12] INFO: \u2705 Matched: New pos [357.2056884765625, 76.92420959472656] \u2192 Pallet #21 (distance: 0.3px)
+[2026-01-08 00:30:12] WARNING: \U0001f534 Pallet #21 OVERTIME: 0.67m > 0.12m
+[2026-01-08 00:30:12] INFO: \u2705 Updated pallet #21 (duration: 0.7 min, status: 1)
+[2026-01-08 00:30:12] WARNING: \u26a0\ufe0f Overtime detected: Pallet #21 (0.7 min)
+[2026-01-08 00:30:12] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003011_detected.jpg
+[2026-01-08 00:30:12] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_003011_detected.jpg
+[2026-01-08 00:30:12] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:30:12] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:30:12] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:30:12] INFO: \U0001f4e4 Sending alert 1/1: Pallet #21 (duration: 0.7 min)
+[2026-01-08 00:30:12] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:30:12] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:30:12] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:30:12] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:30:12] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:30:12] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:30:12] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:30:12] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:30:22] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:30:25] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003025.jpg
+[2026-01-08 00:30:26] INFO: Detected 1 object(s) in IMG_20260108_003025.jpg
+[2026-01-08 00:30:26] INFO: Image dimensions: 640x480
+[2026-01-08 00:30:26] INFO: Saved image record #157:  IMG_20260108_003025.jpg
+[2026-01-08 00:30:26] INFO: \u2705 Matched: New pos [357.51202392578125, 76.91365814208984] \u2192 Pallet #21 (distance: 0.2px)
+[2026-01-08 00:30:26] WARNING: \U0001f534 Pallet #21 OVERTIME: 0.90m > 0.12m
+[2026-01-08 00:30:26] INFO: \u2705 Updated pallet #21 (duration: 0.9 min, status: 1)
+[2026-01-08 00:30:26] WARNING: \u26a0\ufe0f Overtime detected: Pallet #21 (0.9 min)
+[2026-01-08 00:30:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003025_detected.jpg
+[2026-01-08 00:30:26] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_003025_detected.jpg
+[2026-01-08 00:30:26] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:30:26] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:30:26] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:30:26] INFO: \U0001f4e4 Sending alert 1/1: Pallet #21 (duration: 0.9 min)
+[2026-01-08 00:30:26] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:30:26] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:30:26] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:30:26] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:30:26] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:30:26] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:30:26] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:30:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:30:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:30:39] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003038.jpg
+[2026-01-08 00:30:39] INFO: Detected 0 object(s) in IMG_20260108_003038.jpg
+[2026-01-08 00:30:39] INFO: Image dimensions: 640x480
+[2026-01-08 00:30:39] INFO: Saved image record #158:  IMG_20260108_003038.jpg
+[2026-01-08 00:30:39] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003038_detected.jpg
+[2026-01-08 00:30:39] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:30:39] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:30:39] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:30:39] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:30:39] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:30:39] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:30:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:30:51] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003051.jpg
+[2026-01-08 00:30:52] INFO: Detected 0 object(s) in IMG_20260108_003051.jpg
+[2026-01-08 00:30:52] INFO: Image dimensions: 640x480
+[2026-01-08 00:30:52] INFO: Saved image record #159:  IMG_20260108_003051.jpg
+[2026-01-08 00:30:52] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003051_detected.jpg
+[2026-01-08 00:30:52] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:30:52] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:30:52] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:30:52] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:30:52] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:31:02] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:31:04] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003104.jpg
+[2026-01-08 00:31:05] INFO: Detected 0 object(s) in IMG_20260108_003104.jpg
+[2026-01-08 00:31:05] INFO: Image dimensions: 640x480
+[2026-01-08 00:31:05] INFO: Saved image record #160:  IMG_20260108_003104.jpg
+[2026-01-08 00:31:05] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003104_detected.jpg
+[2026-01-08 00:31:05] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:31:05] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:31:05] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:31:05] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:31:05] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:31:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:31:17] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003117.jpg
+[2026-01-08 00:31:18] INFO: Detected 1 object(s) in IMG_20260108_003117.jpg
+[2026-01-08 00:31:18] INFO: Image dimensions: 640x480
+[2026-01-08 00:31:18] INFO: Saved image record #161:  IMG_20260108_003117.jpg
+[2026-01-08 00:31:18] INFO: \u274c No match found for position [423.7645263671875, 187.26177978515625] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:31:18] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003117_detected.jpg
+[2026-01-08 00:31:18] INFO: Created new pallet #22 (PL-0005)
+[2026-01-08 00:31:18] INFO: \u2705 Created pallet: #22 (PL-0005)
+[2026-01-08 00:31:18] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:31:18] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:31:18] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:31:18] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:31:18] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:31:28] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:31:30] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003130.jpg
+[2026-01-08 00:31:31] INFO: Detected 0 object(s) in IMG_20260108_003130.jpg
+[2026-01-08 00:31:31] INFO: Image dimensions: 640x480
+[2026-01-08 00:31:31] INFO: Saved image record #162:  IMG_20260108_003130.jpg
+[2026-01-08 00:31:31] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003130_detected.jpg
+[2026-01-08 00:31:31] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:31:31] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:31:31] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+‚úÖ Config loaded successfully
+‚ö†Ô∏è Not running on Raspberry Pi - GPIO disabled
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+‚úÖ Config loaded successfully
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:31:31] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:31:31] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:31:31] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:31:41] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:31:43] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003143.jpg
+[2026-01-08 00:31:44] INFO: Detected 1 object(s) in IMG_20260108_003143.jpg
+[2026-01-08 00:31:44] INFO: Image dimensions: 640x480
+[2026-01-08 00:31:44] INFO: Saved image record #163:  IMG_20260108_003143.jpg
+[2026-01-08 00:31:44] INFO: \u274c No match found for position [423.123779296875, 186.93426513671875] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:31:44] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003143_detected.jpg
+[2026-01-08 00:31:44] INFO: \U0001f50d Found recently deactivated pallet: #22 (PL-0005) - duration: 0.0 min
+[2026-01-08 00:31:44] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #22 (PL-0005)
+[2026-01-08 00:31:44] WARNING:    Previous duration: 0.0 min
+[2026-01-08 00:31:44] INFO: Created new pallet #23 (PL-0006)
+[2026-01-08 00:31:44] INFO: \u2705 Created pallet: #23 (PL-0006)
+[2026-01-08 00:31:44] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:31:44] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:31:44] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:31:44] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:31:44] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:31:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:31:56] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003156.jpg
+[2026-01-08 00:31:56] INFO: Detected 0 object(s) in IMG_20260108_003156.jpg
+[2026-01-08 00:31:56] INFO: Image dimensions: 640x480
+[2026-01-08 00:31:56] INFO: Saved image record #164:  IMG_20260108_003156.jpg
+[2026-01-08 00:31:57] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003156_detected.jpg
+[2026-01-08 00:31:57] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:31:57] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:31:57] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:31:57] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:31:57] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-08 00:31:57] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:32:07] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:32:09] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003209.jpg
+[2026-01-08 00:32:09] INFO: Detected 1 object(s) in IMG_20260108_003209.jpg
+[2026-01-08 00:32:09] INFO: Image dimensions: 640x480
+[2026-01-08 00:32:09] INFO: Saved image record #165:  IMG_20260108_003209.jpg
+[2026-01-08 00:32:09] INFO: \u274c No match found for position [212.8944549560547, 163.94508361816406] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:32:10] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003209_detected.jpg
+[2026-01-08 00:32:10] INFO: Created new pallet #24 (PL-0007)
+[2026-01-08 00:32:10] INFO: \u2705 Created pallet: #24 (PL-0007)
+[2026-01-08 00:32:10] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:32:10] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:32:10] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:32:10] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:32:10] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:32:20] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:32:22] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003222.jpg
+[2026-01-08 00:32:22] INFO: Detected 1 object(s) in IMG_20260108_003222.jpg
+[2026-01-08 00:32:22] INFO: Image dimensions: 640x480
+[2026-01-08 00:32:22] INFO: Saved image record #166:  IMG_20260108_003222.jpg
+[2026-01-08 00:32:22] INFO: \u274c No match found for position [422.880126953125, 187.0753173828125] (threshold: \xb196.0px, \xb172.0px)
+[2026-01-08 00:32:22] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003222_detected.jpg
+[2026-01-08 00:32:22] INFO: \U0001f50d Found recently deactivated pallet: #23 (PL-0006) - duration: 0.0 min
+[2026-01-08 00:32:22] WARNING: \u26a0\ufe0f New pallet at same position as recently deactivated #23 (PL-0006)
+[2026-01-08 00:32:23] WARNING:    Previous duration: 0.0 min
+[2026-01-08 00:32:23] INFO: Created new pallet #25 (PL-0008)
+[2026-01-08 00:32:23] INFO: \u2705 Created pallet: #25 (PL-0008)
+[2026-01-08 00:32:23] INFO: Deactivated 1 pallet(s) (moved)
+[2026-01-08 00:32:23] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-08 00:32:23] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-08 00:32:23] INFO: \u2705 No overtime pallets - all clear
+[2026-01-08 00:32:23] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:32:23] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:32:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:32:35] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003235.jpg
+[2026-01-08 00:32:35] INFO: Detected 1 object(s) in IMG_20260108_003235.jpg
+[2026-01-08 00:32:35] INFO: Image dimensions: 640x480
+[2026-01-08 00:32:35] INFO: Saved image record #167:  IMG_20260108_003235.jpg
+[2026-01-08 00:32:35] INFO: \u2705 Matched: New pos [423.9619445800781, 187.1782989501953] \u2192 Pallet #25 (distance: 1.1px)
+[2026-01-08 00:32:35] WARNING: \U0001f534 Pallet #25 OVERTIME: 0.21m > 0.12m
+[2026-01-08 00:32:35] INFO: \u2705 Updated pallet #25 (duration: 0.2 min, status: 1)
+[2026-01-08 00:32:35] WARNING: \u26a0\ufe0f Overtime detected: Pallet #25 (0.2 min)
+[2026-01-08 00:32:35] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003235_detected.jpg
+[2026-01-08 00:32:35] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_003235_detected.jpg
+[2026-01-08 00:32:35] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:32:35] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:32:35] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:32:35] INFO: \U0001f4e4 Sending alert 1/1: Pallet #25 (duration: 0.2 min)
+[2026-01-08 00:32:36] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:32:36] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:32:36] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:32:36] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:32:36] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:32:36] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:32:36] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+Error logging to database:  (1146, "Table 'db_pallet_detector.tb_system_logs' doesn't exist")
+[2026-01-08 00:32:36] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:32:46] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:32:48] INFO: \U0001f4f8 Captured:  C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003248.jpg
+[2026-01-08 00:32:49] INFO: Detected 1 object(s) in IMG_20260108_003248.jpg
+[2026-01-08 00:32:49] INFO: Image dimensions: 640x480
+[2026-01-08 00:32:49] INFO: Saved image record #168:  IMG_20260108_003248.jpg
+[2026-01-08 00:32:49] INFO: \u2705 Matched: New pos [422.2848815917969, 186.5714111328125] \u2192 Pallet #25 (distance: 0.8px)
+[2026-01-08 00:32:49] WARNING: \U0001f534 Pallet #25 OVERTIME: 0.44m > 0.12m
+[2026-01-08 00:32:49] INFO: \u2705 Updated pallet #25 (duration: 0.4 min, status: 1)
+[2026-01-08 00:32:49] WARNING: \u26a0\ufe0f Overtime detected: Pallet #25 (0.4 min)
+[2026-01-08 00:32:49] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-08\IMG_20260108_003248_detected.jpg
+[2026-01-08 00:32:49] INFO: \U0001f4f7 Image URL added to 1 overtime alert(s): http://localhost/upload_image/2026-01-08/IMG_20260108_003248_detected.jpg
+[2026-01-08 00:32:49] INFO: \U0001f50d Overtime check complete: 1 alert(s) pending
+[2026-01-08 00:32:49] INFO: \U0001f4e2 Handling alerts: 1 overtime pallet(s)
+[2026-01-08 00:32:49] INFO: \U0001f504 Processing 1 alert(s)...
+[2026-01-08 00:32:49] INFO: \U0001f4e4 Sending alert 1/1: Pallet #25 (duration: 0.4 min)
+[2026-01-08 00:32:49] INFO: \U0001f4e4 Sending overtime alert: ¡’æ“‡≈∑‡°‘π‡«≈“
+[2026-01-08 00:32:49] INFO: \U0001f4e4 Sending to Group: C4f1e1001f...
+[2026-01-08 00:32:49] INFO: \u2705 LINE message sent to group
+[2026-01-08 00:32:49] INFO: \u2705 Overtime alert sent successfully
+[2026-01-08 00:32:49] INFO:    \u2705 LINE alert sent successfully
+[2026-01-08 00:32:49] WARNING: \u26a0\ufe0f Sent 1/1 overtime alert(s)
+[2026-01-08 00:32:49] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-08 00:32:49] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:32:59] INFO: \U0001f504 Starting detection cycle...
+[2026-01-08 00:33:06] ERROR: Cannot capture image
+[2026-01-08 00:33:06] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-08 00:33:16] INFO: \U0001f504 Starting detection cycle...
+[ WARN:0@229.427] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+[2026-01-08 00:33:16] ERROR: Cannot open camera 0
+[2026-01-08 00:33:16] INFO: \U0001f4a4 Sleeping for 10 seconds...
