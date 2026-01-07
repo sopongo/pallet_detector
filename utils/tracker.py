@@ -122,6 +122,13 @@ class PalletTracker:
         Args:
             pallet_id: ID ของพาเลท
             detection_time: เวลาที่เจอ
+            
+        Returns:
+            dict: {
+                'pallet_id': int,
+                'duration': float (minutes),
+                'status': int (0=normal, 1=overtime, 2=removed)
+            }
         """
         try:
             conn = self.get_db_connection()
@@ -132,11 +139,15 @@ class PalletTracker:
             pallet = cursor.fetchone()
             
             if not pallet:
-                return
+                logger.error(f"❌ Pallet #{pallet_id} not found in database")
+                return None
             
             # คำนวณระยะเวลาที่ค้าง (นาที)
             first_time = pallet['first_detected_at']
             duration = (detection_time - first_time).total_seconds() / 60
+            
+            # ✅ เพิ่ม: Log ค่า threshold และ duration
+            logger.debug(f"⏱️ Pallet #{pallet_id}: duration={duration:.2f}m, threshold={self.alert_threshold:.2f}m")
             
             # ตรวจสอบว่าเกิน threshold หรือไม่
             new_status = 0  # Normal
@@ -148,6 +159,11 @@ class PalletTracker:
                 in_over = 1
                 if pallet['over_time'] is None:
                     over_time = detection_time
+                # ✅ เพิ่ม: Log overtime detection
+                logger.warning(f"🔴 Pallet #{pallet_id} OVERTIME: {duration:.2f}m > {self.alert_threshold:.2f}m")
+            else:
+                # ✅ เพิ่ม: Log normal status
+                logger.debug(f"🟢 Pallet #{pallet_id} OK: {duration:.2f}m <= {self.alert_threshold:.2f}m")
             
             # อัพเดท
             cursor.execute("""
@@ -161,15 +177,24 @@ class PalletTracker:
             """, (detection_time, new_status, in_over, over_time, pallet_id))
             
             conn.commit()
-            cursor. close()
+            cursor.close()
             conn.close()
             
-            logger.info(f"Updated pallet #{pallet_id} (duration: {duration:.1f} min)")
+            # ✅ สำคัญ: Log return value พร้อม status
+            logger.info(f"✅ Updated pallet #{pallet_id} (duration: {duration:.1f} min, status: {new_status})")
             
-            return {'pallet_id': pallet_id, 'duration': duration, 'status': new_status}
+            # ✅ สร้าง result object และ log ก่อน return
+            result = {
+                'pallet_id': pallet_id,
+                'duration': duration,
+                'status': new_status
+            }
+            logger.debug(f"📤 Returning: {result}")
+            
+            return result
             
         except Exception as e:
-            logger.error(f"Error updating pallet:  {e}")
+            logger.error(f"❌ Error updating pallet #{pallet_id}: {e}", exc_info=True)
             return None
     
     def create_new_pallet(self, ref_id_img, pallet_data, detection_time, pallet_no, pallet_name):

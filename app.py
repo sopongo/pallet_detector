@@ -593,14 +593,38 @@ def get_detection_logs():
             return jsonify({"success": False, "message": f"Cannot read log file: {str(e)}"})
         logger.info(f"Total lines in log file: {len(lines)}")
         recent_logs = lines[-limit:] if len(lines) > limit else lines
-        logs = [line.strip() for line in recent_logs if line.strip()]
-        logger.info(f"Logs (after filter): {len(logs)} lines")
-        if logs:
-            logger.info(f"Sample logs: {logs[:3]}")
-        return jsonify({"success": True, "logs": logs, "debug": {"file_size": file_size, "total_lines": len(lines), "filtered_lines": len(logs)}})
+        
+        # ✅ เพิ่ม: แปลง log เป็น dict พร้อม color class
+        formatted_logs = []
+        for line in recent_logs:
+            line_stripped = line.strip()
+            if not line_stripped:
+                continue
+                
+            log_dict = {
+                'text': line_stripped,
+                'class': ''  # Default: no special class
+            }
+            
+            # ✅ เช็คว่า log มี keyword overtime หรือไม่
+            line_lower = line_stripped.lower()
+            if 'overtime' in line_lower or '⚠️' in line_stripped or 'pallet over time' in line_lower:
+                log_dict['class'] = 'log-error'  # CSS class สีแดง
+            elif 'error' in line_lower or '❌' in line_stripped:
+                log_dict['class'] = 'log-error'
+            elif 'warning' in line_lower or '🔴' in line_stripped:
+                log_dict['class'] = 'log-warning'
+            
+            formatted_logs.append(log_dict)
+        
+        logger.info(f"Logs (after filter): {len(formatted_logs)} lines")
+        if formatted_logs:
+            logger.info(f"Sample logs: {[log['text'][:50] for log in formatted_logs[:3]]}")
+        return jsonify({"success": True, "logs": formatted_logs, "debug": {"file_size": file_size, "total_lines": len(lines), "filtered_lines": len(formatted_logs)}})
     except Exception as e:
         logger.error(f"Error getting logs: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
+
 
 
 @app.route('/api/system/info', methods=['GET'])
