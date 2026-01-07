@@ -63,14 +63,14 @@ class PalletDetector:
             # อ่านรูป
             image = cv2.imread(image_path)
             if image is None:
-                logger. error(f"Cannot read image:  {image_path}")
+                logger.error(f"Cannot read image: {image_path}")
                 return None
             
             # Run detection (ไม่กรอง class ให้ detect ทุกอย่าง)
             results = self.model.predict(
                 source=image,
                 conf=self.confidence,
-                iou=self. iou,
+                iou=self.iou,
                 imgsz=self.img_size,
                 device=self.device,
                 classes=None,  # ✅ ตรวจจับทุก class
@@ -90,7 +90,7 @@ class PalletDetector:
                     class_name = class_names[class_id]
                     
                     # ✅ กรองเฉพาะ pallet และ person (case-insensitive)
-                    class_name_lower = class_name. lower()
+                    class_name_lower = class_name.lower()
                     if 'pallet' in class_name_lower:
                         class_type = 'pallet'
                     elif 'person' in class_name_lower:
@@ -100,7 +100,7 @@ class PalletDetector:
                         continue
                     
                     # Bounding box coordinates
-                    x1, y1, x2, y2 = box.xyxy[0]. cpu().numpy()
+                    x1, y1, x2, y2 = box.xyxy[0].cpu().numpy()
                     
                     # Center point
                     cx = (x1 + x2) / 2
@@ -113,7 +113,7 @@ class PalletDetector:
                         'bbox': [int(x1), int(y1), int(x2), int(y2)],
                         'center': [float(cx), float(cy)],
                         'confidence': conf,
-                        'class_name':  class_name,
+                        'class_name': class_name,
                         'class_type': class_type  # ✅ เพิ่ม class_type
                     })
             

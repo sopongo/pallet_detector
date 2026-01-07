@@ -29,7 +29,7 @@ class PalletTracker:
     
     def get_db_connection(self):
         """สร้าง database connection"""
-        return pymysql.connect(**self. db_config, cursorclass=pymysql.cursors.DictCursor)
+        return pymysql.connect(**self.db_config, cursorclass=pymysql.cursors.DictCursor)
     
     def calculate_distance(self, pos1, pos2):
         """
@@ -62,7 +62,7 @@ class PalletTracker:
             """)
             
             pallets = cursor.fetchall()
-            cursor. close()
+            cursor.close()
             conn.close()
             
             return pallets
