@@ -250,7 +250,7 @@ class DetectionService:
                     self.db.save_notification_log({
                         'ref_id_pallet': pallet['pallet_id'],
                         'notify_type': 'LINE',
-                        'message': f"Overtime alert: {pallet['duration']:. 1f} min",
+                        'message': f"Overtime alert: {pallet['duration']:.1f} min",
                         'sent_at': datetime.now(),
                         'success': result['success']
                     })
@@ -265,7 +265,7 @@ class DetectionService:
                 logger.warning(f"⚠️ Sent {len(overtime_pallets)} overtime alert(s)")
             else:
                 # เปิดไฟเขียว
-                self.lights. test_green()
+                self.lights.test_green()
                 
         except Exception as e:
             logger.error(f"Alert handling error: {e}")
@@ -363,7 +363,7 @@ if __name__ == '__main__':
         service.start()
         
     except KeyboardInterrupt:
-        logger. info("⚠️ Keyboard interrupt")
+        logger.info("⚠️ Keyboard interrupt")
         if service:
             service.stop()
     except Exception as e: 
