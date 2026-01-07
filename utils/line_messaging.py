@@ -103,148 +103,36 @@ class LineMessagingAPI:
     
     def send_overtime_alert(self, pallet_info):
         """
-        ส่ง alert พาเลทค้างเกินเวลา (Flex Message) เข้า Group
+        ส่ง alert พาเลทเกินเวลา (Text Message ธรรมดา)
         
         Args:
             pallet_info (dict): ข้อมูลพาเลท
             
         Returns:
-            dict: result
+            dict: {'success': bool, 'message': str}
         """
-        pallet_id = pallet_info. get('pallet_id', 'N/A')
-        duration = pallet_info.get('duration', 0)
-        site = pallet_info.get('site', 'N/A')
-        location = pallet_info.get('location', 'N/A')
-        image_url = pallet_info. get('image_url', '')
-        
-        # ✅ สร้าง Flex Message
-        flex_content = {
-            "type": "bubble",
-            "header": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": "⚠️ PALLET OVERTIME ALERT",
-                        "color": "#ffffff",
-                        "weight": "bold",
-                        "size": "lg",
-                        "align": "center"
-                    }
-                ],
-                "backgroundColor": "#FF4444",
-                "paddingAll": "20px"
-            },
-            "body":  {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                    {
-                        "type": "text",
-                        "text": f"Pallet #{pallet_id}",
-                        "weight": "bold",
-                        "size": "xxl",
-                        "margin": "md",
-                        "color": "#1e1e1e"
-                    },
-                    {
-                        "type": "separator",
-                        "margin": "lg"
-                    },
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "margin": "lg",
-                        "spacing": "md",
-                        "contents": [
-                            {
-                                "type": "box",
-                                "layout": "baseline",
-                                "spacing": "sm",
-                                "contents": [
-                                    {"type": "text", "text":  "📍 Site:", "color": "#aaaaaa", "size": "sm", "flex": 2},
-                                    {"type":  "text", "text": str(site), "wrap": True, "color": "#333333", "size": "sm", "flex": 5, "weight": "bold"}
-                                ]
-                            },
-                            {
-                                "type": "box",
-                                "layout": "baseline",
-                                "spacing": "sm",
-                                "contents": [
-                                    {"type": "text", "text": "🏢 Location:", "color": "#aaaaaa", "size": "sm", "flex": 2},
-                                    {"type": "text", "text": str(location), "wrap": True, "color":  "#333333", "size": "sm", "flex": 5, "weight": "bold"}
-                                ]
-                            },
-                            {
-                                "type":  "box",
-                                "layout": "baseline",
-                                "spacing": "sm",
-                                "contents": [
-                                    {"type": "text", "text": "⏰ Duration:", "color":  "#aaaaaa", "size":  "sm", "flex": 2},
-                                    {"type":  "text", "text": f"{duration:. 0f} minutes", "wrap": True, "color": "#FF4444", "size": "md", "flex": 5, "weight": "bold"}
-                                ]
-                            },
-                            {
-                                "type": "box",
-                                "layout":  "baseline",
-                                "spacing": "sm",
-                                "contents": [
-                                    {"type": "text", "text":  "🕐 Time:", "color": "#aaaaaa", "size": "sm", "flex": 2},
-                                    {"type": "text", "text": datetime.now().strftime('%d/%m/%Y %H:%M:%S'), "wrap": True, "color": "#666666", "size": "sm", "flex": 5}
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "paddingAll": "20px"
-            },
-            "footer": {
-                "type": "box",
-                "layout": "vertical",
-                "spacing": "sm",
-                "contents": [
-                    {
-                        "type": "box",
-                        "layout": "vertical",
-                        "contents": [
-                            {
-                                "type": "text",
-                                "text": "⚠️ Please check and remove the pallet immediately! ",
-                                "color": "#FF4444",
-                                "size": "sm",
-                                "wrap": True,
-                                "weight": "bold",
-                                "align": "center"
-                            }
-                        ],
-                        "backgroundColor": "#FFF3F3",
-                        "paddingAll": "15px",
-                        "cornerRadius": "10px"
-                    }
-                ],
-                "paddingAll": "20px"
+        try:
+            # ✅ ส่งข้อความสั้นๆ ธรรมดา
+            message_text = "มีพาเลทเกินเวลา"
+            
+            logger.info(f"📤 Sending overtime alert: {message_text}")
+            
+            # ใช้ method ส่ง text ที่มีอยู่แล้ว
+            result = self.send_text_message(message_text)
+            
+            if result['success']:
+                logger.info(f"✅ Overtime alert sent successfully")
+            else:
+                logger.error(f"❌ Overtime alert failed: {result['message']}")
+            
+            return result
+            
+        except Exception as e:
+            logger.error(f"❌ Exception in send_overtime_alert: {e}", exc_info=True)
+            return {
+                'success': False,
+                'message': str(e)
             }
-        }
-        
-        # ✅ ถ้ามีรูปภาพ → เพิ่ม Hero
-        if image_url:
-            flex_content["hero"] = {
-                "type":  "image",
-                "url":  image_url,
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover"
-            }
-        
-        flex_message = {
-            "type": "flex",
-            "altText":  f"⚠️ Pallet #{pallet_id} Overtime Alert ({duration:.0f} min)",
-            "contents": flex_content
-        }
-        
-        messages = [flex_message]
-        return self.push_to_group(messages)
     
     def test_connection(self):
         """

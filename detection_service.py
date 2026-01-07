@@ -371,13 +371,18 @@ class DetectionService:
             logger.debug(f"📋 Overtime pallets data: {overtime_pallets}")
             
             if overtime_pallets:
-                # เปิดไฟแดง
-                self.lights.test_red()
+                # ✅ เพิ่ม: Try-except สำหรับ GPIO (อาจจะไม่มีในบางเครื่อง)
+                try:
+                    self.lights.test_red()
+                    logger.debug("🔴 Red light turned on")
+                except Exception as gpio_error:
+                    logger.warning(f"⚠️ GPIO error (ignored): {gpio_error}")
                 
                 # ✅ Log ก่อนเข้า loop
                 logger.info(f"🔄 Processing {len(overtime_pallets)} alert(s)...")
                 
                 # ส่ง LINE alert
+                alert_count = 0
                 for i, pallet in enumerate(overtime_pallets):
                     # ✅ Log แต่ละ pallet
                     logger.info(f"📤 Sending alert {i+1}/{len(overtime_pallets)}: Pallet #{pallet['pallet_id']} (duration: {pallet['duration']:.1f} min)")
@@ -405,10 +410,11 @@ class DetectionService:
                         # ✅ Log ผลลัพธ์
                         if result['success']:
                             logger.info(f"   ✅ LINE alert sent successfully")
+                            alert_count += 1
                         else:
                             logger.error(f"   ❌ LINE alert failed: {result['message']}")
                         
-                        # บันทึก log
+                        # ✅ บันทึก log ลง database
                         self.db.save_notification_log({
                             'ref_id_pallet': pallet['pallet_id'],
                             'notify_type': 'LINE',
@@ -425,14 +431,19 @@ class DetectionService:
                         # ✅ Catch exception ของแต่ละ alert
                         logger.error(f"   ❌ Exception sending alert: {alert_error}", exc_info=True)
                 
-                logger.warning(f"⚠️ Completed sending {len(overtime_pallets)} overtime alert(s)")
+                logger.warning(f"⚠️ Sent {alert_count}/{len(overtime_pallets)} overtime alert(s)")
             else:
-                # เปิดไฟเขียว
-                logger.info("✅ No overtime pallets - turning on green light")
-                self.lights.test_green()
+                # ✅ เพิ่ม: Try-except สำหรับ GPIO
+                try:
+                    self.lights.test_green()
+                    logger.debug("🟢 Green light turned on")
+                except Exception as gpio_error:
+                    logger.warning(f"⚠️ GPIO error (ignored): {gpio_error}")
+                
+                logger.info("✅ No overtime pallets - all clear")
                 
         except Exception as e:
-            logger.error(f"Alert handling error: {e}", exc_info=True)  # ✅ เพิ่ม exc_info=True เพื่อแสดง stack trace
+            logger.error(f"❌ Alert handling error: {e}", exc_info=True)
     
     def run_detection_cycle(self):
         """รันวงจร detection 1 รอบ"""
