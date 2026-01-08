@@ -73,7 +73,7 @@ class PalletTracker:
     
     def find_matching_pallet(self, new_center, active_pallets, image_width, image_height):
         """
-        หาพาเลทที่ตรงกับตำแหน่งใหม่ (Position-based matching ±15%)
+        หาพาเลทที่ตรงกับตำแหน่งใหม่ (Position-based matching ± อ้างอิงไฟล์ config ตัวแปร alignmentTolerance)
         
         Args:
             new_center:  [cx, cy] ของพาเลทใหม่
@@ -84,9 +84,9 @@ class PalletTracker:
         Returns:
             dict or None: พาเลทที่ตรงกัน หรือ None
         """
-        # ✅ คำนวณ threshold แบบ dynamic (±15% ของขนาดภาพ - เพิ่มจาก 5% เพื่อรองรับการเคลื่อนไหวเล็กน้อย)
-        threshold_x = image_width * 0.15
-        threshold_y = image_height * 0.15
+        # ✅ คำนวณ threshold แบบ dynamic (±% ของขนาดภาพเพื่อรองรับการเคลื่อนไหวเล็กน้อย อ้างอิงไฟล์ config ตัวแปร alignmentTolerance)
+        threshold_x = image_width * (self.cfg['detection']['alignmentTolerance'] / 100)
+        threshold_y = image_height * (self.cfg['detection']['alignmentTolerance'] / 100)
         
         logger.debug(f"Position tolerance: ±{threshold_x:.1f}px (X), ±{threshold_y:.1f}px (Y)")
         
@@ -327,8 +327,8 @@ class PalletTracker:
                 return None
             
             # ✅ หาว่าตรงกับตำแหน่งใหม่หรือไม่ (ใช้ threshold เดียวกับ find_matching_pallet)
-            threshold_x = image_width * 0.15
-            threshold_y = image_height * 0.15
+            threshold_x = image_width * (self.cfg['detection']['alignmentTolerance'] / 100)
+            threshold_y = image_height * (self.cfg['detection']['alignmentTolerance'] / 100)
             
             for pallet in recent_pallets:
                 old_center = [float(pallet['pos_x']), float(pallet['pos_y'])]

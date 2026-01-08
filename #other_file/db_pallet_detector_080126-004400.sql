@@ -299,6 +299,41 @@ INSERT INTO `tb_pallet` (`id_pallet`, `pallet_no`, `pallet_name`, `ref_id_img`, 
 (24, 7, 'PL-0007', 165, '212.89', '163.95', NULL, NULL, '147.00', '111.00', '278.00', '216.00', '0.78', '2026-01-08 00:32:10', '2026-01-08 00:32:10', '2026-01-08 00:32:10', 0, 2, 0, NULL, 1, 0),
 (25, 8, 'PL-0008', 166, '422.88', '187.08', NULL, NULL, '365.00', '158.00', '479.00', '216.00', '0.76', '2026-01-08 00:32:23', '2026-01-08 00:32:23', '2026-01-08 00:32:49', 1, 1, 1, '2026-01-08 00:32:36', 3, 2);
 
+
+
+--
+-- Table structure for table `tb_system_logs`
+--
+
+CREATE TABLE `tb_system_logs` (
+  `id_log` int NOT NULL,
+  `log_level` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT 'INFO' COMMENT 'INFO, WARNING, ERROR',
+  `message` text COLLATE utf8mb4_unicode_ci,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `tb_system_logs`
+--
+ALTER TABLE `tb_system_logs`
+  ADD PRIMARY KEY (`id_log`),
+  ADD KEY `idx_created_at` (`created_at`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `tb_system_logs`
+--
+ALTER TABLE `tb_system_logs`
+  MODIFY `id_log` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
 --
 -- Indexes for dumped tables
 --

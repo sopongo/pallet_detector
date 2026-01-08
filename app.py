@@ -649,6 +649,7 @@ def get_system_info():
             "image_size": f"{cfg['detection']['imageSize']}px",
             "interval": f"{cfg['detection']['captureInterval']}s ({cfg['detection']['captureInterval']//60}m)",
             "alert_threshold": f"{cfg['detection']['alertThreshold']}m",
+            "alignment_tolerance": f"{cfg['detection']['alignmentTolerance']} %",
             "device_mode": cfg['detection']['deviceMode'].upper(),
             "cpu_usage": f"{cpu_percent}%",
             "ram_total": f"{ram_total_gb:.0f} GB",

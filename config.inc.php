@@ -274,6 +274,12 @@
                                                 </label>
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="alignmentTolerance">Alignment Tolerance (%)</label>
+                                            <input type="number" class="form-control" id="alignmentTolerance" value="5" min="1" max="90">
+                                            <small class="form-text text-muted">Tolerance percentage for alignment detection</small>
+                                        </div>                                        
                                         
                                         <div class="form-group">
                                             <label for="captureInterval">Interval Take Photo (Seconds)</label>
@@ -284,7 +290,7 @@
                                         <div class="form-group">
                                             <label for="alertThreshold">Alert Threshold (Minutes)</label>
                                             <select class="custom-select" id="alertThreshold">
-                                                <option value="0.12">20 Seconds (Test)</option>
+                                                <option value="0.15">15 Seconds ( For test)</option>
                                                 <option value="15">15 minutes</option>
                                                 <option value="30">30 minutes</option>
                                                 <option value="45">45 minutes</option>
@@ -346,9 +352,6 @@
                                     <div class="col-md-6">
                                         <button class="btn btn-warning btn-block btn-clear-old-images">
                                             <i class="fas fa-trash-alt"></i> Clear Old Images (>7 days)
-                                        </button>
-                                        <button class="btn btn-danger btn-block">
-                                            <i class="fas fa-sync-alt"></i> Restart Detection Service
                                         </button>
                                         <button class="btn btn-secondary btn-block">
                                             <i class="fas fa-file-alt"></i> View System Logs
@@ -752,20 +755,21 @@ function loadConfig() {
                         
             // Network - LINE
             if(document.getElementById('lineToken')) {
-                document. getElementById('lineToken').value = data.network.lineNotify.token;
+                document.getElementById('lineToken').value = data.network.lineNotify.token;
                 document.getElementById('lineGroup').value = data.network.lineNotify.groupId;
             }
             
             // Detection
             if(document.getElementById('modelPath')) {
                 document.getElementById('modelPath').value = data.detection.modelPath;
-                document.getElementById('confThreshold').value = data.detection. confidenceThreshold;
-                document. getElementById('confValue').innerText = data.detection.confidenceThreshold;
+                document.getElementById('confThreshold').value = data.detection.confidenceThreshold;
+                document.getElementById('confValue').innerText = data.detection.confidenceThreshold;
                 document.getElementById('iouThreshold').value = data.detection.iouThreshold;
-                document.getElementById('iouValue').innerText = data.detection. iouThreshold;
+                document.getElementById('iouValue').innerText = data.detection.iouThreshold;
                 document.getElementById('imageSize').value = data.detection.imageSize;
                 document.getElementById('captureInterval').value = data.detection.captureInterval;
-                document.getElementById('alertThreshold').value = data.detection. alertThreshold;
+                document.getElementById('alertThreshold').value = data.detection.alertThreshold;
+                document.getElementById('alignmentTolerance').value = data.detection.alignmentTolerance || 5;
                 
                 // Device Mode
                 if(data.detection. deviceMode === 'gpu') {
@@ -880,18 +884,18 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const config = {
                 general: {
-                    imagePath: document. getElementById('imagePath')?.value || '',
+                    imagePath: document.getElementById('imagePath')?.value || '',
                     version: "1.0",
                     lastUpdate:  new Date().toISOString().split('T')[0],
                     device: "Raspberry Pi 5",
                     siteCompany: document.getElementById('siteCompany')?.value || '',
-                    siteLocation: document. getElementById('siteLocation')?.value || ''
+                    siteLocation: document.getElementById('siteLocation')?.value || ''
                 },
                 network: {
                     database: {
                         host: document.getElementById('dbHost')?.value || '',
                         user: document.getElementById('dbUser')?.value || '',
-                        password: document. getElementById('dbPass')?.value || '',
+                        password: document.getElementById('dbPass')?.value || '',
                         port: parseInt(document.getElementById('dbPort')?.value) || 3306,
                         database: document.getElementById('dbName')?.value || ''
                     },
@@ -901,13 +905,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 },
                 detection: {
-                    modelPath: document. getElementById('modelPath')?.value || '',
+                    modelPath: document.getElementById('modelPath')?.value || '',
                     confidenceThreshold: parseFloat(document.getElementById('confThreshold')?.value) || 0.75,
                     iouThreshold: parseFloat(document.getElementById('iouThreshold')?.value) || 0.45,
                     imageSize: parseInt(document.getElementById('imageSize')?.value) || 1280,
                     deviceMode: document. querySelector('input[name="deviceMode"]:checked')?.value || 'cpu',
                     captureInterval:  parseInt(document.getElementById('captureInterval')?.value) || 600,
-                    alertThreshold:  parseInt(document.getElementById('alertThreshold')?.value) || 30,
+                    alertThreshold:  parseFloat(document.getElementById('alertThreshold')?.value) || 30,
+                    alignmentTolerance: parseFloat(document.getElementById('alignmentTolerance')?.value) || 5,
                     operatingHours: {
                         start: startTime,  // ✅ ใช้ startTime โดยตรง
                         end: endTime       // ✅ ใช้ endTime โดยตรง
@@ -995,19 +1000,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 detection: {
                     modelPath:  document.getElementById('modelPath')?.value || '',
-                    confidenceThreshold: parseFloat(document. getElementById('confThreshold')?.value) || 0.75,
+                    confidenceThreshold: parseFloat(document.getElementById('confThreshold')?.value) || 0.75,
                     iouThreshold: parseFloat(document.getElementById('iouThreshold')?.value) || 0.45,
                     imageSize: parseInt(document.getElementById('imageSize')?.value) || 1280,
                     deviceMode: document.querySelector('input[name="deviceMode"]:checked')?.value || 'cpu',
                     captureInterval: parseInt(document.getElementById('captureInterval')?.value) || 600,
-                    alertThreshold:  parseInt(document.getElementById('alertThreshold')?.value) || 30,
+                    alertThreshold:  parseFloat(document.getElementById('alertThreshold')?.value) || 30,
+                    alignmentTolerance: parseFloat(document.getElementById('alignmentTolerance')?.value) || 5,
                     operatingHours: {
                         start: minutesToTime(window.timeRangeSliderInstance.result.from),
                         end: minutesToTime(window.timeRangeSliderInstance.result.to)
                     }
                 },
                 camera: {
-                    selectedCamera: document. getElementById('cameraSelect')?.value || '0',
+                    selectedCamera: document.getElementById('cameraSelect')?.value || '0',
                     resolution: {
                         width: 1280,
                         height:  720
@@ -1060,7 +1066,7 @@ document. addEventListener('DOMContentLoaded', function() {
         dbTestBtn.addEventListener('click', function() {
             const data = {
                 host: document.getElementById('dbHost').value,
-                user: document. getElementById('dbUser').value,
+                user: document.getElementById('dbUser').value,
                 password: document.getElementById('dbPass').value,
                 database: document.getElementById('dbName').value,
                 port: document.getElementById('dbPort').value || 3306
@@ -1209,7 +1215,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if(lineTestBtn) {
             lineTestBtn.addEventListener('click', function() {
                 const token = document.getElementById('lineToken').value;
-                const groupId = document. getElementById('lineGroup').value;
+                const groupId = document.getElementById('lineGroup').value;
                 
                 if(! token) {
                     showError('❌ Please enter Channel Access Token first');
@@ -1423,7 +1429,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     . then(r => r.json())
                     .then(data => {
                         if(data. success) {
-                            document. getElementById('greenLight').className = 'light-indicator light-green';
+                            document.getElementById('greenLight').className = 'light-indicator light-green';
                             showSuccess(data. message);
                         } else {
                             showError(data. message);

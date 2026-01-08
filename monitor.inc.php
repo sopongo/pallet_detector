@@ -119,6 +119,7 @@
                   <tr><td><b>Image Size:</b></td><td class="text-right">-</td></tr>
                   <tr><td><b>Interval take photo:</b></td><td class="text-right">-</td></tr>
                   <tr><td><b>Alert Threshold:</b></td><td class="text-right text-danger">-</td></tr>
+                  <tr><td><b>Alignment Tolerance:</b></td><td class="text-right">-</td></tr> <!-- ปิดการแสดงผลชั่วคราว รอแก้ backend รองรับ-->
                   <tr><td><b>Mode:</b></td><td class="text-right text-success"><i class="fas fa-microchip mr-1"></i> -</td></tr>
                   <tr><td><b>Ram:</b></td><td class="text-right text-success"><i class="fas fa-memory mr-1"></i> -</td></tr>
                   <tr><td><b>Temp box enclosure:</b></td><td class="text-right">- <sup>°C</sup></td></tr>
@@ -369,9 +370,10 @@ function fetchSummary() {
         $('table.table-sm tbody tr:eq(3) td:last').text(data.image_size);
         $('table.table-sm tbody tr:eq(4) td:last').text(data.interval);
         $('table.table-sm tbody tr:eq(5) td:last').text(data.alert_threshold);
-        $('table.table-sm tbody tr:eq(6) td:last').html('<i class="fas fa-microchip mr-1"></i> ' + data.device_mode + ' Mode (Used: ' + data.cpu_usage + ')');
-        $('table.table-sm tbody tr:eq(7) td:last').html('<i class="fas fa-memory mr-1"></i> ' + data.ram_total + ' (Used: ' + data.ram_usage + ')');
-        $('table.table-sm tbody tr:eq(8) td:last').text(data.temperature);
+        $('table.table-sm tbody tr:eq(6) td:last').text(data.alignment_tolerance);
+        $('table.table-sm tbody tr:eq(7) td:last').html('<i class="fas fa-microchip mr-1"></i> ' + data.device_mode + ' Mode (Used: ' + data.cpu_usage + ')');
+        $('table.table-sm tbody tr:eq(8) td:last').html('<i class="fas fa-memory mr-1"></i> ' + data.ram_total + ' (Used: ' + data.ram_usage + ')');
+        $('table.table-sm tbody tr:eq(9) td:last').text(data.temperature);
       }
     }).fail(function() {
       console.error('Cannot fetch system info');
