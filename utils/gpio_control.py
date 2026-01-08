@@ -56,26 +56,29 @@ def is_raspberry_pi():
     2. ตรวจสอบไฟล์ /proc/device-tree/model เพื่อยืนยันว่าเป็น Raspberry Pi
     
     Returns:
-        bool: True ถ้าเป็น Raspberry Pi, False ถ้าไม่ใช่
+        tuple: (bool, str) - (is_rpi, device_model)
+            - is_rpi: True ถ้าเป็น Raspberry Pi, False ถ้าไม่ใช่
+            - device_model: ชื่อ model ของอุปกรณ์
     """
     # ✅ ตรวจสอบว่าเป็น Linux ก่อน (Windows/Mac จะไม่ผ่าน)
     if platform.system() != "Linux":
-        return False
+        return False, f"{platform.system()} ({platform.machine()})"
     
     # ✅ ตรวจสอบไฟล์ /proc/device-tree/model (มีเฉพาะ Raspberry Pi)
     device_model_path = "/proc/device-tree/model"
     if os.path.exists(device_model_path):
         try:
             with open(device_model_path, 'r') as f:
-                model = f.read().lower()
+                model = f.read().strip('\x00').strip()
                 # ตรวจสอบว่ามีคำว่า "raspberry pi" ในชื่อ model
                 # รองรับ Pi Zero, Pi 1, 2, 3, 4, 5
-                return "raspberry pi" in model
+                if "raspberry pi" in model.lower():
+                    return True, model
         except Exception:
             pass
     
     # ถ้าไม่มีไฟล์หรืออ่านไม่ได้ → ไม่ใช่ Raspberry Pi
-    return False
+    return False, f"Linux ({platform.machine()})"
 
 
 # ========================================
@@ -92,16 +95,11 @@ def detect_gpio():
             - LED_class: class - Real LED หรือ Mock LED class
             - device_model: str - ชื่อ model ของอุปกรณ์
     """
-    IS_RPI = is_raspberry_pi()
-    device_model = "Unknown"
+    IS_RPI, device_model = is_raspberry_pi()
     
     if IS_RPI:
         # ✅ เป็น Raspberry Pi → พยายามโหลด gpiozero
         try:
-            # อ่านชื่อ model
-            with open("/proc/device-tree/model", 'r') as f:
-                device_model = f.read().strip('\x00').strip()
-            
             # พยายาม import gpiozero
             from gpiozero import LED as RealLED
             print(f"✅ Running on Raspberry Pi (Model: {device_model})")
@@ -118,7 +116,7 @@ def detect_gpio():
         system = platform.system()
         print(f"⚠️ Not running on Raspberry Pi ({system})")
         print("⚠️ GPIO disabled - using Mock Mode")
-        return False, False, MockLED, f"{system} ({platform.machine()})"
+        return False, False, MockLED, device_model
 
 
 # เรียก detect_gpio() ครั้งเดียวตอน import module

@@ -16,16 +16,17 @@ def test_gpio_detection():
     from utils.gpio_control import is_raspberry_pi, IS_RASPBERRY_PI, GPIO_AVAILABLE, DEVICE_MODEL
     
     # Test is_raspberry_pi function
-    result = is_raspberry_pi()
-    print(f"is_raspberry_pi() returned: {result}")
+    is_rpi, device = is_raspberry_pi()
+    print(f"is_raspberry_pi() returned: ({is_rpi}, {device})")
     print(f"IS_RASPBERRY_PI constant: {IS_RASPBERRY_PI}")
     print(f"GPIO_AVAILABLE: {GPIO_AVAILABLE}")
     print(f"DEVICE_MODEL: {DEVICE_MODEL}")
     
-    # On non-RPi systems (Windows/Mac/Linux x86), should return False
-    # On Raspberry Pi, should return True
-    assert isinstance(result, bool), "is_raspberry_pi() should return bool"
-    assert IS_RASPBERRY_PI == result, "IS_RASPBERRY_PI should match is_raspberry_pi()"
+    # Should return tuple of (bool, str)
+    assert isinstance(is_rpi, bool), "is_raspberry_pi()[0] should return bool"
+    assert isinstance(device, str), "is_raspberry_pi()[1] should return str"
+    assert IS_RASPBERRY_PI == is_rpi, "IS_RASPBERRY_PI should match is_raspberry_pi()[0]"
+    assert DEVICE_MODEL == device, "DEVICE_MODEL should match is_raspberry_pi()[1]"
     
     print("✅ TEST PASSED: GPIO detection working correctly")
     return True
