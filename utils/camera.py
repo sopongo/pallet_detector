@@ -8,6 +8,7 @@ import cv2
 import os
 import time
 import logging
+import numpy as np
 from typing import Optional, Tuple
 
 # ตั้งค่า logger
@@ -311,7 +312,6 @@ class CameraWrapper:
                 # Picamera2 API
                 frame = self.camera.capture_array()
                 # แปลง RGB -> BGR สำหรับความเข้ากันได้กับ OpenCV
-                import numpy as np
                 frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
                 return True, frame_bgr
             else:
