@@ -39,7 +39,7 @@ class LineMessagingAPI:
                 return {'success': False, 'message':  'Group ID not set'}
             
             url = f'{self.api_url}/push'
-            payload = {'to': self.group_id, 'messages': messages, 'type': 'flex'}
+            payload = {'to': self.group_id, 'messages': messages}
             
             logger.info(f"📤 Sending to Group: {self.group_id[: 10]}...")
             
@@ -68,9 +68,9 @@ class LineMessagingAPI:
             logger.error(f"❌ LINE error: {e}")
             return {'success': False, 'message':  str(e)}
     
-    def send_text_message(self, text, sendtype):
+    def send_text_message(self, text):
         """ส่งข้อความธรรมดา"""
-        messages = [{'type': sendtype, 'text': text}]
+        messages = [{'type': 'text', 'text': text}]
         return self.push_to_group(messages)
     
     def send_overtime_alert(self, pallet_info):
@@ -118,7 +118,7 @@ class LineMessagingAPI:
                 }
             }
             # ส่ง text message
-            result = self.send_text_message(message_text, "text")
+            result = self.send_text_message(message_text)
             
             if result['success']: 
                 logger.info(f"✅ Overtime alert sent")
@@ -139,7 +139,7 @@ class LineMessagingAPI:
             return {'success': False, 'message': '❌ Token not configured'}
         
         message = f"🧪 Test\n\n✅ OK!\n\n📅 {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}"
-        return self.send_text_message(message, "text")
+        return self.send_text_message(message)
 
 
 # Helper Functions
