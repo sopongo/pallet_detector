@@ -1,0 +1,173 @@
+{
+  "type": "bubble",
+  "size": "mega",
+  "hero": {
+    "type": "image",
+    "url": "https://ebooking.jwdcoldchain.com/sopon_test/IMG_20260108_003143_detected.jpg",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "fit",
+    "action": {
+      "type": "uri",
+      "uri": "https://ebooking.jwdcoldchain.com/sopon_test/IMG_20260108_003143_detected.jpg"
+    },
+    "margin": "none",
+    "flex": 0,
+    "offsetTop": "xxl"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Overdue Pallet Alert",
+        "weight": "bold",
+        "size": "xl",
+        "color": "#8c0013",
+        "margin": "md"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "sm",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Site",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3
+              },
+              {
+                "type": "text",
+                "text": "PACJ",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Location",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3
+              },
+              {
+                "type": "text",
+                "text": "Building 1",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Detected at",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3
+              },
+              {
+                "type": "text",
+                "text": "10:00",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Last detected",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3
+              },
+              {
+                "type": "text",
+                "text": "10:30",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Over time",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 3
+              },
+              {
+                "type": "text",
+                "text": "30 Minute",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Please check and put away.",
+        "weight": "bold",
+        "style": "normal",
+        "align": "center",
+        "color": "#FFFFFF"
+      }
+    ],
+    "backgroundColor": "#00108c",
+    "spacing": "md"
+  },
+  "styles": {
+    "header": {
+      "backgroundColor": "#CCDDAA",
+      "separator": true,
+      "separatorColor": "#CCDDAA"
+    }
+  }
+}
