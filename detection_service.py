@@ -397,7 +397,9 @@ class DetectionService:
                         'duration': pallet['duration'],
                         'site': site_name,           # ← ชื่อแทน ID
                         'location': location_name,   # ← ชื่อแทน ID
-                        'image_url': pallet.get('image_url', '')  # ← เพิ่ม (ถ้ามี)
+                        'image_url': pallet.get('image_url', ''),  # ← เพิ่ม (ถ้ามี)
+                        'first_detected_at':  pallet.get('first_detected_at'),
+                        'last_detected_at': datetime.now()  # หรือ pallet.get('last_detected_at')
                     }
                     
                     # ✅ Log ข้อมูลที่จะส่ง
