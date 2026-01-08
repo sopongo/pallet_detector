@@ -26,3 +26,7 @@ psutil>=5.9.0
 
 # Raspberry Pi GPIO (modern library, works better with all Pi models)
 gpiozero>=1.6.2
+
+# Raspberry Pi Camera (optional - for Pi Camera v1/v2/v3 support)
+# Install with: sudo apt install -y python3-picamera2
+# picamera2>=0.3.0

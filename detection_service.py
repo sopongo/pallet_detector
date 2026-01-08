@@ -17,6 +17,7 @@ from utils.tracker import PalletTracker
 from utils.database import DatabaseManager
 from utils.line_messaging import LineMessagingAPI
 from utils.gpio_control import LightController
+from utils.camera import RobustCamera
 
 logger = setup_logger()
 
@@ -46,6 +47,16 @@ class DetectionService:
             self.tracker = PalletTracker()
             self.db = DatabaseManager()
             self.line = LineMessagingAPI()
+            
+            # ✅ Initialize RobustCamera
+            camera_index = self.cfg['camera']['selectedCamera']
+            # แปลง camera_index เป็น int ถ้าเป็นตัวเลข
+            if isinstance(camera_index, str) and camera_index.isdigit():
+                camera_index = int(camera_index)
+            
+            logger.info(f"🎥 Initializing camera: {camera_index}")
+            self.camera = None  # จะถูกสร้างตอนต้องใช้งาน (lazy initialization)
+            self.camera_index = camera_index
             
             # ✅ ตรวจสอบ LINE config
             line_token = self.cfg['network']['lineNotify'].get('token', '')
@@ -150,34 +161,44 @@ class DetectionService:
         return start_time <= current_time <= end_time
     
     def capture_image(self):
-        """ถ่ายรูปจากกล้อง"""
-        camera = None
+        """ถ่ายรูปจากกล้อง (ใช้ RobustCamera)"""
         try:
-            camera_index = int(self.cfg['camera']['selectedCamera'])
+            # ✅ Lazy initialization - สร้าง camera ครั้งแรกที่ใช้งาน
+            if self.camera is None:
+                logger.info(f"📸 Creating RobustCamera for index: {self.camera_index}")
+                self.camera = RobustCamera(
+                    self.camera_index,
+                    max_retries=3,
+                    timeout=5,
+                    width=640,
+                    height=480
+                )
+                
+                if self.camera.is_opened():
+                    logger.info(f"✅ Camera initialized (type: {self.camera.camera_type})")
+                else:
+                    logger.error("❌ Camera initialization failed")
+                    return None
             
-            # เปิดกล้อง
-            camera = cv2.VideoCapture(camera_index, cv2.CAP_DSHOW)
+            # ✅ ตรวจสอบว่ากล้องยังเปิดอยู่หรือไม่
+            if not self.camera.is_opened():
+                logger.warning("⚠️ Camera not opened, attempting reconnect...")
+                if not self.camera.connect():
+                    logger.error("❌ Cannot reconnect camera")
+                    return None
             
-            if not camera.isOpened():
-                logger.error(f"Cannot open camera {camera_index}")
-                return None
+            # รอให้กล้องพร้อม (สำหรับ USB camera)
+            if self.camera.camera_type == 'usb':
+                time.sleep(0.5)
+                # อ่านภาพหลายครั้ง (ทิ้ง frame แรกๆ)
+                for _ in range(3):
+                    self.camera.read()
             
-            # ตั้งค่าความละเอียด
-            camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-            camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-            
-            # รอให้กล้องพร้อม
-            time.sleep(0.5)
-            
-            # อ่านภาพหลายครั้ง (ทิ้ง frame แรกๆ)
-            for _ in range(3):
-                camera.read()
-            
-            # อ่านภาพจริง
-            ret, frame = camera. read()
+            # ✅ อ่านภาพจริง (with auto-reconnect)
+            ret, frame = self.camera.read()
             
             if not ret or frame is None:
-                logger. error("Cannot capture image")
+                logger.error("❌ Cannot capture image")
                 return None
             
             # สร้าง path
@@ -185,7 +206,7 @@ class DetectionService:
             
             # แปลงเป็น absolute path
             if not os.path.isabs(base_path):
-                base_path = os. path.abspath(base_path)
+                base_path = os.path.abspath(base_path)
             
             # สร้างโฟลเดอร์ตามวันที่
             date_folder = datetime.now().strftime('%Y-%m-%d')
@@ -194,26 +215,21 @@ class DetectionService:
             
             # ชื่อไฟล์
             filename = datetime.now().strftime('IMG_%Y%m%d_%H%M%S.jpg')
-            filepath = os. path. join(full_path, filename)
+            filepath = os.path.join(full_path, filename)
             
             # บันทึกรูป
             success = cv2.imwrite(filepath, frame)
             
             if not success:
-                logger.error(f"Cannot save image:  {filepath}")
+                logger.error(f"❌ Cannot save image: {filepath}")
                 return None
             
-            logger.info(f"📸 Captured:  {filepath}")
+            logger.info(f"📸 Captured: {filepath}")
             return filepath
             
-        except Exception as e: 
-            logger.error(f"Capture error: {e}")
+        except Exception as e:
+            logger.error(f"❌ Capture error: {e}")
             return None
-        
-        finally:
-            # ปิดกล้องเสมอ
-            if camera is not None:
-                camera.release()
     
     def process_detection(self, image_path):
         """ประมวลผล detection และ tracking"""
@@ -503,6 +519,15 @@ class DetectionService:
         """หยุด detection service"""
         logger.info("🛑 Stopping detection service...")
         self.running = False
+        
+        # ✅ ปิดกล้อง
+        if hasattr(self, 'camera') and self.camera is not None:
+            try:
+                self.camera.release()
+                logger.info("✅ Camera released")
+            except Exception as e:
+                logger.error(f"Error releasing camera: {e}")
+        
         self.lights.all_off()
         logger.info("✅ Detection service stopped")
 

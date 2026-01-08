@@ -128,6 +128,7 @@ def get_default_config():
         },
         "camera":  {
             "selectedCamera": "0",
+            "type": "auto",
             "resolution": {
                 "width": 1280,
                 "height": 720

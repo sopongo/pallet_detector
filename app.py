@@ -22,7 +22,7 @@ import io
 import config
 from utils.database import DatabaseManager, test_database_connection
 from utils.network import test_network_connection
-from utils.camera import test_camera, detect_cameras
+from utils.camera import test_camera, detect_cameras, RobustCamera
 from utils.gpio_control import LightController, test_gpio
 from utils.logger import setup_logger
 from datetime import datetime
@@ -61,41 +61,54 @@ db = DatabaseManager()
 logger.info("🚀 Flask app initialized")
 
 # ----------------------------------------
-# ฟังก์ชันสร้าง MJPEG stream จากกล้อง
+# ฟังก์ชันสร้าง MJPEG stream จากกล้อง (ใช้ RobustCamera)
 # ----------------------------------------
 def generate_frames(camera_index):
-    """Generator สำหรับ MJPEG streaming. ดูแลการเปิด-ปิดกล้องและการ encode"""
+    """Generator สำหรับ MJPEG streaming. ดูแลการเปิด-ปิดกล้องและการ encode (ใช้ RobustCamera)"""
     camera = None
     try:
-        camera_index = int(camera_index)
-        # บน Windows ใช้ CAP_DSHOW ช่วยให้จับกล้องได้บ่อยขึ้น
-        camera = cv2.VideoCapture(camera_index, cv2.CAP_DSHOW) if os.name == 'nt' else cv2.VideoCapture(camera_index)
-        if not camera.isOpened():
-            logger.error(f"Cannot open camera {camera_index}")
+        logger.info(f"📸 Starting video stream for camera {camera_index}")
+        
+        # ✅ ใช้ RobustCamera แทน OpenCV VideoCapture
+        camera = RobustCamera(
+            camera_index,
+            max_retries=3,
+            timeout=5,
+            width=640,
+            height=480
+        )
+        
+        if not camera.is_opened():
+            logger.error(f"❌ Cannot open camera {camera_index}")
             return
-
-        camera.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-        camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-        camera.set(cv2.CAP_PROP_FPS, 15)
-        logger.info(f"Camera {camera_index} stream started")
+        
+        logger.info(f"✅ Camera stream started (type: {camera.camera_type})")
 
         while True:
-            success, frame = camera.read()
-            if not success:
-                logger.warning("Cannot read frame")
-                break
-            ret, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
-            if not ret:
+            # ✅ อ่าน frame (with auto-reconnect)
+            ret, frame = camera.read()
+            
+            if not ret or frame is None:
+                logger.warning("⚠️ Cannot read frame")
+                # RobustCamera จะพยายาม reconnect อัตโนมัติ
+                time.sleep(0.5)
                 continue
+            
+            # Encode เป็น JPEG
+            ret_encode, buffer = cv2.imencode('.jpg', frame, [cv2.IMWRITE_JPEG_QUALITY, 70])
+            if not ret_encode:
+                continue
+            
             frame_bytes = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n')
+                   
     except Exception as e:
-        logger.error(f"Stream error: {e}")
+        logger.error(f"❌ Stream error: {e}")
     finally:
         if camera is not None:
             camera.release()
-            logger.info(f"Camera {camera_index} released")
+            logger.info(f"✅ Camera {camera_index} stream stopped")
 
 
 # ----------------------------------------
