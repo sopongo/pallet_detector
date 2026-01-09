@@ -141,7 +141,7 @@ if($_POST['action'] === 'login'){
               }).then((result) => {                
                 if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
                     window.location.href = './';
-                }               
+                }
               });
             }else{
               Swal.fire({

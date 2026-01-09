@@ -408,7 +408,13 @@ function fetchSummary() {
                       icon: 'success',
                       title:  'Success!',
                       text: response.message,
-                      confirmButtonColor: '#28a745'
+                      confirmButtonColor: '#28a745',
+                      timer: 2000, // Time in milliseconds
+                      timerProgressBar: true,
+                    }).then((result) => {                
+                      if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
+                          Swal.close();
+                      }
                   });
               } else {
                   console.error('❌ Start failed:', response.message);
@@ -484,7 +490,13 @@ function fetchSummary() {
                           icon: 'success',
                           title: 'Success!',
                           text: response.message,
-                          confirmButtonColor: '#28a745'
+                          confirmButtonColor: '#28a745',
+                          timer: 2000, // Time in milliseconds
+                          timerProgressBar: true,
+                        }).then((result) => {                
+                          if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
+                              Swal.close();
+                          }
                       });
                   } else {
                       console.error('❌ Stop failed:', response.message);
@@ -492,7 +504,13 @@ function fetchSummary() {
                           icon: 'error',
                           title: 'Error!',
                           text: response.message,
-                          confirmButtonColor: '#dc3545'
+                          confirmButtonColor: '#dc3545',
+                          timer: 2000, // Time in milliseconds
+                          timerProgressBar: true,
+                        }).then((result) => {                
+                          if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
+                              Swal.close();
+                          }
                       });
                   }
               }).fail(function(xhr, status, error) {

@@ -23,7 +23,7 @@ class ImageUploader:
         self.enabled = upload_cfg.get('enabled', True)
         self.url = upload_cfg.get('url', '')
         self.api_key = upload_cfg.get('apiKey', '')
-        self.default_image = upload_cfg.get('defaultImage', 'https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png')
+        self.default_image = upload_cfg.get('defaultImage', 'https://jaiangelbot.jwdcoldchain.com/console/dist/img/img_notfound.png')
         self.timeout = upload_cfg.get('timeout', 30)
         self.max_retries = upload_cfg.get('maxRetries', 1)
         
@@ -169,7 +169,7 @@ class ImageUploader:
 # Helper function
 def upload_image(image_path):
     """Shortcut function"""
-    default_image = 'https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png'
+    default_image = 'https://jaiangelbot.jwdcoldchain.com/console/dist/img/img_notfound.png'
     try:
         uploader = ImageUploader()
         return uploader.upload_image(image_path)
