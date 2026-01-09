@@ -353,14 +353,14 @@ class DetectionService:
                     
                     # ✅ ถ้าพาเลทเก่าเคย overtime (in_over=1) → แจ้งเตือนทันที
                     if recently_deactivated['in_over'] == 1 and recently_deactivated['total_duration'] > self.tracker.alert_threshold:
-                        # ✅ ใช้ image URL ที่ upload แล้ว (มี annotated_path แล้ว)
+                        # ✅ ใช้ image URL ที่ upload แล้ว (ตัวแปร image_url ถูกสร้างข้างบนแล้ว)
                         
                         overtime_pallets.append({
                             'pallet_id': recently_deactivated['id_pallet'],
                             'duration': recently_deactivated['total_duration'],
                             'site': image_data['site'],
                             'location': image_data['location'],
-                            'image_url': image_url
+                            'image_url': image_url  # ใช้ URL ที่ upload แล้ว
                         })
                         logger.warning(f"⚠️ Immediate alert: Position matches overtime pallet! (duration: {recently_deactivated['total_duration']:.1f} min)")
                 

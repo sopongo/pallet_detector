@@ -19,6 +19,7 @@ class ImageUploader:
         self.cfg = config.load_config()
         upload_cfg = self.cfg.get('network', {}).get('imageUpload', {})
         
+        # Get configuration values
         self.enabled = upload_cfg.get('enabled', True)
         self.url = upload_cfg.get('url', '')
         self.api_key = upload_cfg.get('apiKey', '')
@@ -26,10 +27,12 @@ class ImageUploader:
         self.timeout = upload_cfg.get('timeout', 30)
         self.max_retries = upload_cfg.get('maxRetries', 1)
         
+        # Validate configuration
         if not self.enabled:
             logger.info("📤 Image upload is disabled")
-        elif not self.url or not self.api_key:
-            logger.warning("⚠️ Image upload enabled but URL or API key not configured")
+        elif not self.url or not self.api_key or self.api_key == 'your-secret-api-key-here':
+            logger.warning("⚠️ Image upload enabled but URL or API key not configured properly")
+            logger.warning("   Upload will be skipped and default image will be used")
     
     def upload_image(self, image_path):
         """
@@ -52,12 +55,12 @@ class ImageUploader:
             }
         
         # ตรวจสอบ config
-        if not self.url or not self.api_key:
-            logger.warning("⚠️ Upload config incomplete, using default image")
+        if not self.url or not self.api_key or self.api_key == 'your-secret-api-key-here':
+            logger.warning("⚠️ Upload config incomplete or placeholder key detected, using default image")
             return {
                 "success": False,
                 "url": self.default_image,
-                "message": "Upload config not set"
+                "message": "Upload config not set properly"
             }
         
         # ตรวจสอบไฟล์
@@ -166,13 +169,16 @@ class ImageUploader:
 # Helper function
 def upload_image(image_path):
     """Shortcut function"""
+    default_image = 'https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png'
     try:
         uploader = ImageUploader()
         return uploader.upload_image(image_path)
     except Exception as e:
         logger.error(f"❌ Upload error: {e}")
+        cfg = config.load_config()
+        default_image = cfg.get('network', {}).get('imageUpload', {}).get('defaultImage', default_image)
         return {
             "success": False,
-            "url": config.load_config().get('network', {}).get('imageUpload', {}).get('defaultImage', ''),
+            "url": default_image,
             "message": str(e)
         }
