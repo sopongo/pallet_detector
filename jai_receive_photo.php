@@ -1,100 +1,69 @@
 <?php
-/**
- * Image Upload Endpoint
- * รับรูปจาก Python API และบันทึกลง uploads-temp/line_push/{date}/
- */
-
 header('Content-Type: application/json');
 
-// ✅ API Key Authentication
-$valid_api_key = "your-secret-api-key-12345";  // ⚠️ เปลี่ยนเป็น key จริง!
+$valid_api_key = "PiPcs@1234";
 
-$headers = getallheaders();
-$api_key = isset($headers['X-API-Key']) ? $headers['X-API-Key'] : '';
+// ✅ แก้:  รองรับหลาย server
+$api_key = '';
+if (function_exists('getallheaders')) {
+    $headers = getallheaders();
+    $api_key = $headers['X-API-Key'] ?? '';
+}
+if (empty($api_key)) {
+    $api_key = $_SERVER['HTTP_X_API_KEY'] ??  '';
+}
 
 if ($api_key !== $valid_api_key) {
     http_response_code(401);
     echo json_encode([
         "success" => false,
-        "message" => "Unauthorized: Invalid API Key"
+        "message" => "Unauthorized",
+        "received_key" => $api_key  // Debug
     ]);
     exit;
 }
 
-// ✅ รับไฟล์
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode([
-        "success" => false,
-        "message" => "Method not allowed"
-    ]);
-    exit;
-}
-
-if (!isset($_FILES['image'])) {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || ! isset($_FILES['image'])) {
     http_response_code(400);
-    echo json_encode([
-        "success" => false,
-        "message" => "No file uploaded"
-    ]);
+    echo json_encode(["success" => false, "message" => "Bad request"]);
     exit;
 }
 
 try {
-    // ✅ สร้างโฟลเดอร์ตามวันที่
-    $date_folder = date('Y-m-d');
-    $base_dir = "uploads-temp/line_push/";
-    $target_dir = $base_dir . $date_folder . "/";
+    $date = date('Y-m-d');
+    $dir = "uploads-temp/line_push/$date/";
+    if (!is_dir($dir)) mkdir($dir, 0755, true);
     
-    if (!is_dir($target_dir)) {
-        mkdir($target_dir, 0755, true);
-    }
-    
-    // ✅ ตรวจสอบไฟล์
     $file = $_FILES['image'];
-    $file_name = basename($file['name']);
     
-    // Validate file type (เฉพาะ jpg/jpeg)
-    $allowed_types = ['image/jpeg', 'image/jpg'];
+    // ✅ รองรับ PNG
+    $allowed = ['image/jpeg', 'image/jpg', 'image/png'];
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
-    $mime_type = finfo_file($finfo, $file['tmp_name']);
+    $mime = finfo_file($finfo, $file['tmp_name']);
     finfo_close($finfo);
     
-    if (!in_array($mime_type, $allowed_types)) {
-        throw new Exception("Invalid file type. Only JPEG allowed.");
+    if (!in_array($mime, $allowed)) {
+        throw new Exception("Invalid type:  $mime");
     }
     
-    // Validate file size (max 5MB)
     if ($file['size'] > 5 * 1024 * 1024) {
-        throw new Exception("File too large. Max 5MB allowed.");
+        throw new Exception("File too large");
     }
     
-    // ✅ บันทึกไฟล์ (ใช้ชื่อเดิม)
-    $target_file = $target_dir . $file_name;
+    $name = basename($file['name']);
+    $path = $dir . $name;
     
-    if (!move_uploaded_file($file['tmp_name'], $target_file)) {
-        throw new Exception("Failed to save file");
+    if (! move_uploaded_file($file['tmp_name'], $path)) {
+        throw new Exception("Failed to save");
     }
     
-    // ✅ สร้าง URL
-    $base_url = "https://jaiangelbot.jwdcoldchain.com/";
-    $file_url = $base_url . $target_dir . $file_name;
-    
-    // ✅ Return success
     echo json_encode([
         "success" => true,
-        "url" => $file_url,
-        "message" => "File uploaded successfully",
-        "filename" => $file_name,
-        "size" => $file['size'],
-        "date" => $date_folder
+        "url" => "https://jaiangelbot.jwdcoldchain.com/$path"
     ]);
     
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode([
-        "success" => false,
-        "message" => $e->getMessage()
-    ]);
+    echo json_encode(["success" => false, "message" => $e->getMessage()]);
 }
 ?>

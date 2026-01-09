@@ -119,7 +119,7 @@ def get_default_config():
             "imageUpload": {
                 "enabled": True,
                 "url": "https://jaiangelbot.jwdcoldchain.com/console/jai_receive_photo.php",
-                "apiKey": "your-secret-api-key-here",
+                "apiKey": "PiPcs@1234",
                 "defaultImage": "https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png",
                 "timeout": 30,
                 "maxRetries": 1
