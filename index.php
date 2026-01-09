@@ -6,11 +6,15 @@ error_reporting(error_reporting() & ~E_NOTICE);
 date_default_timezone_set('Asia/Bangkok');	
 
 include_once('config/config.php');
+require_once ('include/connect_db.inc.php');        //คอนเน็คฐานข้อมูล 
+$obj = new CRUD(); ##สร้างออปเจค $obj เพื่อเรียกใช้งานคลาส,ฟังก์ชั่นต่างๆ
 
 if(empty($_SESSION['admin_config']) || $_SESSION['admin_config'] !== 1){
   session_destroy();
   die(include_once('login.inc.php'));
 }
+
+
 
 
 $module = $_GET['module'] ?? '';
@@ -44,7 +48,10 @@ switch($module) {
   <title>Pallet detector | Page Name</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 
   <style>
     /* ปรับแต่งเพิ่มเติมถ้าต้องการให้ Dark Mode ดูเข้มข้นขึ้น */

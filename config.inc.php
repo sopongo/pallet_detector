@@ -73,7 +73,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="currentPassword">Current Password</label>
-                                            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+                                            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password" readonly onfocus="this.removeAttribute('readonly');" autocomplete="new-password" />
                                         </div>
                                         <div class="form-group">
                                             <label for="newPassword">New Password</label>
@@ -200,14 +200,13 @@
                                 
                                 <br>
                                 <!-- LINE OA Notify Config -->
-                                <h4><i class="fab fa-line"></i> LINE OA Configuration</h4>
+                                <h4><i class="fab fa-line"></i> LINE OA Configuration <span id="lineStatus"></span></h4>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="lineToken">LINE Chatbot Token</label>
                                             <input type="text" class="form-control" id="lineToken" placeholder="Enter LINE Notify Token">
-                                            <small class="form-text text-muted">Get token from <a href="https://notify-bot.line.me/" target="_blank">notify-bot.line.me</a></small>
                                         </div>
                                         <div class="form-group">
                                             <label for="lineGroup">Group ID (Optional)</label>
@@ -758,6 +757,11 @@ function loadConfig() {
                 document.getElementById('lineToken').value = data.network.lineNotify.token;
                 document.getElementById('lineGroup').value = data.network.lineNotify.groupId;
             }
+            if (document.getElementById('lineToken').value === '' || document.getElementById('lineToken').value === 'NULL') {
+                $('#lineStatus').html('<span class="badge text-sm text-danger font-weight-normal">⚠️ LINE Disabled</span>');
+            } else {
+                $('#lineStatus').html('<span class="badge text-sm text-success font-weight-normal">✅ LINE Enabled</span>');
+            }            
             
             // Detection
             if(document.getElementById('modelPath')) {

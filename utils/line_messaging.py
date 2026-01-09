@@ -306,21 +306,32 @@ class LineMessagingAPI:
     
     def send_overtime_alert(self, pallet_info):
         """ส่ง alert พาเลทเกินเวลา"""
+        # 1. เช็ค Config ก่อน (ต้องย่อหน้าเข้ามาภายใต้ฟังก์ชัน)
+        if not self.token or self.token == 'NULL' or not self.group_id or self.group_id == 'NULL':
+            logger.info("⏭️ LINE alert skipped (token/groupId not configured)")
+            return {"success": True, "message": "LINE disabled", "skipped": True}
+        
+        # 2. ถ้าผ่านเช็คข้างบนมาได้ ถึงจะมาทำ try-except (ระดับย่อหน้าต้องเท่ากับ if)
         try:
-            logger.info(f"📤 Overtime alert for Pallet #{pallet_info.get('pallet_id', 'N/A')}")
-            result = self.send_text_message(pallet_info)
+            pallet_id = pallet_info.get('pallet_id', 'N/A')
+            logger.info(f"📤 Overtime alert for Pallet #{pallet_id}")
             
-            if result['success']: 
+            # ⚠️ จุดที่ต้องระวัง: send_text_message ของคุณรับ 2 argument (text, sendtype) 
+            # คุณต้องดึง text ออกมาจาก pallet_info ก่อน หรือส่งไปเป็น String ครับ
+            message_text = f"Pallet #{pallet_id} อยู่เกินเวลาที่กำหนด!"
+            result = self.send_text_message(message_text, "text") 
+            
+            if result.get('success'): 
                 logger.info(f"✅ Alert sent")
             else:
-                logger.error(f"❌ Alert failed: {result['message']}")
+                logger.error(f"❌ Alert failed: {result.get('message')}")
             
             return result
             
         except Exception as e:
-            logger.error(f"❌ Exception:  {e}", exc_info=True)
+            logger.error(f"❌ Exception: {e}", exc_info=True)
             return {'success': False, 'message': str(e)}
-    
+
     def test_connection(self):
         """ทดสอบการเชื่อมต่อ LINE OA"""
         if not self.group_id:
