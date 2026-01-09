@@ -120,8 +120,9 @@ class LineMessagingAPI:
             site_str = str(site)
             loc_str = str(location)
             
-            # ✅ ใช้รูป default ตลอด (ไม่ใช้รูปพาเลท)
-            image_url = "https://ebooking.jwdcoldchain.com/sopon_test/IMG_20260108_003143_detected.jpg"
+            # ✅ ใช้ image_url จาก pallet_data (อัพโหลดแล้ว หรือ default)
+            image_url = pallet_data.get('image_url', 'https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png')
+            logger.debug(f"📷 Using image URL: {image_url}")
             
             logger.info(f"📤 Sending Flex Message for Pallet #{pallet_id}")
             

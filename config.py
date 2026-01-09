@@ -115,6 +115,14 @@ def get_default_config():
             "lineNotify": {
                 "token": "",
                 "groupId": ""
+            },
+            "imageUpload": {
+                "enabled": True,
+                "url": "https://jaiangelbot.jwdcoldchain.com/console/jai_receive_photo.php",
+                "apiKey": "your-secret-api-key-here",
+                "defaultImage": "https://sb.kaleidousercontent.com/67418/960x550/3e324c0328/individuals-removed.png",
+                "timeout": 30,
+                "maxRetries": 1
             }
         },
         "detection":  {
