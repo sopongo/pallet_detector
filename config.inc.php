@@ -24,7 +24,7 @@
                             <!-- Tab 2: Network -->
                             <li class="nav-item">
                                 <a class="nav-link" id="network-tab" data-toggle="pill" href="#network" role="tab" aria-controls="network" aria-selected="false">
-                                    <i class="fas fa-database"></i> Database
+                                    <i class="fas fa-database"></i> Database &amp; LINE OA
                                 </a>
                             </li>
                             
