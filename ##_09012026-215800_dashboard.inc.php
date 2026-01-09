@@ -123,117 +123,151 @@
 // ใช้ jQuery แบบปลอดภัยเพื่อป้องกันความขัดแย้งกับ Library อื่น
 (function($) {
     $(document).ready(function() {
-        let perfChart, distChart;
-        let currentStart = moment().subtract(29, 'days');
-        let currentEnd = moment();
+        
+        // ตรวจสอบก่อนว่า daterangepicker พร้อมใช้งานหรือไม่
+        if (typeof $.fn.daterangepicker !== 'function') {
+            console.error("Daterangepicker library is missing! Please check script sequence.");
+            return; 
+        }
 
-        // --- 1. ตั้งค่ากราฟเริ่มต้น ---
+        // --- 1. MOCK DATA (Data Store) ---
+        // --- 1. CONFIGURATION & MOCK DATA (Updated with Monthly & Yearly) ---
+        const mockDataStore = {
+            hourly: {
+                labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+                detected: [8, 7, 6, 3, 4, 8, 7, 10, 9, 8],
+                movements: [22, 28, 35, 20, 12, 25, 20, 18, 35, 20],
+                inTime: 60, 
+                overTime: 10, 
+                alerts: 13
+            },
+            daily: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                detected: [85, 92, 78, 110, 105, 45, 30],
+                movements: [210, 230, 195, 280, 260, 95, 80],
+                inTime: 475, 
+                overTime: 70, 
+                alerts: 45
+            },
+            // ข้อมูลรายเดือน (ย้อนหลัง 12 เดือน)
+            monthly: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                detected: [1250, 1100, 1420, 1300, 1550, 1400, 1350, 1600, 1480, 1520, 1380, 1200],
+                movements: [3200, 2900, 3500, 3100, 3800, 3400, 3300, 4000, 3600, 3700, 3300, 3000],
+                inTime: 14200, // ผลรวมทั้งปี (In Time)
+                overTime: 2550, // ผลรวมทั้งปี (Over Time)
+                alerts: 840     // ผลรวมการแจ้งเตือนทั้งปี
+            },
+            // ข้อมูลรายปี (ย้อนหลัง 4 ปี)
+            yearly: {
+                labels: ['2022', '2023', '2024', '2025'],
+                detected: [14500, 16200, 17800, 18500],
+                movements: [38000, 41000, 44500, 46000],
+                inTime: 58500,  // ผลรวมสะสม
+                overTime: 8500,  // ผลรวมสะสม
+                alerts: 3200    // ผลรวมสะสม
+            }
+        };
+
+        let perfChart, distChart;
+
+        // --- 2. INITIALIZE CHARTS ---
         function initCharts() {
-            // Performance Bar Chart
             const perfCtx = document.getElementById('performanceChart').getContext('2d');
             perfChart = new Chart(perfCtx, {
                 type: 'bar',
                 data: {
-                    labels: [],
                     datasets: [
-                        { label: 'Total', backgroundColor: '#004085', data: [] },
-                        { label: 'In Time', backgroundColor: '#28a745', data: [] },
-                        { label: 'Over Time', backgroundColor: '#dc3545', data: [] }
+                        { 
+                          data: [],
+                          label: 'Detected Pallets', 
+                          backgroundColor: '#004085',  
+                          datalabels: {
+                            align: 'end',
+                            anchor: 'end',
+                            backgroundColor: '#EEEEEE',
+                            color: '#000080',
+                            offset: 4
+                          }
+                        },
+                        { 
+                          label: 'Total Movements', 
+                          type: 'line', 
+                          borderColor: '#dc3545', 
+                          fill: false, 
+                          data: [],
+                          datalabels: {
+                            align: 'middle',
+                            color: '#FF0000',
+                            backgroundColor: 'rgba(255,255,255,0.9)',
+                            display: true 
+                          }
+                        }
                     ]
                 },
-                options: { 
+                options: {
                     maintainAspectRatio: false,
-                    scales: { yAxes: [{ ticks: { beginAtZero: true } }] },
-                    plugins: { datalabels: { display: (ctx) => ctx.dataset.data[ctx.dataIndex] > 0 } }
+                    scales: { yAxes: [{ ticks: { beginAtZero: true } }] }
                 }
             });
 
-            // Status Doughnut Chart
             const distCtx = document.getElementById('distributionChart').getContext('2d');
             distChart = new Chart(distCtx, {
                 type: 'doughnut',
                 data: {
                     labels: ['In Time', 'Over Time'],
-                    datasets: [{ backgroundColor: ['#28a745', '#dc3545'], data: [0, 0] }]
+                    datasets: [{ backgroundColor: ['#28a745', '#dc3545'], data: [] }]
                 },
                 options: { maintainAspectRatio: false, cutoutPercentage: 70 }
             });
         }
 
-        // --- 2. ฟังก์ชัน AJAX ดึงข้อมูล ---
-        function updateDashboard(mode, start, end) {
-            $.ajax({
-                dataType: "json",
-                url: 'ajax_query_data.php',
-                method: 'POST',
-                data: { 
-                    mode: mode, 
-                    start_date: start.format('YYYY-MM-DD'), 
-                    end_date: end.format('YYYY-MM-DD') 
-                },
-                success: function(res) {
-                    console.log('AJAX Response:', res);
-                    // อัปเดตกราฟแท่ง
-                    perfChart.data.labels = res.chart.labels;
-                    perfChart.data.datasets[0].data = res.chart.total;
-                    perfChart.data.datasets[1].data = res.chart.in_time;
-                    perfChart.data.datasets[2].data = res.chart.over_time;
-                    perfChart.update();
+        // --- 3. UPDATE FUNCTION ---
+        function updateDashboard(mode) {
+            const data = mockDataStore[mode] || mockDataStore.daily;
+            
+            perfChart.data.labels = data.labels;
+            perfChart.data.datasets[0].data = data.detected;
+            perfChart.data.datasets[1].data = data.movements;
+            perfChart.update();
 
-                    // อัปเดตกราฟวงกลม (Doughnut)
-                    const sumIn = res.chart.in_time.reduce((a, b) => a + b, 0);
-                    const sumOver = res.chart.over_time.reduce((a, b) => a + b, 0);
-                    distChart.data.datasets[0].data = [sumIn, sumOver];
-                    distChart.update();
+            distChart.data.datasets[0].data = [data.inTime, data.overTime];
+            distChart.update();
 
-                    // อัปเดตตัวเลข Summary Stats
-                    $('#stat-total-move').text(Number(res.summary.moved).toLocaleString());
-                    $('#stat-detected').text(Number(res.summary.putting_away).toLocaleString());
-                    $('#stat-rate').text(res.summary.avg_acc + '%');
-                    $('#stat-alerts').text(Number(res.summary.total_notis).toLocaleString());
-                    $('#stat-avg-time').text(res.summary.avg_dwell + ' Min');
+            // คำนวณเลขสถิติ
+            const totalMove = data.movements.reduce((a, b) => a + b, 0);
+            const totalDetect = data.detected.reduce((a, b) => a + b, 0);
+            const rate = totalMove > 0 ? ((totalDetect / totalMove) * 100).toFixed(1) : 0;
 
-                    // Insight Message
-                    let msg = `Performance ในโหมด ${mode} สำหรับช่วงวันที่เลือก`;
-                    if(res.summary.avg_dwell > 30) {
-                        msg += " ⚠️ คำเตือน: Dwell Time เฉลี่ยสูงกว่าเกณฑ์ 30 นาที";
-                    }
-                    $('#insight-text').text(msg);
-                },
-                    error: function(xhr, status, error) {
-                    // ถ้า PHP ส่งข้อมูลผิดรูปแบบมา จะมาติดที่นี่
-                    console.log("AJAX Error Response:", xhr.responseText);
-                    //alert("เกิดข้อผิดพลาดในการดึงข้อมูล กรุณาลองใหม่อีกครั้ง");
-                }                
-            });
+            $('#stat-total-move').text(totalMove.toLocaleString());
+            $('#stat-detected').text(totalDetect.toLocaleString());
+            $('#stat-rate').text(rate + '%');
+            $('#stat-alerts').text(data.alerts.toLocaleString());
         }
 
-        // --- 3. Event Listeners ---
-        $('#viewMode').on('change', function() {
-            console.log('View mode changed to:', $(this).val());
-            updateDashboard($(this).val(), currentStart, currentEnd);
-        });
-
+        // --- 4. DATE RANGE PICKER INITIALIZATION ---
         $('#daterange-btn').daterangepicker({
-            startDate: currentStart,
-            endDate: currentEnd,
             ranges: {
-               'Today': [moment(), moment()],
-               'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-               'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-               'This Month': [moment().startOf('month'), moment().endOf('month')],
-               'This Year': [moment().startOf('year'), moment().endOf('year')]
-            }
-        }, function(start, end) {
-            currentStart = start;
-            currentEnd = end;
-            $('#daterange-btn span').html(start.format('D MMMM YYYY') + ' - ' + end.format('D MMMM YYYY'));
-            updateDashboard($('#viewMode').val(), start, end);
+                'Today': [moment(), moment()],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')]
+            },
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment()
+        }, function (start, end) {
+            $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            updateDashboard($('#viewMode').val()); 
         });
 
-        // Start System
+        // --- 5. START SYSTEM ---
         initCharts();
-        updateDashboard('daily', currentStart, currentEnd);
+        updateDashboard('daily');
+
+        // Event for Mode Switch
+        $('#viewMode').on('change', function() {
+            updateDashboard($(this).val());
+        });
+
     });
 })(jQuery);
 </script>

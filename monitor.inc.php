@@ -25,7 +25,7 @@
                   <div class="detection-wrapper border bg-white p-2 mb-2">
                     <span class="badge badge-success position-absolute m-2" style="z-index:10;">Before: <span id="mock-time-before">-</span></span>
                     <div class="pallet-image-container position-relative">
-                      <img id="img-before" src="dist/img/wait.png" class="img-fluid rounded border" alt="Before">
+                      <img id="img-before" src="dist/img/before.png" class="img-fluid rounded border" alt="Before">
                       
                       <!--<div class="ai-box mock-box-1" style="top: 60%; left: 15%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-001</span>
@@ -44,7 +44,7 @@
                   <div class="detection-wrapper border bg-white p-2 mb-2">
                     <span class="badge badge-primary position-absolute m-2" style="z-index:10;">After: <span id="mock-time-after">-</span></span>
                     <div class="pallet-image-container position-relative">
-                      <img id="img-after" src="dist/img/wait.png" class="img-fluid rounded border" alt="After">
+                      <img id="img-after" src="dist/img/after.png" class="img-fluid rounded border" alt="After">
                       
                       <!---<div class="ai-box mock-box-3" style="top: 45%; left: 35%; width: 15%; height: 20%;">
                         <span class="ai-label-tag badge badge-danger">PL-002</span>

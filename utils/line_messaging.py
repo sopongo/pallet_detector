@@ -306,30 +306,28 @@ class LineMessagingAPI:
     
     def send_overtime_alert(self, pallet_info):
         """ส่ง alert พาเลทเกินเวลา"""
-        # 1. เช็ค Config ก่อน (ต้องย่อหน้าเข้ามาภายใต้ฟังก์ชัน)
-        if not self.token or self.token == 'NULL' or not self.group_id or self.group_id == 'NULL':
+        # 1. แก้ไขชื่อตัวแปรจาก self.token เป็น self.channel_access_token ให้ตรงกับที่ประกาศไว้ใน __init__
+        if not self.channel_access_token or self.channel_access_token == 'NULL' or not self.group_id or self.group_id == 'NULL':
             logger.info("⏭️ LINE alert skipped (token/groupId not configured)")
             return {"success": True, "message": "LINE disabled", "skipped": True}
         
-        # 2. ถ้าผ่านเช็คข้างบนมาได้ ถึงจะมาทำ try-except (ระดับย่อหน้าต้องเท่ากับ if)
         try:
             pallet_id = pallet_info.get('pallet_id', 'N/A')
             logger.info(f"📤 Overtime alert for Pallet #{pallet_id}")
             
-            # ⚠️ จุดที่ต้องระวัง: send_text_message ของคุณรับ 2 argument (text, sendtype) 
-            # คุณต้องดึง text ออกมาจาก pallet_info ก่อน หรือส่งไปเป็น String ครับ
-            message_text = f"Pallet #{pallet_id} อยู่เกินเวลาที่กำหนด!"
-            result = self.send_text_message(message_text, "text") 
+            # 2. แก้ไขการเรียกใช้ send_text_message ให้ส่ง pallet_info เข้าไปตรงๆ 
+            # เพราะฟังก์ชัน send_text_message (บรรทัดที่ 90) รับแค่ pallet_data เพียงตัวเดียว
+            result = self.send_text_message(pallet_info) 
             
             if result.get('success'): 
-                logger.info(f"✅ Alert sent")
+                logger.info(f"✅ Alert sent for Pallet #{pallet_id}")
             else:
                 logger.error(f"❌ Alert failed: {result.get('message')}")
             
             return result
             
         except Exception as e:
-            logger.error(f"❌ Exception: {e}", exc_info=True)
+            logger.error(f"❌ Exception in send_overtime_alert: {e}", exc_info=True)
             return {'success': False, 'message': str(e)}
 
     def test_connection(self):

@@ -183,7 +183,7 @@ if($efficiency >= 90) {
         </div>
 
         <div class="row">
-          <div class="col-md-7">
+          <div class="col-md-8">
             <div class="card card-outline card-primary">
               <div class="card-header">
                 <h3 class="card-title"><i class="far fa-chart-bar mr-1"></i> Detection Performance (Hourly)</h3>
@@ -222,7 +222,7 @@ if($efficiency >= 90) {
           </div>
 
 
-          <div class="col-md-5">
+          <div class="col-md-4">
             <div class="card card-outline card-danger">
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-chart-pie mr-1"></i> Time Distribution</h3>
