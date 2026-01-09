@@ -18,6 +18,7 @@ from utils.database import DatabaseManager
 from utils.line_messaging import LineMessagingAPI
 from utils.gpio_control import LightController
 from utils.camera import RobustCamera
+from utils.image_uploader import ImageUploader
 
 logger = setup_logger()
 
@@ -47,6 +48,7 @@ class DetectionService:
             self.tracker = PalletTracker()
             self.db = DatabaseManager()
             self.line = LineMessagingAPI()
+            self.uploader = ImageUploader()
             
             # ✅ Initialize RobustCamera
             camera_index = self.cfg['camera']['selectedCamera']
@@ -314,13 +316,26 @@ class DetectionService:
                 self.db
             )
             
-            # ✅ อัพเดท image URL ให้กับ overtime_pallets ทั้งหมด (หลังจากมี annotated_path แล้ว)
-            if annotated_path and overtime_pallets:
-                image_url = self.generate_image_url(annotated_path)
-                if image_url:
-                    for pallet in overtime_pallets:
-                        pallet['image_url'] = image_url
-                    logger.info(f"📷 Image URL added to {len(overtime_pallets)} overtime alert(s): {image_url}")
+            # ✅ 4.5. Upload รูปไป SSL server
+            if annotated_path:
+                logger.info("📤 Uploading image to SSL server...")
+                upload_result = self.uploader.upload_image(annotated_path)
+                
+                if upload_result['success']:
+                    logger.info(f"✅ Image uploaded: {upload_result['url']}")
+                    image_url = upload_result['url']
+                else:
+                    logger.warning(f"⚠️ Upload failed, using default: {upload_result['message']}")
+                    image_url = upload_result['url']  # default image
+            else:
+                logger.warning("⚠️ No annotated image, using default")
+                image_url = self.uploader.default_image
+            
+            # ✅ อัพเดท image URL ให้กับ overtime_pallets ทั้งหมด
+            if overtime_pallets:
+                for pallet in overtime_pallets:
+                    pallet['image_url'] = image_url
+                logger.info(f"📷 Image URL added to {len(overtime_pallets)} overtime alert(s)")
             
             # ✅ 5. สร้างพาเลทใหม่ (หลังจากได้ pallet_no/name แล้ว)
             for pallet_data in new_pallets_to_create:
@@ -338,8 +353,7 @@ class DetectionService:
                     
                     # ✅ ถ้าพาเลทเก่าเคย overtime (in_over=1) → แจ้งเตือนทันที
                     if recently_deactivated['in_over'] == 1 and recently_deactivated['total_duration'] > self.tracker.alert_threshold:
-                        # ✅ สร้าง image URL (มี annotated_path แล้ว)
-                        image_url = self.generate_image_url(annotated_path)
+                        # ✅ ใช้ image URL ที่ upload แล้ว (มี annotated_path แล้ว)
                         
                         overtime_pallets.append({
                             'pallet_id': recently_deactivated['id_pallet'],
