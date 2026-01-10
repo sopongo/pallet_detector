@@ -28,6 +28,12 @@ switch($module) {
     case 'config':
         $include_page = 'config.inc.php';
         break;
+    case 'system-logs':
+        $include_page = 'module/system_logs/system_logs.inc.php';
+        break;
+    case 'pallet-logs':
+        $include_page = 'module/pallet_logs/pallet_logs.inc.php';
+        break;
     case 'logout':
         session_destroy();
         header('Location: ./');
@@ -151,6 +157,26 @@ switch($module) {
               <p>Config</p>
             </a>
           </li>
+          <li class="nav-item <?PHP echo in_array(($_GET['module'] ?? ''), ['pallet-logs', 'system-logs']) ? 'menu-is-opening menu-open' : ''; ?>">
+            <a href="#" class="nav-link">
+              <i class="nav-icon far fa-folder-open"></i>
+              <p>Logs<i class="fas fa-angle-left right"></i></p>
+            </a>
+            <ul class="nav nav-treeview" style="display: <?PHP echo in_array(($_GET['module'] ?? ''), ['pallet-logs', 'system-logs']) ? 'block' : 'none'; ?>;">
+              <li class="nav-item">
+                <a href="?module=pallet-logs" class="nav-link <?php echo ($_GET['module'] ?? '') === 'pallet-logs' ? 'active' : ''; ?>">
+                  <i class="far fa-file-text nav-icon"></i>
+                  <p>Pallet Logs</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="?module=system-logs" class="nav-link <?php echo ($_GET['module'] ?? '') === 'system-logs' ? 'active' : ''; ?>">
+                  <i class="far fa-file-text nav-icon"></i>
+                  <p>System Logs</p>
+                </a>
+              </li>
+            </ul>
+          </li>          
           <!---<li class="nav-item">
             <a href="?module=blank" class="nav-link">
               <i class="nav-icon fa-regular fa-file"></i>

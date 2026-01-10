@@ -409,7 +409,7 @@ function fetchSummary() {
                       title:  'Success!',
                       text: response.message,
                       confirmButtonColor: '#28a745',
-                      timer: 2000, // Time in milliseconds
+                      timer: 1000, // Time in milliseconds
                       timerProgressBar: true,
                     }).then((result) => {                
                       if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
@@ -491,7 +491,7 @@ function fetchSummary() {
                           title: 'Success!',
                           text: response.message,
                           confirmButtonColor: '#28a745',
-                          timer: 2000, // Time in milliseconds
+                          timer: 1000, // Time in milliseconds
                           timerProgressBar: true,
                         }).then((result) => {                
                           if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
@@ -505,7 +505,7 @@ function fetchSummary() {
                           title: 'Error!',
                           text: response.message,
                           confirmButtonColor: '#dc3545',
-                          timer: 2000, // Time in milliseconds
+                          timer: 1000, // Time in milliseconds
                           timerProgressBar: true,
                         }).then((result) => {                
                           if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {

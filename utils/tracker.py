@@ -248,29 +248,39 @@ class PalletTracker:
     def deactivate_missing_pallets(self, current_pallet_ids, ref_id_img):
         """
         ปิดสถานะพาเลทที่ไม่เจอในรูปปัจจุบัน
+        ✅ อัพเดท last_detected_at เพื่อคำนวณ duration โดยประมาณ
         
         Args:
             current_pallet_ids: list ของ ID พาเลทที่เจอในรูปนี้
             ref_id_img: ID ของรูปปัจจุบัน
         """
-        try:
+        try: 
+            # ✅ เพิ่ม:  ใช้เวลาปัจจุบันเป็น last_detected_at
+            current_time = datetime.now()
+            
             conn = self.get_db_connection()
             cursor = conn.cursor()
             
-            if current_pallet_ids:
+            if current_pallet_ids: 
                 placeholders = ','.join(['%s'] * len(current_pallet_ids))
+                # ✅ เพิ่ม last_detected_at = %s
                 cursor.execute(f"""
                     UPDATE tb_pallet
-                    SET is_active = 0, status = 2
+                    SET is_active = 0, 
+                        status = 2,
+                        last_detected_at = %s
                     WHERE is_active = 1
                     AND id_pallet NOT IN ({placeholders})
-                """, current_pallet_ids)
+                """, [current_time] + current_pallet_ids)
             else:
+                # ✅ เพิ่ม last_detected_at = %s
                 cursor.execute("""
                     UPDATE tb_pallet
-                    SET is_active = 0, status = 2
+                    SET is_active = 0, 
+                        status = 2,
+                        last_detected_at = %s
                     WHERE is_active = 1
-                """)
+                """, (current_time,))
             
             affected = cursor.rowcount
             conn.commit()
@@ -278,10 +288,12 @@ class PalletTracker:
             conn.close()
             
             if affected > 0:
-                logger.info(f"Deactivated {affected} pallet(s) (moved)")
+                # ✅ แก้ log message
+                logger.info(f"✅ Deactivated {affected} pallet(s) - updated last_detected_at to {current_time. strftime('%H:%M:%S')}")
             
-        except Exception as e:
-            logger.error(f"Error deactivating pallets: {e}")
+        except Exception as e: 
+            logger.error(f"❌ Error deactivating pallets: {e}")
+
     
     def find_recently_deactivated_pallet(self, new_center, image_width, image_height, minutes=5):
         """

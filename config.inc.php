@@ -906,6 +906,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     lineNotify: {
                         token:  document.getElementById('lineToken')?.value || '',
                         groupId: document.getElementById('lineGroup')?.value || ''
+                    },
+                    imageUpload: {
+                        enabled: document.getElementById('imageUploadEnabled')?.checked || true,
+                        url: document.getElementById('imageUploadURL')?.value || 'https://jaiangelbot.jwdcoldchain.com/console/jai_receive_photo.php',
+                        apiKey: document.getElementById('imageUploadAPIKey')?.value || 'PiPcs@1234',
+                        defaultImage: document.getElementById('imageUploadDefaultImage')?.value || 'https://jaiangelbot.jwdcoldchain.com/console/dist/img/img_notfound.png',
+                        timeout: parseInt(document.getElementById('imageUploadTimeout')?.value) || 30,
+                        maxRetries: parseInt(document.getElementById('imageUploadMaxRetries')?.value) || 1
                     }
                 },
                 detection: {

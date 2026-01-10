@@ -136,7 +136,7 @@ if($_POST['action'] === 'login'){
                 confirmButtonColor: '#007bff', // Example color
                 confirmButtonText: 'OK',
                 text: 'Login successful.',
-                timer: 2000, // Time in milliseconds
+                timer: 1000, // Time in milliseconds
                 timerProgressBar: true,
               }).then((result) => {                
                 if (result.dismiss === Swal.DismissReason.timer || result.isConfirmed) {
