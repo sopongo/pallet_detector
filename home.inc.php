@@ -151,7 +151,7 @@ if($efficiency >= 90) {
           <div class="col-lg-3 col-6">
             <div class="small-box bg-gray">
               <div class="inner">
-                <h3><?php echo $rowData['total_detected']; ?></h3> <p>Total Pallets Detected</p>
+                <h3><?php echo empty($rowData['total_detected']) ? 0 : $rowData['total_detected']; ?></h3> <p>Total Pallets Detected</p>
               </div>
               <div class="icon"><i class="fas fa-boxes"></i></div>
             </div>
@@ -159,7 +159,7 @@ if($efficiency >= 90) {
           <div class="col-lg-3 col-6">
             <div class="small-box bg-success">
               <div class="inner">
-                <h3><?php echo $rowData['total_in_time']; ?></h3> <p>Pallets In Time</p>
+                <h3><?php echo empty($rowData['total_in_time']) ? 0 : $rowData['total_in_time']; ?></h3> <p>Pallets In Time</p>
               </div>
               <div class="icon"><i class="fas fa-check-circle"></i></div>
             </div>
@@ -167,7 +167,7 @@ if($efficiency >= 90) {
           <div class="col-lg-3 col-6">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3><?php echo $rowData['total_over_time']; ?></h3> <p>Pallets Over Time</p>
+                <h3><?php echo empty($rowData['total_over_time']) ? 0 : $rowData['total_over_time']; ?></h3> <p>Pallets Over Time</p>
               </div>
               <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
             </div>
@@ -175,7 +175,7 @@ if($efficiency >= 90) {
           <div class="col-lg-3 col-6">
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3><?php echo $rowData['total_notifications']; ?></h3> <p>Total Notifications Sent</p>
+                <h3><?php echo empty($rowData['total_notifications']) ? 0 : $rowData['total_notifications']; ?></h3> <p>Total Notifications Sent</p>
               </div>
               <div class="icon"><i class="fas fa-bell"></i></div>
             </div>
