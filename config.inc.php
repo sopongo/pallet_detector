@@ -56,6 +56,13 @@
                                 </a>
                             </li>
                             
+                            <!-- Tab 7: Zone Configuration -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="zone-tab" data-toggle="pill" href="#zone" role="tab" aria-controls="zone" aria-selected="false">
+                                    <i class="fas fa-draw-polygon"></i> Zone Configuration
+                                </a>
+                            </li>
+                            
                         </ul>
                     </div>
                     
@@ -286,16 +293,9 @@
                                             <small class="form-text text-muted">Time between automatic captures (600s = 10 minutes)</small>
                                         </div>
                                         
-                                        <div class="form-group">
-                                            <label for="alertThreshold">Alert Threshold (Minutes)</label>
-                                            <select class="custom-select" id="alertThreshold">
-                                                <option value="0.15">15 Seconds ( For test)</option>
-                                                <option value="15">15 minutes</option>
-                                                <option value="30">30 minutes</option>
-                                                <option value="45">45 minutes</option>
-                                                <option value="60">60 minutes</option>
-                                            </select>
-                                            <small class="form-text text-muted">Send alert when pallet stays longer than this duration</small>
+                                        <!-- Note: Alert Threshold moved to Zone Configuration tab -->
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle"></i> <strong>Note:</strong> Alert Threshold configuration has been moved to the <strong>Zone Configuration</strong> tab. Each zone can now have its own alert threshold.
                                         </div>
 
                                         <!-- Time Range Slider -->
@@ -472,6 +472,99 @@
                                 
                             </div>
                             
+                            <!-- ========================================
+                                 TAB 7: ZONE CONFIGURATION
+                                 ======================================== -->
+                            <div class="tab-pane fade" id="zone" role="tabpanel" aria-labelledby="zone-tab">
+                                
+                                <h4><i class="fas fa-draw-polygon"></i> Detection Zones Configuration</h4>
+                                <hr>
+                                
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 4 detection zones with custom alert thresholds. Each zone can have 3-8 points and will be validated for overlaps.
+                                </div>
+                                
+                                <!-- Zone System Toggle -->
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="zoneSystemEnabled">
+                                            <label class="custom-control-label" for="zoneSystemEnabled">
+                                                <strong>Enable Zone System</strong>
+                                            </label>
+                                        </div>
+                                        <small class="form-text text-muted">When disabled, system uses global detection without zones</small>
+                                    </div>
+                                </div>
+                                
+                                <!-- Reference Image Upload -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><i class="fas fa-image"></i> Upload Reference Image</label>
+                                            <input type="file" class="form-control-file" id="zoneReferenceImage" accept="image/*">
+                                            <small class="form-text text-muted">Upload a warehouse photo to draw zones on</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <p class="mb-1"><strong>Zones:</strong> <span id="remainingZones">4 zones remaining</span></p>
+                                        <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Drawing Canvas -->
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5><i class="fas fa-pencil-alt"></i> Draw Zones</h5>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <canvas id="zoneCanvas" 
+                                                        style="border: 2px solid #ddd; max-width: 100%; background: #f8f9fa; cursor: crosshair;">
+                                                </canvas>
+                                                <div class="mt-2">
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-mouse-pointer"></i> <strong>Instructions:</strong> 
+                                                        Click to add points (3-8 per zone) • Right-click or double-click to finish zone • Drag points to adjust
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Zone Controls -->
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" id="btnAddZone">
+                                            <i class="fas fa-plus"></i> Add New Zone
+                                        </button>
+                                        <button class="btn btn-success" id="btnSaveZones">
+                                            <i class="fas fa-save"></i> Save Zones
+                                        </button>
+                                        <button class="btn btn-warning" id="btnClearZones">
+                                            <i class="fas fa-eraser"></i> Clear All Zones
+                                        </button>
+                                        <button class="btn btn-info" id="btnLoadZones">
+                                            <i class="fas fa-download"></i> Load Zones
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Zone List -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5><i class="fas fa-list"></i> Configured Zones</h5>
+                                        <hr>
+                                        <div id="zoneList">
+                                            <p class="text-muted">No zones configured yet. Click "Add New Zone" to start.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            
                         </div>
                     </div>
                     
@@ -492,6 +585,9 @@
 
 <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Load Zone Manager Script (before initialization) -->
+<script src="dist/js/zone_manager.js"></script>
 
 <!-- Custom Script -->
 <script>
@@ -1465,6 +1561,125 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+});
+
+// ========================================
+// Zone Configuration Management
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize canvas with default size
+    const canvas = document.getElementById('zoneCanvas');
+    if (canvas) {
+        canvas.width = 800;
+        canvas.height = 600;
+    }
+    
+    // Initialize Zone Manager
+    zoneManager = new ZoneManager('zoneCanvas', {
+        apiUrl: API_URL
+    });
+    
+    // Reference Image Upload Handler
+    document.getElementById('zoneReferenceImage')?.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            zoneManager.loadImage(file)
+                .then(() => {
+                    showSuccess('Reference image loaded successfully');
+                })
+                .catch((err) => {
+                    showError('Failed to load image: ' + err.message);
+                });
+        }
+    });
+    
+    // Add Zone Button
+    document.getElementById('btnAddZone')?.addEventListener('click', function() {
+        const success = zoneManager.startNewZone();
+        if (success) {
+            document.getElementById('currentZonePoints').style.display = 'block';
+            zoneManager.updatePointCount();
+        }
+    });
+    
+    // Save Zones Button
+    document.getElementById('btnSaveZones')?.addEventListener('click', async function() {
+        showLoading('Saving zones...');
+        await zoneManager.saveZones();
+        Swal.close();
+    });
+    
+    // Clear All Zones Button
+    document.getElementById('btnClearZones')?.addEventListener('click', function() {
+        Swal.fire({
+            title: 'Clear All Zones?',
+            text: 'This will delete all configured zones. This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Yes, clear all'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                zoneManager.zones = [];
+                zoneManager.currentZone = null;
+                zoneManager.redraw();
+                zoneManager.updateZoneList();
+                showSuccess('All zones cleared');
+            }
+        });
+    });
+    
+    // Load Zones Button
+    document.getElementById('btnLoadZones')?.addEventListener('click', async function() {
+        showLoading('Loading zones...');
+        await zoneManager.loadZones();
+        Swal.close();
+    });
+    
+    // Zone System Toggle
+    document.getElementById('zoneSystemEnabled')?.addEventListener('change', async function() {
+        const enabled = this.checked;
+        
+        try {
+            const response = await fetch(`${API_URL}/zones/enabled`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ enabled })
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                const status = enabled ? 'enabled' : 'disabled';
+                showSuccess(`Zone system ${status}`);
+            } else {
+                showError(result.message);
+                this.checked = !enabled; // Revert
+            }
+        } catch (error) {
+            showError('Failed to update zone system: ' + error.message);
+            this.checked = !enabled; // Revert
+        }
+    });
+    
+    // Load zone system status when tab is opened
+    document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
+        try {
+            const response = await fetch(`${API_URL}/zones`);
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('zoneSystemEnabled').checked = data.enabled;
+                
+                // Auto-load zones
+                if (data.zones && data.zones.length > 0) {
+                    await zoneManager.loadZones();
+                }
+            }
+        } catch (error) {
+            console.error('Failed to load zone status:', error);
+        }
+    });
 });
 
 </script>
