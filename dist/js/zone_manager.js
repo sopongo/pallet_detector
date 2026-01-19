@@ -69,22 +69,22 @@ class ZoneManager {
     }
     
     /**
-     * Convert pixel coordinates to percentage
+     * Convert pixel coordinates to normalized coordinates (0.0-1.0)
      */
     pixelToPercent(x, y) {
         return {
-            x: (x / this.canvas.width) * 100,
-            y: (y / this.canvas.height) * 100
+            x: parseFloat((x / this.canvas.width).toFixed(4)),
+            y: parseFloat((y / this.canvas.height).toFixed(4))
         };
     }
     
     /**
-     * Convert percentage coordinates to pixels
+     * Convert normalized coordinates (0.0-1.0) to pixels
      */
     percentToPixel(x, y) {
         return {
-            x: (x / 100) * this.canvas.width,
-            y: (y / 100) * this.canvas.height
+            x: Math.round(x * this.canvas.width),
+            y: Math.round(y * this.canvas.height)
         };
     }
     
@@ -249,23 +249,13 @@ class ZoneManager {
     }
     
     /**
-     * Check if two zones overlap (simplified bounding box check)
-     * Note: This is a client-side quick check for UX feedback.
-     * The backend performs accurate polygon intersection validation using Shapely.
+     * Check if two zones overlap
+     * Note: Client-side check disabled - backend performs accurate validation using Shapely
      */
     checkOverlap(zone1, zone2) {
-        // This is a simplified check
-        // For production, use more sophisticated polygon intersection
-        
-        // Get bounding boxes
-        const box1 = this.getBoundingBox(zone1.points);
-        const box2 = this.getBoundingBox(zone2.points);
-        
-        // Check if boxes intersect
-        return !(box1.maxX < box2.minX || 
-                 box1.minX > box2.maxX || 
-                 box1.maxY < box2.minY || 
-                 box1.minY > box2.maxY);
+        // Disable client-side check
+        // Let backend (Shapely) perform accurate polygon intersection
+        return false;
     }
     
     /**
@@ -509,10 +499,52 @@ class ZoneManager {
     }
     
     /**
+     * Save reference image to server
+     */
+    async saveReferenceImage() {
+        if (!this.referenceImage) return null;
+        
+        try {
+            // Convert canvas to blob
+            const blob = await new Promise(resolve => {
+                this.canvas.toBlob(resolve, 'image/jpeg', 0.9);
+            });
+            
+            // Generate filename: img_configzone_dd-mm-yyyy.jpg
+            const now = new Date();
+            const dd = now.getDate().toString().padStart(2, '0');
+            const mm = (now.getMonth() + 1).toString().padStart(2, '0');
+            const yyyy = now.getFullYear();
+            const filename = `img_configzone_${dd}-${mm}-${yyyy}.jpg`;
+            
+            // Upload via FormData
+            const formData = new FormData();
+            formData.append('image', blob, filename);
+            
+            const response = await fetch(`${this.apiUrl}/zones/image`, {
+                method: 'POST',
+                body: formData
+            });
+            
+            const result = await response.json();
+            return result.success ? result.filepath : null;
+        } catch (error) {
+            console.error('Error saving reference image:', error);
+            return null;
+        }
+    }
+    
+    /**
      * Save all zones to backend
      */
     async saveZones() {
         try {
+            // Save reference image first
+            const imagePath = await this.saveReferenceImage();
+            if (imagePath) {
+                console.log('✅ Reference image saved:', imagePath);
+            }
+            
             // Validate zones on backend
             const validateResponse = await fetch(`${this.apiUrl}/zones/validate`, {
                 method: 'POST',
