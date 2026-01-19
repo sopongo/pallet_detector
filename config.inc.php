@@ -586,6 +586,9 @@
 <!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<!-- Load Zone Manager Script (before initialization) -->
+<script src="dist/js/zone_manager.js"></script>
+
 <!-- Custom Script -->
 <script>
 $(document).ready(function() {
@@ -1680,6 +1683,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
-
-<!-- Load Zone Manager Script -->
-<script src="dist/js/zone_manager.js"></script>

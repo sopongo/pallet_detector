@@ -249,7 +249,9 @@ class ZoneManager {
     }
     
     /**
-     * Check if two zones overlap (simple bounding box check for now)
+     * Check if two zones overlap (simplified bounding box check)
+     * Note: This is a client-side quick check for UX feedback.
+     * The backend performs accurate polygon intersection validation using Shapely.
      */
     checkOverlap(zone1, zone2) {
         // This is a simplified check

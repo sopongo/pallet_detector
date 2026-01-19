@@ -432,6 +432,10 @@ class ZoneConfigManager:
 
 
 # Global instance
+# Note: This singleton pattern is safe for the current Flask use case where:
+# - Zone operations are infrequent and file-based
+# - Flask handles request isolation
+# - File system provides natural locking for concurrent access
 _zone_manager = None
 
 def get_zone_manager() -> ZoneConfigManager:
