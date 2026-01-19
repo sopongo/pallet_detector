@@ -240,6 +240,16 @@ class PalletTracker:
             center = pallet_data['center']
             confidence = pallet_data['confidence']
             
+            # Prepare values for insertion
+            values = (
+                pallet_no, pallet_name, ref_id_img, 
+                center[0], center[1],
+                bbox[0], bbox[1], bbox[2], bbox[3],
+                confidence, 
+                detection_time, detection_time, detection_time,
+                zone_id, zone_name, zone_threshold
+            )
+            
             cursor.execute("""
                 INSERT INTO tb_pallet (
                     pallet_no, pallet_name, ref_id_img, pos_x, pos_y,
@@ -248,12 +258,7 @@ class PalletTracker:
                     is_active, status, detector_count,
                     zone_id, zone_name, zone_threshold
                 ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 1, 0, 1, %s, %s, %s)
-            """, (
-                pallet_no, pallet_name, ref_id_img, center[0], center[1],
-                bbox[0], bbox[1], bbox[2], bbox[3],
-                confidence, detection_time, detection_time, detection_time,
-                zone_id, zone_name, zone_threshold
-            ))
+            """, values)
             
             pallet_id = cursor.lastrowid
             conn.commit()

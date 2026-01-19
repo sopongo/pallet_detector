@@ -73,8 +73,8 @@ class ZoneManager {
      */
     pixelToPercent(x, y) {
         return {
-            x: parseFloat((x / this.canvas.width).toFixed(4)),
-            y: parseFloat((y / this.canvas.height).toFixed(4))
+            x: Math.round(x / this.canvas.width * 10000) / 10000,
+            y: Math.round(y / this.canvas.height * 10000) / 10000
         };
     }
     

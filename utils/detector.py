@@ -305,28 +305,43 @@ class PalletDetector:
             logger.debug("No zones configured, returning all detections")
             return detections
         
+        # ✅ Pre-convert zone points to pixel polygons (cache for performance)
+        zone_polygons = []
+        for zone in zones:
+            if not zone.get('enabled', True):
+                continue
+            
+            pixel_points = [
+                (p[0] * image_width, p[1] * image_height)
+                for p in zone['points']
+            ]
+            zone_polygons.append({
+                'zone': zone,
+                'polygon': Polygon(pixel_points)
+            })
+        
         filtered = []
         
         for detection in detections:
             bbox = detection['bbox']
+            bbox_poly = shapely_box(bbox[0], bbox[1], bbox[2], bbox[3])
             best_zone = None
             best_overlap = 0.0
             
-            # หา zone ที่ overlap มากที่สุด
-            for zone in zones:
-                if not zone.get('enabled', True):
+            # หา zone ที่ overlap มากที่สุด (using cached polygons)
+            for zone_data in zone_polygons:
+                zone_poly = zone_data['polygon']
+                
+                # คำนวณ intersection area
+                if not bbox_poly.intersects(zone_poly):
                     continue
                 
-                overlap = self.calculate_bbox_overlap(
-                    bbox, 
-                    zone['points'], 
-                    image_width, 
-                    image_height
-                )
+                intersection = bbox_poly.intersection(zone_poly)
+                overlap = intersection.area / bbox_poly.area
                 
                 if overlap > best_overlap:
                     best_overlap = overlap
-                    best_zone = zone
+                    best_zone = zone_data['zone']
             
             # ถ้า overlap >= threshold → เพิ่มเข้า filtered
             if best_zone and best_overlap >= threshold:
