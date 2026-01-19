@@ -293,6 +293,17 @@
                                             <small class="form-text text-muted">Time between automatic captures (600s = 10 minutes)</small>
                                         </div>
                                         
+                                        <div class="form-group">
+                                            <label for="alertThreshold">Alert Threshold (Minutes)</label>
+                                            <select class="custom-select" id="alertThreshold">
+                                                <option value="0.15">15 Seconds ( For test)</option>
+                                                <option value="15">15 minutes</option>
+                                                <option value="30">30 minutes</option>
+                                                <option value="45">45 minutes</option>
+                                                <option value="60">60 minutes</option>
+                                            </select>
+                                            <small class="form-text text-muted">Send alert when pallet stays longer than this duration</small>
+                                        </div>                                        
                                         <!-- Note: Alert Threshold moved to Zone Configuration tab -->
                                         <div class="alert alert-info">
                                             <i class="fas fa-info-circle"></i> <strong>Note:</strong> Alert Threshold configuration has been moved to the <strong>Zone Configuration</strong> tab. Each zone can now have its own alert threshold.

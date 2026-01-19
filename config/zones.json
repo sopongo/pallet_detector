@@ -4,7 +4,7 @@
       "alertThreshold": 20,
       "enabled": true,
       "id": 1,
-      "name": "Updated Loading Area",
+      "name": "Inbound Zone",
       "points": [
         {
           "x": 5,
@@ -28,7 +28,7 @@
       "alertThreshold": 60,
       "enabled": true,
       "id": 2,
-      "name": "Storage Zone",
+      "name": "Outbound Zone",
       "points": [
         {
           "x": 35,
@@ -52,7 +52,7 @@
       "alertThreshold": 30,
       "enabled": true,
       "id": 3,
-      "name": "Inspection Area",
+      "name": "Free Zone",
       "points": [
         {
           "x": 65,
