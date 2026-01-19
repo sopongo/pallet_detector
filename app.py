@@ -880,6 +880,51 @@ def set_zones_enabled():
         return jsonify({"success": False, "message": str(e)}), 500
 
 
+@app.route('/api/zones/image', methods=['POST'])
+def upload_zone_image():
+    """Upload reference image for zone configuration"""
+    try:
+        if 'image' not in request.files:
+            return jsonify({"success": False, "message": "No image file provided"}), 400
+        
+        file = request.files['image']
+        
+        if file.filename == '':
+            return jsonify({"success": False, "message": "No file selected"}), 400
+        
+        # Validate file type
+        allowed_extensions = {'jpg', 'jpeg', 'png'}
+        file_ext = file.filename.rsplit('.', 1)[1].lower() if '.' in file.filename else ''
+        
+        if file_ext not in allowed_extensions:
+            return jsonify({"success": False, "message": "Invalid file type. Only JPEG/PNG allowed."}), 400
+        
+        # Generate filename
+        from datetime import datetime
+        now = datetime.now()
+        filename = f"img_configzone_{now.strftime('%d-%m-%Y')}.jpg"
+        
+        # Save to upload_image directory
+        upload_dir = os.path.join(os.path.dirname(__file__), 'upload_image')
+        os.makedirs(upload_dir, exist_ok=True)
+        
+        filepath = os.path.join(upload_dir, filename)
+        file.save(filepath)
+        
+        logger.info(f"✅ Zone reference image saved: {filepath}")
+        
+        return jsonify({
+            "success": True,
+            "message": "Reference image uploaded successfully",
+            "filepath": f"upload_image/{filename}",
+            "filename": filename
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error uploading zone image: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
 # ----------------------------------------
 # Main
 # ----------------------------------------

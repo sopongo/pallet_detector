@@ -523,6 +523,26 @@
                                     </div>
                                 </div>
                                 
+                                <!-- Reference Image Preview -->
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5><i class="fas fa-image"></i> Current Reference Image</h5>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <img id="currentReferenceImage" 
+                                                     src="" 
+                                                     alt="No reference image" 
+                                                     style="max-width: 100%; height: auto; border: 2px solid #ddd; display: none;">
+                                                <p id="noReferenceImage" class="text-muted">
+                                                    <i class="fas fa-info-circle"></i> No reference image uploaded yet
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <!-- Drawing Canvas -->
                                 <div class="row mb-3">
                                     <div class="col-md-12">
@@ -1687,10 +1707,40 @@ document.addEventListener('DOMContentLoaded', function() {
                     await zoneManager.loadZones();
                 }
             }
+            
+            // Load reference image
+            loadZoneReferenceImage();
         } catch (error) {
             console.error('Failed to load zone status:', error);
         }
     });
 });
+
+// Load zone reference image
+function loadZoneReferenceImage() {
+    const imgEl = document.getElementById('currentReferenceImage');
+    const noImgEl = document.getElementById('noReferenceImage');
+    
+    // Get today's filename
+    const now = new Date();
+    const dd = now.getDate().toString().padStart(2, '0');
+    const mm = (now.getMonth() + 1).toString().padStart(2, '0');
+    const yyyy = now.getFullYear();
+    const filename = `img_configzone_${dd}-${mm}-${yyyy}.jpg`;
+    const imagePath = `upload_image/${filename}`;
+    
+    // Try to load image
+    const testImg = new Image();
+    testImg.onload = function() {
+        imgEl.src = imagePath + '?t=' + Date.now();  // Cache bust
+        imgEl.style.display = 'block';
+        noImgEl.style.display = 'none';
+    };
+    testImg.onerror = function() {
+        imgEl.style.display = 'none';
+        noImgEl.style.display = 'block';
+    };
+    testImg.src = imagePath;
+}
 
 </script>
