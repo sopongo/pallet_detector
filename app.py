@@ -25,6 +25,7 @@ from utils.network import test_network_connection
 from utils.camera import test_camera, detect_cameras, RobustCamera
 from utils.gpio_control import LightController, test_gpio
 from utils.logger import setup_logger
+from utils.zone_config import get_zone_manager
 from datetime import datetime
 
 # ----------------------------------------
@@ -740,6 +741,142 @@ def get_locations():
             return jsonify({"success": False, "message": f"Site {site_id} not found"}), 404
     except Exception as e:
         logger.error(f"Error getting locations: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+# ----------------------------------------
+# Zone Management APIs
+# ----------------------------------------
+@app.route('/api/zones', methods=['GET'])
+def get_zones():
+    """Get all zones"""
+    try:
+        zone_manager = get_zone_manager()
+        zones_data = zone_manager.load_zones()
+        return jsonify({
+            "success": True,
+            "zones": zones_data['zones'],
+            "enabled": zones_data['enabled']
+        }), 200
+    except Exception as e:
+        logger.error(f"Error getting zones: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones', methods=['POST'])
+def create_zone():
+    """Create a new zone"""
+    try:
+        zone_manager = get_zone_manager()
+        data = request.get_json()
+        
+        # Validate request
+        if 'zone' not in data:
+            return jsonify({"success": False, "message": "Missing 'zone' in request"}), 400
+        
+        zone = data['zone']
+        success, message = zone_manager.add_zone(zone)
+        
+        if success:
+            logger.info(f"Zone created: {zone.get('name')}")
+            return jsonify({"success": True, "message": message}), 200
+        else:
+            return jsonify({"success": False, "message": message}), 400
+            
+    except Exception as e:
+        logger.error(f"Error creating zone: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/<int:zone_id>', methods=['PUT'])
+def update_zone(zone_id):
+    """Update an existing zone"""
+    try:
+        zone_manager = get_zone_manager()
+        data = request.get_json()
+        
+        # Validate request
+        if 'zone' not in data:
+            return jsonify({"success": False, "message": "Missing 'zone' in request"}), 400
+        
+        zone = data['zone']
+        success, message = zone_manager.update_zone(zone_id, zone)
+        
+        if success:
+            logger.info(f"Zone {zone_id} updated")
+            return jsonify({"success": True, "message": message}), 200
+        else:
+            return jsonify({"success": False, "message": message}), 400
+            
+    except Exception as e:
+        logger.error(f"Error updating zone: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/<int:zone_id>', methods=['DELETE'])
+def delete_zone(zone_id):
+    """Delete a zone"""
+    try:
+        zone_manager = get_zone_manager()
+        success, message = zone_manager.delete_zone(zone_id)
+        
+        if success:
+            logger.info(f"Zone {zone_id} deleted")
+            return jsonify({"success": True, "message": message}), 200
+        else:
+            return jsonify({"success": False, "message": message}), 404
+            
+    except Exception as e:
+        logger.error(f"Error deleting zone: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/validate', methods=['POST'])
+def validate_zones():
+    """Validate zones for overlaps and other issues"""
+    try:
+        zone_manager = get_zone_manager()
+        data = request.get_json()
+        
+        # Validate request
+        if 'zones' not in data:
+            return jsonify({"success": False, "message": "Missing 'zones' in request"}), 400
+        
+        zones = data['zones']
+        is_valid, error_message = zone_manager.validate_zones_list(zones)
+        
+        if is_valid:
+            return jsonify({"success": True, "message": "Zones are valid", "valid": True}), 200
+        else:
+            return jsonify({"success": True, "message": error_message, "valid": False}), 200
+            
+    except Exception as e:
+        logger.error(f"Error validating zones: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/enabled', methods=['POST'])
+def set_zones_enabled():
+    """Enable or disable zone system"""
+    try:
+        zone_manager = get_zone_manager()
+        data = request.get_json()
+        
+        if 'enabled' not in data:
+            return jsonify({"success": False, "message": "Missing 'enabled' in request"}), 400
+        
+        enabled = bool(data['enabled'])
+        success = zone_manager.set_enabled(enabled)
+        
+        if success:
+            status = "enabled" if enabled else "disabled"
+            logger.info(f"Zone system {status}")
+            return jsonify({"success": True, "message": f"Zone system {status}"}), 200
+        else:
+            return jsonify({"success": False, "message": "Failed to update zone system status"}), 500
+            
+    except Exception as e:
+        logger.error(f"Error setting zone enabled: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 
 

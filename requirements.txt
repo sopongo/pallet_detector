@@ -24,6 +24,9 @@ requests>=2.31.0
 # System Monitoring
 psutil>=5.9.0
 
+# Polygon operations for zone configuration
+shapely>=2.0.0
+
 # Raspberry Pi GPIO (modern library, works better with all Pi models)
 gpiozero>=1.6.2
 
