@@ -1,4 +1,77 @@
 {
-  "zones": [],
-  "enabled": false
+  "zones": [
+    {
+      "id": 1,
+      "name": "Updated Loading Area",
+      "alertThreshold": 20,
+      "points": [
+        {
+          "x": 5.0,
+          "y": 5.0
+        },
+        {
+          "x": 25.0,
+          "y": 5.0
+        },
+        {
+          "x": 25.0,
+          "y": 25.0
+        },
+        {
+          "x": 5.0,
+          "y": 25.0
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": 2,
+      "name": "Storage Zone",
+      "alertThreshold": 60,
+      "points": [
+        {
+          "x": 35.0,
+          "y": 5.0
+        },
+        {
+          "x": 55.0,
+          "y": 5.0
+        },
+        {
+          "x": 55.0,
+          "y": 25.0
+        },
+        {
+          "x": 35.0,
+          "y": 25.0
+        }
+      ],
+      "enabled": true
+    },
+    {
+      "id": 3,
+      "name": "Inspection Area",
+      "alertThreshold": 30,
+      "points": [
+        {
+          "x": 65.0,
+          "y": 5.0
+        },
+        {
+          "x": 85.0,
+          "y": 5.0
+        },
+        {
+          "x": 85.0,
+          "y": 25.0
+        },
+        {
+          "x": 65.0,
+          "y": 25.0
+        }
+      ],
+      "enabled": true
+    }
+  ],
+  "enabled": true
 }
