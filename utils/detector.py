@@ -9,6 +9,7 @@ from ultralytics import YOLO
 from datetime import datetime
 import config
 from utils.logger import setup_logger
+from shapely.geometry import Polygon, box as shapely_box
 
 logger = setup_logger()
 
@@ -250,3 +251,101 @@ class PalletDetector:
         except Exception as e: 
             logger.error(f"Cannot save annotated image: {e}")
             return None
+    
+    def calculate_bbox_overlap(self, bbox, zone_points, image_width, image_height):
+        """
+        คำนวณ % ของ bbox ที่อยู่ใน zone
+        
+        Args:
+            bbox: [x1, y1, x2, y2] pixel coordinates
+            zone_points: [[x1, y1], [x2, y2], ...] normalized (0.0-1.0)
+            image_width, image_height: ขนาดรูป
+            
+        Returns:
+            float: % overlap (0.0-1.0)
+        """
+        try:
+            # แปลง bbox เป็น Polygon
+            bbox_poly = shapely_box(bbox[0], bbox[1], bbox[2], bbox[3])
+            
+            # แปลง zone points (normalized 0.0-1.0) → pixel
+            pixel_points = [
+                (p[0] * image_width, p[1] * image_height)
+                for p in zone_points
+            ]
+            zone_poly = Polygon(pixel_points)
+            
+            # คำนวณ intersection area
+            if not bbox_poly.intersects(zone_poly):
+                return 0.0
+            
+            intersection = bbox_poly.intersection(zone_poly)
+            overlap_ratio = intersection.area / bbox_poly.area
+            
+            return overlap_ratio
+            
+        except Exception as e:
+            logger.error(f"Error calculating overlap: {e}")
+            return 0.0
+    
+    def filter_by_zones(self, detections, zones, image_width, image_height, threshold=0.5):
+        """
+        กรอง detections โดยเช็คว่า bbox อยู่ใน zone > threshold %
+        
+        Args:
+            detections: list of detection dicts
+            zones: list of zone dicts with 'points' (normalized 0.0-1.0)
+            image_width, image_height: ขนาดรูป
+            threshold: % ขั้นต่ำที่ต้องอยู่ใน zone (default 0.5 = 50%)
+            
+        Returns:
+            list: filtered detections with 'zone_id', 'zone_name', 'zone_threshold'
+        """
+        if not zones:
+            logger.debug("No zones configured, returning all detections")
+            return detections
+        
+        filtered = []
+        
+        for detection in detections:
+            bbox = detection['bbox']
+            best_zone = None
+            best_overlap = 0.0
+            
+            # หา zone ที่ overlap มากที่สุด
+            for zone in zones:
+                if not zone.get('enabled', True):
+                    continue
+                
+                overlap = self.calculate_bbox_overlap(
+                    bbox, 
+                    zone['points'], 
+                    image_width, 
+                    image_height
+                )
+                
+                if overlap > best_overlap:
+                    best_overlap = overlap
+                    best_zone = zone
+            
+            # ถ้า overlap >= threshold → เพิ่มเข้า filtered
+            if best_zone and best_overlap >= threshold:
+                detection['zone_id'] = best_zone['id']
+                detection['zone_name'] = best_zone['name']
+                detection['zone_threshold'] = best_zone.get('alertThreshold', 30)
+                detection['overlap_ratio'] = round(best_overlap * 100, 1)
+                filtered.append(detection)
+                
+                logger.debug(
+                    f"Detection bbox={bbox} → Zone '{best_zone['name']}' "
+                    f"(overlap: {best_overlap*100:.1f}%)"
+                )
+            else:
+                logger.debug(
+                    f"Detection bbox={bbox} → Outside zones "
+                    f"(best overlap: {best_overlap*100:.1f}%)"
+                )
+        
+        logger.info(f"🗺️ Filtered: {len(filtered)}/{len(detections)} detections in zones")
+        
+        return filtered

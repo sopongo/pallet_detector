@@ -118,6 +118,7 @@ class PalletTracker:
     def update_pallet(self, pallet_id, detection_time):
         """
         อัพเดทพาเลทที่เจออีกครั้ง
+        ✅ ใช้ zone_threshold แทน global threshold
         
         Args:
             pallet_id: ID ของพาเลท
@@ -127,43 +128,59 @@ class PalletTracker:
             dict: {
                 'pallet_id': int,
                 'duration': float (minutes),
-                'status': int (0=normal, 1=overtime, 2=removed)
+                'status': int (0=normal, 1=overtime, 2=removed),
+                'zone_name': str (optional),
+                'zone_threshold': int (optional)
             }
         """
         try:
             conn = self.get_db_connection()
             cursor = conn.cursor()
             
-            # ดึงข้อมูลปัจจุบัน
-            cursor.execute("SELECT * FROM tb_pallet WHERE id_pallet = %s", (pallet_id,))
+            # ดึงข้อมูลปัจจุบัน (รวม zone_threshold)
+            cursor.execute("""
+                SELECT *, 
+                       COALESCE(zone_threshold, %s) as effective_threshold
+                FROM tb_pallet 
+                WHERE id_pallet = %s
+            """, (self.alert_threshold, pallet_id))
+            
             pallet = cursor.fetchone()
             
             if not pallet:
                 logger.error(f"❌ Pallet #{pallet_id} not found in database")
+                cursor.close()
+                conn.close()
                 return None
+            
+            # ✅ ใช้ zone_threshold ถ้ามี, ไม่งั้นใช้ global
+            alert_threshold = pallet['effective_threshold']
             
             # คำนวณระยะเวลาที่ค้าง (นาที)
             first_time = pallet['first_detected_at']
             duration = (detection_time - first_time).total_seconds() / 60
             
-            # ✅ เพิ่ม: Log ค่า threshold และ duration
-            logger.debug(f"⏱️ Pallet #{pallet_id}: duration={duration:.2f}m, threshold={self.alert_threshold:.2f}m")
+            logger.debug(
+                f"⏱️ Pallet #{pallet_id}: duration={duration:.2f}m, "
+                f"threshold={alert_threshold:.2f}m (zone: {pallet.get('zone_name', 'N/A')})"
+            )
             
-            # ตรวจสอบว่าเกิน threshold หรือไม่
+            # ✅ เช็คกับ threshold ของ zone
             new_status = 0  # Normal
             over_time = None
             in_over = 0
             
-            if duration > self.alert_threshold:
+            if duration > alert_threshold:
                 new_status = 1  # Overtime
                 in_over = 1
                 if pallet['over_time'] is None:
                     over_time = detection_time
-                # ✅ เพิ่ม: Log overtime detection
-                logger.warning(f"🔴 Pallet #{pallet_id} OVERTIME: {duration:.2f}m > {self.alert_threshold:.2f}m")
+                logger.warning(
+                    f"🔴 Pallet #{pallet_id} OVERTIME: {duration:.2f}m > {alert_threshold:.2f}m "
+                    f"(Zone: {pallet.get('zone_name', 'N/A')})"
+                )
             else:
-                # ✅ เพิ่ม: Log normal status
-                logger.debug(f"🟢 Pallet #{pallet_id} OK: {duration:.2f}m <= {self.alert_threshold:.2f}m")
+                logger.debug(f"🟢 Pallet #{pallet_id} OK: {duration:.2f}m <= {alert_threshold:.2f}m")
             
             # อัพเดท
             cursor.execute("""
@@ -180,16 +197,16 @@ class PalletTracker:
             cursor.close()
             conn.close()
             
-            # ✅ สำคัญ: Log return value พร้อม status
-            logger.info(f"✅ Updated pallet #{pallet_id} (duration: {duration:.1f} min, status: {new_status})")
-            
-            # ✅ สร้าง result object และ log ก่อน return
+            # ✅ สร้าง result object
             result = {
                 'pallet_id': pallet_id,
                 'duration': duration,
-                'status': new_status
+                'status': new_status,
+                'zone_name': pallet.get('zone_name'),
+                'zone_threshold': alert_threshold
             }
-            logger.debug(f"📤 Returning: {result}")
+            
+            logger.info(f"✅ Updated pallet #{pallet_id} (duration: {duration:.1f} min, status: {new_status})")
             
             return result
             
@@ -197,9 +214,10 @@ class PalletTracker:
             logger.error(f"❌ Error updating pallet #{pallet_id}: {e}", exc_info=True)
             return None
     
-    def create_new_pallet(self, ref_id_img, pallet_data, detection_time, pallet_no, pallet_name):
+    def create_new_pallet(self, ref_id_img, pallet_data, detection_time, pallet_no, pallet_name,
+                          zone_id=None, zone_name=None, zone_threshold=None):
         """
-        สร้างพาเลทใหม่
+        สร้างพาเลทใหม่ (+ รองรับ zone)
         
         Args:
             ref_id_img: ID ของรูป
@@ -207,6 +225,9 @@ class PalletTracker:
             detection_time: เวลาที่เจอ
             pallet_no: เลขลำดับพาเลท (INT)
             pallet_name: ชื่อพาเลท (VARCHAR เช่น "PL-0001")
+            zone_id: ID ของ zone (optional)
+            zone_name: ชื่อ zone (optional)
+            zone_threshold: Alert threshold ของ zone (minutes, optional)
             
         Returns:
             int: ID ของพาเลทที่สร้าง
@@ -224,12 +245,14 @@ class PalletTracker:
                     pallet_no, pallet_name, ref_id_img, pos_x, pos_y,
                     bbox_x1, bbox_y1, bbox_x2, bbox_y2,
                     accuracy, pallet_date_in, first_detected_at, last_detected_at,
-                    is_active, status, detector_count
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 1, 0, 1)
+                    is_active, status, detector_count,
+                    zone_id, zone_name, zone_threshold
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, 1, 0, 1, %s, %s, %s)
             """, (
                 pallet_no, pallet_name, ref_id_img, center[0], center[1],
                 bbox[0], bbox[1], bbox[2], bbox[3],
-                confidence, detection_time, detection_time, detection_time
+                confidence, detection_time, detection_time, detection_time,
+                zone_id, zone_name, zone_threshold
             ))
             
             pallet_id = cursor.lastrowid
@@ -237,7 +260,8 @@ class PalletTracker:
             cursor.close()
             conn.close()
             
-            logger.info(f"Created new pallet #{pallet_id} ({pallet_name})")
+            zone_info = f"in zone '{zone_name}' (threshold: {zone_threshold}m)" if zone_name else "no zone"
+            logger.info(f"✅ Created pallet #{pallet_id} ({pallet_name}) {zone_info}")
             
             return pallet_id
             

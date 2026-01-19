@@ -19,6 +19,7 @@ from utils.line_messaging import LineMessagingAPI
 from utils.gpio_control import LightController
 from utils.camera import RobustCamera
 from utils.image_uploader import ImageUploader
+from utils.zone_config import ZoneConfigManager
 
 logger = setup_logger()
 
@@ -49,6 +50,28 @@ class DetectionService:
             self.db = DatabaseManager()
             self.line = LineMessagingAPI()
             self.uploader = ImageUploader()
+            
+            # ✅ Load zone configuration
+            try:
+                self.zone_manager = ZoneConfigManager()
+                zones_data = self.zone_manager.load_zones()
+                self.zones_enabled = zones_data.get('enabled', False)
+                self.zones = zones_data.get('zones', [])
+                
+                if self.zones_enabled and self.zones:
+                    logger.info(f"🗺️ Zone detection enabled: {len(self.zones)} zone(s)")
+                    for zone in self.zones:
+                        logger.info(
+                            f"  - {zone['name']}: {len(zone['points'])} points, "
+                            f"threshold={zone.get('alertThreshold', 30)}m"
+                        )
+                else:
+                    logger.info("🗺️ Zone detection disabled (using global detection)")
+                    
+            except Exception as e:
+                logger.error(f"Error loading zones: {e}")
+                self.zones_enabled = False
+                self.zones = []
             
             # ✅ Initialize RobustCamera
             camera_index = self.cfg['camera']['selectedCamera']
@@ -248,6 +271,19 @@ class DetectionService:
             image_height, image_width = original_image.shape[:2]
             logger.info(f"Image dimensions: {image_width}x{image_height}")
             
+            # ✅ Filter by zones if enabled
+            if self.zones_enabled and self.zones:
+                detection_result['pallets'] = self.detector.filter_by_zones(
+                    detection_result['pallets'],
+                    self.zones,
+                    image_width,
+                    image_height,
+                    threshold=0.5  # 50% overlap required
+                )
+                
+                detection_result['count'] = len(detection_result['pallets'])
+                logger.info(f"🗺️ After zone filter: {detection_result['count']} detection(s)")
+            
             # 2. Save image record
             image_data = {
                 'image_date': datetime.now(),
@@ -274,6 +310,11 @@ class DetectionService:
             
             for pallet_data in detected_pallets:
                 center = pallet_data['center']
+                
+                # Extract zone info
+                zone_id = pallet_data.get('zone_id')
+                zone_name = pallet_data.get('zone_name')
+                zone_threshold = pallet_data.get('zone_threshold')
                 
                 # ✅ หาว่าตรงกับพาเลทเก่าหรือไม่ (ส่ง image dimensions)
                 matching_pallet = self.tracker.find_matching_pallet(
@@ -370,7 +411,10 @@ class DetectionService:
                     pallet_data,
                     datetime.now(),
                     pallet_data.get('pallet_no', 0),
-                    pallet_data.get('pallet_name', '')
+                    pallet_data.get('pallet_name', ''),
+                    zone_id=pallet_data.get('zone_id'),
+                    zone_name=pallet_data.get('zone_name'),
+                    zone_threshold=pallet_data.get('zone_threshold')
                 )
                 if new_id:
                     current_pallet_ids.append(new_id)
