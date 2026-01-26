@@ -792,8 +792,22 @@ async saveZones() {
         
         const saveResult = await saveResponse.json();
         
-        if (saveResult.success) {
+                if (saveResult.success) {
             Swal.close();
+            
+            // ✅ 1. แสดงรูป polygon ที่ id=currentReferenceImage
+            const imgEl = document.getElementById('currentReferenceImage');
+            const noImgEl = document.getElementById('noReferenceImage');
+            
+            if (imgEl && noImgEl && saveResult.polygon_image) {
+                imgEl.src = `http://localhost:5000/${saveResult.polygon_image}?t=${Date.now()}`;
+                imgEl.style.display = 'block';
+                noImgEl.style.display = 'none';
+            }
+            
+            // ✅ 2. สร้าง Zone Summary Table
+            const zoneListHtml = this.createZoneSummaryTable(saveResult.zones || this.zones);
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
@@ -801,14 +815,19 @@ async saveZones() {
                     <p>✅ <strong>${this.zones.length} zones</strong> saved successfully!</p>
                     <p>📸 Images saved to <code>upload_image/config_zone/</code></p>
                     <p>📝 Configuration saved to <code>config/zones.json</code></p>
+                    <hr>
+                    <h5>📋 Zone Summary:</h5>
+                    ${zoneListHtml}
                 `,
+                width: '800px',
                 confirmButtonColor: '#28a745'
             });
+            
             console.log('✅ Zones configuration saved');
         } else {
             throw new Error(saveResult.message || 'Save failed');
         }
-        
+
     } catch (error) {
         console.error('❌ Save zones error:', error);
         Swal.close();
@@ -829,7 +848,61 @@ async saveZones() {
         });
     }
 }
+ 
+/**
+ * ✅ NEW: Create HTML table summarizing all zones
+ */
+createZoneSummaryTable(zones) {
+    if (!zones || zones.length === 0) {
+        return '<p class="text-muted">No zones configured.</p>';
+    }
     
+    let html = `
+        <div style="max-height: 400px; overflow-y: auto; text-align: left;">
+            <table class="table table-sm table-bordered" style="font-size: 12px;">
+                <thead style="position: sticky; top: 0; background: #f8f9fa;">
+                    <tr>
+                        <th style="width: 5%">#</th>
+                        <th style="width: 20%">Zone Name</th>
+                        <th style="width: 10%">Points</th>
+                        <th style="width: 15%">Threshold</th>
+                        <th style="width: 15%">Alert Time</th>
+                        <th style="width: 15%">Type</th>
+                        <th style="width: 10%">Status</th>
+                        <th style="width: 10%">Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+    
+    zones.forEach((zone, index) => {
+        const color = this.colors[index % this.colors.length];
+        const palletType = zone.pallet_type === 1 ? 'Inbound' : 'Outbound';
+        const status = zone.active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
+        
+        html += `
+            <tr>
+                <td>${zone.id}</td>
+                <td><strong>${zone.name}</strong></td>
+                <td>${zone.polygon.length} pts</td>
+                <td>${zone.threshold_percent}%</td>
+                <td>${zone.alert_threshold}ms</td>
+                <td>${palletType}</td>
+                <td>${status}</td>
+                <td><div style="width: 20px; height: 20px; background: ${color}; border: 1px solid #000; display: inline-block;"></div></td>
+            </tr>
+        `;
+    });
+    
+    html += `
+                </tbody>
+            </table>
+        </div>
+    `;
+    
+    return html;
+}
+
     /**
      * Get canvas image as base64 data URL
      * @param {boolean} withZones - Include zone overlays or just master image
@@ -989,7 +1062,6 @@ async saveZones() {
                     <ul style="text-align: left;">
                         <li>Stop camera stream in Camera tab first</li>
                         <li>Check camera connection</li>
-                        <li>Verify config/pallet_config.json</li>
                     </ul>
                 `,
                 confirmButtonColor: '#dc3545'

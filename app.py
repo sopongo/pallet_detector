@@ -1135,7 +1135,6 @@ def save_zones_config():
         zones = data['zones']
         
         # Validate zones
-        # ตรวจสอบความถูกต้องของโซน
         zone_manager = get_zone_manager()
         is_valid, error_message = zone_manager.validate_zones_list(zones)
         
@@ -1145,19 +1144,24 @@ def save_zones_config():
                 "message": f"Validation error: {error_message}"
             }), 400
         
-        # Save zones - preserve existing enabled state
-        # บันทึกโซน - รักษาสถานะ enabled ที่มีอยู่
+        # Save zones
         existing_data = zone_manager.load_zones()
         zones_data = {
             "zones": zones,
-            "enabled": existing_data.get('enabled', True)  # Keep existing state or default to True
+            "enabled": existing_data.get('enabled', True)
         }
         
         if zone_manager.save_zones(zones_data):
             logger.info(f"✅ Zones configuration saved: {len(zones)} zones")
+            
+            # ✅ NEW: Return polygon image path
+            polygon_image_path = "upload_image/config_zone/img_polygon_configzone.jpg"
+            
             return jsonify({
                 "success": True,
-                "message": f"Zones saved successfully ({len(zones)} zones)"
+                "message": f"Zones saved successfully ({len(zones)} zones)",
+                "polygon_image": polygon_image_path,  # ✅ เพิ่มบรรทัดนี้
+                "zones": zones  # ✅ ส่ง zones กลับไปด้วย
             }), 200
         else:
             return jsonify({
@@ -1171,7 +1175,6 @@ def save_zones_config():
             "success": False,
             "message": f"Save error: {str(e)}"
         }), 500
-
 
 @app.route('/api/zones/latest-images', methods=['GET'])
 def get_latest_zone_images():
