@@ -32234,3 +32234,80 @@ AttributeError: 'LineMessagingAPI' object has no attribute 'token'
 [2026-01-19 23:39:12] INFO: \U0001f680 Starting Pallet Detection Service...
 [2026-01-19 23:39:12] INFO: \u23f8\ufe0f Outside operating hours, waiting...
 [2026-01-19 23:39:12] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-26 17:04:11] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-26 17:04:11] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-26 17:04:11] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-26 17:04:11] INFO: \U0001f5fa\ufe0f Zone detection enabled: 4 zone(s)
+[2026-01-26 17:04:11] ERROR: Error loading zones: 'points'
+[2026-01-26 17:04:11] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-26 17:04:11] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-26 17:04:11] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-26 17:04:11] INFO: \u2705 Detection service initialized
+[2026-01-26 17:04:11] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-26 17:04:11] INFO: \U0001f504 Starting detection cycle...
+[2026-01-26 17:04:11] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[2026-01-26 17:04:13] INFO: \u2705 Camera initialized (type: usb)
+[2026-01-26 17:04:14] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170414.jpg
+[2026-01-26 17:04:15] INFO: Detected 0 object(s) in IMG_20260126_170414.jpg
+[2026-01-26 17:04:15] INFO: Image dimensions: 640x480
+[2026-01-26 17:04:15] INFO: Saved image record #1182:  IMG_20260126_170414.jpg
+[2026-01-26 17:04:15] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170414_detected.jpg
+[2026-01-26 17:04:15] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-26 17:04:15] INFO: \U0001f4e4 Uploading image: IMG_20260126_170414_detected.jpg
+[2026-01-26 17:05:22] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-26 17:05:22] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-26 17:05:22] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-26 17:05:22] INFO: \U0001f5fa\ufe0f Zone detection enabled: 4 zone(s)
+[2026-01-26 17:05:22] ERROR: Error loading zones: 'points'
+[2026-01-26 17:05:22] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-26 17:05:22] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-26 17:05:22] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-26 17:05:22] INFO: \u2705 Detection service initialized
+[2026-01-26 17:05:22] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-26 17:05:22] INFO: \U0001f504 Starting detection cycle...
+[2026-01-26 17:05:22] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[2026-01-26 17:05:24] INFO: \u2705 Camera initialized (type: usb)
+[2026-01-26 17:05:25] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170525.jpg
+[2026-01-26 17:05:26] INFO: Detected 0 object(s) in IMG_20260126_170525.jpg
+[2026-01-26 17:05:26] INFO: Image dimensions: 640x480
+[2026-01-26 17:05:26] INFO: Saved image record #1183:  IMG_20260126_170525.jpg
+[2026-01-26 17:05:26] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170525_detected.jpg
+[2026-01-26 17:05:26] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-26 17:05:26] INFO: \U0001f4e4 Uploading image: IMG_20260126_170525_detected.jpg
+[2026-01-26 17:05:26] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170525_detected.jpg
+[2026-01-26 17:05:26] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170525_detected.jpg
+[2026-01-26 17:05:26] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-26 17:05:26] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-26 17:05:26] INFO: \u2705 No overtime pallets - all clear
+[2026-01-26 17:05:26] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-26 17:05:26] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-26 17:05:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-26 17:05:36] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170536.jpg
+[2026-01-26 17:05:37] INFO: Detected 0 object(s) in IMG_20260126_170536.jpg
+[2026-01-26 17:05:37] INFO: Image dimensions: 640x480
+[2026-01-26 17:05:37] INFO: Saved image record #1184:  IMG_20260126_170536.jpg
+[2026-01-26 17:05:37] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170536_detected.jpg
+[2026-01-26 17:05:37] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-26 17:05:37] INFO: \U0001f4e4 Uploading image: IMG_20260126_170536_detected.jpg
+[2026-01-26 17:05:37] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170536_detected.jpg
+[2026-01-26 17:05:37] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170536_detected.jpg
+[2026-01-26 17:05:37] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-26 17:05:37] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-26 17:05:37] INFO: \u2705 No overtime pallets - all clear
+[2026-01-26 17:05:37] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-26 17:05:37] INFO: \U0001f4a4 Sleeping for 10 seconds...
+[2026-01-26 17:05:47] INFO: \U0001f504 Starting detection cycle...
+[2026-01-26 17:05:47] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170547.jpg
+[2026-01-26 17:05:48] INFO: Detected 0 object(s) in IMG_20260126_170547.jpg
+[2026-01-26 17:05:48] INFO: Image dimensions: 640x480
+[2026-01-26 17:05:48] INFO: Saved image record #1185:  IMG_20260126_170547.jpg
+[2026-01-26 17:05:48] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-26\IMG_20260126_170547_detected.jpg
+[2026-01-26 17:05:48] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-26 17:05:48] INFO: \U0001f4e4 Uploading image: IMG_20260126_170547_detected.jpg
+[2026-01-26 17:05:48] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170547_detected.jpg
+[2026-01-26 17:05:48] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-26/IMG_20260126_170547_detected.jpg
+[2026-01-26 17:05:48] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-26 17:05:48] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-26 17:05:48] INFO: \u2705 No overtime pallets - all clear
+[2026-01-26 17:05:48] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-26 17:05:48] INFO: \U0001f4a4 Sleeping for 10 seconds...
