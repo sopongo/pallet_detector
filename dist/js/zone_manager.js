@@ -1,7 +1,7 @@
 /**
  * Zone Manager - Canvas-based polygon drawing for detection zones
- * Supports up to 4 zones with up to 8 points each
- * Uses percentage-based coordinates for responsive sizing
+ * Supports up to 20 zones with up to 8 points each
+ * Uses normalized coordinates (0.0-1.0) for responsive sizing
  */
 
 class ZoneManager {
@@ -19,12 +19,17 @@ class ZoneManager {
         this.draggedPoint = null;
         this.referenceImage = null;
         
-        // Configuration
-        this.maxZones = 4;
+        // Configuration - Updated to support 20 zones
+        this.maxZones = 20;
         this.maxPoints = 8;
         this.pointRadius = 6;
         this.lineWidth = 2;
-        this.colors = ['#FF0000', '#0000FF', '#00FF00', '#FFFF00']; // Red, Blue, Green, Yellow
+        this.colors = [
+            '#FF0000', '#0000FF', '#00FF00', '#FFFF00', '#FF00FF',
+            '#00FFFF', '#FFA500', '#800080', '#008000', '#FFC0CB',
+            '#A52A2A', '#DEB887', '#5F9EA0', '#7FFF00', '#D2691E',
+            '#DC143C', '#00CED1', '#9400D3', '#FF1493', '#FFD700'
+        ]; // 20 distinct colors
         
         // API URL
         this.apiUrl = options.apiUrl || `http://${window.location.hostname}:5000/api`;
@@ -37,51 +42,90 @@ class ZoneManager {
         this.canvas.addEventListener('mousemove', this.handleMouseMove.bind(this));
         this.canvas.addEventListener('mouseup', this.handleMouseUp.bind(this));
         
-        console.log('✅ ZoneManager initialized');
+        console.log('✅ ZoneManager initialized (max 20 zones)');
     }
     
     /**
-     * Load reference image onto canvas
+     * Load reference image onto canvas (from file or base64)
      */
-    loadImage(imageFile) {
+    loadImage(source) {
         return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                const img = new Image();
-                img.onload = () => {
-                    this.referenceImage = img;
-                    
-                    // Resize canvas to fit image (max 1200px width)
-                    const maxWidth = 1200;
-                    const scale = Math.min(1, maxWidth / img.width);
-                    this.canvas.width = img.width * scale;
-                    this.canvas.height = img.height * scale;
-                    
-                    this.redraw();
-                    resolve();
-                };
-                img.onerror = reject;
-                img.src = e.target.result;
+            const img = new Image();
+            img.onload = () => {
+                this.referenceImage = img;
+                
+                // Resize canvas to fit image (max 1200px width)
+                const maxWidth = 1200;
+                const scale = Math.min(1, maxWidth / img.width);
+                this.canvas.width = img.width * scale;
+                this.canvas.height = img.height * scale;
+                
+                this.redraw();
+                resolve();
             };
-            reader.onerror = reject;
-            reader.readAsDataURL(imageFile);
+            img.onerror = reject;
+            
+            // Check if source is a File or base64 string
+            if (source instanceof File) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    img.src = e.target.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(source);
+            } else if (typeof source === 'string') {
+                // Assume base64 data URL
+                img.src = source;
+            } else {
+                reject(new Error('Invalid image source'));
+            }
         });
+    }
+    
+    /**
+     * Capture image from camera
+     */
+    async captureImage() {
+        try {
+            this.showMessage('Capturing image from camera...', 'info');
+            
+            const response = await fetch(`${this.apiUrl}/zones/capture`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            const result = await response.json();
+            
+            if (result.success) {
+                // Load captured image onto canvas
+                await this.loadImage(result.image);
+                this.showMessage('Image captured successfully!', 'success');
+                return true;
+            } else {
+                this.showMessage(`Capture failed: ${result.message}`, 'error');
+                return false;
+            }
+        } catch (error) {
+            console.error('Capture image error:', error);
+            this.showMessage(`Capture error: ${error.message}`, 'error');
+            return false;
+        }
     }
     
     /**
      * Convert pixel coordinates to normalized coordinates (0.0-1.0)
      */
-    pixelToPercent(x, y) {
-        return {
-            x: Math.round(x / this.canvas.width * 10000) / 10000,
-            y: Math.round(y / this.canvas.height * 10000) / 10000
-        };
+    pixelToNormalized(x, y) {
+        return [
+            Math.round(x / this.canvas.width * 10000) / 10000,
+            Math.round(y / this.canvas.height * 10000) / 10000
+        ];
     }
     
     /**
      * Convert normalized coordinates (0.0-1.0) to pixels
      */
-    percentToPixel(x, y) {
+    normalizedToPixel(x, y) {
         return {
             x: Math.round(x * this.canvas.width),
             y: Math.round(y * this.canvas.height)
@@ -106,16 +150,16 @@ class ZoneManager {
         if (!this.currentZone) return;
         
         const pos = this.getMousePos(event);
-        const percentPos = this.pixelToPercent(pos.x, pos.y);
+        const normalizedPos = this.pixelToNormalized(pos.x, pos.y);
         
         // Check if we can add more points
-        if (this.currentZone.points.length >= this.maxPoints) {
+        if (this.currentZone.polygon.length >= this.maxPoints) {
             this.showMessage(`Cannot add more than ${this.maxPoints} points per zone`, 'warning');
             return;
         }
         
-        // Add point
-        this.currentZone.points.push(percentPos);
+        // Add point as [x, y] array
+        this.currentZone.polygon.push(normalizedPos);
         this.redraw();
         
         // Update UI
@@ -127,7 +171,7 @@ class ZoneManager {
      */
     handleDoubleClick(event) {
         event.preventDefault();
-        if (this.currentZone && this.currentZone.points.length >= 3) {
+        if (this.currentZone && this.currentZone.polygon.length >= 3) {
             this.finishZone();
         }
     }
@@ -137,7 +181,7 @@ class ZoneManager {
      */
     handleRightClick(event) {
         event.preventDefault();
-        if (this.currentZone && this.currentZone.points.length >= 3) {
+        if (this.currentZone && this.currentZone.polygon.length >= 3) {
             this.finishZone();
         }
         return false;
@@ -151,9 +195,9 @@ class ZoneManager {
         
         // Check if clicking on existing point
         for (let zone of this.zones) {
-            for (let i = 0; i < zone.points.length; i++) {
-                const point = zone.points[i];
-                const pixelPos = this.percentToPixel(point.x, point.y);
+            for (let i = 0; i < zone.polygon.length; i++) {
+                const point = zone.polygon[i];
+                const pixelPos = this.normalizedToPixel(point[0], point[1]);
                 const dx = pos.x - pixelPos.x;
                 const dy = pos.y - pixelPos.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
@@ -173,14 +217,14 @@ class ZoneManager {
     handleMouseMove(event) {
         if (this.draggedPoint) {
             const pos = this.getMousePos(event);
-            const percentPos = this.pixelToPercent(pos.x, pos.y);
+            const normalizedPos = this.pixelToNormalized(pos.x, pos.y);
             
-            // Clamp to canvas bounds
-            percentPos.x = Math.max(0, Math.min(100, percentPos.x));
-            percentPos.y = Math.max(0, Math.min(100, percentPos.y));
+            // Clamp to canvas bounds (0.0-1.0)
+            normalizedPos[0] = Math.max(0, Math.min(1.0, normalizedPos[0]));
+            normalizedPos[1] = Math.max(0, Math.min(1.0, normalizedPos[1]));
             
             // Update point
-            this.draggedPoint.zone.points[this.draggedPoint.index] = percentPos;
+            this.draggedPoint.zone.polygon[this.draggedPoint.index] = normalizedPos;
             this.redraw();
         }
     }
@@ -205,15 +249,17 @@ class ZoneManager {
             return false;
         }
         
-        // Generate new zone
+        // Generate new zone with updated field names
         const nextId = this.zones.length > 0 ? Math.max(...this.zones.map(z => z.id)) + 1 : 1;
         
         this.currentZone = {
             id: nextId,
-            name: `Zone ${nextId}`,
-            points: [],
-            alertThreshold: 30,
-            enabled: true
+            name: `Zone_${nextId}`,
+            polygon: [],  // Changed from 'points'
+            threshold_percent: 45.0,  // New field
+            alert_threshold: 3000,  // Renamed from alertThreshold, in milliseconds
+            pallet_type: 1,  // New field: 1=Inbound, 2=Outbound
+            active: true  // Changed from 'enabled'
         };
         
         this.showMessage('Click to add points (3-8 points). Right-click or double-click to finish.', 'info');
@@ -226,18 +272,13 @@ class ZoneManager {
     finishZone() {
         if (!this.currentZone) return;
         
-        if (this.currentZone.points.length < 3) {
+        if (this.currentZone.polygon.length < 3) {
             this.showMessage('Zone must have at least 3 points', 'warning');
             return;
         }
         
-        // Check for overlap with existing zones
-        for (let zone of this.zones) {
-            if (this.checkOverlap(this.currentZone, zone)) {
-                this.showMessage(`Zone overlaps with "${zone.name}"`, 'error');
-                return;
-            }
-        }
+        // Check for overlap with existing zones (backend will do accurate validation)
+        // Client-side check is disabled to rely on backend Shapely validation
         
         // Add zone
         this.zones.push(this.currentZone);
@@ -304,7 +345,7 @@ class ZoneManager {
         });
         
         // Draw current zone being created
-        if (this.currentZone && this.currentZone.points.length > 0) {
+        if (this.currentZone && this.currentZone.polygon.length > 0) {
             const colorIndex = this.zones.length % this.colors.length;
             this.drawZone(this.currentZone, this.colors[colorIndex], true);
         }
@@ -314,12 +355,12 @@ class ZoneManager {
      * Draw a single zone
      */
     drawZone(zone, color, isCurrent) {
-        if (zone.points.length === 0) return;
+        if (zone.polygon.length === 0) return;
         
         const alpha = isCurrent ? 0.3 : 0.2;
         
-        // Convert points to pixels
-        const pixelPoints = zone.points.map(p => this.percentToPixel(p.x, p.y));
+        // Convert points to pixels - points are now [x, y] arrays
+        const pixelPoints = zone.polygon.map(p => this.normalizedToPixel(p[0], p[1]));
         
         // Draw polygon
         this.ctx.beginPath();
@@ -327,7 +368,7 @@ class ZoneManager {
         for (let i = 1; i < pixelPoints.length; i++) {
             this.ctx.lineTo(pixelPoints[i].x, pixelPoints[i].y);
         }
-        if (!isCurrent || zone.points.length >= 3) {
+        if (!isCurrent || zone.polygon.length >= 3) {
             this.ctx.closePath();
         }
         
@@ -381,6 +422,7 @@ class ZoneManager {
         container.innerHTML = '';
         
         this.zones.forEach((zone, index) => {
+            const palletTypeLabel = zone.pallet_type === 1 ? 'Inbound' : 'Outbound';
             const card = document.createElement('div');
             card.className = 'card mb-2';
             card.innerHTML = `
@@ -390,12 +432,14 @@ class ZoneManager {
                             <h5 style="color: ${this.colors[index % this.colors.length]}">
                                 <i class="fas fa-draw-polygon"></i> ${zone.name}
                             </h5>
-                            <p class="mb-1"><strong>Points:</strong> ${zone.points.length}</p>
-                            <p class="mb-1"><strong>Alert Threshold:</strong> ${zone.alertThreshold} minutes</p>
+                            <p class="mb-1"><strong>Points:</strong> ${zone.polygon.length}</p>
+                            <p class="mb-1"><strong>Threshold:</strong> ${zone.threshold_percent}%</p>
+                            <p class="mb-1"><strong>Alert Time:</strong> ${zone.alert_threshold}ms</p>
+                            <p class="mb-1"><strong>Pallet Type:</strong> ${palletTypeLabel}</p>
                             <p class="mb-0">
                                 <strong>Status:</strong> 
-                                <span class="badge ${zone.enabled ? 'badge-success' : 'badge-secondary'}">
-                                    ${zone.enabled ? 'Enabled' : 'Disabled'}
+                                <span class="badge ${zone.active ? 'badge-success' : 'badge-secondary'}">
+                                    ${zone.active ? 'Active' : 'Inactive'}
                                 </span>
                             </p>
                         </div>
@@ -406,9 +450,9 @@ class ZoneManager {
                             <button class="btn btn-sm btn-danger mb-1" onclick="zoneManager.deleteZone(${zone.id})">
                                 <i class="fas fa-trash"></i> Delete
                             </button>
-                            <button class="btn btn-sm btn-${zone.enabled ? 'warning' : 'success'}" 
+                            <button class="btn btn-sm btn-${zone.active ? 'warning' : 'success'}" 
                                     onclick="zoneManager.toggleZone(${zone.id})">
-                                <i class="fas fa-power-off"></i> ${zone.enabled ? 'Disable' : 'Enable'}
+                                <i class="fas fa-power-off"></i> ${zone.active ? 'Deactivate' : 'Activate'}
                             </button>
                         </div>
                     </div>
@@ -417,11 +461,10 @@ class ZoneManager {
             container.appendChild(card);
         });
         
-        // Update remaining zones count
-        const remaining = this.maxZones - this.zones.length;
-        const remainingEl = document.getElementById('remainingZones');
-        if (remainingEl) {
-            remainingEl.textContent = `${remaining} zone${remaining !== 1 ? 's' : ''} remaining`;
+        // Update zone usage badge
+        const usedZonesEl = document.getElementById('usedZones');
+        if (usedZonesEl) {
+            usedZonesEl.textContent = `${this.zones.length}/${this.maxZones} zones used`;
         }
     }
     
@@ -431,10 +474,10 @@ class ZoneManager {
     updatePointCount() {
         if (!this.currentZone) return;
         
-        const remaining = this.maxPoints - this.currentZone.points.length;
+        const remaining = this.maxPoints - this.currentZone.polygon.length;
         const pointCountEl = document.getElementById('currentZonePoints');
         if (pointCountEl) {
-            pointCountEl.textContent = `${this.currentZone.points.length}/${this.maxPoints} points (${remaining} remaining)`;
+            pointCountEl.textContent = `${this.currentZone.polygon.length}/${this.maxPoints} points (${remaining} remaining)`;
         }
     }
     
@@ -445,7 +488,7 @@ class ZoneManager {
         const zone = this.zones.find(z => z.id === zoneId);
         if (!zone) return;
         
-        // Show edit modal or inline edit
+        // Show edit modal with enhanced fields
         Swal.fire({
             title: 'Edit Zone',
             html: `
@@ -454,32 +497,67 @@ class ZoneManager {
                     <input id="editZoneName" class="form-control" value="${zone.name}">
                 </div>
                 <div class="form-group text-left">
-                    <label>Alert Threshold (minutes)</label>
-                    <input id="editZoneThreshold" type="number" class="form-control" value="${zone.alertThreshold}" min="1" max="1440">
+                    <label>Threshold Percent (%)</label>
+                    <input id="editThresholdPercent" type="number" class="form-control" 
+                           value="${zone.threshold_percent}" min="0" max="100" step="0.1">
+                    <small class="form-text text-muted">Detection threshold percentage (0-100)</small>
+                </div>
+                <div class="form-group text-left">
+                    <label>Alert Threshold (ms)</label>
+                    <input id="editAlertThreshold" type="number" class="form-control" 
+                           value="${zone.alert_threshold}" min="1">
+                    <small class="form-text text-muted">Alert time threshold in milliseconds</small>
+                </div>
+                <div class="form-group text-left">
+                    <label>Pallet Type</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="palletType" id="palletInbound" 
+                               value="1" ${zone.pallet_type === 1 ? 'checked' : ''}>
+                        <label class="form-check-label" for="palletInbound">
+                            Inbound
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="palletType" id="palletOutbound" 
+                               value="2" ${zone.pallet_type === 2 ? 'checked' : ''}>
+                        <label class="form-check-label" for="palletOutbound">
+                            Outbound
+                        </label>
+                    </div>
                 </div>
             `,
             showCancelButton: true,
             confirmButtonText: 'Save',
+            width: '500px',
             preConfirm: () => {
                 const name = document.getElementById('editZoneName').value;
-                const threshold = parseInt(document.getElementById('editZoneThreshold').value);
+                const thresholdPercent = parseFloat(document.getElementById('editThresholdPercent').value);
+                const alertThreshold = parseInt(document.getElementById('editAlertThreshold').value);
+                const palletType = parseInt(document.querySelector('input[name="palletType"]:checked').value);
                 
                 if (!name) {
                     Swal.showValidationMessage('Please enter a zone name');
                     return false;
                 }
                 
-                if (!threshold || threshold < 1 || threshold > 1440) {
-                    Swal.showValidationMessage('Alert threshold must be between 1 and 1440 minutes');
+                if (isNaN(thresholdPercent) || thresholdPercent < 0 || thresholdPercent > 100) {
+                    Swal.showValidationMessage('Threshold percent must be between 0 and 100');
                     return false;
                 }
                 
-                return { name, threshold };
+                if (isNaN(alertThreshold) || alertThreshold < 1) {
+                    Swal.showValidationMessage('Alert threshold must be at least 1ms');
+                    return false;
+                }
+                
+                return { name, thresholdPercent, alertThreshold, palletType };
             }
         }).then((result) => {
             if (result.isConfirmed) {
                 zone.name = result.value.name;
-                zone.alertThreshold = result.value.threshold;
+                zone.threshold_percent = result.value.thresholdPercent;
+                zone.alert_threshold = result.value.alertThreshold;
+                zone.pallet_type = result.value.palletType;
                 this.redraw();
                 this.updateZoneList();
                 this.showMessage('Zone updated successfully', 'success');
@@ -488,50 +566,14 @@ class ZoneManager {
     }
     
     /**
-     * Toggle zone enabled/disabled
+     * Toggle zone active/inactive
      */
     toggleZone(zoneId) {
         const zone = this.zones.find(z => z.id === zoneId);
         if (!zone) return;
         
-        zone.enabled = !zone.enabled;
+        zone.active = !zone.active;
         this.updateZoneList();
-    }
-    
-    /**
-     * Save reference image to server
-     */
-    async saveReferenceImage() {
-        if (!this.referenceImage) return null;
-        
-        try {
-            // Convert canvas to blob
-            const blob = await new Promise(resolve => {
-                this.canvas.toBlob(resolve, 'image/jpeg', 0.9);
-            });
-            
-            // Generate filename: img_configzone_dd-mm-yyyy.jpg
-            const now = new Date();
-            const dd = now.getDate().toString().padStart(2, '0');
-            const mm = (now.getMonth() + 1).toString().padStart(2, '0');
-            const yyyy = now.getFullYear();
-            const filename = `img_configzone_${dd}-${mm}-${yyyy}.jpg`;
-            
-            // Upload via FormData
-            const formData = new FormData();
-            formData.append('image', blob, filename);
-            
-            const response = await fetch(`${this.apiUrl}/zones/image`, {
-                method: 'POST',
-                body: formData
-            });
-            
-            const result = await response.json();
-            return result.success ? result.filepath : null;
-        } catch (error) {
-            console.error('Error saving reference image:', error);
-            return null;
-        }
     }
     
     /**
@@ -539,13 +581,35 @@ class ZoneManager {
      */
     async saveZones() {
         try {
-            // Save reference image first
-            const imagePath = await this.saveReferenceImage();
-            if (imagePath) {
-                console.log('✅ Reference image saved:', imagePath);
+            if (!this.referenceImage) {
+                this.showMessage('Please capture an image first', 'warning');
+                return;
             }
             
-            // Validate zones on backend
+            // Step 1: Save master and polygon images
+            // Master image: original camera capture
+            // Polygon image: canvas with zones drawn
+            const masterImageData = await this.getCanvasImageData(false);  // Without zones
+            const polygonImageData = await this.getCanvasImageData(true);  // With zones
+            
+            const imageResponse = await fetch(`${this.apiUrl}/zones/save-image`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    master_image: masterImageData,
+                    polygon_image: polygonImageData
+                })
+            });
+            
+            const imageResult = await imageResponse.json();
+            if (!imageResult.success) {
+                this.showMessage(`Failed to save images: ${imageResult.message}`, 'error');
+                return;
+            }
+            
+            console.log('✅ Images saved:', imageResult.master_path, imageResult.polygon_path);
+            
+            // Step 2: Validate zones on backend
             const validateResponse = await fetch(`${this.apiUrl}/zones/validate`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -555,46 +619,112 @@ class ZoneManager {
             const validateResult = await validateResponse.json();
             
             if (!validateResult.valid) {
-                this.showMessage(validateResult.message, 'error');
+                this.showMessage(`Validation error: ${validateResult.message}`, 'error');
                 return;
             }
             
-            // Save each zone
-            const existingZones = await this.loadZones();
+            // Step 3: Save zones configuration
+            const saveResponse = await fetch(`${this.apiUrl}/zones/save`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ zones: this.zones })
+            });
             
-            // Delete zones that no longer exist
-            for (let existingZone of existingZones) {
-                if (!this.zones.find(z => z.id === existingZone.id)) {
-                    await fetch(`${this.apiUrl}/zones/${existingZone.id}`, { method: 'DELETE' });
-                }
+            const saveResult = await saveResponse.json();
+            
+            if (saveResult.success) {
+                this.showMessage('Zones saved successfully!', 'success');
+                console.log('✅ Zones configuration saved');
+            } else {
+                this.showMessage(`Save failed: ${saveResult.message}`, 'error');
             }
-            
-            // Create or update zones
-            for (let zone of this.zones) {
-                const exists = existingZones.find(z => z.id === zone.id);
-                
-                if (exists) {
-                    // Update
-                    await fetch(`${this.apiUrl}/zones/${zone.id}`, {
-                        method: 'PUT',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ zone })
-                    });
-                } else {
-                    // Create
-                    await fetch(`${this.apiUrl}/zones`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ zone })
-                    });
-                }
-            }
-            
-            this.showMessage('Zones saved successfully!', 'success');
             
         } catch (error) {
             console.error('Save zones error:', error);
             this.showMessage('Failed to save zones: ' + error.message, 'error');
+        }
+    }
+    
+    /**
+     * Get canvas image as base64 data URL
+     * @param {boolean} withZones - Include zone overlays or just master image
+     */
+    async getCanvasImageData(withZones) {
+        // Create temporary canvas
+        const tempCanvas = document.createElement('canvas');
+        tempCanvas.width = this.canvas.width;
+        tempCanvas.height = this.canvas.height;
+        const tempCtx = tempCanvas.getContext('2d');
+        
+        // Draw reference image
+        if (this.referenceImage) {
+            tempCtx.drawImage(this.referenceImage, 0, 0, tempCanvas.width, tempCanvas.height);
+        }
+        
+        // Draw zones if requested
+        if (withZones) {
+            this.zones.forEach((zone, index) => {
+                this.drawZoneOnContext(tempCtx, zone, this.colors[index % this.colors.length]);
+            });
+        }
+        
+        // Convert to data URL
+        return tempCanvas.toDataURL('image/jpeg', 0.9);
+    }
+    
+    /**
+     * Draw zone on a specific context (helper for image export)
+     */
+    drawZoneOnContext(ctx, zone, color) {
+        if (zone.polygon.length === 0) return;
+        
+        const alpha = 0.2;
+        const pixelPoints = zone.polygon.map(p => this.normalizedToPixel(p[0], p[1]));
+        
+        // Draw polygon
+        ctx.beginPath();
+        ctx.moveTo(pixelPoints[0].x, pixelPoints[0].y);
+        for (let i = 1; i < pixelPoints.length; i++) {
+            ctx.lineTo(pixelPoints[i].x, pixelPoints[i].y);
+        }
+        ctx.closePath();
+        
+        // Fill
+        ctx.fillStyle = color + Math.floor(alpha * 255).toString(16).padStart(2, '0');
+        ctx.fill();
+        
+        // Stroke
+        ctx.strokeStyle = color;
+        ctx.lineWidth = this.lineWidth;
+        ctx.stroke();
+        
+        // Draw points
+        pixelPoints.forEach((point, index) => {
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, this.pointRadius, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            
+            ctx.fillStyle = '#000000';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText((index + 1).toString(), point.x, point.y);
+        });
+        
+        // Draw zone name
+        if (pixelPoints.length > 0) {
+            const centerX = pixelPoints.reduce((sum, p) => sum + p.x, 0) / pixelPoints.length;
+            const centerY = pixelPoints.reduce((sum, p) => sum + p.y, 0) / pixelPoints.length;
+            
+            ctx.fillStyle = color;
+            ctx.font = 'bold 14px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(zone.name, centerX, centerY);
         }
     }
     
@@ -610,6 +740,7 @@ class ZoneManager {
                 this.zones = data.zones || [];
                 this.redraw();
                 this.updateZoneList();
+                console.log(`✅ Loaded ${this.zones.length} zones`);
                 return this.zones;
             } else {
                 throw new Error(data.message);
@@ -618,6 +749,30 @@ class ZoneManager {
             console.error('Load zones error:', error);
             this.showMessage('Failed to load zones: ' + error.message, 'error');
             return [];
+        }
+    }
+    
+    /**
+     * Load latest zone images from backend
+     */
+    async loadLatestImages() {
+        try {
+            const response = await fetch(`${this.apiUrl}/zones/latest-images`);
+            const data = await response.json();
+            
+            if (data.success && data.master_image) {
+                // Load the master image
+                const imagePath = `${window.location.origin}/${data.master_image}`;
+                await this.loadImage(imagePath);
+                console.log('✅ Loaded latest zone image:', data.master_image);
+                return true;
+            } else {
+                console.log('No previous zone images found');
+                return false;
+            }
+        } catch (error) {
+            console.error('Load latest images error:', error);
+            return false;
         }
     }
     

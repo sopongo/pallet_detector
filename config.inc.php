@@ -492,34 +492,45 @@
                                 <hr>
                                 
                                 <div class="alert alert-info">
-                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 4 detection zones with custom alert thresholds. Each zone can have 3-8 points and will be validated for overlaps.
+                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 20 detection zones with custom properties. Each zone can have 3-8 points and will be validated for overlaps using Shapely polygon intersection.
                                 </div>
                                 
-                                <!-- Zone System Toggle -->
-                                <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="zoneSystemEnabled">
-                                            <label class="custom-control-label" for="zoneSystemEnabled">
-                                                <strong>Enable Zone System</strong>
-                                            </label>
-                                        </div>
-                                        <small class="form-text text-muted">When disabled, system uses global detection without zones</small>
-                                    </div>
-                                </div>
-                                
-                                <!-- Reference Image Upload -->
+                                <!-- Max Zones Configuration -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label><i class="fas fa-image"></i> Upload Reference Image</label>
-                                            <input type="file" class="form-control-file" id="zoneReferenceImage" accept="image/*">
-                                            <small class="form-text text-muted">Upload a warehouse photo to draw zones on</small>
+                                            <label><i class="fas fa-layer-group"></i> Maximum Zones</label>
+                                            <select class="form-control" id="maxZonesSelect">
+                                                <?php 
+                                                // Note: Max zones limit (20) should match MAX_ZONES in utils/zone_config.py
+                                                $max_zones = 20;
+                                                for ($i = 1; $i <= $max_zones; $i++): 
+                                                ?>
+                                                <option value="<?php echo $i; ?>"><?php echo $i; ?> Zone<?php echo $i > 1 ? 's' : ''; ?></option>
+                                                <?php endfor; ?>
+                                            </select>
+                                            <small class="form-text text-muted">Select maximum number of zones (1-<?php echo $max_zones; ?>)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 text-right">
-                                        <p class="mb-1"><strong>Zones:</strong> <span id="remainingZones">4 zones remaining</span></p>
-                                        <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
+                                        <div class="mt-4">
+                                            <h5>
+                                                <span class="badge badge-info" id="usedZones">0/<?php echo $max_zones; ?> zones used</span>
+                                            </h5>
+                                            <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Capture Image from Camera -->
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary" id="btnCaptureImage">
+                                            <i class="fas fa-camera"></i> Capture Image from Camera
+                                        </button>
+                                        <small class="form-text text-muted d-inline-block ml-2">
+                                            Capture image from configured camera for zone drawing
+                                        </small>
                                     </div>
                                 </div>
                                 
@@ -536,7 +547,7 @@
                                                      alt="No reference image" 
                                                      style="max-width: 100%; height: auto; border: 2px solid #ddd; display: none;">
                                                 <p id="noReferenceImage" class="text-muted">
-                                                    <i class="fas fa-info-circle"></i> No reference image uploaded yet
+                                                    <i class="fas fa-info-circle"></i> No reference image captured yet. Click "Capture Image from Camera" to start.
                                                 </p>
                                             </div>
                                         </div>
@@ -1610,17 +1621,16 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl: API_URL
     });
     
-    // Reference Image Upload Handler
-    document.getElementById('zoneReferenceImage')?.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            zoneManager.loadImage(file)
-                .then(() => {
-                    showSuccess('Reference image loaded successfully');
-                })
-                .catch((err) => {
-                    showError('Failed to load image: ' + err.message);
-                });
+    // Capture Image Button
+    document.getElementById('btnCaptureImage')?.addEventListener('click', async function() {
+        showLoading('Capturing image from camera...');
+        const success = await zoneManager.captureImage();
+        Swal.close();
+        
+        if (success) {
+            // Show the captured image
+            document.getElementById('currentReferenceImage').style.display = 'block';
+            document.getElementById('noReferenceImage').style.display = 'none';
         }
     });
     
@@ -1635,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save Zones Button
     document.getElementById('btnSaveZones')?.addEventListener('click', async function() {
-        showLoading('Saving zones...');
+        showLoading('Saving zones and images...');
         await zoneManager.saveZones();
         Swal.close();
     });
@@ -1667,80 +1677,55 @@ document.addEventListener('DOMContentLoaded', function() {
         Swal.close();
     });
     
-    // Zone System Toggle
-    document.getElementById('zoneSystemEnabled')?.addEventListener('change', async function() {
-        const enabled = this.checked;
-        
-        try {
-            const response = await fetch(`${API_URL}/zones/enabled`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ enabled })
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                const status = enabled ? 'enabled' : 'disabled';
-                showSuccess(`Zone system ${status}`);
-            } else {
-                showError(result.message);
-                this.checked = !enabled; // Revert
-            }
-        } catch (error) {
-            showError('Failed to update zone system: ' + error.message);
-            this.checked = !enabled; // Revert
-        }
+    // Max Zones Select Handler
+    document.getElementById('maxZonesSelect')?.addEventListener('change', function() {
+        const maxZones = parseInt(this.value);
+        zoneManager.maxZones = maxZones;
+        zoneManager.updateZoneList();
+        console.log(`Max zones set to: ${maxZones}`);
     });
     
-    // Load zone system status when tab is opened
+    // Load zone configuration when tab is opened
     document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
         try {
+            // Load zones from backend
             const response = await fetch(`${API_URL}/zones`);
             const data = await response.json();
             
-            if (data.success) {
-                document.getElementById('zoneSystemEnabled').checked = data.enabled;
-                
-                // Auto-load zones
-                if (data.zones && data.zones.length > 0) {
-                    await zoneManager.loadZones();
-                }
+            if (data.success && data.zones && data.zones.length > 0) {
+                await zoneManager.loadZones();
             }
             
-            // Load reference image
-            loadZoneReferenceImage();
+            // Auto-load latest images
+            await loadLatestZoneImages();
         } catch (error) {
-            console.error('Failed to load zone status:', error);
+            console.error('Failed to load zone configuration:', error);
         }
     });
 });
 
-// Load zone reference image
-function loadZoneReferenceImage() {
-    const imgEl = document.getElementById('currentReferenceImage');
-    const noImgEl = document.getElementById('noReferenceImage');
-    
-    // Get today's filename
-    const now = new Date();
-    const dd = now.getDate().toString().padStart(2, '0');
-    const mm = (now.getMonth() + 1).toString().padStart(2, '0');
-    const yyyy = now.getFullYear();
-    const filename = `img_configzone_${dd}-${mm}-${yyyy}.jpg`;
-    const imagePath = `upload_image/${filename}`;
-    
-    // Try to load image
-    const testImg = new Image();
-    testImg.onload = function() {
-        imgEl.src = imagePath + '?t=' + Date.now();  // Cache bust
-        imgEl.style.display = 'block';
-        noImgEl.style.display = 'none';
-    };
-    testImg.onerror = function() {
-        imgEl.style.display = 'none';
-        noImgEl.style.display = 'block';
-    };
-    testImg.src = imagePath;
+// Load latest zone images from backend
+async function loadLatestZoneImages() {
+    try {
+        const response = await fetch(`${API_URL}/zones/latest-images`);
+        const data = await response.json();
+        
+        if (data.success && data.master_image) {
+            // Load the latest master image
+            await zoneManager.loadLatestImages();
+            
+            const imgEl = document.getElementById('currentReferenceImage');
+            const noImgEl = document.getElementById('noReferenceImage');
+            
+            imgEl.src = data.master_image + '?t=' + Date.now();  // Cache bust
+            imgEl.style.display = 'block';
+            noImgEl.style.display = 'none';
+            
+            console.log('✅ Latest zone images loaded');
+        }
+    } catch (error) {
+        console.error('Failed to load latest zone images:', error);
+    }
 }
 
 </script>

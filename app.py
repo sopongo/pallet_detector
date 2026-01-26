@@ -925,6 +925,280 @@ def upload_zone_image():
         return jsonify({"success": False, "message": str(e)}), 500
 
 
+@app.route('/api/zones/capture', methods=['POST'])
+def capture_zone_image():
+    """
+    Capture image from camera for zone configuration
+    อ่านภาพจากกล้องสำหรับการตั้งค่าโซน
+    """
+    try:
+        # Get camera configuration from config
+        # อ่านการตั้งค่ากล้องจาก config
+        camera_config = config.get_config('camera')
+        camera_index = camera_config.get('selectedCamera', '0')
+        
+        # Convert camera_index to int if it's a digit
+        # แปลง camera_index เป็น int ถ้าเป็นตัวเลข
+        if isinstance(camera_index, str) and camera_index.isdigit():
+            camera_index = int(camera_index)
+        
+        logger.info(f"📷 Capturing image from camera: {camera_index}")
+        
+        # Use RobustCamera for reliable capture
+        # ใช้ RobustCamera สำหรับการถ่ายภาพที่น่าเชื่อถือ
+        from utils.camera import RobustCamera
+        camera = RobustCamera(camera_index)
+        
+        # Capture frame
+        # ถ่ายภาพ
+        ret, frame = camera.read()
+        camera.release()
+        
+        if not ret or frame is None:
+            return jsonify({
+                "success": False,
+                "message": "Failed to capture image from camera"
+            }), 500
+        
+        # Encode frame to JPEG
+        # แปลงภาพเป็น JPEG
+        ret, buffer = cv2.imencode('.jpg', frame)
+        if not ret:
+            return jsonify({
+                "success": False,
+                "message": "Failed to encode image"
+            }), 500
+        
+        # Convert to base64 for transmission
+        # แปลงเป็น base64 สำหรับส่งข้อมูล
+        import base64
+        img_base64 = base64.b64encode(buffer).decode('utf-8')
+        
+        logger.info("✅ Image captured successfully")
+        
+        return jsonify({
+            "success": True,
+            "message": "Image captured successfully",
+            "image": f"data:image/jpeg;base64,{img_base64}",
+            "width": frame.shape[1],
+            "height": frame.shape[0]
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error capturing zone image: {e}")
+        return jsonify({
+            "success": False,
+            "message": f"Camera capture error: {str(e)}"
+        }), 500
+
+
+@app.route('/api/zones/save-image', methods=['POST'])
+def save_zone_images():
+    """
+    Save master and polygon zone images
+    บันทึกภาพต้นฉบับและภาพโซนที่วาด
+    
+    Expected format:
+    {
+        "master_image": "data:image/jpeg;base64,...",
+        "polygon_image": "data:image/jpeg;base64,..."
+    }
+    """
+    try:
+        data = request.get_json()
+        
+        if not data or 'master_image' not in data or 'polygon_image' not in data:
+            return jsonify({
+                "success": False,
+                "message": "Missing master_image or polygon_image in request"
+            }), 400
+        
+        # Create config_zone directory
+        # สร้างโฟลเดอร์ config_zone
+        upload_dir = os.path.join(
+            os.path.dirname(__file__),
+            'upload_image',
+            'config_zone'
+        )
+        os.makedirs(upload_dir, exist_ok=True)
+        
+        # Generate filenames with current date
+        # สร้างชื่อไฟล์พร้อมวันที่ปัจจุบัน
+        from datetime import datetime
+        now = datetime.now()
+        date_str = now.strftime('%d-%m-%Y')
+        
+        master_filename = f"img_master_configzone_{date_str}.jpg"
+        polygon_filename = f"img_polygon_configzone_{date_str}.jpg"
+        
+        # Save master image
+        # บันทึกภาพต้นฉบับ
+        import base64
+        master_data = data['master_image']
+        if master_data.startswith('data:image'):
+            master_data = master_data.split(',')[1]
+        
+        master_bytes = base64.b64decode(master_data)
+        master_path = os.path.join(upload_dir, master_filename)
+        
+        with open(master_path, 'wb') as f:
+            f.write(master_bytes)
+        
+        # Save polygon image
+        # บันทึกภาพโซนที่วาด
+        polygon_data = data['polygon_image']
+        if polygon_data.startswith('data:image'):
+            polygon_data = polygon_data.split(',')[1]
+        
+        polygon_bytes = base64.b64decode(polygon_data)
+        polygon_path = os.path.join(upload_dir, polygon_filename)
+        
+        with open(polygon_path, 'wb') as f:
+            f.write(polygon_bytes)
+        
+        logger.info(f"✅ Zone images saved: {master_filename}, {polygon_filename}")
+        
+        return jsonify({
+            "success": True,
+            "message": "Zone images saved successfully",
+            "master_path": f"upload_image/config_zone/{master_filename}",
+            "polygon_path": f"upload_image/config_zone/{polygon_filename}"
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error saving zone images: {e}")
+        return jsonify({
+            "success": False,
+            "message": f"Save error: {str(e)}"
+        }), 500
+
+
+@app.route('/api/zones/save', methods=['POST'])
+def save_zones_config():
+    """
+    Save zones configuration to zones.json
+    บันทึกการตั้งค่าโซนลงใน zones.json
+    
+    Expected format:
+    {
+        "zones": [
+            {
+                "id": 1,
+                "name": "Entry_Slot_1",
+                "polygon": [[0.0781, 0.6944], [0.1562, 0.6944], ...],
+                "threshold_percent": 45.0,
+                "alert_threshold": 3000,
+                "pallet_type": 1,
+                "active": true
+            }
+        ]
+    }
+    """
+    try:
+        data = request.get_json()
+        
+        if not data or 'zones' not in data:
+            return jsonify({
+                "success": False,
+                "message": "Missing 'zones' in request"
+            }), 400
+        
+        zones = data['zones']
+        
+        # Validate zones
+        # ตรวจสอบความถูกต้องของโซน
+        zone_manager = get_zone_manager()
+        is_valid, error_message = zone_manager.validate_zones_list(zones)
+        
+        if not is_valid:
+            return jsonify({
+                "success": False,
+                "message": f"Validation error: {error_message}"
+            }), 400
+        
+        # Save zones - preserve existing enabled state
+        # บันทึกโซน - รักษาสถานะ enabled ที่มีอยู่
+        existing_data = zone_manager.load_zones()
+        zones_data = {
+            "zones": zones,
+            "enabled": existing_data.get('enabled', True)  # Keep existing state or default to True
+        }
+        
+        if zone_manager.save_zones(zones_data):
+            logger.info(f"✅ Zones configuration saved: {len(zones)} zones")
+            return jsonify({
+                "success": True,
+                "message": f"Zones saved successfully ({len(zones)} zones)"
+            }), 200
+        else:
+            return jsonify({
+                "success": False,
+                "message": "Failed to save zones configuration"
+            }), 500
+        
+    except Exception as e:
+        logger.error(f"Error saving zones config: {e}")
+        return jsonify({
+            "success": False,
+            "message": f"Save error: {str(e)}"
+        }), 500
+
+
+@app.route('/api/zones/latest-images', methods=['GET'])
+def get_latest_zone_images():
+    """
+    Get paths to the latest zone configuration images
+    รับพาธของภาพการตั้งค่าโซนล่าสุด
+    
+    Returns the latest master and polygon images from upload_image/config_zone/
+    """
+    try:
+        config_zone_dir = os.path.join(
+            os.path.dirname(__file__),
+            'upload_image',
+            'config_zone'
+        )
+        
+        # Check if directory exists
+        # ตรวจสอบว่ามีโฟลเดอร์หรือไม่
+        if not os.path.exists(config_zone_dir):
+            return jsonify({
+                "success": True,
+                "master_image": None,
+                "polygon_image": None,
+                "message": "No zone images found"
+            }), 200
+        
+        # Find latest master and polygon images
+        # หาภาพต้นฉบับและภาพโซนล่าสุด
+        master_files = [f for f in os.listdir(config_zone_dir) 
+                       if f.startswith('img_master_configzone_') and f.endswith('.jpg')]
+        polygon_files = [f for f in os.listdir(config_zone_dir) 
+                        if f.startswith('img_polygon_configzone_') and f.endswith('.jpg')]
+        
+        # Sort by modification time (latest first)
+        # เรียงตามเวลาแก้ไข (ล่าสุดก่อน)
+        master_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
+        polygon_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
+        
+        master_path = f"upload_image/config_zone/{master_files[0]}" if master_files else None
+        polygon_path = f"upload_image/config_zone/{polygon_files[0]}" if polygon_files else None
+        
+        return jsonify({
+            "success": True,
+            "master_image": master_path,
+            "polygon_image": polygon_path,
+            "message": "Latest images retrieved"
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error getting latest zone images: {e}")
+        return jsonify({
+            "success": False,
+            "message": f"Error: {str(e)}"
+        }), 500
+
+
 # ----------------------------------------
 # Main
 # ----------------------------------------
