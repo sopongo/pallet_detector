@@ -1,9 +1,123 @@
-<?php
-// Configuration file for the Pallet Detector
 
-$isCapturing = false;
+<!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><i class="fas fa-cogs"></i> System Configuration</h3>
+        </div>
+        <div class="card-body">
+<!-- Main Content -->
+        <section class="content">
+            <div class="container-fluid">
+                
+                <!-- Tabs Card -->
+                <div class="card card-secondary card-outline card-tabs">
+                    <div class="card-header p-0 pt-1 border-bottom-0">
+                        <ul class="nav nav-tabs" id="configTabs" role="tablist">
+                            
+                            <!-- Tab 1: General -->
+                            <li class="nav-item">
+                                <a class="nav-link active" id="general-tab" data-toggle="pill" href="#general" role="tab" aria-controls="general" aria-selected="true">
+                                    <i class="fas fa-cog"></i> General
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 2: Network -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="network-tab" data-toggle="pill" href="#network" role="tab" aria-controls="network" aria-selected="false">
+                                    <i class="fas fa-database"></i> Database &amp; LINE OA
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 3: Detection -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="detection-tab" data-toggle="pill" href="#detection" role="tab" aria-controls="detection" aria-selected="false">
+                                    <i class="fas fa-robot"></i> Detection
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 4: System -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="system-tab" data-toggle="pill" href="#system" role="tab" aria-controls="system" aria-selected="false">
+                                    <i class="fas fa-server"></i> System
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 5: Camera -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="camera-tab" data-toggle="pill" href="#camera" role="tab" aria-controls="camera" aria-selected="false">
+                                    <i class="fas fa-video"></i> Camera
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 6: Light Signal -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="light-tab" data-toggle="pill" href="#light" role="tab" aria-controls="light" aria-selected="false">
+                                    <i class="fas fa-lightbulb"></i> Light Signal
+                                </a>
+                            </li>
+                            
+                            <!-- Tab 7: Zone Configuration -->
+                            <li class="nav-item">
+                                <a class="nav-link" id="zone-tab" data-toggle="pill" href="#zone" role="tab" aria-controls="zone" aria-selected="false">
+                                    <i class="fas fa-draw-polygon"></i> Zone Configuration
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="tab-content" id="configTabsContent">
+                            
+                            <!-- ========================================
+                                 TAB 1: GENERAL
+                                 ======================================== -->
+                            <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                                
+                                <h4><i class="fas fa-lock"></i> Change Password</h4>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="currentPassword">Current Password</label>
+                                            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password" readonly onfocus="this.removeAttribute('readonly');" autocomplete="new-password" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="newPassword">New Password</label>
+                                            <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="confirmPassword">Confirm Password</label>
+                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+                                        </div>
+                                        <button class="btn btn-primary">
+                                            <i class="fas fa-save"></i> Change Password
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <br>
+                                <h4><i class="fas fa-map-marker-alt"></i> Site & Location</h4>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="siteCompany">Site / Company</label>
+                                            <div class="input-group">
+                                                <!---<input type="text" class="form-control" id="siteCompany" value="">-->
+                                                <select class="custom-select" id="siteCompany">
+                                                    <option value="" selected>-- Select Site / Company --</option>
+                                                    <?PHP
+                                                    foreach($arr_site as $site_id => $site_info) {
+                                                        echo '<option value="' . htmlspecialchars($site_id) . '">' . htmlspecialchars($site_info['site_name']) . '</option>';
+                                                    }
+                                                    ?>
+                                                </select>   
+                                            </div>
+                                            <small class="form-text text-muted">Name of the site or company</small>
+                                        </div>
+                                    </div>
 
-<<<<<<< HEAD
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="siteLocation">Location</label>
@@ -551,23 +665,167 @@ $(document).ready(function() {
 // อัพเดทข้อความแสดงผล
 function updateTimeDisplay(from, to) {
     $('#timeRangeDisplay b').text(minutesToTime(from) + " to " + minutesToTime(to));
-=======
-// Debounce function to prevent rapid clicks
-function debounce($callback, $delay) {
-    // Logic for debounce
->>>>>>> 7d4a2b96b5574fbc834eda827565e74869a469f2
 }
 
-// Keeping only one event listener for the button
-function setupEventListener() {
-    if (document.getElementById('btnCaptureImage')) {
-        document.getElementById('btnCaptureImage').addEventListener('click', function() {
-            if (!$isCapturing) {
-                $isCapturing = true;
-                debounce(captureImageFromCamera, 300);
+
+
+// ========================================
+// API Base URL / Configuration
+// ========================================
+// ✅ Auto-detect hostname (works on any device)
+const API_URL = `http://${window.location.hostname}:5000/api`;
+const POLLING_INTERVAL = 3000;
+
+// Debug: แสดง API_URL ที่ใช้
+console.log('🔗 API_URL:', API_URL);
+
+// ========================================
+// SweetAlert2 Helper Functions
+// ========================================
+function showSuccess(message) {
+    Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: message,
+        confirmButtonColor: '#28a745'
+    });
+}
+
+function showError(message) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Error! ',
+        text: message,
+        confirmButtonColor: '#dc3545'
+    });
+}
+
+function showLoading(message = 'Processing...') {
+    Swal.fire({
+        title: message,
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+}
+
+// ========================================
+// 1. Load Config เมื่อเปิดหน้า
+// ========================================
+window.addEventListener('DOMContentLoaded', function() {
+    loadConfig();
+});
+
+// ========================================
+// Dynamic Location Dropdown
+// ========================================
+
+// Event:  เมื่อเปลี่ยน Site
+document.getElementById('siteCompany').addEventListener('change', function() {
+    const siteId = this.value;
+    const locationSelect = document.getElementById('siteLocation');
+    
+    // Reset location dropdown
+    locationSelect.innerHTML = '<option value="">-- Loading...  --</option>';
+    locationSelect.disabled = true;
+    
+    if(! siteId || siteId === '') {
+        // ถ้าไม่เลือก Site
+        locationSelect.innerHTML = '<option value="">-- Please select Site first --</option>';
+        locationSelect.disabled = true;
+        return;
+    }
+    
+    // ดึง locations จาก API
+    fetch(`${API_URL}/config/locations?site_id=${siteId}`)
+        .then(r => r.json())
+        .then(data => {
+            if(data.success && data.locations) {
+                // สร้าง options
+                let html = '<option value="">-- Select Location --</option>';
+                
+                Object.keys(data.locations).forEach(locId => {
+                    html += `<option value="${locId}">${data.locations[locId]}</option>`;
+                });
+                
+                locationSelect.innerHTML = html;
+                locationSelect. disabled = false;
+                
+                console.log(`✅ Loaded ${Object.keys(data.locations).length} locations for Site ${siteId}`);
+            } else {
+                locationSelect.innerHTML = '<option value="">No locations available</option>';
+                locationSelect. disabled = true;
+                showError('Failed to load locations');
+            }
+        })
+        .catch(err => {
+            console.error('❌ Load locations error:', err);
+            locationSelect. innerHTML = '<option value="">Error loading locations</option>';
+            locationSelect.disabled = true;
+            showError('Failed to load locations:  ' + err.message);
+        });
+});
+
+// Validation: ตรวจสอบก่อน Save
+document.getElementById('btnSaveConfig').addEventListener('click', function(e) {
+    const siteId = document.getElementById('siteCompany').value;
+    const locationId = document.getElementById('siteLocation').value;
+    
+    // ถ้าเลือก Site แต่ไม่เลือก Location
+    if(siteId && siteId !== '' && (! locationId || locationId === '')) {
+        e.preventDefault(); // หยุดการ save
+        e.stopImmediatePropagation();
+        
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please Select Location',
+            text: 'You must select a location for the selected site',
+            confirmButtonColor: '#ffc107'
+        });
+        
+        return false;
+    }
+    
+    // ถ้าไม่เลือกทั้ง Site และ Location
+    if((! siteId || siteId === '') && (!locationId || locationId === '')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please Select Site & Location',
+            text: 'Please select both site and location before saving',
+            confirmButtonColor:  '#ffc107'
+        });
+        
+        return false;
+    }
+}, true); // ใช้ capture phase
+
+// Load locations เมื่อ load config (สำหรับ edit)
+function loadLocationForSite(siteId, selectedLocationId = null) {
+    if(!siteId) return;
+    
+    const locationSelect = document.getElementById('siteLocation');
+    locationSelect. innerHTML = '<option value="">-- Loading... --</option>';
+    locationSelect.disabled = true;
+    
+    fetch(`${API_URL}/config/locations?site_id=${siteId}`)
+        .then(r => r.json())
+        .then(data => {
+            if(data.success && data.locations) {
+                let html = '<option value="">-- Select Location --</option>';
+                
+                Object.keys(data. locations).forEach(locId => {
+                    const selected = (locId == selectedLocationId) ? 'selected' : '';
+                    html += `<option value="${locId}" ${selected}>${data.locations[locId]}</option>`;
+                });
+                
+                locationSelect.innerHTML = html;
+                locationSelect.disabled = false;
             }
         });
-<<<<<<< HEAD
 }
 
 function loadConfig() {
@@ -1428,10 +1686,3 @@ async function loadLatestZoneImages() {
 
 
 </script>
-=======
-    }
-}
-
-setupEventListener();
-?>
->>>>>>> 7d4a2b96b5574fbc834eda827565e74869a469f2
