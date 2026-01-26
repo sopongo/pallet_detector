@@ -51,6 +51,10 @@ class ZoneManager {
     loadImage(source) {
         return new Promise((resolve, reject) => {
             const img = new Image();
+            
+            // ✅ Enable CORS
+            img.crossOrigin = "anonymous";
+            
             img.onload = () => {
                 this.referenceImage = img;
                 
@@ -63,9 +67,10 @@ class ZoneManager {
                 this.redraw();
                 resolve();
             };
+            
             img.onerror = reject;
             
-            // Check if source is a File or base64 string
+            // Check if source is a File or URL string
             if (source instanceof File) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
@@ -74,7 +79,7 @@ class ZoneManager {
                 reader.onerror = reject;
                 reader.readAsDataURL(source);
             } else if (typeof source === 'string') {
-                // Assume base64 data URL
+                // Assume URL or base64 data URL
                 img.src = source;
             } else {
                 reject(new Error('Invalid image source'));
@@ -243,28 +248,38 @@ class ZoneManager {
      * Start new zone
      */
     startNewZone() {
-        // Check max zones
+        // ✅ Check max zones limit
         if (this.zones.length >= this.maxZones) {
-            this.showMessage(`Cannot create more than ${this.maxZones} zones`, 'error');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Maximum Zones Reached',
+                html: `
+                    <p>You have reached the maximum of <strong>${this.maxZones} zones</strong>.</p>
+                    <p>Please delete an existing zone or increase the maximum zones limit.</p>
+                `,
+                confirmButtonColor: '#ffc107'
+            });
             return false;
         }
         
-        // Generate new zone with updated field names
+        // Generate new zone
         const nextId = this.zones.length > 0 ? Math.max(...this.zones.map(z => z.id)) + 1 : 1;
         
         this.currentZone = {
             id: nextId,
             name: `Zone_${nextId}`,
-            polygon: [],  // Changed from 'points'
-            threshold_percent: 45.0,  // New field
-            alert_threshold: 3000,  // Renamed from alertThreshold, in milliseconds
-            pallet_type: 1,  // New field: 1=Inbound, 2=Outbound
-            active: true  // Changed from 'enabled'
+            polygon: [],
+            threshold_percent: 45.0,
+            alert_threshold: 3000,
+            pallet_type: 1,
+            active: true
         };
         
         this.showMessage('Click to add points (3-8 points). Right-click or double-click to finish.', 'info');
         return true;
     }
+
+    
     
     /**
      * Finish current zone
@@ -316,11 +331,27 @@ class ZoneManager {
     
     /**
      * Delete zone
+     *  * ✅ FIXED: Delete zone with confirmation
      */
     deleteZone(zoneId) {
-        this.zones = this.zones.filter(z => z.id !== zoneId);
-        this.redraw();
-        this.updateZoneList();
+        const zone = this.zones.find(z => z.id === zoneId);
+        if (!zone) return;
+        
+        Swal.fire({
+            title: 'Delete Zone?',
+            text: `Are you sure you want to delete "${zone.name}"?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                this.zones = this.zones.filter(z => z.id !== zoneId);
+                this.redraw();
+                this.updateZoneList();
+                this.showMessage('Zone deleted successfully', 'success');
+            }
+        });
     }
     
     /**
@@ -414,12 +445,25 @@ class ZoneManager {
     
     /**
      * Update zone list UI
+     * ✅ FIXED: Update zone list UI with proper event listeners
      */
     updateZoneList() {
         const container = document.getElementById('zoneList');
         if (!container) return;
         
         container.innerHTML = '';
+        
+        if (this.zones.length === 0) {
+            container.innerHTML = '<p class="text-muted">No zones configured yet.</p>';
+            
+            // Update badge
+            const usedZonesEl = document.getElementById('usedZones');
+            if (usedZonesEl) {
+                usedZonesEl.textContent = `0/${this.maxZones} zones used`;
+                usedZonesEl.className = 'badge badge-secondary';
+            }
+            return;
+        }
         
         this.zones.forEach((zone, index) => {
             const palletTypeLabel = zone.pallet_type === 1 ? 'Inbound' : 'Outbound';
@@ -444,14 +488,13 @@ class ZoneManager {
                             </p>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button class="btn btn-sm btn-info mb-1" onclick="zoneManager.editZone(${zone.id})">
+                            <button class="btn btn-sm btn-info mb-1 btn-edit-zone" data-zone-id="${zone.id}">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <button class="btn btn-sm btn-danger mb-1" onclick="zoneManager.deleteZone(${zone.id})">
+                            <button class="btn btn-sm btn-danger mb-1 btn-delete-zone" data-zone-id="${zone.id}">
                                 <i class="fas fa-trash"></i> Delete
                             </button>
-                            <button class="btn btn-sm btn-${zone.active ? 'warning' : 'success'}" 
-                                    onclick="zoneManager.toggleZone(${zone.id})">
+                            <button class="btn btn-sm btn-${zone.active ? 'warning' : 'success'} btn-toggle-zone" data-zone-id="${zone.id}">
                                 <i class="fas fa-power-off"></i> ${zone.active ? 'Deactivate' : 'Activate'}
                             </button>
                         </div>
@@ -461,12 +504,46 @@ class ZoneManager {
             container.appendChild(card);
         });
         
+        // ✅ Add event listeners to buttons (not inline onclick)
+        container.querySelectorAll('.btn-edit-zone').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                this.editZone(zoneId);
+            });
+        });
+        
+        container.querySelectorAll('.btn-delete-zone').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                this.deleteZone(zoneId);
+            });
+        });
+        
+        container.querySelectorAll('.btn-toggle-zone').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                this.toggleZone(zoneId);
+            });
+        });
+        
         // Update zone usage badge
         const usedZonesEl = document.getElementById('usedZones');
         if (usedZonesEl) {
             usedZonesEl.textContent = `${this.zones.length}/${this.maxZones} zones used`;
+            
+            // Change badge color based on usage
+            if (this.zones.length === 0) {
+                usedZonesEl.className = 'badge badge-secondary';
+            } else if (this.zones.length >= this.maxZones) {
+                usedZonesEl.className = 'badge badge-danger';
+            } else if (this.zones.length >= this.maxZones * 0.8) {
+                usedZonesEl.className = 'badge badge-warning';
+            } else {
+                usedZonesEl.className = 'badge badge-info';
+            }
         }
     }
+
     
     /**
      * Update point count for current zone
@@ -574,103 +651,227 @@ class ZoneManager {
         
         zone.active = !zone.active;
         this.updateZoneList();
+        
+        const status = zone.active ? 'activated' : 'deactivated';
+        this.showMessage(`Zone "${zone.name}" ${status}`, 'success');
     }
     
     /**
      * Save all zones to backend
      */
-    async saveZones() {
-        try {
-            if (!this.referenceImage) {
-                this.showMessage('Please capture an image first', 'warning');
-                return;
-            }
-            
-            // Step 1: Save master and polygon images
-            // Master image: original camera capture
-            // Polygon image: canvas with zones drawn
-            const masterImageData = await this.getCanvasImageData(false);  // Without zones
-            const polygonImageData = await this.getCanvasImageData(true);  // With zones
-            
-            const imageResponse = await fetch(`${this.apiUrl}/zones/save-image`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    master_image: masterImageData,
-                    polygon_image: polygonImageData
-                })
-            });
-            
-            const imageResult = await imageResponse.json();
-            if (!imageResult.success) {
-                this.showMessage(`Failed to save images: ${imageResult.message}`, 'error');
-                return;
-            }
-            
-            console.log('✅ Images saved:', imageResult.master_path, imageResult.polygon_path);
-            
-            // Step 2: Validate zones on backend
-            const validateResponse = await fetch(`${this.apiUrl}/zones/validate`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ zones: this.zones })
-            });
-            
-            const validateResult = await validateResponse.json();
-            
-            if (!validateResult.valid) {
-                this.showMessage(`Validation error: ${validateResult.message}`, 'error');
-                return;
-            }
-            
-            // Step 3: Save zones configuration
-            const saveResponse = await fetch(`${this.apiUrl}/zones/save`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ zones: this.zones })
-            });
-            
-            const saveResult = await saveResponse.json();
-            
-            if (saveResult.success) {
-                this.showMessage('Zones saved successfully!', 'success');
-                console.log('✅ Zones configuration saved');
-            } else {
-                this.showMessage(`Save failed: ${saveResult.message}`, 'error');
-            }
-            
-        } catch (error) {
-            console.error('Save zones error:', error);
-            this.showMessage('Failed to save zones: ' + error.message, 'error');
+/**
+ * ✅ COMPLETE: Save all zones to backend with full validation
+ */
+async saveZones() {
+    try {
+        // ✅ Validation 1: Check if zones exist
+        if (this.zones.length === 0) {
+            this.showMessage('No zones to save. Please create at least one zone.', 'warning');
+            return;
         }
+        
+        // ✅ Validation 2: Check maximum zones limit
+        if (this.zones.length > this.maxZones) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Too Many Zones',
+                html: `
+                    <p>You have <strong>${this.zones.length} zones</strong> but maximum is <strong>${this.maxZones}</strong>.</p>
+                    <p>Please delete <strong>${this.zones.length - this.maxZones} zone(s)</strong> before saving.</p>
+                `,
+                confirmButtonColor: '#dc3545'
+            });
+            return;
+        }
+        
+        // ✅ Validation 3: Check reference image
+        if (!this.referenceImage) {
+            this.showMessage('Please capture an image first', 'warning');
+            return;
+        }
+        
+        // ✅ Validation 4: Check each zone has at least 3 points
+        for (let zone of this.zones) {
+            if (zone.polygon.length < 3) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Zone',
+                    html: `
+                        <p>Zone "<strong>${zone.name}</strong>" has only <strong>${zone.polygon.length} points</strong>.</p>
+                        <p>Each zone must have at least <strong>3 points</strong>.</p>
+                    `,
+                    confirmButtonColor: '#dc3545'
+                });
+                return;
+            }
+        }
+        
+        // Show loading
+        Swal.fire({
+            title: 'Saving Zones...',
+            html: 'Please wait while saving zones and images',
+            allowOutsideClick: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        
+        // Step 1: Save master and polygon images
+        // Master image: original camera capture (without zones)
+        // Polygon image: canvas with zones drawn
+        console.log('📸 Step 1/3: Saving images...');
+        
+        const masterImageData = await this.getCanvasImageData(false);  // Without zones
+        const polygonImageData = await this.getCanvasImageData(true);  // With zones
+        
+        const imageResponse = await fetch(`${this.apiUrl}/zones/save-image`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                master_image: masterImageData,
+                polygon_image: polygonImageData
+            })
+        });
+        
+        if (!imageResponse.ok) {
+            throw new Error(`Image save failed: HTTP ${imageResponse.status}`);
+        }
+        
+        const imageResult = await imageResponse.json();
+        if (!imageResult.success) {
+            throw new Error(`Failed to save images: ${imageResult.message}`);
+        }
+        
+        console.log('✅ Images saved:', imageResult.master_path, imageResult.polygon_path);
+        
+        // Step 2: Validate zones on backend (Shapely polygon intersection check)
+        console.log('🔍 Step 2/3: Validating zones...');
+        
+        const validateResponse = await fetch(`${this.apiUrl}/zones/validate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ zones: this.zones })
+        });
+        
+        if (!validateResponse.ok) {
+            throw new Error(`Validation failed: HTTP ${validateResponse.status}`);
+        }
+        
+        const validateResult = await validateResponse.json();
+        
+        if (!validateResult.valid) {
+            Swal.close();
+            Swal.fire({
+                icon: 'error',
+                title: 'Zone Overlap Detected',
+                html: `
+                    <p><strong>Validation Error:</strong></p>
+                    <p>${validateResult.message}</p>
+                    <hr>
+                    <p><small>Please adjust your zones so they don't overlap.</small></p>
+                `,
+                confirmButtonColor: '#dc3545'
+            });
+            return;
+        }
+        
+        console.log('✅ Zones validated (no overlaps)');
+        
+        // Step 3: Save zones configuration to zones.json
+        console.log('💾 Step 3/3: Saving zones configuration...');
+        
+        const saveResponse = await fetch(`${this.apiUrl}/zones/save`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ zones: this.zones })
+        });
+        
+        if (!saveResponse.ok) {
+            throw new Error(`Save failed: HTTP ${saveResponse.status}`);
+        }
+        
+        const saveResult = await saveResponse.json();
+        
+        if (saveResult.success) {
+            Swal.close();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                html: `
+                    <p>✅ <strong>${this.zones.length} zones</strong> saved successfully!</p>
+                    <p>📸 Images saved to <code>upload_image/config_zone/</code></p>
+                    <p>📝 Configuration saved to <code>config/zones.json</code></p>
+                `,
+                confirmButtonColor: '#28a745'
+            });
+            console.log('✅ Zones configuration saved');
+        } else {
+            throw new Error(saveResult.message || 'Save failed');
+        }
+        
+    } catch (error) {
+        console.error('❌ Save zones error:', error);
+        Swal.close();
+        Swal.fire({
+            icon: 'error',
+            title: 'Save Failed',
+            html: `
+                <p><strong>Error:</strong> ${error.message}</p>
+                <hr>
+                <p><strong>Please check:</strong></p>
+                <ul style="text-align: left;">
+                    <li>Flask backend is running</li>
+                    <li>Network connection is stable</li>
+                    <li>Check browser Console (F12) for details</li>
+                </ul>
+            `,
+            confirmButtonColor: '#dc3545'
+        });
     }
+}
     
     /**
      * Get canvas image as base64 data URL
      * @param {boolean} withZones - Include zone overlays or just master image
      */
     async getCanvasImageData(withZones) {
-        // Create temporary canvas
-        const tempCanvas = document.createElement('canvas');
-        tempCanvas.width = this.canvas.width;
-        tempCanvas.height = this.canvas.height;
-        const tempCtx = tempCanvas.getContext('2d');
-        
-        // Draw reference image
-        if (this.referenceImage) {
-            tempCtx.drawImage(this.referenceImage, 0, 0, tempCanvas.width, tempCanvas.height);
+        try {
+            // Create temporary canvas
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = this.canvas.width;
+            tempCanvas.height = this.canvas.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            // Draw reference image
+            if (this.referenceImage) {
+                tempCtx.drawImage(this.referenceImage, 0, 0, tempCanvas.width, tempCanvas.height);
+            } else {
+                throw new Error('No reference image loaded');
+            }
+            
+            // Draw zones if requested
+            if (withZones) {
+                this.zones.forEach((zone, index) => {
+                    this.drawZoneOnContext(tempCtx, zone, this.colors[index % this.colors.length]);
+                });
+            }
+            
+            // ✅ Try to convert to data URL
+            try {
+                const dataUrl = tempCanvas.toDataURL('image/jpeg', 0.9);
+                console.log(`✅ Canvas exported (${withZones ? 'with' : 'without'} zones):`, dataUrl.substring(0, 50) + '...');
+                return dataUrl;
+            } catch (error) {
+                console.error('❌ Canvas export error:', error);
+                throw new Error('Canvas export failed: Image may be tainted. Please ensure CORS is enabled on the server.');
+            }
+            
+        } catch (error) {
+            console.error('❌ getCanvasImageData error:', error);
+            throw error;
         }
-        
-        // Draw zones if requested
-        if (withZones) {
-            this.zones.forEach((zone, index) => {
-                this.drawZoneOnContext(tempCtx, zone, this.colors[index % this.colors.length]);
-            });
-        }
-        
-        // Convert to data URL
-        return tempCanvas.toDataURL('image/jpeg', 0.9);
     }
+
     
     /**
      * Draw zone on a specific context (helper for image export)
@@ -726,6 +927,123 @@ class ZoneManager {
             ctx.textBaseline = 'middle';
             ctx.fillText(zone.name, centerX, centerY);
         }
+    }
+
+    /**
+     * ✅ NEW: Capture image from camera
+     */
+    async captureImageFromCamera() {
+        try {
+            // แสดง loading
+            const loadingEl = document.getElementById('captureLoading');
+            if (loadingEl) loadingEl.style.display = 'block';
+            
+            // เรียก API capture
+            const response = await fetch(`${this.apiUrl}/zones/capture`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            
+            if (!result.success) {
+                throw new Error(result.message || 'Capture failed');
+            }
+            
+            // แปลง path → absolute URL
+            const imagePath = result.image_path;
+            const imageUrl = `http://localhost:5000/${imagePath}`;
+            
+            console.log('📷 Loading captured image:', imageUrl);
+            
+            // โหลดรูป
+            await this.loadImageFromPath(imageUrl);
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Success!',
+                text: 'Image captured successfully',
+                timer: 2000
+            });
+            
+            console.log('✅ Captured:', {
+                path: imagePath,
+                camera: result.camera_id,
+                size: `${result.width}x${result.height}`
+            });
+            
+        } catch (error) {
+            console.error('❌ Capture error:', error);
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'Camera Capture Failed',
+                html: `
+                    <p><strong>Error:</strong> ${error.message}</p>
+                    <hr>
+                    <p><strong>Solutions:</strong></p>
+                    <ul style="text-align: left;">
+                        <li>Stop camera stream in Camera tab first</li>
+                        <li>Check camera connection</li>
+                        <li>Verify config/pallet_config.json</li>
+                    </ul>
+                `,
+                confirmButtonColor: '#dc3545'
+            });
+            
+        } finally {
+            // ซ่อน loading
+            const loadingEl = document.getElementById('captureLoading');
+            if (loadingEl) loadingEl.style.display = 'none';
+        }
+    }
+
+    /**
+     * ✅ NEW: Load image from server path/URL
+     */
+    async loadImageFromPath(imagePath) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            
+            // ✅ CRITICAL: Enable CORS to prevent canvas tainting
+            img.crossOrigin = "anonymous";
+            
+            img.onload = () => {
+                this.referenceImage = img;
+                
+                // Resize canvas (max 1200px width)
+                const maxWidth = 1200;
+                const scale = Math.min(1, maxWidth / img.width);
+                this.canvas.width = img.width * scale;
+                this.canvas.height = img.height * scale;
+                
+                // Store original dimensions
+                this.originalImageWidth = img.width;
+                this.originalImageHeight = img.height;
+                
+                this.redraw();
+                console.log('✅ Image loaded:', imagePath, `(${img.width}x${img.height})`);
+                resolve();
+            };
+            
+            img.onerror = (error) => {
+                console.error('❌ Image load error:', error);
+                reject(new Error(`Failed to load image: ${imagePath}`));
+            };
+            
+            // Add cache buster + ensure full URL
+            const fullUrl = imagePath.startsWith('http') 
+                ? imagePath 
+                : `${window.location.protocol}//${window.location.hostname}:5000/${imagePath}`;
+            
+            img.src = `${fullUrl}?t=${Date.now()}`;
+            
+            console.log('📷 Loading image from:', img.src);
+        });
     }
     
     /**

@@ -491,69 +491,36 @@
                                 <h4><i class="fas fa-draw-polygon"></i> Detection Zones Configuration</h4>
                                 <hr>
                                 
-                                <div class="alert alert-info">
-                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 20 detection zones with custom properties. Each zone can have 3-8 points and will be validated for overlaps using Shapely polygon intersection.
-                                </div>
-                                
-                                <!-- Max Zones Configuration -->
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label><i class="fas fa-layer-group"></i> Maximum Zones</label>
-                                            <select class="form-control" id="maxZonesSelect">
-                                                <?php 
-                                                // Note: Max zones limit (20) should match MAX_ZONES in utils/zone_config.py
-                                                $max_zones = 20;
-                                                for ($i = 1; $i <= $max_zones; $i++): 
-                                                ?>
-                                                <option value="<?php echo $i; ?>"><?php echo $i; ?> Zone<?php echo $i > 1 ? 's' : ''; ?></option>
-                                                <?php endfor; ?>
-                                            </select>
-                                            <small class="form-text text-muted">Select maximum number of zones (1-<?php echo $max_zones; ?>)</small>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 text-right">
-                                        <div class="mt-4">
-                                            <h5>
-                                                <span class="badge badge-info" id="usedZones">0/<?php echo $max_zones; ?> zones used</span>
-                                            </h5>
-                                            <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
+  
                                 <!-- Capture Image from Camera -->
                                 <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <button class="btn btn-primary" id="btnCaptureImage">
+                                    <div class="col-md-12">                                        
+                                        <button class="btn btn-primary btn-lg" id="btnCaptureImage">
                                             <i class="fas fa-camera"></i> Capture Image from Camera
                                         </button>
-                                        <small class="form-text text-muted d-inline-block ml-2">
-                                            Capture image from configured camera for zone drawing
-                                        </small>
+                                        <small class="form-text text-muted d-inline-block ml-2"><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> Please <strong>stop camera stream</strong> in Camera tab before capturing.</small>
                                     </div>
-                                </div>
-                                
+                                    </div><!-- /.row -->
                                 <!-- Reference Image Preview -->
-                                <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5><i class="fas fa-image"></i> Current Reference Image</h5>
-                                            </div>
-                                            <div class="card-body text-center">
-                                                <img id="currentReferenceImage" 
-                                                     src="" 
-                                                     alt="No reference image" 
-                                                     style="max-width: 100%; height: auto; border: 2px solid #ddd; display: none;">
-                                                <p id="noReferenceImage" class="text-muted">
-                                                    <i class="fas fa-info-circle"></i> No reference image captured yet. Click "Capture Image from Camera" to start.
-                                                </p>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5><i class="fas fa-image"></i> Current Reference Image</h5>
+                                                </div>
+                                                <div class="card-body text-center">
+                                                    <img id="currentReferenceImage" 
+                                                        src="" 
+                                                        alt="No reference image" 
+                                                        style="max-width: 100%; height: auto; border: 2px solid #ddd; display: none;">
+                                                    <p id="noReferenceImage" class="text-muted">
+                                                        <i class="fas fa-info-circle"></i> No reference image captured yet. Click "Capture Image from Camera" to start.
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                
+
                                 <!-- Drawing Canvas -->
                                 <div class="row mb-3">
                                     <div class="col-md-12">
@@ -604,7 +571,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+                                <!-- Zone Manager Container -->
+
+
+                                </div>
                             </div>
                             
                         </div>
@@ -1281,7 +1251,6 @@ document.querySelector('.btn-clear-old-images').addEventListener('click', functi
     });
 });
 
-
 // ========================================
 // 4. Load Storage Info
 // ========================================
@@ -1609,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Zone Configuration Management
 // ========================================
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize canvas with default size
+    // Initialize canvas
     const canvas = document.getElementById('zoneCanvas');
     if (canvas) {
         canvas.width = 800;
@@ -1617,86 +1586,76 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Initialize Zone Manager
-    zoneManager = new ZoneManager('zoneCanvas', {
+    window.zoneManager = new ZoneManager('zoneCanvas', {
         apiUrl: API_URL
     });
     
-    // Capture Image Button
-    document.getElementById('btnCaptureImage')?.addEventListener('click', async function() {
-        showLoading('Capturing image from camera...');
-        const success = await zoneManager.captureImage();
-        Swal.close();
-        
-        if (success) {
-            // Show the captured image
-            document.getElementById('currentReferenceImage').style.display = 'block';
-            document.getElementById('noReferenceImage').style.display = 'none';
-        }
-    });
+    // ✅ FIXED: Capture Image Button - with debounce protection
+    let isCapturing = false;
+    const captureBtn = document.getElementById('btnCaptureImage');
+    
+    if (captureBtn) {
+        captureBtn.addEventListener('click', async function() {
+            // Prevent double-click
+            if (isCapturing) {
+                console.warn('⚠️ Capture already in progress');
+                return;
+            }
+            
+            isCapturing = true;
+            this.disabled = true;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Capturing...';
+            
+            try {
+                await window.zoneManager.captureImageFromCamera();
+            } catch (error) {
+                console.error('Capture failed:', error);
+            } finally {
+                isCapturing = false;
+                this.disabled = false;
+                this.innerHTML = '<i class="fas fa-camera"></i> Capture Image from Camera';
+            }
+        });
+    }
     
     // Add Zone Button
     document.getElementById('btnAddZone')?.addEventListener('click', function() {
-        const success = zoneManager.startNewZone();
+        const success = window.zoneManager.startNewZone();
         if (success) {
-            document.getElementById('currentZonePoints').style.display = 'block';
-            zoneManager.updatePointCount();
+            console.log('✅ New zone started');
         }
     });
     
     // Save Zones Button
     document.getElementById('btnSaveZones')?.addEventListener('click', async function() {
-        showLoading('Saving zones and images...');
-        await zoneManager.saveZones();
+        showLoading('Saving zones...');
+        await window.zoneManager.saveZones();
         Swal.close();
     });
     
-    // Clear All Zones Button
+    // Clear Zones Button
     document.getElementById('btnClearZones')?.addEventListener('click', function() {
         Swal.fire({
             title: 'Clear All Zones?',
-            text: 'This will delete all configured zones. This action cannot be undone.',
+            text: 'This action cannot be undone.',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             confirmButtonText: 'Yes, clear all'
         }).then((result) => {
             if (result.isConfirmed) {
-                zoneManager.zones = [];
-                zoneManager.currentZone = null;
-                zoneManager.redraw();
-                zoneManager.updateZoneList();
+                window.zoneManager.zones = [];
+                window.zoneManager.redraw();
+                window.zoneManager.updateZoneList();
                 showSuccess('All zones cleared');
             }
         });
     });
     
-    // Load Zones Button
-    document.getElementById('btnLoadZones')?.addEventListener('click', async function() {
-        showLoading('Loading zones...');
-        await zoneManager.loadZones();
-        Swal.close();
-    });
-    
-    // Max Zones Select Handler
-    document.getElementById('maxZonesSelect')?.addEventListener('change', function() {
-        const maxZones = parseInt(this.value);
-        zoneManager.maxZones = maxZones;
-        zoneManager.updateZoneList();
-        console.log(`Max zones set to: ${maxZones}`);
-    });
-    
-    // Load zone configuration when tab is opened
+    // Load zones when Zone tab is opened
     document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
         try {
-            // Load zones from backend
-            const response = await fetch(`${API_URL}/zones`);
-            const data = await response.json();
-            
-            if (data.success && data.zones && data.zones.length > 0) {
-                await zoneManager.loadZones();
-            }
-            
-            // Auto-load latest images
+            await window.zoneManager.loadZones();
             await loadLatestZoneImages();
         } catch (error) {
             console.error('Failed to load zone configuration:', error);
@@ -1704,20 +1663,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Load latest zone images from backend
+// Load latest zone images
 async function loadLatestZoneImages() {
     try {
         const response = await fetch(`${API_URL}/zones/latest-images`);
         const data = await response.json();
         
         if (data.success && data.master_image) {
-            // Load the latest master image
-            await zoneManager.loadLatestImages();
-            
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
-            imgEl.src = data.master_image + '?t=' + Date.now();  // Cache bust
+            imgEl.src = data.master_image + '?t=' + Date.now();
             imgEl.style.display = 'block';
             noImgEl.style.display = 'none';
             
@@ -1727,5 +1683,6 @@ async function loadLatestZoneImages() {
         console.error('Failed to load latest zone images:', error);
     }
 }
+
 
 </script>

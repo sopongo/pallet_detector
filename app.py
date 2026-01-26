@@ -45,6 +45,29 @@ logger = setup_logger()
 app = Flask(__name__)
 CORS(app)
 
+# ✅ NEW: Serve static images from upload_image directory
+# Serve uploaded images (ใช้ imagePath จาก config)
+@app.route('/upload_image/<path:filename>')
+def serve_uploaded_image(filename):
+    """
+    Serve images from upload_image directory with CORS headers
+    to prevent canvas tainting
+    """
+    upload_dir = os.path.join(os.path.dirname(__file__), 'upload_image')
+    
+    response = send_from_directory(upload_dir, filename)
+    
+    # ✅ Add CORS headers to allow canvas export
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    
+    return response
+
+
 # ----------------------------------------
 # สร้าง LightController (ถ้ามีข้อผิดพลาดเช่นบน Windows ให้จับ exception)
 # ----------------------------------------
@@ -191,7 +214,6 @@ def test_line():
         logger.error(f"LINE test error: {e}")
         return jsonify({"success": False, "message": f"Error: {str(e)}"}), 500
 
-
 # ----------------------------------------
 # Camera routes: detect list / stream
 # ----------------------------------------
@@ -213,6 +235,8 @@ def video_stream(camera_id):
     except Exception as e:
         logger.error(f"Video stream error: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
+
+
 
 
 # ----------------------------------------
@@ -706,21 +730,6 @@ def get_active_pallets():
         return jsonify({"success": False, "message": str(e)}), 500
 
 
-# ----------------------------------------
-# Serve uploaded images (ใช้ imagePath จาก config)
-# ----------------------------------------
-@app.route('/static/upload_image/<path:filename>')
-def serve_uploaded_image(filename):
-    try:
-        cfg = config.load_config()
-        image_dir = cfg['general']['imagePath']
-        if not os.path.isabs(image_dir):
-            image_dir = os.path.abspath(image_dir)
-        return send_from_directory(image_dir, filename)
-    except Exception as e:
-        logger.error(f"Error serving image: {e}")
-        return jsonify({"success": False, "message": str(e)}), 404
-
 
 @app.route('/api/config/locations', methods=['GET'])
 def get_locations():
@@ -928,67 +937,87 @@ def upload_zone_image():
 @app.route('/api/zones/capture', methods=['POST'])
 def capture_zone_image():
     """
-    Capture image from camera for zone configuration
-    อ่านภาพจากกล้องสำหรับการตั้งค่าโซน
+    ✅ Capture image from configured camera
     """
     try:
-        # Get camera configuration from config
-        # อ่านการตั้งค่ากล้องจาก config
-        camera_config = config.get_config('camera')
-        camera_index = camera_config.get('selectedCamera', '0')
+        import cv2
         
-        # Convert camera_index to int if it's a digit
-        # แปลง camera_index เป็น int ถ้าเป็นตัวเลข
-        if isinstance(camera_index, str) and camera_index.isdigit():
-            camera_index = int(camera_index)
+        # ✅ อ่าน config โดยตรงจากไฟล์
+        config_file = os.path.join(os.path.dirname(__file__), 'config', 'pallet_config.json')
         
-        logger.info(f"📷 Capturing image from camera: {camera_index}")
+        if not os.path.exists(config_file):
+            raise Exception("Config file not found. Please configure camera first.")
         
-        # Use RobustCamera for reliable capture
-        # ใช้ RobustCamera สำหรับการถ่ายภาพที่น่าเชื่อถือ
-        from utils.camera import RobustCamera
-        camera = RobustCamera(camera_index)
+        with open(config_file, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
         
-        # Capture frame
-        # ถ่ายภาพ
-        ret, frame = camera.read()
-        camera.release()
+        # ดึงค่า camera config
+        camera_id = cfg.get('camera', {}).get('selectedCamera', '0')
+        resolution = cfg.get('camera', {}).get('resolution', {'width': 1280, 'height': 720})
+        
+        # แปลง camera_id เป็น int
+        if isinstance(camera_id, str) and camera_id.isdigit():
+            camera_id = int(camera_id)
+        
+        logger.info(f"📷 Capturing from camera {camera_id} at {resolution['width']}x{resolution['height']}")
+        
+        # Initialize camera
+        cap = cv2.VideoCapture(camera_id, cv2.CAP_DSHOW)  # CAP_DSHOW for Windows
+        
+        if not cap.isOpened():
+            raise Exception(f"Cannot open camera {camera_id}. Please check camera connection.")
+        
+        # Set resolution
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, resolution['width'])
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, resolution['height'])
+        
+        # Warm up (read 5 frames)
+        for i in range(5):
+            ret, frame = cap.read()
+            if not ret:
+                logger.warning(f"⚠️ Warm-up frame {i+1} failed")
+        
+        # Capture final frame
+        ret, frame = cap.read()
+        
+        # Release camera immediately
+        cap.release()
         
         if not ret or frame is None:
-            return jsonify({
-                "success": False,
-                "message": "Failed to capture image from camera"
-            }), 500
+            raise Exception("Failed to capture frame from camera")
         
-        # Encode frame to JPEG
-        # แปลงภาพเป็น JPEG
-        ret, buffer = cv2.imencode('.jpg', frame)
-        if not ret:
-            return jsonify({
-                "success": False,
-                "message": "Failed to encode image"
-            }), 500
+        # Save to temp directory
+        temp_dir = os.path.join(os.path.dirname(__file__), 'upload_image', 'temp')
+        os.makedirs(temp_dir, exist_ok=True)
         
-        # Convert to base64 for transmission
-        # แปลงเป็น base64 สำหรับส่งข้อมูล
-        import base64
-        img_base64 = base64.b64encode(buffer).decode('utf-8')
+        temp_filename = 'zone_capture.jpg'
+        temp_path = os.path.join(temp_dir, temp_filename)
         
-        logger.info("✅ Image captured successfully")
+        # Save with high quality
+        cv2.imwrite(temp_path, frame, [cv2.IMWRITE_JPEG_QUALITY, 95])
+        
+        # Return relative path
+        relative_path = f"upload_image/temp/{temp_filename}"
+        
+        logger.info(f"✅ Image captured: {relative_path} ({frame.shape[1]}x{frame.shape[0]})")
         
         return jsonify({
             "success": True,
             "message": "Image captured successfully",
-            "image": f"data:image/jpeg;base64,{img_base64}",
+            "image_path": relative_path,
+            "camera_id": camera_id,
             "width": frame.shape[1],
             "height": frame.shape[0]
         }), 200
         
     except Exception as e:
-        logger.error(f"Error capturing zone image: {e}")
+        logger.error(f"❌ Capture error: {e}")
+        import traceback
+        traceback.print_exc()
+        
         return jsonify({
             "success": False,
-            "message": f"Camera capture error: {str(e)}"
+            "message": f"Camera capture failed: {str(e)}\n\nPlease:\n1. Stop camera stream in Camera tab\n2. Check camera connection\n3. Verify camera configuration"
         }), 500
 
 
@@ -1028,8 +1057,8 @@ def save_zone_images():
         now = datetime.now()
         date_str = now.strftime('%d-%m-%Y')
         
-        master_filename = f"img_master_configzone_{date_str}.jpg"
-        polygon_filename = f"img_polygon_configzone_{date_str}.jpg"
+        master_filename = f"img_master_configzone.jpg" #master_filename = f"img_master_configzone_{date_str}.jpg"
+        polygon_filename = f"img_polygon_configzone.jpg" #polygon_filename = f"img_polygon_configzone_{date_str}.jpg"
         
         # Save master image
         # บันทึกภาพต้นฉบับ

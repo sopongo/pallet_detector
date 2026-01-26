@@ -1,76 +1,60 @@
 {
   "zones": [
     {
-      "alertThreshold": 20,
-      "enabled": true,
       "id": 1,
-      "name": "Inbound Zone",
-      "points": [
-        {
-          "x": 5,
-          "y": 5
-        },
-        {
-          "x": 25,
-          "y": 5
-        },
-        {
-          "x": 25,
-          "y": 25
-        },
-        {
-          "x": 5,
-          "y": 25
-        }
-      ]
+      "name": "Zone_1",
+      "polygon": [
+        [
+          0.3233,
+          0.5818
+        ],
+        [
+          0.5867,
+          0.6766
+        ],
+        [
+          0.3975,
+          0.8989
+        ],
+        [
+          0.2442,
+          0.9122
+        ]
+      ],
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
     },
     {
-      "alertThreshold": 60,
-      "enabled": true,
       "id": 2,
-      "name": "Outbound Zone",
-      "points": [
-        {
-          "x": 35,
-          "y": 5
-        },
-        {
-          "x": 55,
-          "y": 5
-        },
-        {
-          "x": 55,
-          "y": 25
-        },
-        {
-          "x": 35,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "alertThreshold": 30,
-      "enabled": true,
-      "id": 3,
-      "name": "Free Zone",
-      "points": [
-        {
-          "x": 65,
-          "y": 5
-        },
-        {
-          "x": 85,
-          "y": 5
-        },
-        {
-          "x": 85,
-          "y": 25
-        },
-        {
-          "x": 65,
-          "y": 25
-        }
-      ]
+      "name": "Zone_2",
+      "polygon": [
+        [
+          0.4492,
+          0.2352
+        ],
+        [
+          0.6192,
+          0.5048
+        ],
+        [
+          0.8492,
+          0.5937
+        ],
+        [
+          0.86,
+          0.4722
+        ],
+        [
+          0.8258,
+          0.2041
+        ]
+      ],
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
     }
   ],
   "enabled": true
