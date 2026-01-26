@@ -492,54 +492,55 @@
                                 <hr>
                                 
                                 <div class="alert alert-info">
-                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 4 detection zones with custom alert thresholds. Each zone can have 3-8 points and will be validated for overlaps.
+                                    <i class="fas fa-info-circle"></i> <strong>Zone System:</strong> Define up to 20 detection zones with custom alert thresholds. Each zone can have 3-8 points and will be validated for overlaps.
                                 </div>
                                 
-                                <!-- Zone System Toggle -->
-                                <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="zoneSystemEnabled">
-                                            <label class="custom-control-label" for="zoneSystemEnabled">
-                                                <strong>Enable Zone System</strong>
-                                            </label>
-                                        </div>
-                                        <small class="form-text text-muted">When disabled, system uses global detection without zones</small>
-                                    </div>
-                                </div>
-                                
-                                <!-- Reference Image Upload -->
+                                <!-- Max Zones Selector and Capture Button -->
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label><i class="fas fa-image"></i> Upload Reference Image</label>
-                                            <input type="file" class="form-control-file" id="zoneReferenceImage" accept="image/*">
-                                            <small class="form-text text-muted">Upload a warehouse photo to draw zones on</small>
+                                            <label><i class="fas fa-sliders-h"></i> Maximum Zones</label>
+                                            <select id="maxZonesSelect" class="form-control">
+                                                <option value="1">1 Zone</option>
+                                                <option value="2">2 Zones</option>
+                                                <option value="3">3 Zones</option>
+                                                <option value="4">4 Zones</option>
+                                                <option value="5">5 Zones</option>
+                                                <option value="6">6 Zones</option>
+                                                <option value="7">7 Zones</option>
+                                                <option value="8">8 Zones</option>
+                                                <option value="9">9 Zones</option>
+                                                <option value="10">10 Zones</option>
+                                                <option value="11">11 Zones</option>
+                                                <option value="12">12 Zones</option>
+                                                <option value="13">13 Zones</option>
+                                                <option value="14">14 Zones</option>
+                                                <option value="15">15 Zones</option>
+                                                <option value="16">16 Zones</option>
+                                                <option value="17">17 Zones</option>
+                                                <option value="18">18 Zones</option>
+                                                <option value="19">19 Zones</option>
+                                                <option value="20" selected>20 Zones (Maximum)</option>
+                                            </select>
+                                            <small class="form-text text-muted">Maximum number of zones allowed</small>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 text-right">
-                                        <p class="mb-1"><strong>Zones:</strong> <span id="remainingZones">4 zones remaining</span></p>
-                                        <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label><i class="fas fa-camera"></i> Capture Reference Image</label>
+                                            <button id="btnCaptureImage" class="btn btn-primary btn-block">
+                                                <i class="fas fa-camera"></i> Capture Image from Camera
+                                            </button>
+                                            <small class="form-text text-muted">Capture a live image from camera to draw zones on</small>
+                                        </div>
                                     </div>
                                 </div>
                                 
-                                <!-- Reference Image Preview -->
+                                <!-- Zone Status Display -->
                                 <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h5><i class="fas fa-image"></i> Current Reference Image</h5>
-                                            </div>
-                                            <div class="card-body text-center">
-                                                <img id="currentReferenceImage" 
-                                                     src="" 
-                                                     alt="No reference image" 
-                                                     style="max-width: 100%; height: auto; border: 2px solid #ddd; display: none;">
-                                                <p id="noReferenceImage" class="text-muted">
-                                                    <i class="fas fa-info-circle"></i> No reference image uploaded yet
-                                                </p>
-                                            </div>
-                                        </div>
+                                    <div class="col-md-12 text-center">
+                                        <p class="mb-1"><strong>Status:</strong> <span id="remainingZones">0/20 zones used</span></p>
+                                        <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
                                     </div>
                                 </div>
                                 
@@ -1610,17 +1611,25 @@ document.addEventListener('DOMContentLoaded', function() {
         apiUrl: API_URL
     });
     
-    // Reference Image Upload Handler
-    document.getElementById('zoneReferenceImage')?.addEventListener('change', function(e) {
-        const file = e.target.files[0];
-        if (file) {
-            zoneManager.loadImage(file)
-                .then(() => {
-                    showSuccess('Reference image loaded successfully');
-                })
-                .catch((err) => {
-                    showError('Failed to load image: ' + err.message);
-                });
+    // Max Zones Selector Handler - Update maxZones dynamically
+    document.getElementById('maxZonesSelect')?.addEventListener('change', function() {
+        const maxZones = parseInt(this.value);
+        if (zoneManager) {
+            zoneManager.maxZones = maxZones;
+            zoneManager.updateZoneList(); // Refresh display
+        }
+    });
+    
+    // Capture Image Button Handler
+    document.getElementById('btnCaptureImage')?.addEventListener('click', async function() {
+        try {
+            showLoading('Capturing image from camera...');
+            await zoneManager.captureImageFromCamera();
+            Swal.close();
+            showSuccess('Image captured successfully');
+        } catch (error) {
+            Swal.close();
+            showError('Failed to capture image: ' + error.message);
         }
     });
     
@@ -1667,80 +1676,28 @@ document.addEventListener('DOMContentLoaded', function() {
         Swal.close();
     });
     
-    // Zone System Toggle
-    document.getElementById('zoneSystemEnabled')?.addEventListener('change', async function() {
-        const enabled = this.checked;
-        
-        try {
-            const response = await fetch(`${API_URL}/zones/enabled`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ enabled })
-            });
-            
-            const result = await response.json();
-            
-            if (result.success) {
-                const status = enabled ? 'enabled' : 'disabled';
-                showSuccess(`Zone system ${status}`);
-            } else {
-                showError(result.message);
-                this.checked = !enabled; // Revert
-            }
-        } catch (error) {
-            showError('Failed to update zone system: ' + error.message);
-            this.checked = !enabled; // Revert
-        }
-    });
-    
-    // Load zone system status when tab is opened
+    // Auto-load zones and images when zone tab is shown
     document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
         try {
-            const response = await fetch(`${API_URL}/zones`);
-            const data = await response.json();
+            // Load existing zones
+            await zoneManager.loadZones();
             
-            if (data.success) {
-                document.getElementById('zoneSystemEnabled').checked = data.enabled;
-                
-                // Auto-load zones
-                if (data.zones && data.zones.length > 0) {
-                    await zoneManager.loadZones();
-                }
+            // Load latest images (master and polygon)
+            const response = await fetch(`${API_URL}/zones/latest-images`);
+            const result = await response.json();
+            
+            if (result.master_image) {
+                await zoneManager.loadImageFromPath(result.master_image);
             }
-            
-            // Load reference image
-            loadZoneReferenceImage();
         } catch (error) {
-            console.error('Failed to load zone status:', error);
+            console.error('Failed to load zone data:', error);
+        }
+    });
+        } catch (error) {
+        } catch (error) {
+            console.error('Failed to load zone data:', error);
         }
     });
 });
-
-// Load zone reference image
-function loadZoneReferenceImage() {
-    const imgEl = document.getElementById('currentReferenceImage');
-    const noImgEl = document.getElementById('noReferenceImage');
-    
-    // Get today's filename
-    const now = new Date();
-    const dd = now.getDate().toString().padStart(2, '0');
-    const mm = (now.getMonth() + 1).toString().padStart(2, '0');
-    const yyyy = now.getFullYear();
-    const filename = `img_configzone_${dd}-${mm}-${yyyy}.jpg`;
-    const imagePath = `upload_image/${filename}`;
-    
-    // Try to load image
-    const testImg = new Image();
-    testImg.onload = function() {
-        imgEl.src = imagePath + '?t=' + Date.now();  // Cache bust
-        imgEl.style.display = 'block';
-        noImgEl.style.display = 'none';
-    };
-    testImg.onerror = function() {
-        imgEl.style.display = 'none';
-        noImgEl.style.display = 'block';
-    };
-    testImg.src = imagePath;
-}
 
 </script>

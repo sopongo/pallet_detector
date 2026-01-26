@@ -20,7 +20,7 @@ class ZoneConfigManager:
     """Manager class for zone configuration"""
     
     # Constants
-    MAX_ZONES = 4
+    MAX_ZONES = 20  # Updated from 4 to 20
     MAX_POINTS_PER_ZONE = 8
     MIN_POINTS_PER_ZONE = 3
     
@@ -94,13 +94,15 @@ class ZoneConfigManager:
         Validate a single zone structure
         
         Args:
-            zone: Zone dict with 'id', 'name', 'points', 'alertThreshold', 'enabled'
+            zone: Zone dict with 'id', 'name', 'polygon', 'threshold_percent', 
+                  'alert_threshold', 'pallet_type', 'active'
             
         Returns:
             Tuple of (is_valid, error_message)
         """
-        # Check required fields
-        required_fields = ['id', 'name', 'points', 'alertThreshold', 'enabled']
+        # Check required fields - updated for new format
+        required_fields = ['id', 'name', 'polygon', 'threshold_percent', 
+                          'alert_threshold', 'pallet_type', 'active']
         for field in required_fields:
             if field not in zone:
                 return False, f"Missing required field: {field}"
@@ -109,44 +111,54 @@ class ZoneConfigManager:
         if not zone['name'] or not zone['name'].strip():
             return False, "Zone name cannot be empty"
         
-        # Validate points
-        points = zone['points']
-        if not isinstance(points, list):
-            return False, "Points must be a list"
+        # Validate polygon (changed from 'points')
+        polygon = zone['polygon']
+        if not isinstance(polygon, list):
+            return False, "Polygon must be a list"
         
-        if len(points) < self.MIN_POINTS_PER_ZONE:
+        if len(polygon) < self.MIN_POINTS_PER_ZONE:
             return False, f"Zone must have at least {self.MIN_POINTS_PER_ZONE} points"
         
-        if len(points) > self.MAX_POINTS_PER_ZONE:
+        if len(polygon) > self.MAX_POINTS_PER_ZONE:
             return False, f"Zone cannot have more than {self.MAX_POINTS_PER_ZONE} points"
         
-        # Validate each point
-        for i, point in enumerate(points):
-            if not isinstance(point, dict):
-                return False, f"Point {i} must be a dict"
-            if 'x' not in point or 'y' not in point:
-                return False, f"Point {i} missing x or y coordinate"
+        # Validate each point - expecting [x, y] format with normalized coords (0.0-1.0)
+        for i, point in enumerate(polygon):
+            if not isinstance(point, list) or len(point) != 2:
+                return False, f"Point {i} must be [x, y] array"
             
-            # Check percentage range (0-100)
+            # Check normalized range (0.0-1.0)
             try:
-                x = float(point['x'])
-                y = float(point['y'])
-                if not (0 <= x <= 100) or not (0 <= y <= 100):
-                    return False, f"Point {i} coordinates must be between 0 and 100 (percentage)"
+                x = float(point[0])
+                y = float(point[1])
+                if not (0.0 <= x <= 1.0) or not (0.0 <= y <= 1.0):
+                    return False, f"Point {i} coordinates must be between 0.0 and 1.0 (normalized)"
             except (ValueError, TypeError):
                 return False, f"Point {i} coordinates must be numeric"
         
-        # Validate alert threshold
+        # Validate threshold_percent
         try:
-            threshold = float(zone['alertThreshold'])
-            if threshold <= 0 or threshold > 1440:  # Max 24 hours
-                return False, "Alert threshold must be between 1 and 1440 minutes"
+            threshold = float(zone['threshold_percent'])
+            if threshold <= 0 or threshold > 100:
+                return False, "Threshold percent must be between 1 and 100"
+        except (ValueError, TypeError):
+            return False, "Threshold percent must be numeric"
+        
+        # Validate alert_threshold (in seconds)
+        try:
+            alert_threshold = int(zone['alert_threshold'])
+            if alert_threshold <= 0:
+                return False, "Alert threshold must be positive"
         except (ValueError, TypeError):
             return False, "Alert threshold must be numeric"
         
-        # Validate enabled flag
-        if not isinstance(zone['enabled'], bool):
-            return False, "Enabled must be a boolean"
+        # Validate pallet_type (1=Inbound, 2=Outbound)
+        if zone['pallet_type'] not in [1, 2]:
+            return False, "Pallet type must be 1 (Inbound) or 2 (Outbound)"
+        
+        # Validate active flag
+        if not isinstance(zone['active'], bool):
+            return False, "Active must be a boolean"
         
         return True, ""
     
@@ -190,39 +202,39 @@ class ZoneConfigManager:
         
         return True, ""
     
-    def _points_to_polygon(self, points: List[Dict]) -> Polygon:
+    def _points_to_polygon(self, polygon: list) -> Polygon:
         """
-        Convert list of point dicts to Shapely Polygon
+        Convert list of [x, y] points to Shapely Polygon
         
         Args:
-            points: List of {'x': float, 'y': float} dicts
+            polygon: List of [x, y] arrays with normalized coordinates (0.0-1.0)
             
         Returns:
             Shapely Polygon object
         """
-        coords = [(float(p['x']), float(p['y'])) for p in points]
-        polygon = Polygon(coords)
+        coords = [(float(p[0]), float(p[1])) for p in polygon]
+        poly = Polygon(coords)
         
         # Ensure polygon is valid
-        if not polygon.is_valid:
-            polygon = make_valid(polygon)
+        if not poly.is_valid:
+            poly = make_valid(poly)
         
-        return polygon
+        return poly
     
     def check_overlap(self, zone1: Dict, zone2: Dict) -> bool:
         """
         Check if two zones overlap using polygon intersection
         
         Args:
-            zone1: First zone dict
-            zone2: Second zone dict
+            zone1: First zone dict with 'polygon' field
+            zone2: Second zone dict with 'polygon' field
             
         Returns:
             True if zones overlap, False otherwise
         """
         try:
-            poly1 = self._points_to_polygon(zone1['points'])
-            poly2 = self._points_to_polygon(zone2['points'])
+            poly1 = self._points_to_polygon(zone1['polygon'])
+            poly2 = self._points_to_polygon(zone2['polygon'])
             
             # Check intersection
             intersection = poly1.intersection(poly2)
@@ -243,21 +255,21 @@ class ZoneConfigManager:
         Check if a point (x, y) is inside a zone
         
         Args:
-            x: X coordinate (percentage, 0-100)
-            y: Y coordinate (percentage, 0-100)
-            zone: Zone dict with 'points'
+            x: X coordinate (normalized, 0.0-1.0)
+            y: Y coordinate (normalized, 0.0-1.0)
+            zone: Zone dict with 'polygon'
             
         Returns:
             True if point is in zone, False otherwise
         """
         try:
-            if not zone.get('enabled', False):
+            if not zone.get('active', False):
                 return False
             
-            polygon = self._points_to_polygon(zone['points'])
+            polygon_obj = self._points_to_polygon(zone['polygon'])
             point = Point(x, y)
             
-            return polygon.contains(point)
+            return polygon_obj.contains(point)
         except Exception as e:
             print(f"Error checking point in zone: {e}")
             return False

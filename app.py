@@ -925,6 +925,310 @@ def upload_zone_image():
         return jsonify({"success": False, "message": str(e)}), 500
 
 
+@app.route('/api/zones/capture', methods=['POST'])
+def capture_zone_image():
+    """
+    Capture image from camera for zone configuration
+    กดปุ่มแล้วจับภาพจากกล้องปัจจุบัน
+    """
+    try:
+        # Load camera configuration
+        cfg = config.load_config()
+        camera_id = cfg.get('camera', {}).get('selectedCamera', 0)
+        
+        # Convert camera_id to appropriate type
+        if isinstance(camera_id, str) and camera_id.isdigit():
+            camera_id = int(camera_id)
+        
+        # Open camera
+        cap = cv2.VideoCapture(camera_id)
+        
+        if not cap.isOpened():
+            return jsonify({
+                "success": False,
+                "message": f"Cannot open camera {camera_id}"
+            }), 500
+        
+        # Read frame
+        ret, frame = cap.read()
+        cap.release()
+        
+        if not ret or frame is None:
+            return jsonify({
+                "success": False,
+                "message": "Failed to capture frame from camera"
+            }), 500
+        
+        # Create temp directory for zone captures
+        temp_dir = os.path.join(os.path.dirname(__file__), 'upload_image', 'temp')
+        os.makedirs(temp_dir, exist_ok=True)
+        
+        # Save captured frame
+        temp_path = os.path.join(temp_dir, 'zone_capture.jpg')
+        cv2.imwrite(temp_path, frame)
+        
+        logger.info(f"✅ Zone image captured from camera {camera_id}: {temp_path}")
+        
+        return jsonify({
+            "success": True,
+            "image_path": f"upload_image/temp/zone_capture.jpg",
+            "message": "Image captured successfully"
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error capturing zone image: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/save-image', methods=['POST'])
+def save_zone_image():
+    """
+    Save zone configuration image (master or polygon)
+    บันทึกภาพ 2 ไฟล์: master (ไม่มี polygon) และ polygon (มี polygon)
+    """
+    try:
+        if 'image' not in request.files:
+            return jsonify({"success": False, "message": "No image file provided"}), 400
+        
+        file = request.files['image']
+        
+        if file.filename == '':
+            return jsonify({"success": False, "message": "No file selected"}), 400
+        
+        # Create save directory
+        save_dir = os.path.join(os.path.dirname(__file__), 'upload_image', 'config_zone')
+        os.makedirs(save_dir, exist_ok=True)
+        
+        # Save file with provided filename
+        filepath = os.path.join(save_dir, file.filename)
+        file.save(filepath)
+        
+        logger.info(f"✅ Zone image saved: {filepath}")
+        
+        return jsonify({
+            "success": True,
+            "message": "Image saved successfully",
+            "filepath": f"upload_image/config_zone/{file.filename}"
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error saving zone image: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/save', methods=['POST'])
+def save_zones_json():
+    """
+    Save zones configuration to zones.json
+    บันทึกข้อมูล zones ลงไฟล์ JSON พร้อมตรวจสอบความถูกต้อง
+    """
+    try:
+        data = request.get_json()
+        
+        if 'zones' not in data:
+            return jsonify({"success": False, "message": "Missing 'zones' in request"}), 400
+        
+        zones = data['zones']
+        
+        # Validate each zone
+        for zone in zones:
+            # Check required fields
+            required_fields = ['id', 'name', 'polygon', 'threshold_percent', 
+                             'alert_threshold', 'pallet_type', 'active']
+            for field in required_fields:
+                if field not in zone:
+                    return jsonify({
+                        "success": False,
+                        "message": f"Zone {zone.get('id', '?')}: Missing field '{field}'"
+                    }), 400
+            
+            # Validate polygon points (3-8 points)
+            polygon = zone['polygon']
+            if not isinstance(polygon, list):
+                return jsonify({
+                    "success": False,
+                    "message": f"Zone {zone['id']}: polygon must be a list"
+                }), 400
+            
+            if len(polygon) < 3 or len(polygon) > 8:
+                return jsonify({
+                    "success": False,
+                    "message": f"Zone {zone['id']}: Must have 3-8 points"
+                }), 400
+            
+            # Validate normalized coordinates (0.0-1.0)
+            for i, point in enumerate(polygon):
+                if not isinstance(point, list) or len(point) != 2:
+                    return jsonify({
+                        "success": False,
+                        "message": f"Zone {zone['id']}: Point {i} must be [x, y] array"
+                    }), 400
+                
+                x, y = point[0], point[1]
+                if not (0.0 <= x <= 1.0) or not (0.0 <= y <= 1.0):
+                    return jsonify({
+                        "success": False,
+                        "message": f"Zone {zone['id']}: Point {i} coordinates must be 0.0-1.0 (normalized)"
+                    }), 400
+        
+        # Save to config/zones.json
+        config_dir = os.path.join(os.path.dirname(__file__), 'config')
+        os.makedirs(config_dir, exist_ok=True)
+        
+        zones_file = os.path.join(config_dir, 'zones.json')
+        
+        zones_data = {
+            "zones": zones
+        }
+        
+        with open(zones_file, 'w', encoding='utf-8') as f:
+            json.dump(zones_data, f, indent=2, ensure_ascii=False)
+        
+        logger.info(f"✅ Zones saved to {zones_file}: {len(zones)} zones")
+        
+        return jsonify({
+            "success": True,
+            "message": f"Saved {len(zones)} zones successfully"
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error saving zones: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/load', methods=['GET'])
+def load_zones_json():
+    """
+    Load zones configuration from zones.json
+    โหลดข้อมูล zones จากไฟล์ JSON
+    """
+    try:
+        zones_file = os.path.join(os.path.dirname(__file__), 'config', 'zones.json')
+        
+        if not os.path.exists(zones_file):
+            # Return empty zones if file doesn't exist
+            return jsonify({
+                "success": True,
+                "zones": []
+            }), 200
+        
+        with open(zones_file, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        
+        zones = data.get('zones', [])
+        
+        logger.info(f"✅ Loaded {len(zones)} zones from {zones_file}")
+        
+        return jsonify({
+            "success": True,
+            "zones": zones
+        }), 200
+        
+    except Exception as e:
+        logger.error(f"Error loading zones: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+@app.route('/api/zones/latest-images', methods=['GET'])
+def get_latest_zone_images():
+    """
+    Get paths to latest zone configuration images
+    ดึง path ของภาพ master และ polygon ล่าสุด
+    """
+    try:
+        from datetime import datetime
+        today = datetime.now().strftime('%d-%m-%Y')
+        
+        base_dir = os.path.join(os.path.dirname(__file__), 'upload_image', 'config_zone')
+        master_filename = f"img_master_configzone_{today}.jpg"
+        polygon_filename = f"img_polygon_configzone_{today}.jpg"
+        
+        master_path = os.path.join(base_dir, master_filename)
+        polygon_path = os.path.join(base_dir, polygon_filename)
+        
+        result = {}
+        
+        if os.path.exists(master_path):
+            result['master_image'] = f"upload_image/config_zone/{master_filename}"
+        
+        if os.path.exists(polygon_path):
+            result['polygon_image'] = f"upload_image/config_zone/{polygon_filename}"
+        
+        logger.info(f"✅ Latest zone images: {result}")
+        
+        return jsonify(result), 200
+        
+    except Exception as e:
+        logger.error(f"Error getting latest zone images: {e}")
+        return jsonify({"success": False, "message": str(e)}), 500
+
+
+# Update existing /api/zones/validate to use normalized coordinates
+@app.route('/api/zones/validate', methods=['POST'])
+def validate_zones_shapely():
+    """
+    Validate zones for overlaps using Shapely (server-side)
+    ตรวจสอบการทับซ้อนของ zones ด้วย Shapely ที่ฝั่ง backend
+    """
+    try:
+        from shapely.geometry import Polygon
+        
+        data = request.get_json()
+        
+        if 'zones' not in data:
+            return jsonify({"valid": False, "message": "Missing 'zones' in request"}), 400
+        
+        zones = data['zones']
+        
+        # Convert to Shapely polygons (using normalized 0.0-1.0 coordinates)
+        polygons = []
+        for zone in zones:
+            try:
+                # polygon is array of [x, y] pairs
+                coords = [(p[0], p[1]) for p in zone['polygon']]
+                poly = Polygon(coords)
+                
+                if not poly.is_valid:
+                    return jsonify({
+                        "valid": False,
+                        "message": f"Zone '{zone['name']}' has invalid polygon geometry"
+                    }), 200
+                
+                polygons.append((zone, poly))
+            except Exception as e:
+                return jsonify({
+                    "valid": False,
+                    "message": f"Zone '{zone['name']}': {str(e)}"
+                }), 200
+        
+        # Check all pairs for intersection
+        for i in range(len(polygons)):
+            for j in range(i + 1, len(polygons)):
+                zone_i, poly_i = polygons[i]
+                zone_j, poly_j = polygons[j]
+                
+                if poly_i.intersects(poly_j):
+                    intersection = poly_i.intersection(poly_j)
+                    
+                    # Calculate overlap percentage
+                    min_area = min(poly_i.area, poly_j.area)
+                    if min_area > 0:
+                        overlap_ratio = intersection.area / min_area
+                        
+                        # Threshold 1% overlap
+                        if overlap_ratio > 0.01:
+                            return jsonify({
+                                "valid": False,
+                                "message": f"Zones '{zone_i['name']}' and '{zone_j['name']}' overlap by {overlap_ratio*100:.1f}%"
+                            }), 200
+        
+        return jsonify({"valid": True, "message": "All zones are valid"}), 200
+        
+    except Exception as e:
+        logger.error(f"Error validating zones: {e}")
+        return jsonify({"valid": False, "message": str(e)}), 500
+
+
 # ----------------------------------------
 # Main
 # ----------------------------------------
