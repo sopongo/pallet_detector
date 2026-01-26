@@ -1,77 +1,56 @@
 {
   "zones": [
     {
-      "alertThreshold": 20,
-      "enabled": true,
       "id": 1,
-      "name": "Inbound Zone",
-      "points": [
-        {
-          "x": 5,
-          "y": 5
-        },
-        {
-          "x": 25,
-          "y": 5
-        },
-        {
-          "x": 25,
-          "y": 25
-        },
-        {
-          "x": 5,
-          "y": 25
-        }
-      ]
+      "name": "Entry_Slot_1",
+      "polygon": [
+        [
+          0.0781,
+          0.6944
+        ],
+        [
+          0.1953,
+          0.6944
+        ],
+        [
+          0.2031,
+          0.9722
+        ],
+        [
+          0.0703,
+          0.9722
+        ]
+      ],
+      "threshold_percent": 45.0,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
     },
     {
-      "alertThreshold": 60,
-      "enabled": true,
       "id": 2,
-      "name": "Outbound Zone",
-      "points": [
-        {
-          "x": 35,
-          "y": 5
-        },
-        {
-          "x": 55,
-          "y": 5
-        },
-        {
-          "x": 55,
-          "y": 25
-        },
-        {
-          "x": 35,
-          "y": 25
-        }
-      ]
-    },
-    {
-      "alertThreshold": 30,
-      "enabled": true,
-      "id": 3,
-      "name": "Free Zone",
-      "points": [
-        {
-          "x": 65,
-          "y": 5
-        },
-        {
-          "x": 85,
-          "y": 5
-        },
-        {
-          "x": 85,
-          "y": 25
-        },
-        {
-          "x": 65,
-          "y": 25
-        }
-      ]
+      "name": "Exit_Slot_1",
+      "polygon": [
+        [
+          0.35,
+          0.6944
+        ],
+        [
+          0.4672,
+          0.6944
+        ],
+        [
+          0.475,
+          0.9722
+        ],
+        [
+          0.3422,
+          0.9722
+        ]
+      ],
+      "threshold_percent": 45.0,
+      "alert_threshold": 3000,
+      "pallet_type": 2,
+      "active": true
     }
-  ],
-  "enabled": true
+  ]
 }
