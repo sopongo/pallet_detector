@@ -5,8 +5,8 @@ Manages detection zones with polygon shapes for pallet detection system.
 Features:
 - CRUD operations for zones
 - Overlap detection using Shapely polygon intersection
-- Validation (max 4 zones, max 8 points per zone)
-- Percentage-based coordinates for responsive sizing
+- Validation (max 20 zones, max 8 points per zone)
+- Normalized coordinates (0.0-1.0) for responsive sizing
 """
 
 import os

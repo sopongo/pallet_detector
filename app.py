@@ -1116,11 +1116,12 @@ def save_zones_config():
                 "message": f"Validation error: {error_message}"
             }), 400
         
-        # Save zones
-        # บันทึกโซน
+        # Save zones - preserve existing enabled state
+        # บันทึกโซน - รักษาสถานะ enabled ที่มีอยู่
+        existing_data = zone_manager.load_zones()
         zones_data = {
             "zones": zones,
-            "enabled": True  # Auto-enable when saving zones
+            "enabled": existing_data.get('enabled', True)  # Keep existing state or default to True
         }
         
         if zone_manager.save_zones(zones_data):

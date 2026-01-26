@@ -501,17 +501,21 @@
                                         <div class="form-group">
                                             <label><i class="fas fa-layer-group"></i> Maximum Zones</label>
                                             <select class="form-control" id="maxZonesSelect">
-                                                <?php for ($i = 1; $i <= 20; $i++): ?>
+                                                <?php 
+                                                // Note: Max zones limit (20) should match MAX_ZONES in utils/zone_config.py
+                                                $max_zones = 20;
+                                                for ($i = 1; $i <= $max_zones; $i++): 
+                                                ?>
                                                 <option value="<?php echo $i; ?>"><?php echo $i; ?> Zone<?php echo $i > 1 ? 's' : ''; ?></option>
                                                 <?php endfor; ?>
                                             </select>
-                                            <small class="form-text text-muted">Select maximum number of zones (1-20)</small>
+                                            <small class="form-text text-muted">Select maximum number of zones (1-<?php echo $max_zones; ?>)</small>
                                         </div>
                                     </div>
                                     <div class="col-md-6 text-right">
                                         <div class="mt-4">
                                             <h5>
-                                                <span class="badge badge-info" id="usedZones">0/20 zones used</span>
+                                                <span class="badge badge-info" id="usedZones">0/<?php echo $max_zones; ?> zones used</span>
                                             </h5>
                                             <p class="mb-1" id="currentZonePoints" style="display: none;"><strong>Current Zone:</strong> 0/8 points</p>
                                         </div>
