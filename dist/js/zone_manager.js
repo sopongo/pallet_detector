@@ -792,42 +792,67 @@ async saveZones() {
         
         const saveResult = await saveResponse.json();
         
-                if (saveResult.success) {
+        if (saveResult.success) {
             Swal.close();
             
-            // ✅ 1. แสดงรูป polygon ที่ id=currentReferenceImage
+            // ✅ 1. แสดงรูป polygon
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
             if (imgEl && noImgEl && saveResult.polygon_image) {
-                imgEl.src = `http://localhost:5000/${saveResult.polygon_image}?t=${Date.now()}`;
+                const imageUrl = `http://localhost:5000/${saveResult.polygon_image}?t=${Date.now()}`;
+                imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
+                console.log('✅ Polygon image displayed:', imageUrl);
             }
             
-            // ✅ 2. สร้าง Zone Summary Table
-            const zoneListHtml = this.createZoneSummaryTable(saveResult.zones || this.zones);
+            // ✅ 2. เคลียร์ canvas (ลบ zones ที่กำลังวาดออก)
+            this.zones = [];
+            this.currentZone = null;
+            this.referenceImage = null;
             
+            // Clear canvas
+            const ctx = this.canvas.getContext('2d');
+            ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            ctx.fillStyle = '#f0f0f0';
+            ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            
+            console.log('✅ Canvas and zones cleared');
+            
+            // ✅ 3. เคลียร์ Configured Zones list
+            const zoneListContainer = document.getElementById('zoneList');
+            if (zoneListContainer) {
+                zoneListContainer.innerHTML = '<p class="text-muted">Zones saved successfully. Refresh or switch tabs to view saved zones.</p>';
+            }
+            
+            // ✅ 4. สร้าง Zone Summary Table
+            const zoneListHtml = this.createZoneSummaryTable(saveResult.zones);
+            
+            // ✅ 5. แสดง Success popup พร้อม Zone Summary
             Swal.fire({
                 icon: 'success',
-                title: 'Success!',
+                title: 'Zones Saved Successfully!',
                 html: `
-                    <p>✅ <strong>${this.zones.length} zones</strong> saved successfully!</p>
-                    <p>📸 Images saved to <code>upload_image/config_zone/</code></p>
-                    <p>📝 Configuration saved to <code>config/zones.json</code></p>
+                    <div style="text-align: center;">
+                        <p>✅ <strong>${saveResult.zones.length} zones</strong> saved successfully!</p>
+                        <p>📸 Images saved to <code>upload_image/config_zone/</code></p>
+                        <p>📝 Configuration saved to <code>config/zones.json</code></p>
+                    </div>
                     <hr>
-                    <h5>📋 Zone Summary:</h5>
+                    <h5 style="text-align: center;">📋 Zone Summary:</h5>
                     ${zoneListHtml}
                 `,
-                width: '800px',
-                confirmButtonColor: '#28a745'
+                width: '900px',
+                confirmButtonColor: '#28a745',
+                confirmButtonText: 'OK'
             });
             
-            console.log('✅ Zones configuration saved');
+            console.log('✅ Zones saved and UI updated');
         } else {
             throw new Error(saveResult.message || 'Save failed');
         }
-
+        
     } catch (error) {
         console.error('❌ Save zones error:', error);
         Swal.close();
@@ -848,6 +873,59 @@ async saveZones() {
         });
     }
 }
+
+/**
+ * ✅ NEW: Display saved zone summary (รูป polygon + table)
+ */
+async displaySavedZoneSummary() {
+    try {
+        // 1. โหลด zones จาก backend
+        const zonesResponse = await fetch(`${this.apiUrl}/zones`);
+        const zonesData = await zonesResponse.json();
+        
+        if (!zonesData.success || !zonesData.zones || zonesData.zones.length === 0) {
+            console.log('No saved zones found');
+            return;
+        }
+        
+        const savedZones = zonesData.zones;
+        
+        // 2. โหลดรูป polygon
+        const imgResponse = await fetch(`${this.apiUrl}/zones/latest-images`);
+        const imgData = await imgResponse.json();
+        
+        const imgEl = document.getElementById('currentReferenceImage');
+        const noImgEl = document.getElementById('noReferenceImage');
+        
+        if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
+            const imageUrl = `http://localhost:5000/${imgData.polygon_image}?t=${Date.now()}`;
+            imgEl.src = imageUrl;
+            imgEl.style.display = 'block';
+            noImgEl.style.display = 'none';
+            console.log('✅ Polygon image loaded:', imageUrl);
+        }
+        
+        // 3. สร้าง Zone Summary Table
+        const zoneListHtml = this.createZoneSummaryTable(savedZones);
+        
+        // 4. แสดงใน Configured Zones section
+        const zoneListContainer = document.getElementById('zoneList');
+        if (zoneListContainer) {
+            zoneListContainer.innerHTML = `
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> <strong>Saved Configuration:</strong> 
+                    ${savedZones.length} zone(s) loaded from <code>config/zones.json</code>
+                </div>
+                ${zoneListHtml}
+            `;
+        }
+        
+        console.log(`✅ Displayed ${savedZones.length} saved zones`);
+        
+    } catch (error) {
+        console.error('❌ Error displaying saved zones:', error);
+    }
+}
  
 /**
  * ✅ NEW: Create HTML table summarizing all zones
@@ -859,8 +937,8 @@ createZoneSummaryTable(zones) {
     
     let html = `
         <div style="max-height: 400px; overflow-y: auto; text-align: left;">
-            <table class="table table-sm table-bordered" style="font-size: 12px;">
-                <thead style="position: sticky; top: 0; background: #f8f9fa;">
+            <table class="table table-sm table-bordered table-hover" style="font-size: 12px;">
+                <thead style="position: sticky; top: 0; background: #f8f9fa; z-index: 1;">
                     <tr>
                         <th style="width: 5%">#</th>
                         <th style="width: 20%">Zone Name</th>
@@ -877,19 +955,23 @@ createZoneSummaryTable(zones) {
     
     zones.forEach((zone, index) => {
         const color = this.colors[index % this.colors.length];
-        const palletType = zone.pallet_type === 1 ? 'Inbound' : 'Outbound';
-        const status = zone.active ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-secondary">Inactive</span>';
+        const palletType = zone.pallet_type === 1 ? '📦 Inbound' : '📤 Outbound';
+        const status = zone.active 
+            ? '<span class="badge badge-success">Active</span>' 
+            : '<span class="badge badge-secondary">Inactive</span>';
         
         html += `
             <tr>
-                <td>${zone.id}</td>
+                <td><strong>${zone.id}</strong></td>
                 <td><strong>${zone.name}</strong></td>
                 <td>${zone.polygon.length} pts</td>
                 <td>${zone.threshold_percent}%</td>
-                <td>${zone.alert_threshold}ms</td>
+                <td>${(zone.alert_threshold / 1000).toFixed(1)}s</td>
                 <td>${palletType}</td>
                 <td>${status}</td>
-                <td><div style="width: 20px; height: 20px; background: ${color}; border: 1px solid #000; display: inline-block;"></div></td>
+                <td>
+                    <div style="width: 30px; height: 20px; background: ${color}; border: 1px solid #333; display: inline-block; border-radius: 3px;"></div>
+                </td>
             </tr>
         `;
     });

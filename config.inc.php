@@ -1653,14 +1653,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Load zones when Zone tab is opened
+    // ✅ FIXED: Load zones when Zone tab is opened
     document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
         try {
-            await window.zoneManager.loadZones();
-            await loadLatestZoneImages();
+            // แสดง saved zone summary (รูป + table)
+            await window.zoneManager.displaySavedZoneSummary();
         } catch (error) {
             console.error('Failed to load zone configuration:', error);
         }
     });
+
 });
 
 // Load latest zone images
