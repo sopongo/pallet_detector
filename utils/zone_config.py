@@ -20,7 +20,7 @@ class ZoneConfigManager:
     """Manager class for zone configuration"""
     
     # Constants
-    MAX_ZONES = 4
+    MAX_ZONES = 20  # Updated to support up to 20 zones
     MAX_POINTS_PER_ZONE = 8
     MIN_POINTS_PER_ZONE = 3
     
@@ -94,13 +94,13 @@ class ZoneConfigManager:
         Validate a single zone structure
         
         Args:
-            zone: Zone dict with 'id', 'name', 'points', 'alertThreshold', 'enabled'
+            zone: Zone dict with 'id', 'name', 'polygon', 'threshold_percent', 'alert_threshold', 'pallet_type', 'active'
             
         Returns:
             Tuple of (is_valid, error_message)
         """
-        # Check required fields
-        required_fields = ['id', 'name', 'points', 'alertThreshold', 'enabled']
+        # Check required fields - Updated for new format
+        required_fields = ['id', 'name', 'polygon', 'threshold_percent', 'alert_threshold', 'pallet_type', 'active']
         for field in required_fields:
             if field not in zone:
                 return False, f"Missing required field: {field}"
@@ -109,44 +109,58 @@ class ZoneConfigManager:
         if not zone['name'] or not zone['name'].strip():
             return False, "Zone name cannot be empty"
         
-        # Validate points
-        points = zone['points']
-        if not isinstance(points, list):
-            return False, "Points must be a list"
+        # Validate polygon (new field name, replaces 'points')
+        polygon = zone['polygon']
+        if not isinstance(polygon, list):
+            return False, "Polygon must be a list"
         
-        if len(points) < self.MIN_POINTS_PER_ZONE:
+        if len(polygon) < self.MIN_POINTS_PER_ZONE:
             return False, f"Zone must have at least {self.MIN_POINTS_PER_ZONE} points"
         
-        if len(points) > self.MAX_POINTS_PER_ZONE:
+        if len(polygon) > self.MAX_POINTS_PER_ZONE:
             return False, f"Zone cannot have more than {self.MAX_POINTS_PER_ZONE} points"
         
-        # Validate each point
-        for i, point in enumerate(points):
-            if not isinstance(point, dict):
-                return False, f"Point {i} must be a dict"
-            if 'x' not in point or 'y' not in point:
-                return False, f"Point {i} missing x or y coordinate"
+        # Validate each point - coordinates must be normalized 0.0-1.0
+        for i, point in enumerate(polygon):
+            if not isinstance(point, list) or len(point) != 2:
+                return False, f"Point {i} must be a list with 2 elements [x, y]"
             
-            # Check percentage range (0-100)
+            # Check normalized range (0.0-1.0)
             try:
-                x = float(point['x'])
-                y = float(point['y'])
-                if not (0 <= x <= 100) or not (0 <= y <= 100):
-                    return False, f"Point {i} coordinates must be between 0 and 100 (percentage)"
+                x = float(point[0])
+                y = float(point[1])
+                if not (0.0 <= x <= 1.0) or not (0.0 <= y <= 1.0):
+                    return False, f"Point {i} coordinates must be between 0.0 and 1.0 (normalized)"
             except (ValueError, TypeError):
                 return False, f"Point {i} coordinates must be numeric"
         
-        # Validate alert threshold
+        # Validate threshold_percent (new field)
         try:
-            threshold = float(zone['alertThreshold'])
-            if threshold <= 0 or threshold > 1440:  # Max 24 hours
-                return False, "Alert threshold must be between 1 and 1440 minutes"
+            threshold_pct = float(zone['threshold_percent'])
+            if threshold_pct <= 0 or threshold_pct > 100:
+                return False, "Threshold percent must be between 0 and 100"
+        except (ValueError, TypeError):
+            return False, "Threshold percent must be numeric"
+        
+        # Validate alert_threshold (renamed from alertThreshold, represents milliseconds)
+        try:
+            alert_threshold = float(zone['alert_threshold'])
+            if alert_threshold <= 0:
+                return False, "Alert threshold must be positive"
         except (ValueError, TypeError):
             return False, "Alert threshold must be numeric"
         
-        # Validate enabled flag
-        if not isinstance(zone['enabled'], bool):
-            return False, "Enabled must be a boolean"
+        # Validate pallet_type (1=Inbound, 2=Outbound)
+        try:
+            pallet_type = int(zone['pallet_type'])
+            if pallet_type not in [1, 2]:
+                return False, "Pallet type must be 1 (Inbound) or 2 (Outbound)"
+        except (ValueError, TypeError):
+            return False, "Pallet type must be an integer"
+        
+        # Validate active flag (replaces 'enabled')
+        if not isinstance(zone['active'], bool):
+            return False, "Active must be a boolean"
         
         return True, ""
     
@@ -190,20 +204,33 @@ class ZoneConfigManager:
         
         return True, ""
     
-    def _points_to_polygon(self, points: List[Dict]) -> Polygon:
+    def _points_to_polygon(self, points: List) -> Polygon:
         """
-        Convert list of point dicts to Shapely Polygon
+        Convert list of point arrays to Shapely Polygon
+        แปลงรายการพิกัดจุดเป็น Polygon ของ Shapely
         
         Args:
-            points: List of {'x': float, 'y': float} dicts
+            points: List of [x, y] arrays (normalized 0.0-1.0)
+                   รายการพิกัด [x, y] (ค่าปกติ 0.0-1.0)
             
         Returns:
             Shapely Polygon object
+        
+        Technical Details:
+        - Shapely is a Python library for geometric operations
+        - Polygon represents a closed shape defined by vertices
+        - Used for accurate intersection and containment checks
         """
-        coords = [(float(p['x']), float(p['y'])) for p in points]
+        # Convert list of [x, y] arrays to list of (x, y) tuples
+        # แปลง [[x1, y1], [x2, y2]] เป็น [(x1, y1), (x2, y2)]
+        coords = [(float(p[0]), float(p[1])) for p in points]
+        
+        # Create Shapely Polygon object from coordinates
+        # สร้าง Polygon object จากพิกัด
         polygon = Polygon(coords)
         
-        # Ensure polygon is valid
+        # Ensure polygon is valid (handles edge cases like self-intersection)
+        # ตรวจสอบและแก้ไข polygon ให้ถูกต้อง (จัดการกรณีพิเศษเช่นเส้นตัดกัน)
         if not polygon.is_valid:
             polygon = make_valid(polygon)
         
@@ -211,31 +238,88 @@ class ZoneConfigManager:
     
     def check_overlap(self, zone1: Dict, zone2: Dict) -> bool:
         """
-        Check if two zones overlap using polygon intersection
+        Check if two zones overlap using Shapely polygon intersection
+        ตรวจสอบว่าโซนสองโซนทับซ้อนกันหรือไม่โดยใช้ Shapely polygon intersection
         
         Args:
-            zone1: First zone dict
-            zone2: Second zone dict
+            zone1: First zone dict (with 'polygon' field)
+                   โซนแรก (มีฟิลด์ 'polygon')
+            zone2: Second zone dict (with 'polygon' field)
+                   โซนที่สอง (มีฟิลด์ 'polygon')
             
         Returns:
             True if zones overlap, False otherwise
+            True ถ้าโซนทับซ้อนกัน, False ถ้าไม่ทับ
+        
+        Technical Details / รายละเอียดทางเทคนิค:
+        
+        1. Shapely Polygon Intersection Algorithm
+           อัลกอริทึมตรวจสอบการตัดกันของรูปหลายเหลี่ยมด้วย Shapely
+           
+           - Uses computational geometry to find intersection area
+             ใช้เรขาคณิตเชิงคำนวณหาพื้นที่ที่ตัดกัน
+           
+           - Handles complex polygons (concave, self-intersecting)
+             จัดการรูปหลายเหลี่ยมที่ซับซ้อน (เว้า, ตัดกันเอง)
+        
+        2. Intersection Area Calculation
+           การคำนวณพื้นที่ที่ตัดกัน
+           
+           - poly1.intersection(poly2) returns a Polygon/MultiPolygon
+             poly1.intersection(poly2) คืนค่า Polygon หรือ MultiPolygon
+           
+           - intersection.area gives the overlapping area
+             intersection.area ให้พื้นที่ที่ทับซ้อนกัน
+        
+        3. Overlap Threshold: 0.1%
+           เกณฑ์การทับซ้อน: 0.1%
+           
+           - Small threshold to avoid false positives from floating point errors
+             เกณฑ์เล็กเพื่อหลีกเลี่ยงผลบวกลวงจากข้อผิดพลาดทศนิยม
+           
+           - Formula: (intersection_area / min_polygon_area) * 100 > 0.1
+             สูตร: (พื้นที่ตัดกัน / พื้นที่โซนที่เล็กกว่า) * 100 > 0.1
+           
+           - Uses smaller polygon area to ensure sensitivity
+             ใช้พื้นที่โซนที่เล็กกว่าเพื่อความไวต่อการตรวจจับ
+        
+        Example / ตัวอย่าง:
+        - Zone A: 100 sq units, Zone B: 50 sq units
+        - Intersection: 1 sq unit
+        - Overlap %: (1 / 50) * 100 = 2% > 0.1% → Overlap detected!
         """
         try:
-            poly1 = self._points_to_polygon(zone1['points'])
-            poly2 = self._points_to_polygon(zone2['points'])
+            # Convert zone polygons to Shapely Polygon objects
+            # แปลงโซนเป็น Shapely Polygon objects
+            poly1 = self._points_to_polygon(zone1['polygon'])
+            poly2 = self._points_to_polygon(zone2['polygon'])
             
-            # Check intersection
+            # Calculate intersection using Shapely's geometric engine
+            # คำนวณการตัดกันโดยใช้ geometric engine ของ Shapely
+            # This uses advanced computational geometry algorithms
+            # ใช้อัลกอริทึมเรขาคณิตเชิงคำนวณขั้นสูง
             intersection = poly1.intersection(poly2)
             
-            # Consider overlap if intersection area is significant (> 0.1% of smaller polygon)
+            # Check if there's any intersection area
+            # ตรวจสอบว่ามีพื้นที่ตัดกันหรือไม่
             if intersection.area > 0:
+                # Calculate overlap percentage relative to the smaller polygon
+                # คำนวณเปอร์เซ็นต์การทับซ้อนเทียบกับโซนที่เล็กกว่า
                 min_area = min(poly1.area, poly2.area)
                 overlap_percentage = (intersection.area / min_area) * 100
-                return overlap_percentage > 0.1  # 0.1% threshold
+                
+                # Return True if overlap exceeds threshold (0.1%)
+                # คืนค่า True ถ้าการทับซ้อนเกินเกณฑ์ (0.1%)
+                return overlap_percentage > 0.1
             
+            # No intersection found
+            # ไม่พบการตัดกัน
             return False
+            
         except Exception as e:
             print(f"Error checking overlap: {e}")
+            # Return False on error to allow operation to continue
+            # คืนค่า False เมื่อเกิดข้อผิดพลาดเพื่อให้ดำเนินการต่อได้
             return False
     
     def point_in_zone(self, x: float, y: float, zone: Dict) -> bool:
@@ -243,18 +327,18 @@ class ZoneConfigManager:
         Check if a point (x, y) is inside a zone
         
         Args:
-            x: X coordinate (percentage, 0-100)
-            y: Y coordinate (percentage, 0-100)
-            zone: Zone dict with 'points'
+            x: X coordinate (normalized, 0.0-1.0)
+            y: Y coordinate (normalized, 0.0-1.0)
+            zone: Zone dict with 'polygon' and 'active'
             
         Returns:
             True if point is in zone, False otherwise
         """
         try:
-            if not zone.get('enabled', False):
+            if not zone.get('active', False):
                 return False
             
-            polygon = self._points_to_polygon(zone['points'])
+            polygon = self._points_to_polygon(zone['polygon'])
             point = Point(x, y)
             
             return polygon.contains(point)
@@ -267,8 +351,8 @@ class ZoneConfigManager:
         Find which zone contains the given point
         
         Args:
-            x: X coordinate (percentage, 0-100)
-            y: Y coordinate (percentage, 0-100)
+            x: X coordinate (normalized, 0.0-1.0)
+            y: Y coordinate (normalized, 0.0-1.0)
             
         Returns:
             Zone dict if point is in a zone, None otherwise
