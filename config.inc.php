@@ -1586,9 +1586,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Initialize Zone Manager
-    window.zoneManager = new ZoneManager('zoneCanvas', {
-        apiUrl: API_URL
-    });
+    if (canvas && typeof ZoneManager !== 'undefined') {
+        window.zoneManager = new ZoneManager('zoneCanvas', {
+            apiUrl: API_URL
+        });
+        console.log('✅ ZoneManager initialized on page load');
+    }
     
     // ✅ FIXED: Capture Image Button - with debounce protection
     let isCapturing = false;
@@ -1652,14 +1655,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Load zones when Zone tab is opened
-    // ✅ FIXED: Load zones when Zone tab is opened
+    // ✅ Load zones when Zone tab is opened
     document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
         try {
-            // แสดง saved zone summary (รูป + table)
-            await window.zoneManager.displaySavedZoneSummary();
+            if (window.zoneManager) {
+                console.log('📋 Zone tab opened, loading zones...');
+                // แสดง saved zone summary (รูป + table)
+                await window.zoneManager.displaySavedZoneSummary();
+            } else {
+                console.error('❌ ZoneManager not initialized');
+            }
         } catch (error) {
-            console.error('Failed to load zone configuration:', error);
+            console.error('❌ Failed to load zone configuration:', error);
         }
     });
 
