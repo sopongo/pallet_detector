@@ -126,8 +126,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* ไม่บล็อก click บนวิดีโอ */
+    pointer-events: none;
     z-index: 10;
+    display: none; /* ซ่อน SVG โดยค่าเริ่มต้น */
 }
 
 /* ✅ Zone Polygon Styles */
@@ -351,16 +352,28 @@ function drawZoneLabel(svg, zone) {
 function highlightZone(zoneId, hasObject) {
     const polygon = $(`#zone-overlay polygon[data-zone-id="${zoneId}"]`);
     
+    if (polygon.length === 0) {
+        console.warn(`⚠️ Zone ${zoneId} polygon not found`);
+        return;
+    }
+    
     if (hasObject) {
+        // ✅ มีวัตถุใน zone → เปลี่ยนเป็นสีแดง
+        console.log(`🔴 Zone ${zoneId}: Object detected`);
+        
         polygon.css({
             'fill': 'rgba(255, 0, 0, 0.3)',
             'stroke': '#ff0000',
-            'stroke-width': '3'
+            'stroke-width': '4'
         });
     } else {
+        // ✅ ไม่มีวัตถุ → คืนสีเดิม
+        console.log(`🟢 Zone ${zoneId}: No object`);
+        
         polygon.removeAttr('style');
     }
 }
+
 
 /**
  * Show alert animation on zone
@@ -387,26 +400,30 @@ function showZoneAlert(zoneId) {
 /**
  * Fetch zone status from API
  */
+/**
+ * Fetch zone status and update highlights
+ */
 function fetchZoneStatus() {
-    const API_URL = `http://${window.location.hostname}:5000/api`;
-    $.get(`${API_URL}/detection/zone-status`, function(data) {
-        if (data.success && data.zones) {
-            data.zones.forEach(zoneStatus => {
+    $.get(API_URL + '/detection/zone-status', function(data) {
+        console.log('📊 Zone status:', data); // ✅ Debug log
+        
+        if (data.success && data.zones && data.zones.length > 0) {
+            data.zones.forEach(function(zoneStatus) {
+                // Highlight zone if has object
                 highlightZone(zoneStatus.zone_id, zoneStatus.has_object);
                 
+                // Show alert animation if needed
                 if (zoneStatus.alert) {
                     showZoneAlert(zoneStatus.zone_id);
                 }
             });
+            
+            console.log(`✅ Updated ${data.zones.length} zones`);
+        } else {
+            console.warn('⚠️ No zone status data');
         }
     }).fail(function(xhr) {
-        // Only log errors that are not "service not running"
-        if (xhr.status === 400) {
-            // Detection service not running - this is expected when stopped
-            console.debug('Zone status: Detection service not running');
-        } else {
-            console.warn('⚠️ Cannot fetch zone status:', xhr.responseText || xhr.statusText);
-        }
+        console.error('❌ Cannot fetch zone status:', xhr.status, xhr.responseText);
     });
 }
 
@@ -671,6 +688,7 @@ function fetchSummary() {
               if (response.success) {
                   updateButtonState(true);
                   startVideoStream();
+                  $('#zone-overlay').show(); // ← แสดง SVG
                   startPolling();
                   updateSystemStatus(true, true, response.pid); // อัพเดต status และ PID
                   
@@ -757,8 +775,9 @@ function fetchSummary() {
                   
                   if (response.success) {
                       updateButtonState(false);
-                      stopVideoStream();
                       stopPolling();
+                      stopVideoStream();                      
+                      $('#zone-overlay').hide(); // ← ซ่อน SVG
                       updateSystemStatus(true, false, null);
                       Swal.fire({
                           icon: 'success',
@@ -835,20 +854,22 @@ function fetchSummary() {
   function startPolling() {
     if (pollingTimer) return;
     
+    console.log('🔄 Starting polling...');
+    
     // Fetch immediately
     fetchLatestDetection();
     fetchSummary();
     fetchLogs();
-    fetchZoneStatus();
+    fetchZoneStatus(); // ✅ เพิ่มบรรทัดนี้
     
     // Then poll every 3 seconds
     pollingTimer = setInterval(function() {
-      fetchLatestDetection();
-      fetchSummary();
-      fetchLogs();
-      fetchZoneStatus();
+        fetchLatestDetection();
+        fetchSummary();
+        fetchLogs();
+        fetchZoneStatus(); // ✅ เพิ่มบรรทัดนี้
     }, POLLING_INTERVAL);
-  }
+}
 
   function stopPolling() {
     if (pollingTimer) {
