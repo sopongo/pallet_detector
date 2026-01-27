@@ -669,6 +669,21 @@ def get_detection_logs():
 def get_system_info():
     try:
         cfg = config.load_config()
+        
+        # Load zones and count inbound/outbound
+        zones_file = os.path.join(os.path.dirname(__file__), 'config', 'zones.json')
+        inbound_zones = 0
+        outbound_zones = 0
+        try:
+            if os.path.exists(zones_file):
+                with open(zones_file, 'r') as f:
+                    zones_data = json.load(f)
+                    zones = zones_data.get('zones', [])
+                    inbound_zones = sum(1 for z in zones if z.get('pallet_type') == 1)
+                    outbound_zones = sum(1 for z in zones if z.get('pallet_type') == 2)
+        except Exception as e:
+            logger.warning(f"Cannot load zones for system info: {e}")
+        
         cpu_percent = psutil.cpu_percent(interval=1)
         ram = psutil.virtual_memory()
         ram_total_gb = ram.total / (1024**3)
@@ -681,14 +696,9 @@ def get_system_info():
             pass
         return jsonify({
             "success": True,
-            "working_hours": f"{cfg['detection']['operatingHours']['start']} - {cfg['detection']['operatingHours']['end']}",
-            "confidence": cfg['detection']['confidenceThreshold'],
-            "iou_threshold": cfg['detection']['iouThreshold'],
-            "image_size": f"{cfg['detection']['imageSize']}px",
-            "interval": f"{cfg['detection']['captureInterval']}s ({cfg['detection']['captureInterval']//60}m)",
-            "alert_threshold": f"{cfg['detection']['alertThreshold']}m",
-            "alignment_tolerance": f"{cfg['detection']['alignmentTolerance']} %",
-            "device_mode": cfg['detection']['deviceMode'].upper(),
+            "operating_hours": f"{cfg['detection']['operatingHours']['start']} - {cfg['detection']['operatingHours']['end']}",
+            "inbound_zones": inbound_zones,
+            "outbound_zones": outbound_zones,
             "cpu_usage": f"{cpu_percent}%",
             "ram_total": f"{ram_total_gb:.0f} GB",
             "ram_usage": f"{ram_percent}%",
