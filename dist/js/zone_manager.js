@@ -780,22 +780,9 @@ async saveZones() {
         if (saveResult.success) {
             Swal.close();
             
-            // ✅ 1. แสดงรูป polygon (FIX: ใช้ full URL)
-            const imgEl = document.getElementById('currentReferenceImage');
-            const noImgEl = document.getElementById('noReferenceImage');
+            console.log('✅ Zones saved successfully');
             
-            if (imgEl && noImgEl && saveResult.polygon_image) {
-                const imageUrl = `${window.location.protocol}//${window.location.hostname}:5000/${saveResult.polygon_image}?t=${Date.now()}`;
-                imgEl.src = imageUrl;
-                imgEl.style.display = 'block';
-                noImgEl.style.display = 'none';
-                console.log('✅ Polygon image displayed:', imageUrl);
-            }
-            
-            // ✅ 2. สร้าง Zone Summary Table (FIX: ใช้ zonesToSave)
-            const zoneListHtml = this.createZoneSummaryTable(zonesToSave);
-            
-            // ✅ 3. เคลียร์ canvas
+            // ✅ เคลียร์ canvas
             this.zones = [];
             this.currentZone = null;
             this.referenceImage = null;
@@ -805,33 +792,22 @@ async saveZones() {
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             
-            console.log('✅ Canvas cleared');
-            
-            // ✅ 4. เคลียร์ Configured Zones list
-            const zoneListContainer = document.getElementById('zoneList');
-            if (zoneListContainer) {
-                zoneListContainer.innerHTML = '<p class="text-muted">Zones saved. Refresh to view.</p>';
-            }
-            
-            // ✅ 5. แสดง Success popup พร้อม table
+            // ✅ แสดง success message
             Swal.fire({
                 icon: 'success',
                 title: 'Zones Saved Successfully!',
-                html: `
-                    <div style="text-align: center;">
-                        <p>✅ <strong>${zonesToSave.length} zones</strong> saved!</p>
-                        <p>📸 Images: <code>upload_image/config_zone/</code></p>
-                        <p>📝 Config: <code>config/zones.json</code></p>
-                    </div>
-                    <hr>
-                    <h5 style="text-align: center;">📋 Zone Summary:</h5>
-                    ${zoneListHtml}
-                `,
-                width: '900px',
-                confirmButtonColor: '#28a745'
+                text: 'Loading saved configuration...',
+                timer: 1500,
+                showConfirmButton: false
+            }).then(() => {
+                // ✅ หลัง popup ปิด แล้วโหลดข้อมูลจาก zones.json
+                this.displaySavedZoneSummary().then(() => {
+                    console.log('✅ Displayed saved zones');
+                }).catch(error => {
+                    console.error('❌ Error displaying zones:', error);
+                });
             });
             
-            console.log('✅ Save complete');
         } else {
             throw new Error(saveResult.message || 'Save failed');
         }
@@ -1232,6 +1208,7 @@ async saveZones() {
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
+            let polygonImageLoaded = false;
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
                 // Use origin from current location to avoid hardcoding
                 //const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
@@ -1239,6 +1216,7 @@ async saveZones() {
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
+                polygonImageLoaded = true;
                 console.log('✅ Polygon image loaded:', imageUrl);
             }
             
@@ -1258,6 +1236,27 @@ async saveZones() {
             }
             
             console.log(`✅ Displayed ${savedZones.length} saved zones`);
+            
+            // ✅ NEW: แสดง popup พร้อม zone summary table
+            const polygonImageStatus = polygonImageLoaded 
+                ? '<p>📸 Polygon image displayed</p>' 
+                : '<p>⚠️ Polygon image not available</p>';
+            
+            Swal.fire({
+                icon: 'success',
+                title: 'Zone Configuration Loaded',
+                html: `
+                    <div style="text-align: center;">
+                        <p>✅ <strong>${savedZones.length} zones</strong> loaded from <code>config/zones.json</code></p>
+                        ${polygonImageStatus}
+                    </div>
+                    <hr>
+                    <h5 style="text-align: center;">📋 Zone Summary:</h5>
+                    ${zoneListHtml}
+                `,
+                width: '900px',
+                confirmButtonColor: '#28a745'
+            });
             
         } catch (error) {
             console.error('❌ Error displaying saved zones:', error);
