@@ -812,12 +812,15 @@ async saveZones() {
             // เคลียร์ canvas
             this.zones = [];
             this.currentZone = null;
-            this.referenceImage = null;
+            this.selectedZone = null;
             
+            // เคลียร์ canvas display
             const ctx = this.canvas.getContext('2d');
-            ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            
+            // ✅ NEW: เคลียร์ zoneList (Configured Zones ด้านล่าง)
+            this.updateZoneList();
             
             // ✅ แสดง Success alert แบบธรรมดา (ไม่มี table)
             Swal.fire({
