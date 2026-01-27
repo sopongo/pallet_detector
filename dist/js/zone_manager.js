@@ -46,6 +46,15 @@ class ZoneManager {
     }
     
     /**
+     * Escape HTML to prevent XSS attacks
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    /**
      * Load reference image onto canvas (from file or base64)
      */
     loadImage(source) {
@@ -1245,11 +1254,57 @@ async saveZones() {
                     <td>
                         <div style="width: 30px; height: 20px; background: ${color}; border: 1px solid #333; display: inline-block; border-radius: 3px;"></div>
                     </td>
+                    <td>
+                        <button class="btn btn-xs btn-primary btn-edit-zone-summary" data-zone-id="${zone.id}" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-xs btn-danger btn-delete-zone-summary" data-zone-id="${zone.id}" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button class="btn btn-xs btn-${zone.active ? 'warning' : 'success'} btn-toggle-zone-summary" data-zone-id="${zone.id}" title="${zone.active ? 'Deactivate' : 'Activate'}">
+                            <i class="fas fa-power-off"></i> ${zone.active ? 'Deactivate' : 'Activate'}
+                        </button>
+                    </td>
                 </tr>
             `;
         });
         
         tableBody.innerHTML = html;
+        
+        // ✅ NEW: Bind event listeners for action buttons
+        tableBody.querySelectorAll('.btn-edit-zone-summary').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
+                await this.editZoneFromSummary(zoneId);
+            });
+        });
+
+        tableBody.querySelectorAll('.btn-delete-zone-summary').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
+                await this.deleteZoneFromSummary(zoneId);
+            });
+        });
+
+        tableBody.querySelectorAll('.btn-toggle-zone-summary').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
+                await this.toggleZoneFromSummary(zoneId);
+            });
+        });
+        
         console.log(`✅ Updated table-listzone with ${zones.length} zones`);
     }
     
@@ -1321,6 +1376,251 @@ async saveZones() {
             
         } catch (error) {
             console.error('❌ Error displaying saved zones:', error);
+        }
+    }
+    
+    /**
+     * ✅ NEW: Edit zone from summary table
+     */
+    async editZoneFromSummary(zoneId) {
+        try {
+            // 1. Load current zones
+            const response = await fetch(`${this.apiUrl}/zones`);
+            const data = await response.json();
+            
+            if (!data.success || !data.zones) {
+                throw new Error('Failed to load zones');
+            }
+            
+            // 2. Find the zone
+            const zone = data.zones.find(z => z.id === zoneId);
+            if (!zone) {
+                throw new Error(`Zone ${zoneId} not found`);
+            }
+            
+            // 3. Show edit popup
+            const result = await Swal.fire({
+                title: 'Edit Zone',
+                html: `
+                    <div class="form-group text-left">
+                        <label>Zone Name</label>
+                        <input id="editZoneName" class="form-control" value="${this.escapeHtml(zone.name)}">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Threshold Percent (%)</label>
+                        <input id="editThresholdPercent" type="number" class="form-control" 
+                               value="${zone.threshold_percent}" min="0" max="100" step="0.1">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Alert Threshold (ms)</label>
+                        <input id="editAlertThreshold" type="number" class="form-control" 
+                               value="${zone.alert_threshold}" min="1">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Pallet Type</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="palletType" id="palletInbound" 
+                                   value="1" ${zone.pallet_type === 1 ? 'checked' : ''}>
+                            <label class="form-check-label" for="palletInbound">Inbound</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="palletType" id="palletOutbound" 
+                                   value="2" ${zone.pallet_type === 2 ? 'checked' : ''}>
+                            <label class="form-check-label" for="palletOutbound">Outbound</label>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Save',
+                width: '500px',
+                preConfirm: () => {
+                    const name = document.getElementById('editZoneName').value;
+                    const thresholdPercent = parseFloat(document.getElementById('editThresholdPercent').value);
+                    const alertThreshold = parseInt(document.getElementById('editAlertThreshold').value);
+                    const palletTypeInput = document.querySelector('input[name="palletType"]:checked');
+                    
+                    if (!name) {
+                        Swal.showValidationMessage('Please enter a zone name');
+                        return false;
+                    }
+                    
+                    if (!palletTypeInput) {
+                        Swal.showValidationMessage('Please select a pallet type');
+                        return false;
+                    }
+                    
+                    const palletType = parseInt(palletTypeInput.value);
+                    
+                    return { name, thresholdPercent, alertThreshold, palletType };
+                }
+            });
+            
+            if (result.isConfirmed) {
+                // 4. Update zone data
+                const updatedZone = {
+                    ...zone,
+                    name: result.value.name,
+                    threshold_percent: result.value.thresholdPercent,
+                    alert_threshold: result.value.alertThreshold,
+                    pallet_type: result.value.palletType
+                };
+                
+                // 5. Save via API
+                const saveResponse = await fetch(`${this.apiUrl}/zones/${zoneId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ zone: updatedZone })
+                });
+                
+                const saveResult = await saveResponse.json();
+                
+                if (saveResult.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Zone Updated!',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    
+                    // 6. Reload table
+                    await this.displaySavedZoneSummary();
+                } else {
+                    throw new Error(saveResult.message || 'Failed to update zone');
+                }
+            }
+            
+        } catch (error) {
+            console.error('❌ Edit zone error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Edit Failed',
+                text: error.message
+            });
+        }
+    }
+    
+    /**
+     * ✅ NEW: Delete zone from summary table
+     */
+    async deleteZoneFromSummary(zoneId) {
+        try {
+            // 1. Load current zones to get zone name
+            const response = await fetch(`${this.apiUrl}/zones`);
+            const data = await response.json();
+            
+            if (!data.success || !data.zones) {
+                throw new Error('Failed to load zones');
+            }
+            
+            const zone = data.zones.find(z => z.id === zoneId);
+            if (!zone) {
+                throw new Error(`Zone ${zoneId} not found`);
+            }
+            
+            // 2. Show confirmation
+            const result = await Swal.fire({
+                title: 'Delete Zone?',
+                text: `Are you sure you want to delete "${zone.name}"? This action cannot be undone.`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it'
+            });
+            
+            if (result.isConfirmed) {
+                // 3. Delete via API
+                const deleteResponse = await fetch(`${this.apiUrl}/zones/${zoneId}`, {
+                    method: 'DELETE'
+                });
+                
+                const deleteResult = await deleteResponse.json();
+                
+                if (deleteResult.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Zone Deleted!',
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    
+                    // 4. Reload table
+                    await this.displaySavedZoneSummary();
+                } else {
+                    throw new Error(deleteResult.message || 'Failed to delete zone');
+                }
+            }
+            
+        } catch (error) {
+            console.error('❌ Delete zone error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Delete Failed',
+                text: error.message
+            });
+        }
+    }
+    
+    /**
+     * ✅ NEW: Toggle zone active/inactive from summary table
+     */
+    async toggleZoneFromSummary(zoneId) {
+        try {
+            // 1. Load current zones
+            const response = await fetch(`${this.apiUrl}/zones`);
+            const data = await response.json();
+            
+            if (!data.success || !data.zones) {
+                throw new Error('Failed to load zones');
+            }
+            
+            const zone = data.zones.find(z => z.id === zoneId);
+            if (!zone) {
+                throw new Error(`Zone ${zoneId} not found`);
+            }
+            
+            // 2. Toggle active status
+            const updatedZone = {
+                ...zone,
+                active: !zone.active
+            };
+            
+            // 3. Save via API
+            const saveResponse = await fetch(`${this.apiUrl}/zones/${zoneId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ zone: updatedZone })
+            });
+            
+            const saveResult = await saveResponse.json();
+            
+            if (saveResult.success) {
+                const status = updatedZone.active ? 'activated' : 'deactivated';
+                Swal.fire({
+                    icon: 'success',
+                    title: `Zone ${status}!`,
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                
+                // 4. Reload table
+                await this.displaySavedZoneSummary();
+            } else {
+                throw new Error(saveResult.message || 'Failed to toggle zone status');
+            }
+            
+        } catch (error) {
+            console.error('❌ Toggle zone error:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Toggle Failed',
+                text: error.message
+            });
         }
     }
 }
