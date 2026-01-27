@@ -383,7 +383,6 @@ class DetectionService:
                                      for p in zone['polygon']]
                     
                     # Check if point is in polygon
-                    import cv2
                     point = (int(center_x), int(center_y))
                     result = cv2.pointPolygonTest(
                         np.array(polygon_pixels, dtype=np.int32),
@@ -394,7 +393,7 @@ class DetectionService:
                     if result >= 0:  # Point is inside or on edge
                         zone_detections.append(pallet)
                 
-                # Calculate change percent (percentage of zone covered)
+                # Calculate change percent (ratio of detections in zone to total detections)
                 has_object = len(zone_detections) > 0
                 change_percent = (len(zone_detections) / max(1, len(detection_result['pallets']))) * 100
                 

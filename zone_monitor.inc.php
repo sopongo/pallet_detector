@@ -300,10 +300,6 @@ function drawZones() {
             zoneClass += ' outbound';
         }
         
-        if (!zone.active) {
-            zoneClass += ' inactive';
-        }
-        
         // Create polygon element
         const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
         polygon.setAttribute('points', points);
@@ -404,9 +400,12 @@ function fetchZoneStatus() {
             });
         }
     }).fail(function(xhr) {
-        // Silent fail if service not running
-        if (xhr.status !== 400) {
-            console.warn('⚠️ Cannot fetch zone status:', xhr.responseText);
+        // Only log errors that are not "service not running"
+        if (xhr.status === 400) {
+            // Detection service not running - this is expected when stopped
+            console.debug('Zone status: Detection service not running');
+        } else {
+            console.warn('⚠️ Cannot fetch zone status:', xhr.responseText || xhr.statusText);
         }
     });
 }
