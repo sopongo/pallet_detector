@@ -35504,3 +35504,983 @@ AttributeError: 'LineMessagingAPI' object has no attribute 'token'
 [ WARN:0@33.810] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
 \u274c Cannot open camera 0
 \u26a0\ufe0f Connection attempt 2 failed
+[2026-01-28 01:17:05] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:17:06] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:17:06] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:17:06] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:17:06] ERROR: Error loading zones: 'points'
+[2026-01-28 01:17:06] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:17:06] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:17:06] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:17:06] INFO: \u2705 Detection service initialized
+[2026-01-28 01:17:06] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:17:06] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:17:06] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.725] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.420] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@10.270] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:17:14] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:17:14] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:17:20] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:17:20] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@17.086] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@19.801] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@24.531] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:17:28] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:17:28] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:17:34] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:17:34] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@31.351] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@34.119] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@38.951] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:17:43] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:17:43] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:17:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:17:49] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[2026-01-28 01:18:08] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:18:09] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:18:09] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:18:09] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:18:09] ERROR: Error loading zones: 'points'
+[2026-01-28 01:18:09] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:18:09] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:18:09] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:18:09] INFO: \u2705 Detection service initialized
+[2026-01-28 01:18:09] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:18:09] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:18:09] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.664] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.366] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@10.098] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:18:17] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:18:17] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:18:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:18:23] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@21.881] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@24.631] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@29.345] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:18:36] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:18:36] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:18:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:18:42] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@36.149] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@38.857] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@43.571] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:18:50] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:18:50] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:18:57] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:18:57] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@50.467] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@53.176] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@57.873] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:19:05] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:19:05] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:19:11] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:19:11] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@64.556] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@67.238] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@71.991] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:19:19] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:19:19] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:19:25] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:19:25] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@78.827] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@81.510] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@86.406] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:19:33] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:19:33] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:19:39] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:19:39] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@93.275] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@96.085] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@100.824] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:19:48] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:19:48] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:19:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:19:54] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@107.704] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@110.367] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@114.992] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:20:02] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:20:02] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:20:08] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:20:08] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@121.741] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@124.417] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@129.100] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:20:16] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:20:16] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:20:22] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:20:22] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@135.881] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@138.600] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@143.278] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:20:30] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:20:30] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:20:36] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:20:36] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@150.014] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@152.741] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@157.444] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:20:44] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:20:44] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:20:50] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:20:50] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@164.191] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@166.853] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@171.691] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:20:59] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:20:59] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:21:05] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:21:05] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@178.426] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@181.099] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@185.795] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:21:13] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:21:13] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:21:19] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:21:19] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@192.526] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@195.222] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@199.973] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:21:27] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:21:27] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:21:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:21:33] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@206.665] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@209.347] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@214.042] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:21:41] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:21:41] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:21:47] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:21:47] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@220.841] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@223.480] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@228.178] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:21:55] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:21:55] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:22:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:22:01] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@234.888] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@237.593] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@242.233] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:22:09] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:22:09] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:22:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:22:15] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@248.986] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@251.722] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@256.377] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:22:23] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:22:23] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:22:29] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:22:29] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@263.097] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@265.765] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@270.478] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:22:37] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:22:37] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:22:43] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:22:43] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@277.229] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@279.946] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@284.623] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:22:52] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:22:52] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:22:58] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:22:58] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@291.314] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@293.999] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@298.707] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:23:06] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:23:06] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:23:12] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:23:12] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@305.420] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@308.130] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@312.863] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:23:20] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:23:20] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:23:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:23:26] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@319.607] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@322.333] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@327.068] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:23:34] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:23:34] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:23:40] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:23:40] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@333.832] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@336.523] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@341.235] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:23:48] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:23:48] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:23:54] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:23:54] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@348.006] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@350.702] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@355.405] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:24:02] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:24:02] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:24:08] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:24:08] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@362.034] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@364.676] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@369.455] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:24:16] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:24:16] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:24:22] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:24:22] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@376.115] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@378.779] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@383.381] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:24:30] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:24:30] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:25:50] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:25:50] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:25:50] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:25:50] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:25:50] ERROR: Error loading zones: 'points'
+[2026-01-28 01:25:50] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:25:50] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:25:50] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:25:50] INFO: \u2705 Detection service initialized
+[2026-01-28 01:25:50] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:25:50] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:25:50] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.486] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.196] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@9.877] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:25:59] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:25:59] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:26:05] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:26:05] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@16.639] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@19.351] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@24.063] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:26:13] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:26:13] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:26:19] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:26:19] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@30.991] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@33.673] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@38.356] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:26:27] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:26:27] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:26:33] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:26:33] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@50.092] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@52.873] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@57.557] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:26:46] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:26:46] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:26:52] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:26:52] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@64.378] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@67.021] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[2026-01-28 01:27:07] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:27:07] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:27:07] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:27:07] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:27:07] ERROR: Error loading zones: 'points'
+[2026-01-28 01:27:07] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:27:07] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:27:07] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:27:07] INFO: \u2705 Detection service initialized
+[2026-01-28 01:27:07] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:27:07] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:27:07] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.701] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.354] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@9.997] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:27:15] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:27:15] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:27:21] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:27:22] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@16.730] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@19.371] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[2026-01-28 01:27:50] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:27:50] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:27:50] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:27:50] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:27:50] ERROR: Error loading zones: 'points'
+[2026-01-28 01:27:50] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:27:50] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:27:50] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:27:50] INFO: \u2705 Detection service initialized
+[2026-01-28 01:27:50] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:27:50] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:27:50] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.546] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.221] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@9.922] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:27:58] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:27:58] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:28:04] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:28:04] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@16.761] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[2026-01-28 01:31:47] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:31:47] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:31:47] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:31:47] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:31:47] ERROR: Error loading zones: 'points'
+[2026-01-28 01:31:47] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:31:47] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:31:47] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:31:47] INFO: \u2705 Detection service initialized
+[2026-01-28 01:31:47] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:31:47] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:31:47] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.589] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.378] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@10.101] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:31:55] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:31:55] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:32:01] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:32:01] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@16.885] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@19.654] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@24.356] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:32:09] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:32:09] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:32:15] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:32:15] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@31.071] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@33.786] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@38.533] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:32:24] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:32:24] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:32:30] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:32:30] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@45.297] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@48.045] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@52.775] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:32:38] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:32:38] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:32:44] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:32:44] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@59.554] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[2026-01-28 01:32:58] INFO: \u2705 Loaded sites data: 8 site(s)
+[2026-01-28 01:32:58] INFO: \u2705 YOLOv8 model loaded:   models/pallet_best.pt
+[2026-01-28 01:32:58] INFO: \U0001f4cb Model classes: {0: 'pallet'}
+[2026-01-28 01:32:58] INFO: \U0001f5fa\ufe0f Zone detection enabled: 5 zone(s)
+[2026-01-28 01:32:58] ERROR: Error loading zones: 'points'
+[2026-01-28 01:32:58] INFO: \U0001f3a5 Initializing camera: 0
+[2026-01-28 01:32:58] INFO: \u2705 LINE token configured: bPnF3x6JmcXeS3RPdE2/...
+[2026-01-28 01:32:58] INFO: \u2705 LINE group ID configured: C4f1e1001f...
+[2026-01-28 01:32:58] INFO: \u2705 Detection service initialized
+[2026-01-28 01:32:58] INFO: \U0001f680 Starting Pallet Detection Service...
+[2026-01-28 01:32:58] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:32:58] INFO: \U0001f4f8 Creating RobustCamera for index: 0
+[ WARN:0@2.546] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@5.269] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@10.020] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:33:06] ERROR: \u274c Camera initialization failed
+[2026-01-28 01:33:06] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:33:12] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:33:12] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@16.779] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@19.509] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@24.245] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:33:20] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:33:20] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:33:26] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:33:26] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@31.016] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@33.737] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@38.453] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:33:35] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:33:35] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:33:41] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:33:41] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@45.218] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@47.881] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@52.607] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:33:49] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:33:49] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:33:55] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:33:55] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@59.353] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@62.057] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@66.739] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:34:03] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:34:03] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:34:09] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:34:09] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@73.643] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@76.371] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@81.256] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:34:17] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:34:17] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:34:23] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:34:23] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@88.161] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@90.919] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@95.739] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:34:32] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:34:32] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:34:38] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:34:38] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@102.753] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@105.463] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@110.264] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:34:46] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:34:46] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:34:52] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:34:52] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@117.113] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@119.812] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@124.544] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:35:01] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:35:01] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:35:07] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:35:07] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@131.310] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@134.002] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@138.729] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:35:15] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:35:15] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:35:21] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:35:21] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@145.509] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@148.192] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@152.995] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:35:29] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:35:29] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:35:35] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:35:35] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@159.724] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@162.389] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@167.057] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:35:43] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:35:43] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:35:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:35:49] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[ WARN:0@173.927] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 1 failed
+[ WARN:0@176.615] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 2 failed
+[ WARN:0@181.391] global cap.cpp:344 cv::VideoCapture::open VIDEOIO(DSHOW): backend is generally available but can't be used to capture by index
+\u274c Cannot open camera 0
+\u26a0\ufe0f Connection attempt 3 failed
+\u274c Failed to connect after 3 attempts
+[2026-01-28 01:35:57] ERROR: \u274c Cannot reconnect camera
+[2026-01-28 01:35:57] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:03] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:03] WARNING: \u26a0\ufe0f Camera not opened, attempting reconnect...
+[2026-01-28 01:36:06] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013606.jpg
+[2026-01-28 01:36:07] INFO: Detected 0 object(s) in IMG_20260128_013606.jpg
+[2026-01-28 01:36:07] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:07] INFO: Saved image record #645:  IMG_20260128_013606.jpg
+[2026-01-28 01:36:07] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013606_detected.jpg
+[2026-01-28 01:36:07] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:07] INFO: \U0001f4e4 Uploading image: IMG_20260128_013606_detected.jpg
+[2026-01-28 01:36:07] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013606_detected.jpg
+[2026-01-28 01:36:07] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013606_detected.jpg
+[2026-01-28 01:36:07] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:07] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:07] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:07] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:07] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:13] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:14] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013614.jpg
+[2026-01-28 01:36:14] INFO: Detected 0 object(s) in IMG_20260128_013614.jpg
+[2026-01-28 01:36:14] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:14] INFO: Saved image record #646:  IMG_20260128_013614.jpg
+[2026-01-28 01:36:14] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013614_detected.jpg
+[2026-01-28 01:36:14] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:14] INFO: \U0001f4e4 Uploading image: IMG_20260128_013614_detected.jpg
+[2026-01-28 01:36:14] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013614_detected.jpg
+[2026-01-28 01:36:14] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013614_detected.jpg
+[2026-01-28 01:36:14] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:14] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:14] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:14] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:14] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:20] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:21] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013621.jpg
+[2026-01-28 01:36:21] INFO: Detected 0 object(s) in IMG_20260128_013621.jpg
+[2026-01-28 01:36:21] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:21] INFO: Saved image record #647:  IMG_20260128_013621.jpg
+[2026-01-28 01:36:21] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013621_detected.jpg
+[2026-01-28 01:36:21] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:21] INFO: \U0001f4e4 Uploading image: IMG_20260128_013621_detected.jpg
+[2026-01-28 01:36:21] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013621_detected.jpg
+[2026-01-28 01:36:21] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013621_detected.jpg
+[2026-01-28 01:36:21] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:21] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:21] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:21] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:21] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:27] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:28] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013628.jpg
+[2026-01-28 01:36:28] INFO: Detected 1 object(s) in IMG_20260128_013628.jpg
+[2026-01-28 01:36:28] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:28] INFO: Saved image record #648:  IMG_20260128_013628.jpg
+[2026-01-28 01:36:28] INFO: \u274c No match found for position [115.8441162109375, 60.084075927734375] (threshold: \xb132.0px, \xb124.0px)
+[2026-01-28 01:36:28] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013628_detected.jpg
+[2026-01-28 01:36:28] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:28] INFO: \U0001f4e4 Uploading image: IMG_20260128_013628_detected.jpg
+[2026-01-28 01:36:29] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013628_detected.jpg
+[2026-01-28 01:36:29] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013628_detected.jpg
+[2026-01-28 01:36:29] INFO: \u2705 Created pallet #126 (PL-0001) no zone
+[2026-01-28 01:36:29] INFO: \u2705 Created pallet: #126 (PL-0001)
+[2026-01-28 01:36:29] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:29] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:29] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:29] INFO: \u2705 Cycle completed:  1 pallet(s) detected
+[2026-01-28 01:36:29] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:35] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:35] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013635.jpg
+[2026-01-28 01:36:36] INFO: Detected 0 object(s) in IMG_20260128_013635.jpg
+[2026-01-28 01:36:36] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:36] INFO: Saved image record #649:  IMG_20260128_013635.jpg
+[2026-01-28 01:36:36] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013635_detected.jpg
+[2026-01-28 01:36:36] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:36] INFO: \U0001f4e4 Uploading image: IMG_20260128_013635_detected.jpg
+[2026-01-28 01:36:36] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013635_detected.jpg
+[2026-01-28 01:36:36] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013635_detected.jpg
+[2026-01-28 01:36:36] INFO: \u2705 Deactivated 1 pallet(s) - updated last_detected_at to 01:36:36
+[2026-01-28 01:36:36] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:36] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:36] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:36] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:36] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:42] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:42] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013642.jpg
+[2026-01-28 01:36:43] INFO: Detected 0 object(s) in IMG_20260128_013642.jpg
+[2026-01-28 01:36:43] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:43] INFO: Saved image record #650:  IMG_20260128_013642.jpg
+[2026-01-28 01:36:43] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013642_detected.jpg
+[2026-01-28 01:36:43] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:43] INFO: \U0001f4e4 Uploading image: IMG_20260128_013642_detected.jpg
+[2026-01-28 01:36:43] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013642_detected.jpg
+[2026-01-28 01:36:43] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013642_detected.jpg
+[2026-01-28 01:36:43] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:43] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:43] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:43] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:43] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:49] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:50] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013650.jpg
+[2026-01-28 01:36:50] INFO: Detected 0 object(s) in IMG_20260128_013650.jpg
+[2026-01-28 01:36:50] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:50] INFO: Saved image record #651:  IMG_20260128_013650.jpg
+[2026-01-28 01:36:50] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013650_detected.jpg
+[2026-01-28 01:36:50] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:50] INFO: \U0001f4e4 Uploading image: IMG_20260128_013650_detected.jpg
+[2026-01-28 01:36:50] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013650_detected.jpg
+[2026-01-28 01:36:50] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013650_detected.jpg
+[2026-01-28 01:36:50] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:50] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:50] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:50] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:50] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:36:56] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:36:57] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013657.jpg
+[2026-01-28 01:36:57] INFO: Detected 0 object(s) in IMG_20260128_013657.jpg
+[2026-01-28 01:36:57] INFO: Image dimensions: 640x480
+[2026-01-28 01:36:57] INFO: Saved image record #652:  IMG_20260128_013657.jpg
+[2026-01-28 01:36:57] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013657_detected.jpg
+[2026-01-28 01:36:57] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:36:57] INFO: \U0001f4e4 Uploading image: IMG_20260128_013657_detected.jpg
+[2026-01-28 01:36:57] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013657_detected.jpg
+[2026-01-28 01:36:57] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013657_detected.jpg
+[2026-01-28 01:36:57] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:36:57] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:36:57] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:36:57] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:36:57] INFO: \U0001f4a4 Sleeping for 6 seconds...
+[2026-01-28 01:37:03] INFO: \U0001f504 Starting detection cycle...
+[2026-01-28 01:37:04] INFO: \U0001f4f8 Captured: C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013704.jpg
+[2026-01-28 01:37:04] INFO: Detected 0 object(s) in IMG_20260128_013704.jpg
+[2026-01-28 01:37:04] INFO: Image dimensions: 640x480
+[2026-01-28 01:37:04] INFO: Saved image record #653:  IMG_20260128_013704.jpg
+[2026-01-28 01:37:04] INFO: Saved annotated image:   C:\laragon\www\pallet_detector\upload_image\2026-01-28\IMG_20260128_013704_detected.jpg
+[2026-01-28 01:37:04] INFO: \U0001f4e4 Uploading image to SSL server...
+[2026-01-28 01:37:04] INFO: \U0001f4e4 Uploading image: IMG_20260128_013704_detected.jpg
+[2026-01-28 01:37:04] INFO: \u2705 Upload successful: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013704_detected.jpg
+[2026-01-28 01:37:04] INFO: \u2705 Image uploaded: https://jaiangelbot.jwdcoldchain.com/console/uploads-temp/line_push/2026-01-27/IMG_20260128_013704_detected.jpg
+[2026-01-28 01:37:04] INFO: \U0001f50d Overtime check complete: 0 alert(s) pending
+[2026-01-28 01:37:04] INFO: \U0001f4e2 Handling alerts: 0 overtime pallet(s)
+[2026-01-28 01:37:04] INFO: \u2705 No overtime pallets - all clear
+[2026-01-28 01:37:04] INFO: \u2705 Cycle completed:  0 pallet(s) detected
+[2026-01-28 01:37:04] INFO: \U0001f4a4 Sleeping for 6 seconds...

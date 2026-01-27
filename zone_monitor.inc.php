@@ -427,16 +427,21 @@ function fetchZoneStatus() {
     });
 }
 
+const API_URL = `http://${window.location.hostname}:5000/api`;
+const POLLING_INTERVAL = 3000;
+
+console.log('🔗 API_URL:', API_URL);
+
 $(function () {
 // ========================================
 // API Base URL / Configuration
 // ========================================
 // ✅ Auto-detect hostname (works on any device)
-const API_URL = `http://${window.location.hostname}:5000/api`;
-const POLLING_INTERVAL = 3000;
+//const API_URL = `http://${window.location.hostname}:5000/api`;
+//const POLLING_INTERVAL = 3000;
 
 // Debug: แสดง API_URL ที่ใช้
-console.log('🔗 API_URL:', API_URL);
+//console.log('🔗 API_URL:', API_URL);
   
   let isRunning = false;
   let pollingTimer = null;
@@ -526,7 +531,7 @@ console.log('🔗 API_URL:', API_URL);
           // ถ้ายังไม่ polling ให้เริ่ม
           if (!pollingTimer) {
             // เรียกข้อมูลทันทีเพื่อเติม UI (images, logs, summary)
-            fetchLatestDetection();
+            //fetchLatestDetection();
             fetchSummary();
             fetchLogs();
             // เริ่ม polling แบบต่อเนื่อง
@@ -556,7 +561,7 @@ console.log('🔗 API_URL:', API_URL);
   // ========================================
   // 3.  Fetch Latest Detection (2 images)
   // ========================================
-  function fetchLatestDetection() {
+  /*function fetchLatestDetection() {
     $.get(API_URL + '/detection/latest', function(data) {
       if (data.success) {
         // Update Before image
@@ -576,7 +581,7 @@ console.log('🔗 API_URL:', API_URL);
     }).fail(function() {
       console.error('Cannot fetch latest detection');
     });
-  }
+  }*/
 
   // ========================================
   // 4. Fetch Summary (แบบใหม่ - ใช้ ID)
@@ -851,23 +856,20 @@ function fetchSummary() {
     }
   }
 
-  function startPolling() {
+function startPolling() {
     if (pollingTimer) return;
     
-    console.log('🔄 Starting polling...');
+    console.log('🔄 Starting polling (Zone Monitoring)...');
     
-    // Fetch immediately
-    fetchLatestDetection();
+    // ✅ Zone monitoring ไม่ต้องใช้ fetchLatestDetection
     fetchSummary();
     fetchLogs();
-    fetchZoneStatus(); // ✅ เพิ่มบรรทัดนี้
+    fetchZoneStatus();
     
-    // Then poll every 3 seconds
     pollingTimer = setInterval(function() {
-        fetchLatestDetection();
         fetchSummary();
         fetchLogs();
-        fetchZoneStatus(); // ✅ เพิ่มบรรทัดนี้
+        fetchZoneStatus();
     }, POLLING_INTERVAL);
 }
 
