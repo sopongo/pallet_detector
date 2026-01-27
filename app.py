@@ -535,44 +535,57 @@ def stop_detection():
 # APIs ด้าน detection (latest / summary / logs / active pallets)
 # โค้ดส่วนนี้คงเดิม แต่เพิ่ม logging และ error handling เพิ่มเติม
 # ----------------------------------------
-@app.route('/api/detection/latest', methods=['GET'])
-def get_latest_detection():
-    try:
-        conn = db.get_connection()
-        cursor = conn.cursor()
-        cursor.execute("""
-            SELECT id_img, image_date, image_name, pallet_detected, site, location
-            FROM tb_image
-            ORDER BY image_date DESC
-            LIMIT 2
-        """)
-        images = cursor.fetchall()
-        result = {"success": True, "before": None, "after": None}
-        if len(images) >= 2:
-            before_name = images[1]['image_name']
-            before_name_detected = before_name.replace('.jpg', '_detected.jpg')
-            result["before"] = {
-                "id": images[1]['id_img'],
-                "date": images[1]['image_date'].strftime('%d/%m/%Y %H:%M:%S'),
-                "filename": images[1]['image_name'],
-                "count": images[1]['pallet_detected'],
-                "image_url": f"http://localhost:5000/static/upload_image/{images[1]['image_date'].strftime('%Y-%m-%d')}/{before_name_detected}"
-            }
-            after_name = images[0]['image_name']
-            after_name_detected = after_name.replace('.jpg', '_detected.jpg')
-            result["after"] = {
-                "id": images[0]['id_img'],
-                "date": images[0]['image_date'].strftime('%d/%m/%Y %H:%M:%S'),
-                "filename": images[0]['image_name'],
-                "count": images[0]['pallet_detected'],
-                "image_url": f"http://localhost:5000/static/upload_image/{images[0]['image_date'].strftime('%Y-%m-%d')}/{after_name_detected}"
-            }
-        cursor.close()
-        conn.close()
-        return jsonify(result)
-    except Exception as e:
-        logger.error(f"Error getting latest detection: {e}")
-        return jsonify({"success": False, "message": str(e)}), 500
+
+# ========================================
+# DISABLED: YOLO Detection Latest Endpoint
+# ========================================
+# This endpoint has been disabled as part of disabling the YOLO Detection system.
+# Previously used by monitor.inc.php to display before/after detection images.
+# 
+# To restore this endpoint:
+# 1. Uncomment the code below
+# 2. Restore monitor.inc.php file from git history
+# 3. Ensure YOLO detection service is configured and running
+# ========================================
+# @app.route('/api/detection/latest', methods=['GET'])
+# def get_latest_detection():
+#     try:
+#         conn = db.get_connection()
+#         cursor = conn.cursor()
+#         cursor.execute("""
+#             SELECT id_img, image_date, image_name, pallet_detected, site, location
+#             FROM tb_image
+#             ORDER BY image_date DESC
+#             LIMIT 2
+#         """)
+#         images = cursor.fetchall()
+#         result = {"success": True, "before": None, "after": None}
+#         if len(images) >= 2:
+#             before_name = images[1]['image_name']
+#             before_name_detected = before_name.replace('.jpg', '_detected.jpg')
+#             result["before"] = {
+#                 "id": images[1]['id_img'],
+#                 "date": images[1]['image_date'].strftime('%d/%m/%Y %H:%M:%S'),
+#                 "filename": images[1]['image_name'],
+#                 "count": images[1]['pallet_detected'],
+#                 "image_url": f"http://localhost:5000/static/upload_image/{images[1]['image_date'].strftime('%Y-%m-%d')}/{before_name_detected}"
+#             }
+#             after_name = images[0]['image_name']
+#             after_name_detected = after_name.replace('.jpg', '_detected.jpg')
+#             result["after"] = {
+#                 "id": images[0]['id_img'],
+#                 "date": images[0]['image_date'].strftime('%d/%m/%Y %H:%M:%S'),
+#                 "filename": images[0]['image_name'],
+#                 "count": images[0]['pallet_detected'],
+#                 "image_url": f"http://localhost:5000/static/upload_image/{images[0]['image_date'].strftime('%Y-%m-%d')}/{after_name_detected}"
+#             }
+#         cursor.close()
+#         conn.close()
+#         return jsonify(result)
+#     except Exception as e:
+#         logger.error(f"Error getting latest detection: {e}")
+#         return jsonify({"success": False, "message": str(e)}), 500
+# ========================================
 
 
 @app.route('/api/detection/summary/today', methods=['GET'])
@@ -767,35 +780,47 @@ def get_system_info():
         return jsonify({"success": False, "message": str(e)}), 500
 
 
-@app.route('/api/pallets/active', methods=['GET'])
-def get_active_pallets():
-    try:
-        conn = db.get_connection()
-        cursor = conn.cursor()
-        cursor.execute("""
-            SELECT id_pallet, pos_x, pos_y, 
-                   TIMESTAMPDIFF(MINUTE, first_detected_at, NOW()) as duration_minutes,
-                   in_over, status
-            FROM tb_pallet
-            WHERE is_active = 1
-            ORDER BY first_detected_at DESC
-        """)
-        pallets = cursor.fetchall()
-        result = []
-        for p in pallets:
-            result.append({
-                "id": p['id_pallet'],
-                "position": [float(p['pos_x']), float(p['pos_y'])],
-                "duration": p['duration_minutes'],
-                "overtime": bool(p['in_over']),
-                "status": p['status']
-            })
-        cursor.close()
-        conn.close()
-        return jsonify({"success": True, "count": len(result), "pallets": result})
-    except Exception as e:
-        logger.error(f"Error getting active pallets: {e}")
-        return jsonify({"success": False, "message": str(e)}), 500
+# ========================================
+# DISABLED: Active Pallets Endpoint
+# ========================================
+# This endpoint has been disabled as part of disabling the YOLO Detection system.
+# Previously used to retrieve currently active/tracked pallets from tb_pallet table.
+# 
+# To restore this endpoint:
+# 1. Uncomment the code below
+# 2. Ensure YOLO detection service is configured and running
+# 3. Verify tb_pallet table structure matches the query requirements
+# ========================================
+# @app.route('/api/pallets/active', methods=['GET'])
+# def get_active_pallets():
+#     try:
+#         conn = db.get_connection()
+#         cursor = conn.cursor()
+#         cursor.execute("""
+#             SELECT id_pallet, pos_x, pos_y, 
+#                    TIMESTAMPDIFF(MINUTE, first_detected_at, NOW()) as duration_minutes,
+#                    in_over, status
+#             FROM tb_pallet
+#             WHERE is_active = 1
+#             ORDER BY first_detected_at DESC
+#         """)
+#         pallets = cursor.fetchall()
+#         result = []
+#         for p in pallets:
+#             result.append({
+#                 "id": p['id_pallet'],
+#                 "position": [float(p['pos_x']), float(p['pos_y'])],
+#                 "duration": p['duration_minutes'],
+#                 "overtime": bool(p['in_over']),
+#                 "status": p['status']
+#             })
+#         cursor.close()
+#         conn.close()
+#         return jsonify({"success": True, "count": len(result), "pallets": result})
+#     except Exception as e:
+#         logger.error(f"Error getting active pallets: {e}")
+#         return jsonify({"success": False, "message": str(e)}), 500
+# ========================================
 
 
 
