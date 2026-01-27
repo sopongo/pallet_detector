@@ -666,7 +666,13 @@ async saveZones() {
     try {
         // ✅ Validation 1-4 (unchanged)
         if (this.zones.length === 0) {
-            this.showMessage('No zones to save. Please create at least one zone.', 'warning');
+            //this.showMessage('No zones to save. Please create at least one zone.', 'warning');
+            Swal.fire({
+                icon: 'error',
+                title: 'Warning',
+                html: `No zones to save. Please create at least one zone.`,
+                confirmButtonColor: '#dc3545'
+            });            
             return;
         }
         
@@ -681,7 +687,13 @@ async saveZones() {
         }
         
         if (!this.referenceImage) {
-            this.showMessage('Please capture an image first', 'warning');
+            //this.showMessage('Please capture an image first', 'warning');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Image Required',
+                    html: `Please capture an image first`,
+                    confirmButtonColor: '#dc3545'
+                });
             return;
         }
         
@@ -870,7 +882,7 @@ async saveZones() {
             
             // ✅ Try to convert to data URL
             try {
-                const dataUrl = tempCanvas.toDataURL('image/jpeg', 0.9);
+                const dataUrl = tempCanvas.toDataURL('image/png', 0.98);  //0.9 quality
                 console.log(`✅ Canvas exported (${withZones ? 'with' : 'without'} zones):`, dataUrl.substring(0, 50) + '...');
                 return dataUrl;
             } catch (error) {

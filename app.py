@@ -1057,8 +1057,8 @@ def save_zone_images():
         now = datetime.now()
         date_str = now.strftime('%d-%m-%Y')
         
-        master_filename = f"img_master_configzone.jpg" #master_filename = f"img_master_configzone_{date_str}.jpg"
-        polygon_filename = f"img_polygon_configzone.jpg" #polygon_filename = f"img_polygon_configzone_{date_str}.jpg"
+        master_filename = f"img_master_configzone.png" #master_filename = f"img_master_configzone_{date_str}.png"
+        polygon_filename = f"img_polygon_configzone.png" #polygon_filename = f"img_polygon_configzone_{date_str}.png"
         
         # Save master image
         # บันทึกภาพต้นฉบับ
@@ -1194,13 +1194,13 @@ def get_latest_zone_images():
                 "message": "No zone images found"
             }), 200
         
-        # ✅ รองรับทั้ง img_polygon_configzone.jpg และ img_polygon_configzone_DD-MM-YYYY.jpg
+        # ✅ รองรับทั้ง img_polygon_configzone.png และ img_polygon_configzone_DD-MM-YYYY.png   
         all_files = os.listdir(config_zone_dir)
         
         master_files = [f for f in all_files 
-                       if f.startswith('img_master_configzone') and f.endswith('.jpg')]
+                       if f.startswith('img_master_configzone') and f.endswith('.png')]
         polygon_files = [f for f in all_files 
-                        if f.startswith('img_polygon_configzone') and f.endswith('.jpg')]
+                        if f.startswith('img_polygon_configzone') and f.endswith('.png')]
         
         if master_files:
             master_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)

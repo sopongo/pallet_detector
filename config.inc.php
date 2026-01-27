@@ -580,9 +580,6 @@
                                         <button class="btn btn-warning" id="btnClearZones">
                                             <i class="fas fa-eraser"></i> Clear All Zones
                                         </button>
-                                        <button class="btn btn-info" id="btnLoadZones">
-                                            <i class="fas fa-download"></i> Load Zones
-                                        </button>
                                     </div>
                                 </div>
                                 
@@ -1657,9 +1654,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save Zones Button
     document.getElementById('btnSaveZones')?.addEventListener('click', async function() {
-        showLoading('Saving zones...');
+        // ✅ ลบ showLoading() และ Swal.close() ออก
+        // ให้ saveZones() จัดการ popup เองทั้งหมด
         await window.zoneManager.saveZones();
-        Swal.close();
     });
     
     // Clear Zones Button
