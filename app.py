@@ -1178,12 +1178,7 @@ def save_zones_config():
 
 @app.route('/api/zones/latest-images', methods=['GET'])
 def get_latest_zone_images():
-    """
-    Get paths to the latest zone configuration images
-    รับพาธของภาพการตั้งค่าโซนล่าสุด
-    
-    Returns the latest master and polygon images from upload_image/config_zone/
-    """
+    """Get paths to the latest zone configuration images"""
     try:
         config_zone_dir = os.path.join(
             os.path.dirname(__file__),
@@ -1191,8 +1186,6 @@ def get_latest_zone_images():
             'config_zone'
         )
         
-        # Check if directory exists
-        # ตรวจสอบว่ามีโฟลเดอร์หรือไม่
         if not os.path.exists(config_zone_dir):
             return jsonify({
                 "success": True,
@@ -1201,20 +1194,23 @@ def get_latest_zone_images():
                 "message": "No zone images found"
             }), 200
         
-        # Find latest master and polygon images
-        # หาภาพต้นฉบับและภาพโซนล่าสุด
-        master_files = [f for f in os.listdir(config_zone_dir) 
-                       if f.startswith('img_master_configzone_') and f.endswith('.jpg')]
-        polygon_files = [f for f in os.listdir(config_zone_dir) 
-                        if f.startswith('img_polygon_configzone_') and f.endswith('.jpg')]
+        # ✅ รองรับทั้ง img_polygon_configzone.jpg และ img_polygon_configzone_DD-MM-YYYY.jpg
+        all_files = os.listdir(config_zone_dir)
         
-        # Sort by modification time (latest first)
-        # เรียงตามเวลาแก้ไข (ล่าสุดก่อน)
-        master_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
-        polygon_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
+        master_files = [f for f in all_files 
+                       if f.startswith('img_master_configzone') and f.endswith('.jpg')]
+        polygon_files = [f for f in all_files 
+                        if f.startswith('img_polygon_configzone') and f.endswith('.jpg')]
+        
+        if master_files:
+            master_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
+        if polygon_files:
+            polygon_files.sort(key=lambda f: os.path.getmtime(os.path.join(config_zone_dir, f)), reverse=True)
         
         master_path = f"upload_image/config_zone/{master_files[0]}" if master_files else None
         polygon_path = f"upload_image/config_zone/{polygon_files[0]}" if polygon_files else None
+        
+        logger.info(f"📸 Latest images: master={master_path}, polygon={polygon_path}")
         
         return jsonify({
             "success": True,

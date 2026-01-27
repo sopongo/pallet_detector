@@ -521,6 +521,31 @@
                                         </div>
                                     </div>
 
+                                    <!-- ✅ Zone Summary Table (ด้านล่าง Current Reference Image) -->
+                                    <div class="row mt-3" id="zoneSummarySection" style="display: none;">
+                                        <div class="col-md-12">
+                                            <h5><i class="fas fa-list"></i> Zone Summary</h5>
+                                            <hr>
+                                            <table class="table table-bordered table-hover table-sm" id="table-listzone">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th style="width: 5%">#</th>
+                                                        <th style="width: 20%">Zone Name</th>
+                                                        <th style="width: 10%">Points</th>
+                                                        <th style="width: 15%">Threshold</th>
+                                                        <th style="width: 15%">Alert Time</th>
+                                                        <th style="width: 15%">Type</th>
+                                                        <th style="width: 10%">Status</th>
+                                                        <th style="width: 10%">Color</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Zones populated by JavaScript -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>                                    
+
                                 <!-- Drawing Canvas -->
                                 <div class="row mb-3">
                                     <div class="col-md-12">
@@ -561,30 +586,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Zone Summary Table (ใต้รูป currentReferenceImage) -->
-                                <div class="row mt-3" id="zoneSummarySection" style="display: none;">
-                                    <div class="col-md-12">
-                                        <h5><i class="fas fa-list"></i> Zone Summary</h5>
-                                        <hr>
-                                        <table class="table table-bordered table-hover table-sm" id="table-listzone">
-                                            <thead>
-                                                <tr>
-                                                    <th style="width: 5%">#</th>
-                                                    <th style="width: 20%">Zone Name</th>
-                                                    <th style="width: 10%">Points</th>
-                                                    <th style="width: 15%">Threshold</th>
-                                                    <th style="width: 15%">Alert Time</th>
-                                                    <th style="width: 15%">Type</th>
-                                                    <th style="width: 10%">Status</th>
-                                                    <th style="width: 10%">Color</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- Zones will be populated here -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
                                 
                                 <!-- Configured Zones (สำหรับ canvas - เก็บไว้) -->
                                 <div class="row">
@@ -1680,12 +1681,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // ✅ Load zones when Zone tab is opened
-    document.getElementById('zone-tab')?.addEventListener('shown.bs.tab', async function() {
+    // ✅ Load zones when Zone tab is opened (fixed event binding)
+    $('#zone-tab').on('shown.bs.tab', async function(e) {
         try {
+            console.log('📋 Zone tab opened, loading zones...');
+            
             if (window.zoneManager) {
-                console.log('📋 Zone tab opened, loading zones...');
-                // แสดง saved zone summary (รูป + table)
                 await window.zoneManager.displaySavedZoneSummary();
             } else {
                 console.error('❌ ZoneManager not initialized');
@@ -1694,6 +1695,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('❌ Failed to load zone configuration:', error);
         }
     });
+
+    console.log('✅ Zone tab event listener attached');
 
 });
 
