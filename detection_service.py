@@ -304,6 +304,9 @@ class DetectionService:
                 'zones': zones_status
             }
             
+            # Ensure logs directory exists
+            os.makedirs(os.path.dirname(ZONE_STATUS_FILE), exist_ok=True)
+            
             with open(ZONE_STATUS_FILE, 'w') as f:
                 json.dump(status_data, f, indent=2)
             
@@ -345,17 +348,26 @@ class DetectionService:
                 logger.info(f"📤 Object left Zone {zone_id} ({zone_name}) after {dwell:.1f}s")
                 del self.zone_states[zone_id]
     
-    def detect_zone_occupancy(self, image_path):
+    def detect_zone_occupancy(self, image_path, detection_result=None):
         """
         Detect if objects are present in each zone
         ตรวจสอบว่ามีวัตถุใน zone หรือไม่
+        
+        Args:
+            image_path: Path to image (kept for backward compatibility)
+            detection_result: Pre-computed detection result (to avoid redundant YOLO detection)
         """
         try:
             if not self.zones_enabled or not self.zones:
                 return
             
-            # Detect objects
-            detection_result = self.detector.detect_pallets(image_path)
+            # Use pre-computed detection result if provided, otherwise detect
+            if detection_result is None:
+                # Fallback for backward compatibility - this causes duplicate YOLO detection
+                # which impacts performance. Callers should pass detection_result to avoid this.
+                logger.warning("⚠️ detect_zone_occupancy: No detection_result provided, running YOLO again (performance impact)")
+                detection_result = self.detector.detect_pallets(image_path)
+            
             if not detection_result:
                 # No detections - mark all zones as empty
                 for zone in self.zones:
@@ -417,6 +429,10 @@ class DetectionService:
             original_image = detection_result['original_image']
             image_height, image_width = original_image.shape[:2]
             logger.info(f"Image dimensions: {image_width}x{image_height}")
+            
+            # ✅ Update zone occupancy with current detection results (reuse YOLO detection)
+            if self.zones_enabled and self.zones:
+                self.detect_zone_occupancy(image_path, detection_result)
             
             # ✅ Filter by zones if enabled
             if self.zones_enabled and self.zones:
@@ -678,15 +694,14 @@ class DetectionService:
             if not image_path:
                 return
             
-            # 2. Detect zone occupancy (if zones enabled)
-            if self.zones_enabled and self.zones:
-                self.detect_zone_occupancy(image_path)
-                self.save_zone_status()
-            
-            # 3. ประมวลผล pallet detection
+            # 2. Process pallet detection and zone occupancy (YOLO detection runs once, results reused for zones)
             result = self.process_detection(image_path)
             if not result:
                 return
+            
+            # 3. Save zone status after detection completes
+            if self.zones_enabled and self.zones:
+                self.save_zone_status()
             
             # 4. จัดการ alerts
             self.handle_alerts(result['overtime_pallets'], result['annotated_path'])
