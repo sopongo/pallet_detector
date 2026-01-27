@@ -1,212 +1,56 @@
 {
   "zones": [
     {
+      "active": true,
+      "alert_threshold": 1000,
       "id": 1,
-      "name": "PL-IN-1",
+      "name": "Inbound Zone",
+      "pallet_type": 1,
       "polygon": [
         [
-          0.045,
-          0.5526
+          0.0704,
+          0.03
         ],
         [
-          0.2467,
-          0.5615
+          0.3213,
+          0.3056
         ],
         [
-          0.2475,
-          0.9363
+          0.3762,
+          0.7352
         ],
         [
-          0.0467,
-          0.9348
+          0.1321,
+          0.7441
         ]
       ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
+      "threshold_percent": 30
     },
     {
+      "active": true,
+      "alert_threshold": 3000,
       "id": 2,
-      "name": "PL-IN-2",
+      "name": "Outbound",
+      "pallet_type": 1,
       "polygon": [
         [
-          0.2892,
-          0.5645
+          0.4438,
+          0.3219
         ],
         [
-          0.4917,
-          0.5408
+          0.7238,
+          0.3041
         ],
         [
-          0.4733,
-          0.9526
+          0.7304,
+          0.5471
         ],
         [
-          0.2933,
-          0.9408
+          0.4488,
+          0.593
         ]
       ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 3,
-      "name": "PL-IN-3",
-      "polygon": [
-        [
-          0.515,
-          0.5467
-        ],
-        [
-          0.675,
-          0.5541
-        ],
-        [
-          0.6833,
-          0.9378
-        ],
-        [
-          0.4992,
-          0.9319
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 4,
-      "name": "PL-IN-4",
-      "polygon": [
-        [
-          0.7017,
-          0.5482
-        ],
-        [
-          0.8767,
-          0.5467
-        ],
-        [
-          0.8675,
-          0.9526
-        ],
-        [
-          0.7025,
-          0.9452
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 5,
-      "name": "PL-IN-5",
-      "polygon": [
-        [
-          0.8925,
-          0.5511
-        ],
-        [
-          0.9892,
-          0.5511
-        ],
-        [
-          0.9925,
-          0.9674
-        ],
-        [
-          0.8883,
-          0.9541
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 6,
-      "name": "PL-OUT-1",
-      "polygon": [
-        [
-          0.0417,
-          0.3897
-        ],
-        [
-          0.9742,
-          0.3571
-        ],
-        [
-          0.9725,
-          0.5111
-        ],
-        [
-          0.0317,
-          0.5022
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 7,
-      "name": "PL-OUT-2",
-      "polygon": [
-        [
-          0.0425,
-          0.3378
-        ],
-        [
-          0.0508,
-          0.1541
-        ],
-        [
-          0.1758,
-          0.1556
-        ],
-        [
-          0.1642,
-          0.3245
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
-    },
-    {
-      "id": 8,
-      "name": "PL-OUT-3",
-      "polygon": [
-        [
-          0.1975,
-          0.1497
-        ],
-        [
-          0.3892,
-          0.1497
-        ],
-        [
-          0.3767,
-          0.323
-        ],
-        [
-          0.1875,
-          0.3274
-        ]
-      ],
-      "threshold_percent": 45,
-      "alert_threshold": 3000,
-      "pallet_type": 1,
-      "active": true
+      "threshold_percent": 45
     }
   ],
   "enabled": true

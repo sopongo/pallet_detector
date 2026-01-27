@@ -56,7 +56,7 @@ if($_POST['action'] === 'login'){
 <!-- Automatic element centering -->
 <div class="lockscreen-wrapper">
   <div class="lockscreen-logo">
-    <a href="./"><b>Pallet Detector</b></a>
+    <a href="./"><b>Motionless detector <br /> for energy saving (MDES)</b></a>
   </div>
   <!-- User name -->
   <div class="lockscreen-name">SCGJWD Cold Chain</div>

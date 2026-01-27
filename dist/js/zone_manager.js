@@ -1256,10 +1256,10 @@ async saveZones() {
                     </td>
                     <td>
                         <button class="btn btn-xs btn-primary btn-edit-zone-summary" data-zone-id="${zone.id}" title="Edit">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit"></i> Edit
                         </button>
                         <button class="btn btn-xs btn-danger btn-delete-zone-summary" data-zone-id="${zone.id}" title="Delete">
-                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-trash"></i> Delete
                         </button>
                         <button class="btn btn-xs btn-${zone.active ? 'warning' : 'success'} btn-toggle-zone-summary" data-zone-id="${zone.id}" title="${zone.active ? 'Deactivate' : 'Activate'}">
                             <i class="fas fa-power-off"></i> ${zone.active ? 'Deactivate' : 'Activate'}

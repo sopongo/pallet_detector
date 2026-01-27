@@ -529,15 +529,15 @@
                                             <table class="table table-bordered table-hover table-sm" id="table-listzone">
                                                 <thead class="thead-light">
                                                     <tr>
-                                                        <th style="width: 5%">#</th>
-                                                        <th style="width: 20%">Zone Name</th>
-                                                        <th style="width: 10%">Points</th>
-                                                        <th style="width: 15%">Threshold</th>
-                                                        <th style="width: 15%">Alert Time</th>
-                                                        <th style="width: 15%">Type</th>
-                                                        <th style="width: 10%">Status</th>
-                                                        <th style="width: 10%">Color</th>
-                                                        <th style="width: 15%">Actions</th>
+                                                        <th style="width:5%">#</th>
+                                                        <th style="width:25%">Zone Name</th>
+                                                        <th style="width:10%">Points</th>
+                                                        <th style="width:10%">Threshold</th>
+                                                        <th style="width:10%">Alert Time</th>
+                                                        <th style="width:10%">Type</th>
+                                                        <th style="width:10%">Status</th>
+                                                        <th style="width:5%">Color</th>
+                                                        <th style="width:30%">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
