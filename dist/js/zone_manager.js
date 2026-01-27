@@ -1279,7 +1279,7 @@ async saveZones() {
             const noImgEl = document.getElementById('noReferenceImage');
             
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
-                const imageUrl = `/${imgData.polygon_image}?t=${Date.now()}`;
+                const imageUrl = `${imgData.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
@@ -1292,14 +1292,14 @@ async saveZones() {
             // 4. Update Configured Zones (canvas section)
             const zoneListContainer = document.getElementById('zoneList');
             if (zoneListContainer) {
-                const zoneListHtml = this.createZoneSummaryTable(savedZones);
-                zoneListContainer.innerHTML = `
+                //const zoneListHtml = this.createZoneSummaryTable(savedZones);
+                /*zoneListContainer.innerHTML = `
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle"></i> <strong>Saved Configuration:</strong> 
                         ${savedZones.length} zone(s) loaded from <code>config/zones.json</code>
                     </div>
-                    ${zoneListHtml}
-                `;
+                `;*/
+                //${zoneListHtml}
             }
             
             console.log(`✅ Displayed ${savedZones.length} saved zones in table`);
