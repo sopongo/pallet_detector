@@ -537,6 +537,7 @@
                                                         <th style="width: 15%">Type</th>
                                                         <th style="width: 10%">Status</th>
                                                         <th style="width: 10%">Color</th>
+                                                        <th style="width: 15%">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
