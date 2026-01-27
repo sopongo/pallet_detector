@@ -1260,7 +1260,7 @@ async saveZones() {
             
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
                 // Use origin from current location to avoid hardcoding
-                const imageUrl = `${window.location.protocol}//${window.location.host}/${imgData.polygon_image}?t=${Date.now()}`;
+                const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
