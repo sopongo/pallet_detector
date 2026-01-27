@@ -363,8 +363,9 @@ class DetectionService:
             
             # Use pre-computed detection result if provided, otherwise detect
             if detection_result is None:
-                # Fallback: Detect objects (not recommended - causes duplicate detection)
-                logger.warning("⚠️ detect_zone_occupancy called without detection_result - running YOLO again")
+                # Fallback for backward compatibility - this causes duplicate YOLO detection
+                # which impacts performance. Callers should pass detection_result to avoid this.
+                logger.warning("⚠️ detect_zone_occupancy: No detection_result provided, running YOLO again (performance impact)")
                 detection_result = self.detector.detect_pallets(image_path)
             
             if not detection_result:
@@ -693,7 +694,7 @@ class DetectionService:
             if not image_path:
                 return
             
-            # 2. ประมวลผล pallet detection (YOLO detection + zone occupancy happens here)
+            # 2. Process pallet detection and zone occupancy (YOLO detection runs once, results reused for zones)
             result = self.process_detection(image_path)
             if not result:
                 return
