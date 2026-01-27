@@ -799,13 +799,14 @@ async saveZones() {
                 text: 'Loading saved configuration...',
                 timer: 1500,
                 showConfirmButton: false
+            }).then(() => {
+                // ✅ หลัง popup ปิด แล้วโหลดข้อมูลจาก zones.json
+                this.displaySavedZoneSummary().then(() => {
+                    console.log('✅ Displayed saved zones');
+                }).catch(error => {
+                    console.error('❌ Error displaying zones:', error);
+                });
             });
-            
-            // ✅ รอ 1 วินาที แล้วโหลดข้อมูลจาก zones.json
-            setTimeout(async () => {
-                await this.displaySavedZoneSummary();
-                console.log('✅ Displayed saved zones');
-            }, 1500);
             
         } else {
             throw new Error(saveResult.message || 'Save failed');
@@ -1207,6 +1208,7 @@ async saveZones() {
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
+            let polygonImageLoaded = false;
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
                 // Use origin from current location to avoid hardcoding
                 //const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
@@ -1214,6 +1216,7 @@ async saveZones() {
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
+                polygonImageLoaded = true;
                 console.log('✅ Polygon image loaded:', imageUrl);
             }
             
@@ -1235,13 +1238,17 @@ async saveZones() {
             console.log(`✅ Displayed ${savedZones.length} saved zones`);
             
             // ✅ NEW: แสดง popup พร้อม zone summary table
+            const polygonImageStatus = polygonImageLoaded 
+                ? '<p>📸 Polygon image displayed</p>' 
+                : '<p>⚠️ Polygon image not available</p>';
+            
             Swal.fire({
                 icon: 'success',
                 title: 'Zone Configuration Loaded',
                 html: `
                     <div style="text-align: center;">
                         <p>✅ <strong>${savedZones.length} zones</strong> loaded from <code>config/zones.json</code></p>
-                        <p>📸 Polygon image displayed</p>
+                        ${polygonImageStatus}
                     </div>
                     <hr>
                     <h5 style="text-align: center;">📋 Zone Summary:</h5>
