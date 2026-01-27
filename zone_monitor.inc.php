@@ -219,6 +219,197 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
+// ========================================
+// Zone Overlay Functions
+// ========================================
+
+let zonesData = [];
+let cameraResolution = { width: 1280, height: 720 };
+
+/**
+ * Load camera resolution from config
+ */
+async function loadCameraResolution() {
+    const API_URL = `http://${window.location.hostname}:5000/api`;
+    try {
+        const response = await fetch(`${API_URL}/config`);
+        const data = await response.json();
+        
+        if (data.camera && data.camera.resolution) {
+            cameraResolution = data.camera.resolution;
+            console.log(`📷 Camera resolution: ${cameraResolution.width}x${cameraResolution.height}`);
+            
+            // Update SVG viewBox
+            $('#zone-overlay').attr('viewBox', `0 0 ${cameraResolution.width} ${cameraResolution.height}`);
+        }
+    } catch (error) {
+        console.error('❌ Error loading config:', error);
+    }
+}
+
+/**
+ * Load zones from API
+ */
+async function loadZones() {
+    const API_URL = `http://${window.location.hostname}:5000/api`;
+    try {
+        const response = await fetch(`${API_URL}/zones`);
+        const data = await response.json();
+        
+        if (data.success) {
+            zonesData = data.zones;
+            console.log(`✅ Loaded ${zonesData.length} zones`);
+            drawZones();
+        } else {
+            console.error('❌ Failed to load zones:', data.message);
+        }
+    } catch (error) {
+        console.error('❌ Error loading zones:', error);
+    }
+}
+
+/**
+ * Draw zones on SVG overlay
+ */
+function drawZones() {
+    const svg = $('#zone-overlay');
+    svg.empty();
+    
+    if (!zonesData || zonesData.length === 0) {
+        console.warn('⚠️ No zones to draw');
+        return;
+    }
+    
+    zonesData.forEach(zone => {
+        if (!zone.active) {
+            return;
+        }
+        
+        // Convert normalized coordinates (0-1) to pixel coordinates
+        const points = zone.polygon.map(point => {
+            const x = point[0] * cameraResolution.width;
+            const y = point[1] * cameraResolution.height;
+            return `${x},${y}`;
+        }).join(' ');
+        
+        // Determine class by pallet_type
+        let zoneClass = 'zone-polygon';
+        if (zone.pallet_type === 1) {
+            zoneClass += ' inbound';
+        } else if (zone.pallet_type === 2) {
+            zoneClass += ' outbound';
+        }
+        
+        // Create polygon element
+        const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        polygon.setAttribute('points', points);
+        polygon.setAttribute('class', zoneClass);
+        polygon.setAttribute('data-zone-id', zone.id);
+        polygon.setAttribute('data-zone-name', zone.name);
+        
+        // Add tooltip
+        const title = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        title.textContent = `${zone.name} (Threshold: ${zone.threshold_percent}%, Alert: ${zone.alert_threshold}ms)`;
+        polygon.appendChild(title);
+        
+        svg.append(polygon);
+        
+        // Draw label
+        drawZoneLabel(svg, zone);
+    });
+    
+    console.log(`✅ Drew ${zonesData.length} zones`);
+}
+
+/**
+ * Draw zone label at center
+ */
+function drawZoneLabel(svg, zone) {
+    let sumX = 0, sumY = 0;
+    zone.polygon.forEach(point => {
+        sumX += point[0] * cameraResolution.width;
+        sumY += point[1] * cameraResolution.height;
+    });
+    
+    const centerX = sumX / zone.polygon.length;
+    const centerY = sumY / zone.polygon.length;
+    
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('x', centerX);
+    text.setAttribute('y', centerY);
+    text.setAttribute('class', 'zone-label');
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dominant-baseline', 'middle');
+    text.textContent = zone.name;
+    
+    svg.append(text);
+}
+
+/**
+ * Highlight zone (when object detected)
+ */
+function highlightZone(zoneId, hasObject) {
+    const polygon = $(`#zone-overlay polygon[data-zone-id="${zoneId}"]`);
+    
+    if (hasObject) {
+        polygon.css({
+            'fill': 'rgba(255, 0, 0, 0.3)',
+            'stroke': '#ff0000',
+            'stroke-width': '3'
+        });
+    } else {
+        polygon.removeAttr('style');
+    }
+}
+
+/**
+ * Show alert animation on zone
+ */
+function showZoneAlert(zoneId) {
+    const polygon = $(`#zone-overlay polygon[data-zone-id="${zoneId}"]`);
+    
+    polygon.css({
+        'fill': 'rgba(255, 0, 0, 0.5)',
+        'stroke': '#ff0000',
+        'stroke-width': '4'
+    });
+    
+    let count = 0;
+    const flashInterval = setInterval(() => {
+        polygon.css('fill', count % 2 === 0 ? 'rgba(255, 0, 0, 0.5)' : 'rgba(255, 0, 0, 0.2)');
+        count++;
+        if (count >= 6) {
+            clearInterval(flashInterval);
+        }
+    }, 500);
+}
+
+/**
+ * Fetch zone status from API
+ */
+function fetchZoneStatus() {
+    const API_URL = `http://${window.location.hostname}:5000/api`;
+    $.get(`${API_URL}/detection/zone-status`, function(data) {
+        if (data.success && data.zones) {
+            data.zones.forEach(zoneStatus => {
+                highlightZone(zoneStatus.zone_id, zoneStatus.has_object);
+                
+                if (zoneStatus.alert) {
+                    showZoneAlert(zoneStatus.zone_id);
+                }
+            });
+        }
+    }).fail(function(xhr) {
+        // Only log errors that are not "service not running"
+        if (xhr.status === 400) {
+            // Detection service not running - this is expected when stopped
+            console.debug('Zone status: Detection service not running');
+        } else {
+            console.warn('⚠️ Cannot fetch zone status:', xhr.responseText || xhr.statusText);
+        }
+    });
+}
+
 $(function () {
 // ========================================
 // API Base URL / Configuration
@@ -482,6 +673,10 @@ function fetchSummary() {
                   startVideoStream();
                   startPolling();
                   updateSystemStatus(true, true, response.pid); // อัพเดต status และ PID
+                  
+                  // ✅ Reload zones when starting
+                  loadZones();
+                  
                   Swal.fire({
                       icon: 'success',
                       title:  'Success!',
@@ -644,12 +839,14 @@ function fetchSummary() {
     fetchLatestDetection();
     fetchSummary();
     fetchLogs();
+    fetchZoneStatus();
     
     // Then poll every 3 seconds
     pollingTimer = setInterval(function() {
       fetchLatestDetection();
       fetchSummary();
       fetchLogs();
+      fetchZoneStatus();
     }, POLLING_INTERVAL);
   }
 
@@ -666,6 +863,16 @@ function fetchSummary() {
   // - ถ้า backend บอกว่ากำลังรัน จะเริ่ม poll และเติมข้อมูลหน้าอัตโนมัติ
   // - ถ้า backend ไม่รัน จะไม่เริ่ม poll (ผู้ใช้ต้องกด Start)
   // ========================================
+  
+  // ✅ Initialize Zone Overlay
+  (async function initZoneOverlay() {
+      console.log('📋 Initializing Zone Overlay...');
+      await loadCameraResolution();
+      await loadZones();
+      $(window).on('resize', drawZones);
+      console.log('✅ Zone Overlay initialized');
+  })();
+  
   fetchDetectionStatus();  // Check if already running (will start polling if running)
   fetchSystemInfo();        // Load system info once
   // Fetch system info every 3 seconds

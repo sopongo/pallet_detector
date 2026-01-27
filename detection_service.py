@@ -7,6 +7,7 @@ import os
 import time
 import cv2
 import json
+import numpy as np
 from datetime import datetime, timedelta
 import signal
 import sys
@@ -22,6 +23,9 @@ from utils.image_uploader import ImageUploader
 from utils.zone_config import ZoneConfigManager
 
 logger = setup_logger()
+
+# Zone status file path
+ZONE_STATUS_FILE = os.path.join('logs', 'zone_status.json')
 
 class DetectionService:
     """Main detection service"""
@@ -72,6 +76,9 @@ class DetectionService:
                 logger.error(f"Error loading zones: {e}")
                 self.zones_enabled = False
                 self.zones = []
+            
+            # ✅ Initialize zone states tracking
+            self.zone_states = {}
             
             # ✅ Initialize RobustCamera
             camera_index = self.cfg['camera']['selectedCamera']
@@ -255,6 +262,146 @@ class DetectionService:
         except Exception as e:
             logger.error(f"❌ Capture error: {e}")
             return None
+    
+    def save_zone_status(self):
+        """
+        Save current zone status to JSON file
+        บันทึกสถานะปัจจุบันของ zones ลงไฟล์ JSON
+        """
+        try:
+            zones_status = []
+            
+            for zone in self.zones:
+                zone_id = zone['id']
+                zone_name = zone['name']
+                
+                # Check if zone has object
+                if zone_id in self.zone_states:
+                    state = self.zone_states[zone_id]
+                    has_object = state.get('has_object', False)
+                    enter_time = state.get('enter', 0)
+                    dwell_time = time.time() - enter_time if has_object else 0
+                    alerted = state.get('alerted', False)
+                    change_percent = state.get('change_percent', 0)
+                else:
+                    has_object = False
+                    dwell_time = 0
+                    alerted = False
+                    change_percent = 0
+                
+                zones_status.append({
+                    'zone_id': zone_id,
+                    'zone_name': zone_name,
+                    'has_object': has_object,
+                    'change_percent': round(change_percent, 1),
+                    'dwell_time': round(dwell_time, 1),
+                    'alert': alerted
+                })
+            
+            # Write to file
+            status_data = {
+                'timestamp': datetime.now().isoformat(),
+                'zones': zones_status
+            }
+            
+            with open(ZONE_STATUS_FILE, 'w') as f:
+                json.dump(status_data, f, indent=2)
+            
+        except Exception as e:
+            logger.error(f"❌ Cannot save zone status: {e}")
+    
+    def track_zone_time(self, zone, has_object, change_percent):
+        """Track object dwell time in zone"""
+        zone_id = zone['id']
+        zone_name = zone['name']
+        now = time.time()
+        
+        if has_object:
+            if zone_id not in self.zone_states:
+                # Object entered
+                self.zone_states[zone_id] = {
+                    'enter': now,
+                    'has_object': True,
+                    'alerted': False,
+                    'change_percent': change_percent
+                }
+                logger.info(f"📦 Object entered Zone {zone_id} ({zone_name})")
+            else:
+                # Object still present
+                state = self.zone_states[zone_id]
+                state['change_percent'] = change_percent
+                
+                dwell = now - state['enter']
+                threshold = zone.get('alert_threshold', 3000) / 1000
+                
+                if dwell >= threshold and not state['alerted']:
+                    logger.warning(f"⚠️ Alert: Zone {zone_name} exceeded {dwell:.1f}s")
+                    state['alerted'] = True
+        else:
+            if zone_id in self.zone_states and self.zone_states[zone_id]['has_object']:
+                # Object left
+                state = self.zone_states[zone_id]
+                dwell = now - state['enter']
+                logger.info(f"📤 Object left Zone {zone_id} ({zone_name}) after {dwell:.1f}s")
+                del self.zone_states[zone_id]
+    
+    def detect_zone_occupancy(self, image_path):
+        """
+        Detect if objects are present in each zone
+        ตรวจสอบว่ามีวัตถุใน zone หรือไม่
+        """
+        try:
+            if not self.zones_enabled or not self.zones:
+                return
+            
+            # Detect objects
+            detection_result = self.detector.detect_pallets(image_path)
+            if not detection_result:
+                # No detections - mark all zones as empty
+                for zone in self.zones:
+                    if zone.get('active', True):
+                        self.track_zone_time(zone, False, 0)
+                return
+            
+            # Get image dimensions
+            original_image = detection_result['original_image']
+            image_height, image_width = original_image.shape[:2]
+            
+            # Check each zone
+            for zone in self.zones:
+                if not zone.get('active', True):
+                    continue
+                
+                # Count detections in this zone
+                zone_detections = []
+                for pallet in detection_result['pallets']:
+                    # Check if pallet center is in zone
+                    center_x, center_y = pallet['center']
+                    
+                    # Convert zone polygon to pixel coordinates
+                    polygon_pixels = [(int(p[0] * image_width), int(p[1] * image_height)) 
+                                     for p in zone['polygon']]
+                    
+                    # Check if point is in polygon
+                    point = (int(center_x), int(center_y))
+                    result = cv2.pointPolygonTest(
+                        np.array(polygon_pixels, dtype=np.int32),
+                        point,
+                        False
+                    )
+                    
+                    if result >= 0:  # Point is inside or on edge
+                        zone_detections.append(pallet)
+                
+                # Calculate change percent (ratio of detections in zone to total detections)
+                has_object = len(zone_detections) > 0
+                change_percent = (len(zone_detections) / max(1, len(detection_result['pallets']))) * 100
+                
+                # Track zone time
+                self.track_zone_time(zone, has_object, change_percent)
+            
+        except Exception as e:
+            logger.error(f"❌ Error detecting zone occupancy: {e}")
     
     def process_detection(self, image_path):
         """ประมวลผล detection และ tracking"""
@@ -531,12 +678,17 @@ class DetectionService:
             if not image_path:
                 return
             
-            # 2. ประมวลผล
+            # 2. Detect zone occupancy (if zones enabled)
+            if self.zones_enabled and self.zones:
+                self.detect_zone_occupancy(image_path)
+                self.save_zone_status()
+            
+            # 3. ประมวลผล pallet detection
             result = self.process_detection(image_path)
             if not result:
                 return
             
-            # 3. จัดการ alerts
+            # 4. จัดการ alerts
             self.handle_alerts(result['overtime_pallets'], result['annotated_path'])
             
             logger.info(f"✅ Cycle completed:  {result['detected_count']} pallet(s) detected")

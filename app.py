@@ -337,6 +337,7 @@ def get_storage_info():
 # ----------------------------------------
 PID_FILE = os.path.join(os.path.dirname(__file__), 'detection_service.pid')
 DETECTION_LOG = os.path.join(os.path.dirname(__file__), 'logs', 'detection_service.log')
+ZONE_STATUS_FILE = os.path.join(os.path.dirname(__file__), 'logs', 'zone_status.json')
 detection_process = None  # object ของ subprocess จะอยู่แค่ขณะที่ Flask ทำงาน
 
 def _write_pid(pid: int):
@@ -666,6 +667,60 @@ def get_detection_logs():
         logger.error(f"Error getting logs: {e}")
         return jsonify({"success": False, "message": str(e)}), 500
 
+
+@app.route('/api/detection/zone-status', methods=['GET'])
+def get_zone_status():
+    """
+    Get current status of all zones from detection service
+    อ่านสถานะ zones จาก zone_status.json
+    
+    Returns:
+        JSON with zones status: zone_id, has_object, change_percent, dwell_time, alert
+    """
+    try:
+        # Check if detection service is running
+        pid = _read_pid()
+        if not pid or not _is_pid_running(pid):
+            return jsonify({
+                "success": False,
+                "message": "Detection service not running"
+            }), 400
+        
+        # Read status file
+        if not os.path.exists(ZONE_STATUS_FILE):
+            # No status data yet
+            return jsonify({
+                "success": True,
+                "zones": [],
+                "message": "No status data yet"
+            })
+        
+        # Read data
+        with open(ZONE_STATUS_FILE, 'r') as f:
+            data = json.load(f)
+        
+        # Check if data is stale (>30 seconds old)
+        from datetime import datetime, timedelta
+        timestamp = datetime.fromisoformat(data['timestamp'])
+        now = datetime.now()
+        age = (now - timestamp).total_seconds()
+        
+        if age > 30:
+            logger.warning(f"⚠️ Zone status data is old ({age:.1f}s)")
+        
+        return jsonify({
+            "success": True,
+            "zones": data['zones'],
+            "timestamp": data['timestamp'],
+            "age_seconds": round(age, 1)
+        })
+        
+    except Exception as e:
+        logger.error(f"❌ Error getting zone status: {e}")
+        return jsonify({
+            "success": False,
+            "message": str(e)
+        }), 500
 
 
 @app.route('/api/system/info', methods=['GET'])
