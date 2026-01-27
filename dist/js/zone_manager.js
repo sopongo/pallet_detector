@@ -46,6 +46,15 @@ class ZoneManager {
     }
     
     /**
+     * Escape HTML to prevent XSS attacks
+     */
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+    
+    /**
      * Load reference image onto canvas (from file or base64)
      */
     loadImage(source) {
@@ -1266,6 +1275,10 @@ async saveZones() {
         tableBody.querySelectorAll('.btn-edit-zone-summary').forEach(btn => {
             btn.addEventListener('click', async () => {
                 const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
                 await this.editZoneFromSummary(zoneId);
             });
         });
@@ -1273,6 +1286,10 @@ async saveZones() {
         tableBody.querySelectorAll('.btn-delete-zone-summary').forEach(btn => {
             btn.addEventListener('click', async () => {
                 const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
                 await this.deleteZoneFromSummary(zoneId);
             });
         });
@@ -1280,6 +1297,10 @@ async saveZones() {
         tableBody.querySelectorAll('.btn-toggle-zone-summary').forEach(btn => {
             btn.addEventListener('click', async () => {
                 const zoneId = parseInt(btn.getAttribute('data-zone-id'));
+                if (isNaN(zoneId)) {
+                    console.error('Invalid zone ID');
+                    return;
+                }
                 await this.toggleZoneFromSummary(zoneId);
             });
         });
@@ -1383,7 +1404,7 @@ async saveZones() {
                 html: `
                     <div class="form-group text-left">
                         <label>Zone Name</label>
-                        <input id="editZoneName" class="form-control" value="${zone.name}">
+                        <input id="editZoneName" class="form-control" value="${this.escapeHtml(zone.name)}">
                     </div>
                     <div class="form-group text-left">
                         <label>Threshold Percent (%)</label>
@@ -1416,12 +1437,19 @@ async saveZones() {
                     const name = document.getElementById('editZoneName').value;
                     const thresholdPercent = parseFloat(document.getElementById('editThresholdPercent').value);
                     const alertThreshold = parseInt(document.getElementById('editAlertThreshold').value);
-                    const palletType = parseInt(document.querySelector('input[name="palletType"]:checked').value);
+                    const palletTypeInput = document.querySelector('input[name="palletType"]:checked');
                     
                     if (!name) {
                         Swal.showValidationMessage('Please enter a zone name');
                         return false;
                     }
+                    
+                    if (!palletTypeInput) {
+                        Swal.showValidationMessage('Please select a pallet type');
+                        return false;
+                    }
+                    
+                    const palletType = parseInt(palletTypeInput.value);
                     
                     return { name, thresholdPercent, alertThreshold, palletType };
                 }
