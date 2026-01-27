@@ -24,7 +24,7 @@
                 <div class="col-md-12">
                   <div class="detection-wrapper border bg-white p-2 mb-2">
                     <div class="pallet-image-container position-relative">
-                      <img id="img-before" src="dist/img/no-signal-on-tv-screen.jpg" class="img-fluid rounded border" alt="Before">
+                      <img id="live-stream" src="dist/img/video.gif" class="img-fluid rounded border" alt="Live Stream">
                     </div>
                   </div>
                 </div>
@@ -192,6 +192,17 @@ console.log('🔗 API_URL:', API_URL);
   }
 
   // ========================================
+  // Video Stream Control Functions
+  // ========================================
+  function startVideoStream() {
+    $('#live-stream').attr('src', `${API_URL}/camera/stream/0?t=${Date.now()}`);
+  }
+
+  function stopVideoStream() {
+    $('#live-stream').attr('src', 'dist/img/video.gif');
+  }
+
+  // ========================================
   // 2. Fetch Detection Status
   // - ปรับให้ call updateSystemStatus เพื่ออัพเดต Status และ PID
   // - ถ้า backend รายงาน running=true ให้เริ่ม polling อัตโนมัติ (เติม behavior ที่ผู้ใช้ต้องการ)
@@ -332,16 +343,12 @@ function fetchSummary() {
     $.get(API_URL + '/system/info', function(data) {
       if (data.success) {
         // Update system info table
-        $('table.table-sm tbody tr:eq(0) td:last').text(data.working_hours);
-        $('table.table-sm tbody tr:eq(1) td:last').text(data.confidence);
-        $('table.table-sm tbody tr:eq(2) td:last').text(data.iou_threshold);
-        $('table.table-sm tbody tr:eq(3) td:last').text(data.image_size);
-        $('table.table-sm tbody tr:eq(4) td:last').text(data.interval);
-        $('table.table-sm tbody tr:eq(5) td:last').text(data.alert_threshold);
-        $('table.table-sm tbody tr:eq(6) td:last').text(data.alignment_tolerance);
-        $('table.table-sm tbody tr:eq(7) td:last').html('<i class="fas fa-microchip mr-1"></i> ' + data.device_mode + ' Mode (Used: ' + data.cpu_usage + ')');
-        $('table.table-sm tbody tr:eq(8) td:last').html('<i class="fas fa-memory mr-1"></i> ' + data.ram_total + ' (Used: ' + data.ram_usage + ')');
-        $('table.table-sm tbody tr:eq(9) td:last').text(data.temperature);
+        $('table.table-sm tbody tr:eq(0) td:last').text(data.operating_hours);
+        $('table.table-sm tbody tr:eq(1) td:last').text(data.inbound_zones);
+        $('table.table-sm tbody tr:eq(2) td:last').text(data.outbound_zones);
+        $('table.table-sm tbody tr:eq(3) td:last').html('<i class="fas fa-microchip mr-1"></i> ' + data.cpu_usage);
+        $('table.table-sm tbody tr:eq(4) td:last').html('<i class="fas fa-memory mr-1"></i> ' + data.ram_total + ' (Used: ' + data.ram_usage + ')');
+        $('table.table-sm tbody tr:eq(5) td:last').text(data.temperature);
       }
     }).fail(function() {
       console.error('Cannot fetch system info');
@@ -370,6 +377,7 @@ function fetchSummary() {
               
               if (response.success) {
                   updateButtonState(true);
+                  startVideoStream();
                   startPolling();
                   updateSystemStatus(true, true, response.pid); // อัพเดต status และ PID
                   Swal.fire({
@@ -452,6 +460,7 @@ function fetchSummary() {
                   
                   if (response.success) {
                       updateButtonState(false);
+                      stopVideoStream();
                       stopPolling();
                       updateSystemStatus(true, false, null);
                       Swal.fire({
