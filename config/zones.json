@@ -1,56 +1,134 @@
 {
   "zones": [
     {
-      "active": true,
-      "alert_threshold": 1000,
       "id": 1,
-      "name": "Inbound Zone",
-      "pallet_type": 1,
+      "name": "Zone_1",
       "polygon": [
         [
-          0.0704,
-          0.03
+          0.0463,
+          0.4717
         ],
         [
-          0.3213,
-          0.3056
+          0.2413,
+          0.4673
         ],
         [
-          0.3762,
-          0.7352
+          0.2546,
+          0.7858
         ],
         [
-          0.1321,
-          0.7441
+          0.0471,
+          0.7828
         ]
       ],
-      "threshold_percent": 30
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
     },
     {
-      "active": true,
-      "alert_threshold": 3000,
       "id": 2,
-      "name": "Outbound",
-      "pallet_type": 1,
+      "name": "Zone_2",
       "polygon": [
         [
-          0.4438,
-          0.3219
+          0.2879,
+          0.4658
         ],
         [
-          0.7238,
-          0.3041
+          0.4238,
+          0.4495
         ],
         [
-          0.7304,
-          0.5471
+          0.4371,
+          0.7843
         ],
         [
-          0.4488,
-          0.593
+          0.2938,
+          0.7902
         ]
       ],
-      "threshold_percent": 45
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 2,
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Zone_3",
+      "polygon": [
+        [
+          0.4629,
+          0.445
+        ],
+        [
+          0.6471,
+          0.4243
+        ],
+        [
+          0.6529,
+          0.8036
+        ],
+        [
+          0.4821,
+          0.8021
+        ]
+      ],
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
+    },
+    {
+      "id": 4,
+      "name": "Zone_4",
+      "polygon": [
+        [
+          0.6829,
+          0.4213
+        ],
+        [
+          0.8629,
+          0.4139
+        ],
+        [
+          0.8679,
+          0.7799
+        ],
+        [
+          0.6988,
+          0.7887
+        ]
+      ],
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 2,
+      "active": true
+    },
+    {
+      "id": 5,
+      "name": "Zone_5",
+      "polygon": [
+        [
+          0.0563,
+          0.8391
+        ],
+        [
+          0.8746,
+          0.8302
+        ],
+        [
+          0.8763,
+          0.9917
+        ],
+        [
+          0.0604,
+          0.9932
+        ]
+      ],
+      "threshold_percent": 45,
+      "alert_threshold": 3000,
+      "pallet_type": 1,
+      "active": true
     }
   ],
   "enabled": true

@@ -406,10 +406,7 @@
     </div>
     <div class="card-body text-center">
         <!-- ✅ เพิ่ม id="cameraFeed" -->
-        <img id="cameraFeed" 
-             src="" 
-             alt="Camera Feed" 
-             style="width: 100%; max-width:  640px; height: 480px; background: #000; border:  2px solid #ddd; border-radius: 8px; object-fit: contain;">
+        <img id="cameraFeed" src="dist/img/signal_loss_1.gif" alt="Camera Feed" style="width: 100%; max-width: 640px; height: 480px; background: #000; border: 2px solid #ddd; border-radius: 8px; object-fit: contain;">
         
         <p id="cameraStatus" class="text-muted mt-2">
             Select a camera to start streaming
@@ -975,14 +972,15 @@ function loadConfig() {
                 status.innerHTML = `<br />⏳ Loading camera ${cameraId}...`;
                 status.className = 'text-info';
                 
-                // หยุด stream เก่า
-                feedImg.src = '';
+                // หยุด stream เก่า → แสดงรูป default
+                feedImg.src = 'dist/img/signal_loss_1.gif';
                 
                 // เริ่ม stream ใหม่
                 setTimeout(function() {
                     feedImg.src = `${API_URL}/camera/stream/${cameraId}? t=${Date.now()}`;
                     
                     feedImg.onerror = function() {
+                        feedImg.src = 'dist/img/signal_loss_1.gif';  // ← เพิ่มบรรทัดนี้
                         status.innerHTML = `<br />❌ Cannot stream from Camera ${cameraId}`;
                         status.className = 'text-danger';
                         stopBtn.style.display = 'none';
@@ -1485,36 +1483,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-// ========================================
-// Live Camera Preview Update 05-01-2025
-// ========================================
-document.getElementById('cameraSelect').addEventListener('change', function() {
-    const camera = this.value;
-    
-    if(camera && camera !== '') {
-        startCameraPreview(camera);
-    } else {
+    // ========================================
+    // Live Camera Preview Update 05-01-2025
+    // ========================================
+    document.getElementById('cameraSelect').addEventListener('change', function() {
+        const camera = this.value;
+        
+        if(camera && camera !== '') {
+            startCameraPreview(camera);
+        } else {
+            const feedImg = document.getElementById('cameraFeed');
+            const status = document.getElementById('cameraStatus');
+            const stopBtn = document.getElementById('btnStopStream');
+            
+            feedImg.src = 'dist/img/signal_loss_1.gif';
+            status.textContent = 'No camera selected';
+            status.className = 'text-muted';
+            stopBtn.style.display = 'none';
+        }
+    });
+
+    // Stop Stream Button
+    document.getElementById('btnStopStream').addEventListener('click', function() {
         const feedImg = document.getElementById('cameraFeed');
         const status = document.getElementById('cameraStatus');
-        const stopBtn = document.getElementById('btnStopStream');
         
-        feedImg.src = '';
-        status.textContent = 'No camera selected';
-        status.className = 'text-muted';
-        stopBtn.style.display = 'none';
-    }
-});
-
-// Stop Stream Button
-document.getElementById('btnStopStream').addEventListener('click', function() {
-    const feedImg = document.getElementById('cameraFeed');
-    const status = document.getElementById('cameraStatus');
-    
-    feedImg.src = '';
-    status.textContent = 'Stream stopped';
-    status.className = 'text-warning';
-    this.style.display = 'none';
-});
+        feedImg.src = 'dist/img/signal_loss_1.gif';
+        status.textContent = 'Stream stopped';
+        status.className = 'text-warning';
+        this.style.display = 'none';
+    });
 
 // แสดงปุ่ม Stop เมื่อ stream เริ่ม
 document.getElementById('cameraFeed').addEventListener('load', function() {

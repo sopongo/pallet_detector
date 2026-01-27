@@ -25,6 +25,9 @@ switch($module) {
     case 'monitoring':
         $include_page = 'monitor.inc.php';
         break;
+    case 'zone-monitoring':
+        $include_page = 'zone_monitor.inc.php';
+        break;
     case 'config':
         $include_page = 'config.inc.php';
         break;
@@ -137,6 +140,12 @@ switch($module) {
             <a href="./" class="nav-link <?PHP echo ($module === '') ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-house-laptop"></i>
               <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="?module=zone-monitoring" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'zone-monitoring' ? 'active' : ''; ?>">
+              <i class="nav-icon fa-solid fa-object-ungroup"></i>
+              <p>Monitoring (Zone)</p>
             </a>
           </li>
           <li class="nav-item">
