@@ -664,65 +664,55 @@ class ZoneManager {
  */
 async saveZones() {
     try {
-        // ✅ Validation 1: Check if zones exist
+        // ✅ Validation 1-4 (unchanged)
         if (this.zones.length === 0) {
             this.showMessage('No zones to save. Please create at least one zone.', 'warning');
             return;
         }
         
-        // ✅ Validation 2: Check maximum zones limit
         if (this.zones.length > this.maxZones) {
             Swal.fire({
                 icon: 'error',
                 title: 'Too Many Zones',
-                html: `
-                    <p>You have <strong>${this.zones.length} zones</strong> but maximum is <strong>${this.maxZones}</strong>.</p>
-                    <p>Please delete <strong>${this.zones.length - this.maxZones} zone(s)</strong> before saving.</p>
-                `,
+                html: `<p>You have <strong>${this.zones.length} zones</strong> but maximum is <strong>${this.maxZones}</strong>.</p>`,
                 confirmButtonColor: '#dc3545'
             });
             return;
         }
         
-        // ✅ Validation 3: Check reference image
         if (!this.referenceImage) {
             this.showMessage('Please capture an image first', 'warning');
             return;
         }
         
-        // ✅ Validation 4: Check each zone has at least 3 points
         for (let zone of this.zones) {
             if (zone.polygon.length < 3) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Invalid Zone',
-                    html: `
-                        <p>Zone "<strong>${zone.name}</strong>" has only <strong>${zone.polygon.length} points</strong>.</p>
-                        <p>Each zone must have at least <strong>3 points</strong>.</p>
-                    `,
+                    html: `<p>Zone "<strong>${zone.name}</strong>" has only <strong>${zone.polygon.length} points</strong>.</p>`,
                     confirmButtonColor: '#dc3545'
                 });
                 return;
             }
         }
         
+        // ✅ สำเนา zones ก่อนเคลียร์ (สำหรับแสดงใน table)
+        const zonesToSave = JSON.parse(JSON.stringify(this.zones));
+        
         // Show loading
         Swal.fire({
             title: 'Saving Zones...',
             html: 'Please wait while saving zones and images',
             allowOutsideClick: false,
-            didOpen: () => {
-                Swal.showLoading();
-            }
+            didOpen: () => { Swal.showLoading(); }
         });
         
-        // Step 1: Save master and polygon images
-        // Master image: original camera capture (without zones)
-        // Polygon image: canvas with zones drawn
+        // Step 1: Save images
         console.log('📸 Step 1/3: Saving images...');
         
-        const masterImageData = await this.getCanvasImageData(false);  // Without zones
-        const polygonImageData = await this.getCanvasImageData(true);  // With zones
+        const masterImageData = await this.getCanvasImageData(false);
+        const polygonImageData = await this.getCanvasImageData(true);
         
         const imageResponse = await fetch(`${this.apiUrl}/zones/save-image`, {
             method: 'POST',
@@ -742,9 +732,9 @@ async saveZones() {
             throw new Error(`Failed to save images: ${imageResult.message}`);
         }
         
-        console.log('✅ Images saved:', imageResult.master_path, imageResult.polygon_path);
+        console.log('✅ Images saved');
         
-        // Step 2: Validate zones on backend (Shapely polygon intersection check)
+        // Step 2: Validate zones
         console.log('🔍 Step 2/3: Validating zones...');
         
         const validateResponse = await fetch(`${this.apiUrl}/zones/validate`, {
@@ -764,20 +754,15 @@ async saveZones() {
             Swal.fire({
                 icon: 'error',
                 title: 'Zone Overlap Detected',
-                html: `
-                    <p><strong>Validation Error:</strong></p>
-                    <p>${validateResult.message}</p>
-                    <hr>
-                    <p><small>Please adjust your zones so they don't overlap.</small></p>
-                `,
+                html: `<p><strong>Validation Error:</strong></p><p>${validateResult.message}</p>`,
                 confirmButtonColor: '#dc3545'
             });
             return;
         }
         
-        console.log('✅ Zones validated (no overlaps)');
+        console.log('✅ Zones validated');
         
-        // Step 3: Save zones configuration to zones.json
+        // Step 3: Save zones config
         console.log('💾 Step 3/3: Saving zones configuration...');
         
         const saveResponse = await fetch(`${this.apiUrl}/zones/save`, {
@@ -795,80 +780,69 @@ async saveZones() {
         if (saveResult.success) {
             Swal.close();
             
-            // ✅ 1. แสดงรูป polygon
+            // ✅ 1. แสดงรูป polygon (FIX: ใช้ full URL)
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
             if (imgEl && noImgEl && saveResult.polygon_image) {
-                const imageUrl = `http://localhost:5000/${saveResult.polygon_image}?t=${Date.now()}`;
+                const imageUrl = `${window.location.protocol}//${window.location.hostname}:5000/${saveResult.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
                 console.log('✅ Polygon image displayed:', imageUrl);
             }
             
-            // ✅ 2. เคลียร์ canvas (ลบ zones ที่กำลังวาดออก)
+            // ✅ 2. สร้าง Zone Summary Table (FIX: ใช้ zonesToSave)
+            const zoneListHtml = this.createZoneSummaryTable(zonesToSave);
+            
+            // ✅ 3. เคลียร์ canvas
             this.zones = [];
             this.currentZone = null;
             this.referenceImage = null;
             
-            // Clear canvas
             const ctx = this.canvas.getContext('2d');
             ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             
-            console.log('✅ Canvas and zones cleared');
+            console.log('✅ Canvas cleared');
             
-            // ✅ 3. เคลียร์ Configured Zones list
+            // ✅ 4. เคลียร์ Configured Zones list
             const zoneListContainer = document.getElementById('zoneList');
             if (zoneListContainer) {
-                zoneListContainer.innerHTML = '<p class="text-muted">Zones saved successfully. Refresh or switch tabs to view saved zones.</p>';
+                zoneListContainer.innerHTML = '<p class="text-muted">Zones saved. Refresh to view.</p>';
             }
             
-            // ✅ 4. สร้าง Zone Summary Table
-            const zoneListHtml = this.createZoneSummaryTable(saveResult.zones);
-            
-            // ✅ 5. แสดง Success popup พร้อม Zone Summary
+            // ✅ 5. แสดง Success popup พร้อม table
             Swal.fire({
                 icon: 'success',
                 title: 'Zones Saved Successfully!',
                 html: `
                     <div style="text-align: center;">
-                        <p>✅ <strong>${saveResult.zones.length} zones</strong> saved successfully!</p>
-                        <p>📸 Images saved to <code>upload_image/config_zone/</code></p>
-                        <p>📝 Configuration saved to <code>config/zones.json</code></p>
+                        <p>✅ <strong>${zonesToSave.length} zones</strong> saved!</p>
+                        <p>📸 Images: <code>upload_image/config_zone/</code></p>
+                        <p>📝 Config: <code>config/zones.json</code></p>
                     </div>
                     <hr>
                     <h5 style="text-align: center;">📋 Zone Summary:</h5>
                     ${zoneListHtml}
                 `,
                 width: '900px',
-                confirmButtonColor: '#28a745',
-                confirmButtonText: 'OK'
+                confirmButtonColor: '#28a745'
             });
             
-            console.log('✅ Zones saved and UI updated');
+            console.log('✅ Save complete');
         } else {
             throw new Error(saveResult.message || 'Save failed');
         }
         
     } catch (error) {
-        console.error('❌ Save zones error:', error);
+        console.error('❌ Save error:', error);
         Swal.close();
         Swal.fire({
             icon: 'error',
             title: 'Save Failed',
-            html: `
-                <p><strong>Error:</strong> ${error.message}</p>
-                <hr>
-                <p><strong>Please check:</strong></p>
-                <ul style="text-align: left;">
-                    <li>Flask backend is running</li>
-                    <li>Network connection is stable</li>
-                    <li>Check browser Console (F12) for details</li>
-                </ul>
-            `,
+            html: `<p><strong>Error:</strong> ${error.message}</p>`,
             confirmButtonColor: '#dc3545'
         });
     }
@@ -1260,7 +1234,8 @@ async saveZones() {
             
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
                 // Use origin from current location to avoid hardcoding
-                const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
+                //const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
+                const imageUrl = `${window.location.protocol}//${window.location.hostname}:5000/${imgData.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
