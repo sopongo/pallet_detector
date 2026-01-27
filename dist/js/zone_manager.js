@@ -749,18 +749,31 @@ async saveZones() {
         
         const validateResult = await validateResponse.json();
         
-        if (!validateResult.valid) {
+        // ✅ เช็ค success ก่อน
+        if (!validateResult.success) {
+            throw new Error(validateResult.message || 'Validation failed');
+        }
+        
+        console.log('🔍 Validation result:', validateResult);
+        
+        // ✅ แล้วเช็ค valid
+        if (validateResult.valid === false) {
             Swal.close();
             Swal.fire({
                 icon: 'error',
                 title: 'Zone Overlap Detected',
-                html: `<p><strong>Validation Error:</strong></p><p>${validateResult.message}</p>`,
+                html: `
+                    <p><strong>Validation Error:</strong></p>
+                    <p>${validateResult.message}</p>
+                    <hr>
+                    <p><small>Please adjust your zones so they don't overlap.</small></p>
+                `,
                 confirmButtonColor: '#dc3545'
             });
             return;
         }
         
-        console.log('✅ Zones validated');
+        console.log('✅ Zones validated (no overlaps)');
         
         // Step 3: Save zones config
         console.log('💾 Step 3/3: Saving zones configuration...');
@@ -782,7 +795,7 @@ async saveZones() {
             
             console.log('✅ Zones saved successfully');
             
-            // ✅ เคลียร์ canvas
+            // เคลียร์ canvas
             this.zones = [];
             this.currentZone = null;
             this.referenceImage = null;
@@ -792,21 +805,33 @@ async saveZones() {
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             
-            // ✅ แสดง success message
+            // ✅ แสดง loading (ไม่มี timer)
             Swal.fire({
                 icon: 'success',
                 title: 'Zones Saved Successfully!',
-                text: 'Loading saved configuration...',
-                timer: 1500,
-                showConfirmButton: false
-            }).then(() => {
-                // ✅ หลัง popup ปิด แล้วโหลดข้อมูลจาก zones.json
-                this.displaySavedZoneSummary().then(() => {
-                    console.log('✅ Displayed saved zones');
-                }).catch(error => {
-                    console.error('❌ Error displaying zones:', error);
-                });
+                text: 'Loading configuration...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
             });
+            
+            // ✅ รอ 2 วินาที ให้ backend เขียนไฟล์เสร็จ
+            setTimeout(async () => {
+                try {
+                    await this.displaySavedZoneSummary();
+                    console.log('✅ Displayed saved zones');
+                } catch (error) {
+                    console.error('❌ Display error:', error);
+                    Swal.close();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Display Error',
+                        text: error.message
+                    });
+                }
+            }, 2000); // เพิ่มเป็น 2 วินาที
             
         } else {
             throw new Error(saveResult.message || 'Save failed');
@@ -1210,9 +1235,8 @@ async saveZones() {
             
             let polygonImageLoaded = false;
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
-                // Use origin from current location to avoid hardcoding
-                //const imageUrl = `${window.location.origin}/${imgData.polygon_image}?t=${Date.now()}`;
-                const imageUrl = `${window.location.protocol}//${window.location.hostname}:5000/${imgData.polygon_image}?t=${Date.now()}`;
+                // ✅ ใช้ relative path (ทำงานได้ทั้ง localhost และ production)
+                const imageUrl = `/${imgData.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
