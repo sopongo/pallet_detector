@@ -338,6 +338,9 @@ function fetchSummary() {
 
   // ========================================
   // 6. Fetch System Info
+  // Note: Uses table row indices (tr:eq(N)) - ensure HTML table matches this order:
+  // Row 0: Working time Detection, Row 1: Inbound Zone, Row 2: Outbound Zone,
+  // Row 3: Mode (CPU), Row 4: Ram, Row 5: Temp box enclosure
   // ========================================
   function fetchSystemInfo() {
     $.get(API_URL + '/system/info', function(data) {
