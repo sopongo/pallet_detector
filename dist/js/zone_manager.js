@@ -749,16 +749,20 @@ async saveZones() {
         
         const validateResult = await validateResponse.json();
         
-        // ✅ เช็ค success ก่อน
+        // ✅ เพิ่ม detailed logging
+        console.log('🔍 Validation response:', JSON.stringify(validateResult, null, 2));
+        
+        // เช็ค success ก่อน
         if (!validateResult.success) {
             throw new Error(validateResult.message || 'Validation failed');
         }
         
-        console.log('🔍 Validation result:', validateResult);
-        
-        // ✅ แล้วเช็ค valid
+        // แล้วเช็ค valid
         if (validateResult.valid === false) {
             Swal.close();
+            
+            console.error('❌ Validation failed:', validateResult.message);
+            
             Swal.fire({
                 icon: 'error',
                 title: 'Zone Overlap Detected',
@@ -791,8 +795,6 @@ async saveZones() {
         const saveResult = await saveResponse.json();
         
         if (saveResult.success) {
-            Swal.close();
-            
             console.log('✅ Zones saved successfully');
             
             // เคลียร์ canvas
@@ -805,33 +807,24 @@ async saveZones() {
             ctx.fillStyle = '#f0f0f0';
             ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
             
-            // ✅ แสดง loading (ไม่มี timer)
+            // ✅ แสดง Success alert แบบธรรมดา (ไม่มี table)
             Swal.fire({
                 icon: 'success',
                 title: 'Zones Saved Successfully!',
-                text: 'Loading configuration...',
-                allowOutsideClick: false,
-                showConfirmButton: false,
-                didOpen: () => {
-                    Swal.showLoading();
-                }
+                text: `${saveResult.zones ? saveResult.zones.length : 'All'} zones saved to zones.json`,
+                confirmButtonColor: '#28a745',
+                timer: 2000
             });
             
-            // ✅ รอ 2 วินาที ให้ backend เขียนไฟล์เสร็จ
+            // ✅ รอ 1 วินาที แล้วอัพเดท table + รูป
             setTimeout(async () => {
                 try {
                     await this.displaySavedZoneSummary();
-                    console.log('✅ Displayed saved zones');
+                    console.log('✅ Table and image updated');
                 } catch (error) {
-                    console.error('❌ Display error:', error);
-                    Swal.close();
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Display Error',
-                        text: error.message
-                    });
+                    console.error('❌ Update error:', error);
                 }
-            }, 2000); // เพิ่มเป็น 2 วินาที
+            }, 1000);
             
         } else {
             throw new Error(saveResult.message || 'Save failed');
@@ -1194,6 +1187,58 @@ async saveZones() {
     }
     
     /**
+     * ✅ NEW: Update table-listzone with zone data
+     */
+    updateZoneSummaryTable(zones) {
+        const tableBody = document.querySelector('#table-listzone tbody');
+        const tableSection = document.getElementById('zoneSummarySection');
+        
+        if (!tableBody) {
+            console.warn('⚠️ table-listzone not found');
+            return;
+        }
+        
+        // ถ้าไม่มี zones → ซ่อน table
+        if (!zones || zones.length === 0) {
+            tableSection.style.display = 'none';
+            tableBody.innerHTML = '';
+            return;
+        }
+        
+        // แสดง table
+        tableSection.style.display = 'block';
+        
+        // สร้าง rows
+        let html = '';
+        zones.forEach((zone, index) => {
+            const color = this.colors[index % this.colors.length];
+            const palletType = zone.pallet_type === 1 ? '📦 Inbound' : '📤 Outbound';
+            const status = zone.active 
+                ? '<span class="badge badge-success">Active</span>' 
+                : '<span class="badge badge-secondary">Inactive</span>';
+            const alertTimeSec = (zone.alert_threshold / 1000).toFixed(1);
+            
+            html += `
+                <tr>
+                    <td><strong>${zone.id}</strong></td>
+                    <td><strong>${zone.name}</strong></td>
+                    <td>${zone.polygon.length} pts</td>
+                    <td>${zone.threshold_percent}%</td>
+                    <td>${alertTimeSec}s</td>
+                    <td>${palletType}</td>
+                    <td>${status}</td>
+                    <td>
+                        <div style="width: 30px; height: 20px; background: ${color}; border: 1px solid #333; display: inline-block; border-radius: 3px;"></div>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        tableBody.innerHTML = html;
+        console.log(`✅ Updated table-listzone with ${zones.length} zones`);
+    }
+    
+    /**
      * ✅ NEW: Display saved zone summary (polygon image + table)
      */
     async displaySavedZoneSummary() {
@@ -1233,23 +1278,21 @@ async saveZones() {
             const imgEl = document.getElementById('currentReferenceImage');
             const noImgEl = document.getElementById('noReferenceImage');
             
-            let polygonImageLoaded = false;
             if (imgEl && noImgEl && imgData.success && imgData.polygon_image) {
-                // ✅ ใช้ relative path (ทำงานได้ทั้ง localhost และ production)
                 const imageUrl = `/${imgData.polygon_image}?t=${Date.now()}`;
                 imgEl.src = imageUrl;
                 imgEl.style.display = 'block';
                 noImgEl.style.display = 'none';
-                polygonImageLoaded = true;
                 console.log('✅ Polygon image loaded:', imageUrl);
             }
             
-            // 3. Create Zone Summary Table
-            const zoneListHtml = this.createZoneSummaryTable(savedZones);
+            // 3. Update table-listzone (แทน popup)
+            this.updateZoneSummaryTable(savedZones);
             
-            // 4. Display in Configured Zones section
+            // 4. Update Configured Zones (canvas section)
             const zoneListContainer = document.getElementById('zoneList');
             if (zoneListContainer) {
+                const zoneListHtml = this.createZoneSummaryTable(savedZones);
                 zoneListContainer.innerHTML = `
                     <div class="alert alert-info">
                         <i class="fas fa-info-circle"></i> <strong>Saved Configuration:</strong> 
@@ -1259,28 +1302,7 @@ async saveZones() {
                 `;
             }
             
-            console.log(`✅ Displayed ${savedZones.length} saved zones`);
-            
-            // ✅ NEW: แสดง popup พร้อม zone summary table
-            const polygonImageStatus = polygonImageLoaded 
-                ? '<p>📸 Polygon image displayed</p>' 
-                : '<p>⚠️ Polygon image not available</p>';
-            
-            Swal.fire({
-                icon: 'success',
-                title: 'Zone Configuration Loaded',
-                html: `
-                    <div style="text-align: center;">
-                        <p>✅ <strong>${savedZones.length} zones</strong> loaded from <code>config/zones.json</code></p>
-                        ${polygonImageStatus}
-                    </div>
-                    <hr>
-                    <h5 style="text-align: center;">📋 Zone Summary:</h5>
-                    ${zoneListHtml}
-                `,
-                width: '900px',
-                confirmButtonColor: '#28a745'
-            });
+            console.log(`✅ Displayed ${savedZones.length} saved zones in table`);
             
         } catch (error) {
             console.error('❌ Error displaying saved zones:', error);
