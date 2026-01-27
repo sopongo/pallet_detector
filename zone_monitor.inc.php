@@ -24,7 +24,12 @@
                 <div class="col-md-12">
                   <div class="detection-wrapper border bg-white p-2 mb-2">
                     <div class="pallet-image-container position-relative">
-                      <img id="live-stream" src="dist/img/video.gif" class="img-fluid rounded border" alt="Live Stream">
+                      <img id="live-stream" src="dist/img/no-signal-on-tv-screen_2.jpg" class="img-fluid rounded border" alt="Live Stream">
+                      <!-- ✅ SVG overlay (ทับบนวิดีโอ) -->
+                      <svg id="zone-overlay" viewBox="0 0 1280 720">
+                          <!-- Zones จะถูกวาดที่นี่ -->
+                          <polygon points="100,100 200,100 200,200 100,200" />
+                      </svg>
                     </div>
                   </div>
                 </div>
@@ -100,17 +105,111 @@
         </div> </div> </div> </div> </div> 
         
 <style type="text/css">
-  .pallet-image-container { background: #eaeaea; min-height: 480px; margin: auto; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
-    .ai-box { position: absolute; border: 2px solid #ff0000; pointer-events: none; box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); border-radius: 2px; z-index: 5; }
-  .ai-label-tag { position: absolute; top: -24px; left: -2px; font-size: 11px !important; padding: 2px 6px !important; border-radius: 3px 3px 0 0 !important; background-color: rgba(220, 53, 69, 0.95) !important; font-weight: bold; color: #fff; }
-    #log-container { height: 130px; overflow-y: auto; background: #1e1e1e; color: #00ff00; 
-      /*font-family: 'Courier New', monospace; */
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 12px; font-size: 13px; }
-    .detection-wrapper img { width: 100%; transition: opacity 0.5s ease; }
-    /* ✅ เพิ่ม style สำหรับ log error (สีแดง) */
-    .log-error { color: #ff4444 !important; font-weight: bold; }
-    .log-warning { color: #ffaa00 !important; }
+.pallet-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #eaeaea;
+    overflow: hidden;
+}
+
+.pallet-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ✅ SVG Overlay */
+#zone-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* ไม่บล็อก click บนวิดีโอ */
+    z-index: 10;
+}
+
+/* ✅ Zone Polygon Styles */
+.zone-polygon {
+    fill: rgba(0, 255, 0, 0.1); /* สีเขียวโปร่งแสง */
+    stroke: #00ff00; /* เส้นขอบสีเขียว */
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.zone-polygon.inbound {
+    fill: rgba(0, 120, 255, 0.15);
+    stroke: #0078ff;
+    stroke-width: 2;
+}
+
+.zone-polygon.outbound {
+    fill: rgba(255, 120, 0, 0.15);
+    stroke: #ff7800;
+    stroke-width: 2;
+}
+
+.zone-polygon.inactive {
+    fill: rgba(128, 128, 128, 0.1);
+    stroke: #808080;
+    stroke-width: 1;
+    stroke-dasharray: 5, 5; /* เส้นประ */
+}
+
+/* Zone Label */
+.zone-label {
+    font-size: 14px;
+    font-weight: bold;
+    fill: white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
+  
+  .ai-box { 
+    position: absolute; 
+    border: 2px solid #ff0000; 
+    pointer-events: none; 
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.6); 
+    border-radius: 2px; 
+    z-index: 5; 
+  }
+  
+  .ai-label-tag { 
+    position: absolute; 
+    top: -24px; 
+    left: -2px; 
+    font-size: 11px !important; 
+    padding: 2px 6px !important; 
+    border-radius: 3px 3px 0 0 !important; 
+    background-color: rgba(220, 53, 69, 0.95) !important; 
+    color: white !important; 
+    font-weight: bold !important; 
+  }
+  
+  #log-container { 
+    height: 130px; 
+    overflow-y: auto; 
+    background: #1e1e1e; 
+    color: #00ff00; 
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 12px; 
+    font-size: 13px; 
+  }
+  
+  .detection-wrapper img { 
+    width: 100%; 
+    transition: opacity 0.5s ease; 
+  }
+  
+  .log-error { 
+    color: #ff4444 !important; 
+    font-weight: bold; 
+  }
+  
+  .log-warning { 
+    color: #ffaa00 !important; 
+  }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -199,7 +298,7 @@ console.log('🔗 API_URL:', API_URL);
   }
 
   function stopVideoStream() {
-    $('#live-stream').attr('src', 'dist/img/video.gif');
+    $('#live-stream').attr('src', 'dist/img/no-signal-on-tv-screen_2.jpg');
   }
 
   // ========================================

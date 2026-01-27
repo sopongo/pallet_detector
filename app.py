@@ -88,33 +88,36 @@ logger.info("🚀 Flask app initialized")
 # ฟังก์ชันสร้าง MJPEG stream จากกล้อง (ใช้ RobustCamera)
 # ----------------------------------------
 def generate_frames(camera_index):
-    """Generator สำหรับ MJPEG streaming. ดูแลการเปิด-ปิดกล้องและการ encode (ใช้ RobustCamera)"""
+    """Generator สำหรับ MJPEG streaming."""
     camera = None
     try:
-        logger.info(f"📸 Starting video stream for camera {camera_index}")
+        # ✅ อ่าน resolution จาก config
+        cfg = config.load_config()
+        resolution = cfg.get('camera', {}).get('resolution', {'width': 1280, 'height': 720})
+        width = resolution['width']
+        height = resolution['height']
         
-        # ✅ ใช้ RobustCamera แทน OpenCV VideoCapture
+        logger.info(f"📸 Starting video stream for camera {camera_index} at {width}x{height}")
+        
         camera = RobustCamera(
             camera_index,
             max_retries=3,
             timeout=5,
-            width=640,
-            height=480
+            width=width,      # ✅ ใช้จาก config
+            height=height     # ✅ ใช้จาก config
         )
         
         if not camera.is_opened():
             logger.error(f"❌ Cannot open camera {camera_index}")
             return
         
-        logger.info(f"✅ Camera stream started (type: {camera.camera_type})")
+        logger.info(f"✅ Camera stream started (type: {camera.camera_type}, resolution: {width}x{height})")
 
         while True:
-            # ✅ อ่าน frame (with auto-reconnect)
             ret, frame = camera.read()
             
             if not ret or frame is None:
                 logger.warning("⚠️ Cannot read frame")
-                # RobustCamera จะพยายาม reconnect อัตโนมัติ
                 time.sleep(0.5)
                 continue
             
