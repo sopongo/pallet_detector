@@ -528,6 +528,11 @@ $(function () {
 
         // ถ้า backend ระบุว่ากำลังรัน ให้เริ่ม poll ข้อมูล (เหมือนกด Start)
         if (data.running) {
+          // ✅ Start video stream and show zone overlay
+          console.log('✅ Detection service is running, starting video stream...');
+          startVideoStream();
+          $('#zone-overlay').show();
+          
           // ถ้ายังไม่ polling ให้เริ่ม
           if (!pollingTimer) {
             // เรียกข้อมูลทันทีเพื่อเติม UI (images, logs, summary)
@@ -537,8 +542,13 @@ $(function () {
             // เริ่ม polling แบบต่อเนื่อง
             startPolling();
           }
+          
+          console.log('✅ Video stream and polling started');
         } else {
           // ถ้า backend บอกว่าไม่รัน ให้หยุด polling และแสดงค่า default (ถ้าต้องการ)
+          console.log('ℹ️ Detection service not running');
+          stopVideoStream();
+          $('#zone-overlay').hide();
           stopPolling();
           // ไม่ล้างรูป/summary ให้ผู้ใช้ยังเห็นค่าล่าสุด (ถ้าต้องการล้าง ให้ uncomment)
           // $('#img-before').attr('src', 'dist/img/wait.png');
@@ -882,21 +892,30 @@ function startPolling() {
 
   // ========================================
   // 9. Initialize on Page Load
-  // - ตอนเข้าเพจให้เช็คสถานะจาก backend ก่อน (fetchDetectionStatus)
-  // - ถ้า backend บอกว่ากำลังรัน จะเริ่ม poll และเติมข้อมูลหน้าอัตโนมัติ
-  // - ถ้า backend ไม่รัน จะไม่เริ่ม poll (ผู้ใช้ต้องกด Start)
+  // - โหลด camera resolution และ zones ก่อน
+  // - เช็คสถานะจาก backend (fetchDetectionStatus)
+  // - ถ้า backend บอกว่ากำลังรัน จะเริ่ม video stream, zone overlay, และ polling อัตโนมัติ
+  // - ถ้า backend ไม่รัน จะไม่เริ่ม (ผู้ใช้ต้องกด Start)
   // ========================================
   
   // ✅ Initialize Zone Overlay
   (async function initZoneOverlay() {
       console.log('📋 Initializing Zone Overlay...');
+      
+      // 1. Load camera resolution and zones
       await loadCameraResolution();
       await loadZones();
+      
+      // 2. Redraw zones on window resize
       $(window).on('resize', drawZones);
+      
       console.log('✅ Zone Overlay initialized');
+      
+      // 3. Check if detection service is already running
+      console.log('🔍 Checking detection service status...');
+      fetchDetectionStatus();
   })();
   
-  fetchDetectionStatus();  // Check if already running (will start polling if running)
   fetchSystemInfo();        // Load system info once
   // Fetch system info every 3 seconds
   setInterval(fetchSystemInfo, 3000);
