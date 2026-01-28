@@ -902,7 +902,7 @@ function startPolling() {
   (async function initZoneOverlay() {
       console.log('📋 Initializing Zone Overlay...');
       
-      // 1. Load camera resolution and zones
+      // 1. Load camera resolution and zones (wait for completion)
       await loadCameraResolution();
       await loadZones();
       
@@ -911,7 +911,7 @@ function startPolling() {
       
       console.log('✅ Zone Overlay initialized');
       
-      // 3. Check if detection service is already running
+      // 3. Check if detection service is already running (called after zones are loaded)
       console.log('🔍 Checking detection service status...');
       fetchDetectionStatus();
   })();

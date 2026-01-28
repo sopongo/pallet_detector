@@ -117,7 +117,7 @@
 5. ✅ **VERIFY:** JSON structure:
    ```json
    {
-     "timestamp": "2024-01-28T...",
+     "timestamp": "2026-01-28T02:30:00.000000",
      "zones": [
        {
          "zone_id": 1,

@@ -310,6 +310,8 @@ class DetectionService:
             with open(ZONE_STATUS_FILE, 'w') as f:
                 json.dump(status_data, f, indent=2)
             
+            logger.info(f"✅ Zone status saved: {len(zones_status)} zone(s)")
+        
         except Exception as e:
             logger.error(f"❌ Cannot save zone status: {e}")
     
