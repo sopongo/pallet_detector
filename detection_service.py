@@ -80,14 +80,13 @@ class DetectionService:
             # ✅ Initialize zone states tracking
             self.zone_states = {}
             
-            # ✅ Initialize RobustCamera
+            # ✅ Store camera index for capture (no longer keeping persistent camera instance)
             camera_index = self.cfg['camera']['selectedCamera']
             # แปลง camera_index เป็น int ถ้าเป็นตัวเลข
             if isinstance(camera_index, str) and camera_index.isdigit():
                 camera_index = int(camera_index)
             
-            logger.info(f"🎥 Initializing camera: {camera_index}")
-            self.camera = None  # จะถูกสร้างตอนต้องใช้งาน (lazy initialization)
+            logger.info(f"🎥 Camera index configured: {camera_index}")
             self.camera_index = camera_index
             
             # ✅ ตรวจสอบ LINE config
@@ -194,40 +193,33 @@ class DetectionService:
     
     def capture_image(self):
         """ถ่ายรูปจากกล้อง (ใช้ RobustCamera)"""
+        camera = None
         try:
-            # ✅ Lazy initialization - สร้าง camera ครั้งแรกที่ใช้งาน
-            if self.camera is None:
-                logger.info(f"📸 Creating RobustCamera for index: {self.camera_index}")
-                self.camera = RobustCamera(
-                    self.camera_index,
-                    max_retries=3,
-                    timeout=5,
-                    width=640,
-                    height=480
-                )
-                
-                if self.camera.is_opened():
-                    logger.info(f"✅ Camera initialized (type: {self.camera.camera_type})")
-                else:
-                    logger.error("❌ Camera initialization failed")
-                    return None
+            # ✅ Create new camera instance for each capture to avoid conflicts with video stream
+            logger.info(f"📸 Opening camera {self.camera_index} for capture...")
+            camera = RobustCamera(
+                self.camera_index,
+                max_retries=3,
+                timeout=5,
+                width=640,
+                height=480
+            )
             
-            # ✅ ตรวจสอบว่ากล้องยังเปิดอยู่หรือไม่
-            if not self.camera.is_opened():
-                logger.warning("⚠️ Camera not opened, attempting reconnect...")
-                if not self.camera.connect():
-                    logger.error("❌ Cannot reconnect camera")
-                    return None
+            if not camera.is_opened():
+                logger.error("❌ Camera initialization failed")
+                return None
+            
+            logger.info(f"✅ Camera opened (type: {camera.camera_type})")
             
             # รอให้กล้องพร้อม (สำหรับ USB camera)
-            if self.camera.camera_type == 'usb':
+            if camera.camera_type == 'usb':
                 time.sleep(0.5)
                 # อ่านภาพหลายครั้ง (ทิ้ง frame แรกๆ)
                 for _ in range(3):
-                    self.camera.read()
+                    camera.read()
             
-            # ✅ อ่านภาพจริง (with auto-reconnect)
-            ret, frame = self.camera.read()
+            # ✅ อ่านภาพจริง
+            ret, frame = camera.read()
             
             if not ret or frame is None:
                 logger.error("❌ Cannot capture image")
@@ -262,6 +254,14 @@ class DetectionService:
         except Exception as e:
             logger.error(f"❌ Capture error: {e}")
             return None
+        finally:
+            # ✅ Always release camera after capture to allow video stream access
+            if camera is not None:
+                try:
+                    camera.release()
+                    logger.info("✅ Camera released after capture")
+                except Exception as e:
+                    logger.error(f"Error releasing camera: {e}")
     
     def save_zone_status(self):
         """
@@ -310,6 +310,8 @@ class DetectionService:
             with open(ZONE_STATUS_FILE, 'w') as f:
                 json.dump(status_data, f, indent=2)
             
+            logger.info(f"✅ Zone status saved: {len(zones_status)} zone(s)")
+        
         except Exception as e:
             logger.error(f"❌ Cannot save zone status: {e}")
     
@@ -745,13 +747,7 @@ class DetectionService:
         logger.info("🛑 Stopping detection service...")
         self.running = False
         
-        # ✅ ปิดกล้อง
-        if hasattr(self, 'camera') and self.camera is not None:
-            try:
-                self.camera.release()
-                logger.info("✅ Camera released")
-            except Exception as e:
-                logger.error(f"Error releasing camera: {e}")
+        # Note: Camera is no longer persistent - released after each capture
         
         self.lights.all_off()
         logger.info("✅ Detection service stopped")
