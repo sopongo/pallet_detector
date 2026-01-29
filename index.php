@@ -22,11 +22,9 @@ switch($module) {
     case 'blank':
         $include_page = 'blank.inc.php';
         break;
-    // DISABLED: YOLO Detection Monitoring
-    // To restore: Uncomment the case below and restore monitor.inc.php
-    // case 'monitoring':
-    //     $include_page = 'monitor.inc.php';
-    //     break;
+    case 'monitoring':
+        $include_page = 'monitor.inc.php';
+        break;
     case 'zone-monitoring':
         $include_page = 'zone_monitor.inc.php';
         break;
@@ -150,16 +148,12 @@ switch($module) {
               <p>Monitoring (Zone)</p>
             </a>
           </li>
-          <!-- DISABLED: YOLO Detection Monitoring -->
-          <!-- To restore: Uncomment the nav item below and restore monitor.inc.php -->
-          <!--
           <li class="nav-item">
             <a href="?module=monitoring" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'monitoring' ? 'active' : ''; ?>">
               <i class="nav-icon fa-solid fa-camera-rotate"></i>
               <p>Monitoring</p>
             </a>
           </li>
-          -->
           <li class="nav-item">
             <a href="?module=dashboard" class="nav-link <?PHP echo ($_GET['module'] ?? '') === 'dashboard' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-area-chart"></i>
